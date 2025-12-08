@@ -516,7 +516,6 @@
           "logo_DDBPCm": {
             "type": "logo",
             "settings": {
-              "logo": "shopify://shop_images/Cushions_Logo_by_Vitor_Hugo_1.png",
               "size": "small",
               "text": "",
               "social_icons_footer": true
@@ -525,7 +524,7 @@
           "1562706968599": {
             "type": "link_list",
             "settings": {
-              "menu": "quick-links",
+              "menu": "",
               "social_icons_footer": false
             }
           },
@@ -2063,8 +2062,6 @@
             "type": "image",
             "settings": {
               "link": "shopify://collections/indoor-cushions",
-              "image": "shopify://shop_images/Indoor-Web-Banner.jpg",
-              "mobile_image": "shopify://shop_images/Indoor_banner_mobile.jpg",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -2094,8 +2091,6 @@
             "type": "image",
             "settings": {
               "link": "https://zipcushions.com/collections/custom-outdoor-furniture-covers",
-              "image": "shopify://shop_images/Custom-Cover-web-Banner.jpg",
-              "mobile_image": "shopify://shop_images/Cover-mobile-banner.jpg",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -2125,8 +2120,6 @@
             "type": "image",
             "settings": {
               "link": "https://zipcushions.com/collections/outdoor-cushions",
-              "image": "shopify://shop_images/Outdoor-web-banner.jpg",
-              "mobile_image": "shopify://shop_images/outdoor_banner_mobile.jpg",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -2156,8 +2149,6 @@
             "type": "image",
             "settings": {
               "link": "https://zipcushions.com/pages/sunbrella-outdoor-pillows-and-cushions",
-              "image": "shopify://shop_images/Sunbrella-web.jpg",
-              "mobile_image": "shopify://shop_images/Sunbrella-app.jpg",
               "pretext": "",
               "title": "",
               "subtitle": "",
@@ -2821,7 +2812,6 @@
           "collection_block_ExzzVV": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/custom_covers.png",
               "title": "Cushion Covers",
               "collection": "custom-cushion-covers"
             }
@@ -2829,7 +2819,6 @@
           "collection_block_AiN7yY": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/Outdoor.jpg",
               "title": "Outdoor Cushions",
               "collection": "outdoor-cushions"
             }
@@ -2837,7 +2826,6 @@
           "collection_block_NXJkqn": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/Indoor_image.jpg",
               "title": "Indoor Cushions",
               "collection": "indoor-cushions"
             }
@@ -2845,7 +2833,6 @@
           "collection_block_WXzBVU": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/Covers.jpg",
               "title": "Outdoor Covers",
               "collection": "custom-outdoor-furniture-covers"
             }
@@ -2865,7 +2852,6 @@
           "item_WtHQpU": {
             "type": "item",
             "settings": {
-              "img_01": "shopify://shop_images/fi_17938466.png",
               "title": "<strong>24/7 Customer Support</strong>",
               "text": "<p>Personalized assistance from real people, anytime you need it</p>"
             }
@@ -2873,7 +2859,6 @@
           "item_aUymLa": {
             "type": "item",
             "settings": {
-              "img_01": "shopify://shop_images/fi_7601005.png",
               "title": "<strong>Satisfaction Guaranteed</strong>",
               "text": "<p>Enjoy peace of mind with our Perfect-Fit Warranty</p>"
             }
@@ -2881,7 +2866,6 @@
           "item_9DCF7c": {
             "type": "item",
             "settings": {
-              "img_01": "shopify://shop_images/Group_1.png",
               "title": "Free Shipping",
               "text": "<p>Fast, free delivery in just 3 weeks</p>"
             }
@@ -2889,7 +2873,6 @@
           "item_Gdeztw": {
             "type": "item",
             "settings": {
-              "img_01": "shopify://shop_images/fi_4504229.png",
               "title": "<strong>Flexible Payment Options</strong>",
               "text": "<p>Shop now, pay later with Smart Payment</p>"
             }
@@ -2945,7 +2928,6 @@
         "name": "Contact Form with Image",
         "settings": {
           "heading": "Have a Question? Let’s Connect",
-          "image": "shopify://shop_images/Cushion.jpg",
           "background_color": "#ffffff"
         }
       },
@@ -5074,51 +5056,8 @@
       "partners_and_certifications_MakLcx"
     ],
     "blocks": {
-      "14684659138027382045": {
-        "type": "shopify://apps/xo-gallery/blocks/xo-gallery-scripts/e61dfbaa-1a75-4e4e-bffc-324f17325251",
-        "disabled": false,
-        "settings": {}
-      },
-      "7770194999415187106": {
-        "type": "shopify://apps/xo-gallery/blocks/xo-gallery-seo/e61dfbaa-1a75-4e4e-bffc-324f17325251",
-        "disabled": false,
-        "settings": {}
-      },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      },
-      "855628211100114053": {
-        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
-        "settings": {}
-      },
-      "1232542678405107163": {
-        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
-        "disabled": false,
-        "settings": {}
-      },
-      "17676059084223943535": {
-        "type": "shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a",
-        "disabled": false,
-        "settings": {}
-      },
-      "17327048248777170309": {
-        "type": "shopify://apps/dr-stacked-discounts/blocks/instant-load/f428e1ae-8a34-4767-8189-f8339f3ab12b",
-        "disabled": false,
-        "settings": {}
-      },
-      "15255627403292782234": {
-        "type": "shopify://apps/easy-tabs-product-tabs/blocks/easytabs-embed-product-widget/118e2a90-d31f-4cdf-b5c9-747e2bddd19a",
-        "disabled": true,
-        "settings": {
-          "placement_selector": "",
-          "multiple_widgets": false
-        }
-      },
-      "6610233760104865948": {
-        "type": "shopify://apps/pushowl-brevo-email-push-sms/blocks/pushowl-app-embed-3d2ff2b5/fa20c3ba-38bf-43e0-ba5c-431f6ae07d95",
         "disabled": false,
         "settings": {}
       }
