@@ -1,0 +1,5 @@
+<div class="offer-wrapper">
+{% if product.metafields.add.offers != blank %}    
+<div class="offer-img"><img src="{{ product.metafields.add.offers | img_url: 'medium' }}" alt="new offer"></div>
+  {% endif %}
+</div>

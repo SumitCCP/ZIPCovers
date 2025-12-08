@@ -1,0 +1,61 @@
+<section class="collection-banner">
+  <style>
+    .collection-banner,
+    .collection-banner-mobile {
+      width: 100%;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .collection-banner img,
+    .collection-banner-mobile img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .desktop-only {
+      display: block;
+    }
+    .mobile-only {
+      display: none;
+    }
+    @media only screen and (max-width: 768px) {
+      .desktop-only {
+        display: none;
+      }
+      .mobile-only {
+        display: block;
+      }
+    }
+  </style>
+
+  {% if section.settings.desktop_banner %}
+    <div class="collection-banner desktop-only">
+      <img src="{{ section.settings.desktop_banner | image_url }}" alt="Desktop banner">
+    </div>
+  {% endif %}
+  {% if section.settings.mobile_banner %}
+    <div class="collection-banner-mobile mobile-only">
+      <img src="{{ section.settings.mobile_banner | image_url }}" alt="Mobile banner">
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "tag": "section",
+  "class": "collection-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_banner",
+      "label": "Desktop Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner",
+      "label": "Mobile Banner Image"
+    }
+  ]
+}
+{% endschema %}

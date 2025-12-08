@@ -1,0 +1,111 @@
+{% schema %}
+{
+  "name": "Partners & Certifications",
+  "tag": "section",
+  "class": "section-fabric-partners",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Partners & Certifications"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .fabric-partner-section {
+    padding: 40px 20px;
+    margin-top:40px;
+    text-align: center;
+  }
+
+  .fabric-partner-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-family: Lato-SemiBold;
+
+  }
+
+  .partner-scroll-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .partner-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .partner-row {
+    display: inline-flex;
+    gap: 25px;
+  }
+ .partner-row img {
+border:1px #ddd solid;
+border-radius:10px;
+ }
+  .partner-row a,
+  .partner-row img {
+    display: inline-block;
+    max-width: 160px;
+    min-width: 120px;
+    height: auto;
+    border-radius: 12px;
+    filter: grayscale(0%);
+    transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .partner-row a:hover img {
+    filter: grayscale(100%);
+  }
+
+  @media (max-width: 768px) {
+    .partner-row img {
+      max-width: 120px;
+    }
+      .fabric-partner-section h2 {
+    font-size: 24px;
+    }
+      .fabric-partner-section {
+    margin-top:0px;
+  }
+
+  }
+</style>
+
+<div class="fabric-partner-section">
+  <h2>Our Fabric Partners & Certifications</h2>
+  <div class="partner-scroll-wrapper">
+    <div class="partner-row">
+      <a href="#"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Serge_Ferrari.jpg?v=1726100810" alt="Stamskin"></a>
+      <a href="https://zipcushions.com/pages/sunbrella-outdoor-pillows-and-cushions" ><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Sunbrella.jpg?v=1726100810" alt="Sunbrella"></a>
+      <a href="#"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Agora.webp?v=1726100810" alt="Agora"></a>
+      <a href="#"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Facts.webp?v=1726338923" alt="Facts Certified"></a>
+      <a href="#"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Skin_Cancer_11zon.jpg?v=1726339061" alt="Skin Cancer Foundation"></a>
+      <a href="#"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Greenguard_11zon.jpg?v=1726339061" alt="Greenguard Certified"></a>
+      <a href="#"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/OEKO-TEX_11zon.jpg?v=1726339060" alt="OEKO-TEX Certified"></a>
+    </div>
+  </div>
+  <br><br><br>
+  <h2>Accreditations & Reviews</h2>
+  <div class="partner-scroll-wrapper">
+    <div class="partner-row">
+      <a href="https://www.google.com/maps/place/ZIPCushions/@39.9144407,-105.0037813,17z" target="_blank" rel="nofollow">
+        <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/gOOGLE_4d3ef7a9-55b7-46bd-ae30-3c421379d494_11zon.jpg?v=1726340685" alt="Google Reviews">
+      </a>
+      <a href="https://www.yelp.com/biz/cozy-corner-patios-westminster-2" target="_blank" rel="nofollow">
+        <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/YELP_66871c8c-5a0a-469a-b4f3-ce55388fc251_11zon.jpg?v=1726340685" alt="Yelp Reviews">
+      </a>
+      <a href="https://www.bbb.org/us/co/denver/profile/patio-furniture/cozy-corner-patios-llc-1296-90261912" target="_blank" rel="nofollow">
+        <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/BBB_36ef7ecb-826d-4102-a3ac-0102e883abea_11zon.jpg?v=1726340685" alt="BBB Accredited">
+      </a>
+      <a href="https://www.etsy.com/shop/ZIPCushions" target="_blank" rel="nofollow">
+        <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/ETSY_751dbafc-22e0-44fb-92b9-6bfeb3426fb1_11zon.jpg?v=1726340686" alt="Etsy Reviews">
+      </a>
+    </div>
+  </div>
+</div>

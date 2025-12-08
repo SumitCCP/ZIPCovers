@@ -1,0 +1,780 @@
+<style>
+/* Global Reset */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: auto;
+      margin-top:50px;
+      padding: 20px;
+    }
+
+    /* Main PDP Layout */
+    .PDP_main {
+      width: 100%;
+      display: flex;
+      gap: 20px;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      align-content: flex-start;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+  {% comment %} pdp gallery  {% endcomment %}
+   .PDP_Gallery {
+    width: 40%;
+    flex: 0 0 40%;
+    position:sticky;
+    top: 100px;
+  }
+  .PDP_thumbnil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .PDP_thumbnil img {
+    width: 100%;
+    min-height:500px;
+    max-height: 1000px;
+    object-fit: contain;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 26px;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 4px;
+    display:none;
+  }
+ .PDP_thumbnil:hover .gallery-arrow{
+display:block;
+}
+  .gallery-arrow.prev {
+    left: 8px;
+  }
+
+  .gallery-arrow.next {
+    right: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-arrow {
+      font-size: 20px;
+      padding: 6px 10px;
+    }
+        .container {
+      margin-top:20px;
+      padding: 5px;
+    }
+  }
+  .PDP_images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+    justify-content: center;
+  }
+
+  .PDP_images img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border 0.2s, transform 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .PDP_images img.active,
+  .PDP_images img:hover {
+    border: 2px solid #000;
+    transform: scale(1.05);
+  }
+  @media (max-width: 768px) {
+    .PDP_Gallery {
+      width: 100%;
+      top: 0;
+      margin-bottom: 20px;
+    }
+  }
+  .PDP_thumbnil:hover img {
+    transform: scale(1.01);
+    transition: transform 0.3s ease;
+  }
+  .PDP_thumbnil {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .PDP_thumbnil img {
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+    min-height:400px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .PDP_thumbnil:hover img {
+      transform: scale(1.2);
+    }
+  }
+   .PDP_Price{
+    display: flex;
+    gap: 20px;
+    font-weight:bold;
+    align-items: center;
+  }
+  .PDP_Price h2{
+    color:#000 !important;
+    display: flex;
+    gap: 10px;
+        align-items: center;
+
+  }
+    /* Fabric Category Swatches */
+    #colorways-category-box {
+      border: 1px solid #ccc;
+      padding: 5px;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    .colorways-category-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 12px;
+      text-align: center;
+      background: #f1f1f1;
+    }
+    h1,
+    h2,
+    h3 {
+      font-weight: bold;
+    }
+    #colorways-category-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #colorways-category-list ul.category-products {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+      {% comment %} height:200px; {% endcomment %}
+      overflow-y: scroll;
+    }
+
+    .category-products li {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border 0.2s, box-shadow 0.2s;
+      background-size: cover;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .category-products li:hover {
+      border-color: #000;
+    }
+
+    .category-products img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .PDP_trust {
+      width: 100%;
+      margin:5px 0px;
+      background: #f1f1f1;
+     color: black !important;
+    }
+    .PDP_trust ul{
+      padding: 20px 10px;
+       list-style: none;
+    }
+
+    /* Description Section */
+    .PDP_content {
+      width: 100%;
+      max-width:1400px;
+      margin: auto;
+      padding: 20px 10px;
+      line-height: 1.6;
+      color: black !important;
+    }
+   .PDP_content table td, table th {
+    border: 1px black solid !important;
+    padding: 5px !important;
+          color: black !important;
+    }
+
+    /* Quantity form override */
+   .PDP_AddToCartBlock {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    gap:20px;
+  }
+@media (max-width:500px){
+   .PDP_AddToCartBlock {
+flex-direction: column;
+   }
+}
+  .PDP_AddToCartBlock form {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* Quantity Box */
+  .quantity-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 9px;
+    overflow: hidden;
+    background: #fff;
+    height: 48px;
+    padding: 0 8px;
+  }
+
+  .qty-btn {
+    background: none;
+    border: none;
+    padding: 0 12px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qty-input {
+    width: 40px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+    appearance: textfield;
+  }
+
+  .qty-input::-webkit-inner-spin-button,
+  .qty-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Add to Cart Button */
+  .add-to-cart-btn {
+    flex: 1;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    border: 2px black solid;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #fff;
+        color: #000;
+  }
+  @media (max-width: 600px) {
+    .PDP_AddToCartBlock form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+   .PDP_Price{
+    gap: 10px;
+  }
+    .add-to-cart-btn {
+      width: 100%;
+    }
+
+    .quantity-wrapper {
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .PDP_main {
+        flex-direction: column;
+      }
+
+      .PDP_Gallery,
+      .PDP_Details {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .category-products li {
+        width: 45px;
+        height: 45px;
+      }
+
+      #loadMoreBtn {
+        font-size: 13px;
+        padding: 8px 16px;
+      }
+
+      .colorways-category-title {
+        font-size: 16px;
+      }
+    }
+
+      {% comment %} additional for description  {% endcomment %}
+      /* Overall container */
+  .PDP_content div{
+  color:#000 !imortant;
+  width:100%;
+  margin:auto;
+  }
+/* description part */
+/* Overall container */
+.product .info .detailed {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+}
+
+/* Tab titles */
+.product.info.detailed .data.item.title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.product.info.detailed .data.item.title a.data.switch {
+  text-decoration: none;
+color: black !important;
+}
+
+/* Tab content wrapper */
+.product.info.detailed .data.item.content {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+/* Description text */
+.product.info.detailed .product.attribute.description .value {
+  line-height: 1.6;
+  font-size: 15px;
+  color: black !important;
+}
+
+/* Table styling */
+.additional-attributes-wrapper.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table.additional-attributes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+table.additional-attributes caption {
+  display: none;
+}
+
+table.additional-attributes th,
+table.additional-attributes td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word; /* ensure text wraps */
+}
+
+table.additional-attributes tr{
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+table.additional-attributes th {
+  width: 70%;
+        font-weight: 600;
+        color: black !important;
+        text-align: right;
+}
+.content table td, .content table th, .shopify-policy__body table td, .shopify-policy__body table th{
+border:none !important;
+}
+
+/* Alternating rows */
+table.additional-attributes tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  table.additional-attributes {
+    table-layout: fixed;
+  }
+
+  table.additional-attributes th,
+  table.additional-attributes td {
+    word-break: break-word;
+  }
+}
+.PDP_Title{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.pdp-bredgrum{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 5px;
+  display:flex;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pdp-bredgrum a{
+  font-size:15px !important;
+}
+.pdp-bredgrum p{
+  font-size:15px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+@media (max-width:400px){
+  .pdp-bredgrum a{
+  font-size:12px !important;
+}
+.pdp-bredgrum p{
+  font-size:12px !important;
+}
+}
+#dynamicTotalPrice{
+font-size:larger;
+}
+</style>
+<div class="container">
+
+<div class="pdp-bredgrum"><a href="/">Home &nbsp;> &nbsp;</a><a href="https://zipcushions.com/collections/sunbrella-fabrics">Collection</a><p>&nbsp; > &nbsp; {{ product.title }}</p></div>
+
+
+  <div class="PDP_main">
+    <div class="PDP_Gallery">
+      <div class="PDPGalleryimg">
+        <div class="PDP_thumbnil">
+          <button class="gallery-arrow prev">&#10094;</button>
+          <img
+            id="mainProductImage"
+            src="{{ product.featured_image | img_url: '1024x1024' }}"
+            alt="{{ product.title }}"
+            loading="lazy"
+          >
+          <button class="gallery-arrow next">&#10095;</button>
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="PDP_images">
+            {% for image in product.images %}
+              <img
+                src="{{ image | img_url: '180x180' }}"
+                data-large="{{ image | img_url: '1024x1024' }}"
+                alt="{{ image.alt | escape }}"
+                class="{% if forloop.first %}active{% endif %}"
+              >
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="PDP_Details">
+      <div class="PDP_Title">
+        <h1>{{ product.title }}</h1>
+      </div>
+        <!-- Start of Judge.me code --> 
+  <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'> 
+    {{ product.metafields.judgeme.badge }} 
+  </div> 
+<!-- End of Judge.me code -->
+<div class="dealimg"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/black_friday.png?v=1763122765" alt="black friday sale"></div>
+
+<style>
+              .dealimg{
+            max-width:260px;
+            padding:10px 0px;
+            margin-bottom:-15px;
+            }
+            .dealimg img{
+            width:100%;
+            }
+            .price .money{
+            font-size:larger !important;
+            }
+</style>
+      <div class="PDP_Price">
+        <h2>
+          <strong>Total Price:</strong>
+        <span id="dynamicTotalPrice">{{ yard_variant.price | times: 2 | money_with_currency }}</span>
+        </h2>
+        <p>|</p>
+        <p>
+          {% assign yard_variant = product.variants | where: "title", "Yard" | first %}
+          <span id="unitPrice" data-price="{{ yard_variant.price }}">{{ yard_variant.price | money_with_currency }}</span>/Yard
+        </p>
+      </div>
+
+      <div class="PDP_trust">
+        <ul>
+          <li><b>Warranty:</b> 5-year</li>
+          <li><b>Application Uses:</b> Drapery, Indoor, Outdoor</li>
+          <li>
+            <b>Best For:</b> Cushions, Indoor Upholstery, Marine Upholstery, Outdoor Upholstery, Pillows, Umbrellas
+          </li>
+        </ul>
+      </div>
+
+      <div class="PDP_AddToCartBlock">
+        {% assign yard_variant = product.variants | where: "title", "Yard" | first %}
+{% assign sample_variant = product.variants | where: "title", "Sample" | first %}
+
+{% form 'product', product %}
+  <input type="hidden" name="id" value="{{ yard_variant.id }}">
+  <div class="quantity-wrapper">
+    <button type="button" class="qty-btn minus">−</button>
+    <input type="number" name="quantity" value="2" min="2" class="qty-input">Yard
+    <button type="button" class="qty-btn plus">+</button>
+  </div>
+  <button type="submit" class="add-to-cart-btn">
+    <span>Add to Cart</span>
+  </button>
+{% endform %}
+{% comment %}
+<form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ sample_variant.id }}">
+  <input type="hidden" name="quantity" value="1">
+  <button type="submit" class="add-to-cart-btn">
+    Order Sample
+  </button>
+</form>
+{% endcomment %}
+
+      </div>
+      <div class="PDP_morefabrics">
+        <div id="colorways-category-box">
+          <div class="colorways-category-title">100+ Colors are Available in Sunbrella Collection</div>
+              <!-- Fabric Search Bar -->
+          <div id="colorways-category-list">
+{% section 'Fabrics-List' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<style>
+{% comment %} navigation for content  {% endcomment %}
+ /* Tab navigation container */
+#productfakejumptabs {
+  margin-top: 50px;
+  display: flex;
+  gap: 12px;
+  justify-content:start;
+  width:100%;
+  color:#000;
+}
+
+#productfakejumptabs div{
+   background: #f9f9f9;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top:10px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size:x-large;
+}
+</style>
+<div id="productfakejumptabs">
+    <div>Description</div>
+    {% comment %} <div><a>Specification(s)</a></div> {% endcomment %}
+    {% comment %} <div style="display:none"><a href="#product-faq">FAQs</a></div> {% endcomment %}
+</div>
+  <div class="PDP_content" id="label-description">
+    <div>{{ product.description }}</div>
+  </div>
+</div>
+<script>
+   {% comment %} quantity selector {% endcomment %}
+  document.addEventListener('DOMContentLoaded', function () {
+     const minusBtn = document.querySelector('.qty-btn.minus');
+     const plusBtn = document.querySelector('.qty-btn.plus');
+     const qtyInput = document.querySelector('.qty-input');
+
+     minusBtn.addEventListener('click', () => {
+       const current = parseInt(qtyInput.value);
+       if (current > 2) qtyInput.value = current - 1;
+     });
+
+     plusBtn.addEventListener('click', () => {
+       const current = parseInt(qtyInput.value);
+       qtyInput.value = current + 1;
+     });
+   {% comment %} end quantity selector {% endcomment %}
+    });
+</script>
+{% comment %} live price calculator {% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const qtyInput = document.querySelector('.qty-input');
+    const unitPriceElement = document.getElementById('unitPrice');
+    const totalPriceElement = document.getElementById('dynamicTotalPrice');
+
+    const unitPriceCents = parseInt(unitPriceElement.dataset.price); // Shopify gives price in cents
+
+    function updatePriceDisplay() {
+      const qty = parseInt(qtyInput.value);
+      const totalCents = unitPriceCents * qty;
+      const totalDollars = totalCents / 100;
+
+      totalPriceElement.textContent = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      }).format(totalDollars);
+    }
+
+    // ✅ Fix price on back button return
+    window.addEventListener('pageshow', () => {
+      setTimeout(updatePriceDisplay, 50);
+    });
+
+    // Update on quantity change
+    qtyInput.addEventListener('change', updatePriceDisplay);
+    document.querySelector('.qty-btn.plus')?.addEventListener('click', () => {
+      setTimeout(updatePriceDisplay, 10);
+    });
+    document.querySelector('.qty-btn.minus')?.addEventListener('click', () => {
+      setTimeout(updatePriceDisplay, 10);
+    });
+  });
+</script>
+{% comment %} end live price calculator {% endcomment %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainImg = document.getElementById('mainProductImage');
+    const thumbnails = Array.from(document.querySelectorAll('.PDP_images img'));
+    const nextBtn = document.querySelector('.gallery-arrow.next');
+    const prevBtn = document.querySelector('.gallery-arrow.prev');
+
+    let currentIndex = 0;
+        function updateArrows() {
+        if (currentIndex === 0) {
+            prevBtn.style.display = "none";
+        } else {
+            prevBtn.style.display = "block";
+        }
+
+        if (currentIndex === thumbnails.length - 1) {
+            nextBtn.style.display = "none";
+        } else {
+            nextBtn.style.display = "block";
+        }
+    }
+
+    function updateMainImage(index) {
+      const newImg = thumbnails[index];
+      mainImg.src = newImg.dataset.large;
+      thumbnails.forEach((img) => img.classList.remove('active'));
+      newImg.classList.add('active');
+      currentIndex = index;
+      updateArrows()
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const nextIndex = (currentIndex + 1) % thumbnails.length;
+      updateMainImage(nextIndex);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      const prevIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+      updateMainImage(prevIndex);
+    });
+
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => updateMainImage(index));
+    });
+
+    // Touch swipe (mobile)
+    let startX = 0;
+    mainImg.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    mainImg.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          // Swipe left
+          const nextIndex = (currentIndex + 1) % thumbnails.length;
+          updateMainImage(nextIndex);
+        } else {
+          // Swipe right
+          const prevIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+          updateMainImage(prevIndex);
+        }
+      }
+    });
+  });
+</script>
+  {% section 'fabrics-sale-pdp-scroll' %}
+
+  {% section "Google-Review-PDP" %}

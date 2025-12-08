@@ -1,0 +1,21 @@
+<div class="full-banner">
+  {% if collection.metafields.custom.collection_banner_image != blank %}
+   <div class="full-banner-img">
+     <img src="{{ collection.metafields.custom.collection_banner_image | img_url: '1600x500' }}" />
+   </div>
+ {% endif %}
+  <div class="all-banner-content-row">
+   {% if collection.metafields.custom.collection_banner_title != blank %} 
+    <h2 class="all-banner-title">
+     {{ collection.metafields.custom.collection_banner_title }}
+    </h2>
+   {% endif %} 
+   {% if collection.metafields.custom.collection_banner_content != blank %}  
+    <p> {{ collection.metafields.custom.collection_banner_content }} </p>
+   {% endif %}
+   {% if collection.metafields.custom.collection_btn_text != blank %}  
+    <a href="{{ collection.metafields.custom.collection_btn_link }}" target="_blank"> {{ collection.metafields.custom.collection_btn_text }} </a>
+   {% endif %}  
+  </div>
+      
+</div>

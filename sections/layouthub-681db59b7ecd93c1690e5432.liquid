@@ -1,0 +1,665 @@
+{% comment %}
+ LayoutHub (https://layouthub.com)
+ You SHOULD NOT modify source code in this page because
+ It is automatically generated from LayoutHub
+ {% endcomment %} 
+ <div class="lh-sections-wrapper" data-id="681db59b7ecd93c1690e5432" data-type="product">
+{% comment %}
+ LayoutHub (https://layouthub.com)
+ You SHOULD NOT modify source code in this page because
+ It is automatically generated from LayoutHub
+ {% endcomment %} 
+ <div class="lh-sections-wrapper" data-id="681db59b7ecd93c1690e5432" data-type="product">
+  
+<section id="" data-section-id="3XtP0oA5gW" data-section="product-detail-7" data-dev="huynh-duc" data-lh-page-id="283" data-lh-page-name="Gime" data-layouthub="section">  
+  
+
+<!--  Product single Swatch images -->
+{%- assign tpl =  template | replace: '.', ' ' | truncatewords: 1, '' | handle  -%}
+		 	 
+		 		{%- if   tpl != 'product' and product == blank-%}
+		 			{% assign product  =  collections['all'].products.first  %}
+		 		{%- endif -%}{%- assign color_names = '' | split: ',' -%}
+		{%- assign color_names_downcase = '' | split: ',' -%}
+		{%- assign color_values = '' | split: ','  -%}
+		{%- if shop.metafields.layouthub and shop.metafields.layouthub.colors and shop.metafields.layouthub.colors contains '|' -%}
+			{% assign colors = shop.metafields.layouthub.colors | split: '|' %}
+			{%- assign color_names = colors | first | strip | split: ',' -%}
+			{%- assign color_names_downcase = colors | first | strip | downcase | split: ',' -%}
+			{%- assign color_values = colors | last | strip | split: ',' -%}
+		 {%- endif -%}<div  class="lh-wrapper lh-product-single" data-pid="{{- product.id -}}" data-money-format='{{shop.money_format | url_encode }}' data-vid_url="{%- if tpl != 'product' -%}
+			{%- assign vid_url = false -%}
+		{%- else -%}
+			{%- assign vid_url = true -%}
+		{%- endif -%}
+		{{- vid_url -}}">
+
+		<div class="lh-container">
+			<div class="lh-details-product">
+			<div class="lh-row lh-align-start">
+				<div class="lh-product-sync-images lh-col-md-7">
+					<div class="lh-details-images lh-row use-zoom-yes lh-promote-yes" data-hub-attr-state="class%3D%22lh-details-images%20lh-row%20use-zoom-%257B%253A%257Bsection.settings.use_zoom%257D%253A%257D%20lh-promote-%257B%253A%257Bsection.settings.show_badge%257D%253A%257D%22"  data-hub-attr-use_zoom  data-hub-attr-show_badge >
+						<div class="lh-small-slide">
+							<div class="block-slide-sm lh-slick-nav swiper-container">
+								<div class="swiper-wrapper">
+									{%- for image in product.images -%}
+				   <div class="items-img swiper-slide" data-variant_id="{{image.variants | map:'id' | join: ','}}">
+		                <img src="{{ image | img_url: "medium"}}"   alt="{{ image.alt}}">
+		            </div>
+				{%- endfor -%}</div>
+
+							</div>
+							<div class="lh-slide-small-nav">
+								<div class="swiper-button-prev">
+									<svg version="1.1" width="40" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<path fill="currentColor" d="M70.4,2.4L26.2,46.8c-0.9,0.9-1.3,2.1-1.3,3.3c0,1.2,0.5,2.4,1.3,3.3l44.2,44.2c1.1,1.1,2.8,1.1,3.9,0
+													c0.5-0.5,0.8-1.2,0.8-1.9c0-0.7-0.3-1.4-0.8-1.9L30.7,50.1L74.3,6.3c1.1-1.1,1.1-2.8,0-3.9C73.2,1.3,71.5,1.3,70.4,2.4z" />
+									</svg>
+
+								</div>
+								<div class="swiper-button-next">
+									<svg version="1.1" width="40" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+										<path fill="currentColor" d="M29.6,97.6l44.2-44.4c0.9-0.9,1.3-2.1,1.3-3.3c0-1.2-0.5-2.4-1.3-3.3L29.6,2.4c-1.1-1.1-2.8-1.1-3.9,0
+													c-0.5,0.5-0.8,1.2-0.8,1.9c0,0.7,0.3,1.4,0.8,1.9l43.6,43.6L25.7,93.7c-1.1,1.1-1.1,2.8,0,3.9C26.8,98.7,28.5,98.7,29.6,97.6z" />
+									</svg>
+
+								</div>
+							</div>
+						</div>
+						<div class="lh-big-slide">
+							<div class="lh-big_slide-lg">
+								<div class="lh-label lh-absolute">
+				{% assign first_variant = product.selected_or_first_available_variant %}
+				{%- assign compare_at_price = product.compare_at_price -%}
+				{%- assign price = product.price -%}
+				{%- assign price_varies = product.price_varies -%}
+				{%- assign available = product.available -%}
+				{%-assign on_new = false-%}
+				{%-unless product.tags contains 'notnew'%}
+						{%-assign now_date_int = "now" | date: "%j" | plus: 0-%}
+						{%-assign now_year_int = "now" | date: '%Y' | plus: 0-%}
+						{%-assign pub_date_int = product.published_at | date: "%j" | plus: 0-%}
+						{%-assign pub_year_int = product.published_at | date: '%Y' | plus: 0-%}
+						{%-if now_year_int == pub_year_int-%}
+							{%-assign new_day_int = 30 -%}
+							{%-assign check_new = now_date_int | minus: pub_date_int-%}
+							{%-if check_new >= 0 and check_new <= new_day_int-%}
+								<span class="lh-new_label"  data-lhi="trans_new" data-lh-lang>{{'3XtP0oA5gW.lh_up5omg_new' | t }}</span>
+							{%-endif-%}
+						{%-else-%}
+							{%-assign new_day_int = 30 | plus: 366-%}
+							{%-assign check_new = now_date_int | plus: 366-%}
+							{%-if check_new <= new_day_int-%}
+											<span class="lh-new_label"  data-lhi="trans_new" data-lh-lang>{{'3XtP0oA5gW.lh_up5omg_new' | t }}</span>
+							{%-endif-%}
+						{%-endif-%}
+				{%-endunless-%}
+				{%-assign on_sale = false-%}
+				{%-if first_variant.price < first_variant.compare_at_price and first_variant.available -%}
+					{%-unless product.tags contains 'notsale'-%}
+					{%-assign on_sale = true-%}
+					{%-endunless-%}
+				{%-endif-%}
+				{%-assign sold_out = true-%}
+
+				{%-unless available == false-%}
+					{%-assign sold_out = false-%}
+				{%-endunless-%}
+				<span class="lh-sale_label" style="display: {%- if on_sale -%}block{%- else -%}none{%- endif -%}"  data-lhi="trans_sale" data-lh-lang>{{'3XtP0oA5gW.lh_up5omg_sale' | t }}</span>
+				{%- if sold_out -%}
+					<span class="lh-soldout_label"  data-lhi="trans_sold_out" data-lh-lang>{{'3XtP0oA5gW.lh_k4hsr9_out' | t }}</span>
+				{%- endif -%}
+			</div><div class=" block-slide-lg lh-slick-big swiper-container">
+									<div class="swiper-wrapper">
+										{%- for image in product.images -%}
+		          <div class="items-img swiper-slide zoom__image" data-variant_id="{{image.variants | map:'id' | join: ','}}">
+		                      <img src="{{ image | img_url: "master"}}" data-width="{{image.width}}" data-height="{{image.height}}" data-bigimg="{{ image | img_url: "master"}}" alt="{{ image.alt}}">
+		                  </div>
+		        {%- endfor -%}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="lh-block-custom lh-custom-html"  data-lhi="c_html_image" data-lh-lang data-lh-live-editor></div>
+				</div>
+				<div class="lh-summary lh-col-md-5 lh-pl0">
+					<div class="lh-content-summary" data-hidden="{% assign variant_slected = product.selected_or_first_available_variant %}
+				{% assign isHidden = true %}
+				{%- if variant_slected.available and variant_slected.price < variant_slected.compare_at_price -%}
+						{% assign isHidden = false %}
+				{%- endif -%}
+				{{isHidden}}">
+						<h1 class="product-name lh-product-title">
+							{{product.title}}</h1>
+						<div class="clearfix"></div>
+						 
+							<div class="lh-wrap-product-rating">
+				        {% render 'layouthub_review',  review_type: 'single' , product: product %}</div>
+							<div class="clearfix"></div>
+						 
+						<span class="lh-price-block price ">
+							<del class="lh-compare-at-price">
+					<span class="money">{%- if product.compare_at_price  > product.price  -%}{{ product.compare_at_price  | money }}{%- endif -%}</span>
+				</del>
+				<ins class="lh-price">
+		         <span class="money">{{ product.price | money }}</span>
+		    </ins>
+		    <p class="lh-sold-out-title" style="display: none"><span  data-lhi="trans_outstock" data-lh-lang>{{'3XtP0oA5gW.lh_up5omg_outstock' | t }}</span></p></span>
+
+						<div class="clearfix"></div>
+						<div class="lh-block-custom lh-custom-html"  data-lhi="c_html_price" data-lh-lang data-lh-live-editor></div>
+						<include data-live-use_countdown data-live-trans_label_dd data-live-trans_label_hh data-live-trans_label_mm data-live-trans_label_ss data-name="countdown" data-id="1">  
+ <div class="lh-wrap-countdown">
+	 
+</div>
+ 
+  </include><div class="clearfix"></div>
+						<include data-live-trans_quantity data-live-enable_external data-live-external_link data-live-trans_add_to_cart data-live-trans_pre_order data-live-trans_external data-live-enable_buynow data-live-trans_buynow data-live-c_html_addcart data-live-use_wishlist data-live-size_guide_content data-live-title_size data-live-shipping data-live-shipping data-live-trans_shipping data-live-show_attributes data-live-trans_unavai data-live-trans_outstock data-name="product-form" data-id="2">  
+ <form class="lh-product-form {% if product.variants.size > 1%} lh-form-product-variants{% else %} lh-form-product-variant {% endif%}" method="POST" accept-charset="utf-8" enctype="multipart/form-data"  action="/cart/add" data-pid="{{- product.id -}}">
+	<table class="lh-wrap-variant" data-variants-size="">
+		{% assign variant_slected = product.selected_or_first_available_variant %}
+				{% assign arr_swatch = 'Color' | split: ',' %}
+				{%- if  arr_swatch.size > 0 %}
+					{%- if product.variants.size >= 1%}
+						{%- for option in product.options -%}
+							{%- assign option_index = forloop.index0 -%}
+							{%- assign o = option | downcase -%}
+								{%- if arr_swatch contains option -%}
+									{%- assign index = 'option' | append: forloop.index -%}
+									 	<tr class="lh-swatch-images  swatch-index lh-swatch-variations"  data-option-index="{{ option_index }}">
+											<td class="meta">
+												<label title="">{{ option }}
+												</label>
+											</td>
+											<td class="list-swatch-images">
+														{%- assign values = ""  -%}
+														{%- for variant in product.variants -%}
+															{%- assign option_value = variant[index] -%}
+															{%- assign option_value_downcase = variant[index] | downcase -%}
+															{%- if values != ""%}
+																{%- assign tmp = values | split: '|' -%}
+																{%- if tmp contains option_value_downcase  -%} {%- continue-%}{%- endif -%}
+																{%- assign values = values  | append:   '|' | append: option_value_downcase -%}
+															{%- else -%}
+																{%- assign values =   option_value_downcase -%}
+															{%- endif -%}
+															<li data-option-index="{{ option_index }}" data-lh-tooltip="{{option_value | escape}}" class="lh-swatch-select lh-tooltip_top lh-swatch-image {% if option_value == variant_slected[index] %} active{% endif %}" data-value="{{option_value | escape}}">
+																 
+																	<span><img src="{{ variant | img_url: "120x120", crop: 'center' }}" alt="{{option_value}}">
+																	</span>
+																 
+															</li>
+														{%- endfor -%}
+													</td>
+									  </tr>
+								{%- endif -%}
+						{%- endfor -%}
+					{%- endif -%}
+				{%- endif%}{%- if product.variants.size >= 1%}
+					{%- for option in product.options_with_values -%}
+							{%- assign option_index = forloop.index0 -%}
+							{%- assign o = option.name | downcase -%}
+							{%- if arr_swatch contains option.name or option.name == "Title" and product.options_with_values.size == 1 and option.values contains "Default Title" -%}
+								{%- continue -%}
+							{%- endif -%}
+							{%- assign index = 'option' | append: forloop.index -%}
+							<tr class="lh-swatch-simple select-{{option.name | handleize }} swatch-index lh-swatch-variations"  data-option-index="{{ option_index }}">
+						      <td class="meta">
+						         <label title="">{{ option.name }}
+						         </label>
+						      </td>
+									<td class="lh-wrap-combobox">
+								      <ul class="list-swatch-items" >
+												{%- for value in option.values -%}
+													<li class="lh-swatch-select {% if value == variant_slected[index] %} active{% endif %}" data-option-index="{{ option_index }}" data-value="{{value | escape}}"><span  title="{{value | escape}}" >{{ value}}</span></li>
+												{%- endfor -%}
+								      </ul>
+									</td>
+	   					</tr>
+					{%- endfor -%}
+				{%- endif -%}<tr class="lh-quantity">
+			<td class="meta">
+				<label title=""  data-lhi="trans_quantity" data-lh-lang>{{'3XtP0oA5gW.lh_up5omg_quantity' | t }}</label>
+			</td>
+			<td class="lh-quantity-form quantity-form lh-flex lh-flex-wrap">
+							 <div class="lh-quantity_form">
+									<div class="lh-control">
+										<input type="number" class="lh-input-qty lh-input-number lh-qty number "  name="quantity" value="1" min="1" max="{%- if current_variant.inventory_management != null -%}{{current_variant.inventory_quantity}}{%- else -%}999{%- endif -%}"><a href="javascript:;" class="lh-btn-number lh-qtyminus lh-quantity-minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown();this.parentNode.querySelector('input[type=number]').dispatchEvent(new Event('change'));return false"  title=""> </a>
+										 <a href="javascript:;" class="lh-btn-number lh-qtyplus lh-quantity-plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp();this.parentNode.querySelector('input[type=number]').dispatchEvent(new Event('change'));return false" title=""></a>
+									</div>
+							 </div>
+			</td>
+		</tr>
+	</table>
+	<div class="clearfix"></div>
+   <div class="lh-option-wrappers show-swatch-no" >
+       <select name="id"  id="product-select-{{- product.id -}}" style="display: none">
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+					{%- for variant in product.variants -%}
+		                {%- if variant.available -%}
+		                  <option {%  if variant == product.selected_or_first_available_variant   %} selected="selected" {%  endif  %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+		                {%- else -%}
+		                  <option disabled="disabled">
+		                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+		                  </option>
+		                {%- endif -%}
+		              {%- endfor -%}</select>
+    </div>
+
+   <div class="lh-cart-button-group" data-available='{{product.selected_or_first_available_variant.available}}'>
+   	<div class="cart-form lh-d-flex lh-flex-wrap ">
+			 
+				<button type="submit" class="lh-add_to_cart lh-bt lh-bt-primary" data-add-cart="ADD TO CART" data-pre-order="PRE-ORDER" data-hub-attr-state="type%3D%22submit%22%20class%3D%22lh-add_to_cart%20lh-bt%20lh-bt-primary%22%20data-add-cart%3D%22%257B%253A%257Bsection.settings.trans_add_to_cart%257D%253A%257D%22%20data-pre-order%3D%22%257B%253A%257Bsection.settings.trans_pre_order%257D%253A%257D%22"  data-hub-attr-trans_add_to_cart  data-hub-attr-trans_pre_order >
+					{% assign f_inventory_policy = first_variant.inventory_policy %}
+			{% assign f_quantity = first_variant.inventory_quantity %}
+			{% if f_inventory_policy == 'continue' and f_quantity < 1  %}
+			  {{'3XtP0oA5gW.lh_rv7xkc_order' | t }}
+			{% else  %}
+			  {{'3XtP0oA5gW.lh_k1su5s_cart' | t }}
+			{% endif %}</button>
+			 
+		</div>
+		<div class="clearfix"></div>
+		 
+		<div class="clearfix"></div>
+   </div>
+	 <div class="lh-block-custom lh-custom-html"  data-lhi="c_html_addcart" data-lh-lang data-lh-live-editor></div>
+	 <div class="lh-button-more">
+ 		 
+ 		<div class="lh-wrap-wishlist">{%- capture wishlist_content -%}
+			<a href="javascript:;" class="lh-button-wl">
+				<svg version="1.1" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+				<path fill="currentColor" d="M90.4,14.9c-5-5-11.6-7.7-18.7-7.7c-7.1,0-13.8,2.7-18.7,7.7l-3,3l-3-3c-5-4.8-11.8-7.6-18.6-7.6c-7.1,0-13.7,2.7-18.7,7.6
+				 C-0.7,25.2-0.7,42,9.7,52.4l15.8,15.8l5.9,5.9l0.2,0.2L50.3,93L69,74.3l16.8-17l4.9-4.9c4.9-4.9,7.7-11.6,7.7-18.7
+				 C98.1,26.5,95.4,19.8,90.4,14.9z M86.5,48.3l-5,5l-16.7,17L50.1,85.1L35.4,70.3l-0.2-0.2l-5.9-5.9L13.6,48.5
+				 c-8.2-8.2-8.2-21.5,0-29.7c3.9-3.9,9.1-6,14.8-6c5.4,0,10.8,2.2,14.8,6l6.9,6.9l6.9-6.9c3.9-3.9,9.2-6.1,14.8-6.1
+				 c5.6,0,10.9,2.2,14.8,6.1c3.9,3.9,6,9.1,6,14.8C92.6,39.2,90.4,44.4,86.5,48.3z"/>
+				</svg>
+				<text  data-lhi="trans_wl" data-lh-lang>{{'3XtP0oA5gW.lh_up5omg_wl' | t }}</text>
+			</a>
+		{%- endcapture -%}
+		{%- render 'layouthub_wishlist', wishlist_content:wishlist_content, wishlist_type: 'other',product: product -%}</div>
+ 		 
+ 		 
+ 			<div class="lh-item-button lh-wrap-size-chart">
+ 				<a href="javascript:;" class="lh-size-chart" data-modal="modal-size-guild" data-id="modal-size-guild-{{- product.id -}}">
+ 					 <svg version="1.1" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+ 					 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+ 					 <g>
+ 					 	<path fill="currentColor" d="M44.4,2.5H13.2l-0.2,0c-2.3,0.2-4,2-4,4.2v85.7l0,0.2c0.2,2.3,2,4,4.2,4h31.1c2.3,0,4.2-1.9,4.2-4.2V6.7l0-0.2
+ 					 		C48.4,4.2,46.6,2.5,44.4,2.5z M43.1,91.2H14.5v-3.7H21c1.5,0,2.8-1.2,2.8-2.8s-1.2-2.8-2.8-2.8h-6.5v-8.3h12.2
+ 					 		c1.5,0,2.8-1.2,2.8-2.8s-1.2-2.8-2.8-2.8H14.5v-8.5l6.6,0c0,0,0,0,0,0c1.5,0,2.7-1.2,2.7-2.7c0-1.5-1.2-2.8-2.7-2.8l-6.6,0v-8.2
+ 					 		h12.2c1.5,0,2.8-1.2,2.8-2.8s-1.2-2.8-2.8-2.8H14.5v-8.4l6.6,0c1.5,0,2.7-1.3,2.7-2.8c0-1.5-1.3-2.7-2.8-2.7l-6.6,0v-8.3l12.2-0.1
+ 					 		c1.5,0,2.7-1.3,2.7-2.8c0-1.5-1.2-2.7-2.7-2.7c0,0,0,0,0,0l-12.1,0.1V8h28.6V91.2z"/>
+ 					 	<path fill="currentColor" d="M89.8,4.1c-0.8-0.8-1.8-1.2-2.9-1.2c0,0,0,0,0,0C81,2.7,75,2.6,69,2.7c-1.2,0-2.3,0.4-3.1,1.1c-0.8,0.8-1.3,1.8-1.3,3
+ 					 		l-0.1,67.2c0,0,0,0,0,0s0,0,0,0l0,0.6L75,95.8c0.4,0.9,1.2,1.5,2.2,1.6c0.2,0,0.3,0,0.5,0c0.8,0,1.6-0.3,2.2-1l0.3-0.3l10.7-21.5
+ 					 		L91,7C91,5.9,90.5,4.9,89.8,4.1z M86.8,8.3L86.8,8.3C86.8,8.3,86.8,8.3,86.8,8.3C86.8,8.3,86.8,8.3,86.8,8.3z M85.5,8.3l0,10.9
+ 					 		l-15.4,0l0-11C75.2,8.1,80.4,8.2,85.5,8.3z M77.7,88.9l-6.1-12.1l1.3,0c1.5,0,2.7-1.2,2.7-2.8s-1.2-2.7-2.8-2.7c0,0,0,0,0,0l-3,0
+ 					 		L70,24.7l15.4,0l0,46.6l-3,0c-1.5,0-2.7,1.2-2.7,2.8s1.2,2.7,2.8,2.7c0,0,0,0,0,0l1.3,0L77.7,88.9z"/>
+ 					 </g>
+ 					 </svg>
+ 							 <span class="entry-title"  data-lhi="title_size" data-lh-lang>{{'3XtP0oA5gW.lh_unv29k_size' | t }}</span>
+ 					</a>
+ 			</div>
+ 		 
+ 		 
+ 	</div>
+</form>
+ 
+{%- unless product == empty -%}
+				        <script type="application/json" id="lh-product-json-{{product.id}}">
+								{
+								"id": {{product.id}},
+								"title": {{product.title | json}},
+								"handle": {{product.handle | json}},
+								"price": {{product.price| json}},
+								"price_min": {{product.price_min| json}},
+								"price_max": {{product.price_max| json}},
+								"available": {{product.available | json}},
+								"price_varies": {{product.price_varies| json}},
+								"compare_at_price": {{product.compare_at_price| json}},
+								"compare_at_price_min": {{product.compare_at_price_min| json}},
+								"compare_at_price_max": {{product.compare_at_price_max| json}},
+								"compare_at_price_varies": {{product.compare_at_price_varies| json}},
+								"variants": [
+								{%- for variant in product.variants -%}
+								{
+								"id": {{variant.id}},
+								"title": "{{variant.option1 | handleize }}{%- if product.options.size == 2 -%} / {%- endif -%}{{variant.option2 | handleize }}{%- if product.options.size == 3 -%} / {%- endif -%}{{variant.option3 | handleize }}",
+								"option1": {{variant.option1  | json}},
+								"option2": {%- if product.options.size == 1 -%}null{%-else-%}{{variant.option2  | json}}{%-endif-%},
+								"option3": {%- if product.options.size == 1 or product.options.size == 2 -%}null{%-else-%}{{variant.option3  | json}}{%-endif-%},
+								"sku": {{variant.sku | json}},
+								"requires_shipping": {{variant.requires_shipping}},
+								"taxable": {{variant.taxable |json}},
+								"featured_image": {%- if variant.image.id != blank -%}{
+										"id": {{variant.image.id | json}},
+										"product_id": {{product.id | json}},
+										"width": {{variant.image.width | json}},
+										"height": {{variant.image.height | json}},
+										"src": {{variant.image.src | json}},
+										"position":{{variant.image.position}}
+									}{%- else-%}null{%-endif-%},
+								"available": {{variant.available}},
+								"public_title": "{{variant.option1 | handleize }}{%- if product.options.size == 2 -%} / {%- endif -%}{{variant.option2 | handleize }}{%- if product.options.size == 3 -%} / {%- endif -%}{{variant.option3 | handleize }}",
+								"options":  {{variant.options | json}},
+								"price": {{variant.price| json}},
+								"weight": {{variant.weight| json}},
+								"compare_at_price": {{variant.compare_at_price | json}},
+								"inventory_quantity": {{variant.inventory_quantity | json}},
+								"inventory_management": {{variant.inventory_management | json}},
+								"inventory_policy": {{variant.inventory_policy | json}},
+								"barcode": {{variant.barcode | json}}
+								}{%- if forloop.last == false -%},{%- endif -%}
+								{%- endfor -%}
+								],
+								"featured_image": {{product.featured_image | json}},
+								"options": [
+								{%- for option in product.options -%}
+								{{ option | json}}{%- if forloop.last == false -%},{%- endif -%}
+								{%-endfor -%}
+								]
+								}
+				        </script>
+				      {%- endunless -%} 
+  </include><include data-live-show_social data-live-trans_social data-live-items_social data-name="social" data-id="3">  
+  
+  </include></div>
+				</div>
+			</div>
+		</div>
+		<div class="lh-wrap-tab lh-bt">
+			<include data-live-tabs data-live-tabs data-live-tabs__active data-live-tabs__active data-live-tabs__active data-live-tabs data-live-tabs__active data-live-tabs__active data-live-tabs__active data-name="tabs" data-id="4">  
+ <div class="lh-tabs-product">
+    <ul class="lh-nav lh-nav-tabs">
+        
+           
+          <li><a class="tab-link  " data-tab-handle="description" data-tab="tab-0" href="#tab-0" title=""  data-lhi="tabs[0]title" data-lh-lang data-lhis="tabs-title" >{{'3XtP0oA5gW.lh_brmh73_title' | t }}</a></li>
+           
+                 {%- capture end_tag -%}</h4>{%- endcapture -%}
+											{%- capture start_tag -%}<h4>{%- endcapture -%}
+											{%- assign tabs = product.description | split: start_tag -%}
+											{%- if tabs.size > 1-%}
+													{%- for tab in tabs -%}
+															{% if forloop.first %}{% continue %}{% endif %}
+															{%- assign div =  tab  | split: end_tag-%}
+															{%- assign heading = div | first  | split: end_tag | first -%}
+															<li><a class="tab-link " data-tab-handle="description" data-tab="auto-tab-{{forloop.index}}" href="auto-tab-{{forloop.index}}" title="">{{ heading }}</a></li>
+
+													{%- endfor -%}
+											{%- endif -%} 
+           
+          <li><a class="tab-link  active" data-tab-handle="review" data-tab="tab-1" href="#tab-1" title=""  data-lhi="tabs[1]title" data-lh-lang data-lhis="tabs-title" >{{'3XtP0oA5gW.lh_brmh74_title' | t }}</a></li>
+           
+           
+         
+       </ul>
+    <div class="clearfix">
+    </div>
+    <div class="lh-tab-contents" data-pid="{{- product.id -}}">
+       
+         <div id="tab-0" class="lh-tab-content lh-custom-html " data-tab-handle="description" >
+             
+              <div class="description">
+                  {%- capture tag -%}<h4>{%- endcapture -%}
+								 
+										{{ product.description | split: tag | first }}</div>
+             
+
+         </div>
+          
+                {%- capture end_tag -%}</h4>{%- endcapture -%}
+											{%- capture start_tag -%}<h4>{%- endcapture -%}
+											{%- assign tabs = product.description | split: start_tag -%}
+											{%- if tabs.size > 1-%}
+													{%- for tab in tabs -%}
+															{% if forloop.first %}{% continue %}{% endif %}
+															{%- assign div =  tab  | split: end_tag-%}
+															{% assign tab_content = div | last %}
+															 <div id="auto-tab-{{forloop.index}}" class="lh-tab-content lh-custom-html" data-tab-handle="description">
+																 {{ tab_content }}
+															</div>
+													{%- endfor -%}
+											{%- endif -%} 
+       
+         <div id="tab-1" class="lh-tab-content lh-custom-html active" data-tab-handle="review" >
+             
+                <div class="lh-review-tab review">
+                  {% render 'layouthub_review',  review_type: 'form' , product: product %}</div>
+             
+
+         </div>
+          
+       
+    </div>
+  </div>
+ 
+  </include></div>
+	</div>
+	 
+	<div class="lh-modal-size-guild lh-modal" id="modal-size-guild-{{- product.id -}}" style="display:none">
+	    <div class="lh-modal-box">
+		    <div class="modal-header">
+		      <span class="lh-close-modal"><span class="lh-close" title="Close">&#10006;</span></span>
+		    </div>
+		    <figure class="lh-modal-body lh-modal-sizechart lh-custom-html"  data-lhi="size_guide_content" data-lh-lang>{{'3XtP0oA5gW.lh_vz1co2_content_html' | t }}</figure>
+	    </div>
+	</div>
+	 
+	 
+</div>
+ 
+  </section>  
+<section id="" data-section-id="AkZuxEsG4U" data-section="product-related" data-dev="huynh-duc" data-lh-page-id="283" data-lh-page-name="Gime" data-layouthub="section">  
+  
+
+
+ <div class="lh-wrapper">
+   <div class="lh-container">
+    <div class="lh-row">
+      <div class="lh-product-content lh-col-md-12 lh-no-sidebar" >
+        <div class="lh-row">
+          <div class="lh-info-wrapper">
+          <include data-live-related_heading data-live-related_des data-live-name_product data-live-show_badge data-live-show_2 data-live-show_2 data-name="product-grid" data-id="1">  
+ <div class="lh-col-md-12 lh-product-grid">
+	<div class="lh-collection-heading">
+		<div class="lh-collection-title"><h3  data-lhi="related_heading" data-lh-lang>{{'AkZuxEsG4U.lh_k191aj_heading' | t }}</h3>
+		</div>
+		<div class="lh-collection-des"><p  data-lhi="related_des" data-lh-lang>{{'AkZuxEsG4U.lh_k191aj_des' | t }}</p></div>
+	</div>
+	<div class="lh-product-slider lh-product-related n_ellipsis lh-badge-yes " data-product_id="{{- product.id -}}" data-money-format="{{shop.money_format}}"  data-hub-attr-state="class%3D%22lh-product-slider%20lh-product-related%20%257B%253A%257Bsection.settings.name_product%257D%253A%257D%20lh-badge-%257B%253A%257Bsection.settings.show_badge%257D%253A%257D%20%7Battr%7Bsection.settings.show_2%20%3D%3D%20'yes'%3F'lh-two-item'%3A''%7Dattr%7D%22%20data-product_id%3D%22%7B%3A%7Bsection.liquid.product_id%7D%3A%7D%22%20data-money-format%3D%22%7B%3A%7Bsection.liquid.money_format%7D%3A%7D%22%20"  data-hub-attr-name_product  data-hub-attr-show_badge >
+		<div class="owl-carousel owl-theme">
+			{% assign arr_product = collections['all'].products %}
+			 
+			{% assign text_handle_temp = "" %}
+			{%- for p in arr_product -%}
+				{% assign text_handle_temp = text_handle_temp | append: "," | append : p.handle %}
+			{%- endfor -%}
+			{% assign limit = 8 %}
+			{% assign count = 1 %}
+			{% if product and template contains 'product' %}
+				{% assign text_handle = "" %}
+				{%- if product.collections.size > 0 -%}
+						{%- for item_c in product.collections -%}
+							{%- for item_p in item_c.products -%}
+								{%- if count <= limit -%}
+									{%- if item_p.handle != product.handle -%}
+										{% assign count = count | plus : 1 %}
+										{% assign text_handle = text_handle | append: "," | append: item_p.handle %}
+									{%- endif -%}
+								{%- endif -%}
+							{%- endfor -%}
+						{%- endfor -%}
+				{%- endif -%}
+				{%- if count < limit -%}
+					{% assign p_realted = collections['all'].products | where: "vendor", product.vendor | where: "type", product.type %}
+					{%- for item_p in p_realted -%}
+						{%- if count <= limit -%}
+							{%- if item_p.handle != product.handle -%}
+								{% assign count = count | plus : 1 %}
+								{% assign text_handle = text_handle | append: "," | append: item_p.handle %}
+							{%- endif -%}
+						{%- endif -%}
+					{%- endfor -%}
+				{%- endif -%}
+			{% endif %}
+			{%- if text_handle != blank -%}
+				{% assign arr_handle = text_handle | split: "," %}
+			{%- else -%}
+				{% assign arr_handle = text_handle_temp | split: "," %}
+			{%- endif -%}
+			{% assign arr_handle = arr_handle | uniq %}
+			{% assign limit = limit | plus : 1 %}
+			{% for item in arr_handle limit:limit %}
+					{%- if item == blank -%}
+						{%- continue -%}
+					{%- endif -%}
+					{% assign i_product = all_products[item] %}
+					{% assign first_variant = i_product.selected_or_first_available_variant %}
+					<div class="lh-collection-item">
+						<div class="lh-product-thumb">
+							<a href="{{i_product.url | within: collection}}">
+								 
+									<img src="{{ i_product.featured_image | img_url: '540x720_crop_center' }}" alt="{{i_product.title}}">
+									{% if i_product.images.size > 1 %}
+										<img src="{{i_product.images[1] | img_url : '540x720_crop_center' }}" class="lh-img-hover" alt="{{i_product.title}}">
+									{% else %}
+										<img src="{{i_product.featured_image | img_url: '540x720_crop_center' }}" class="lh-img-hover" alt="{{i_product.title}}">
+									{% endif %}
+								 
+							</a>
+							<div class="lh-produc-grid-actions">
+									<div class="lh-icon lh-block-wl hint--left hint-bounce" aria-label="Add to wishlist"  >
+										{%- capture wishlist_content -%}
+											<a href="javascript:void(0)" class="lh-button-wl">
+												<svg version="1.1" width="15" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+													viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+												<path fill="currentColor" d="M90.4,14.9c-5-5-11.6-7.7-18.7-7.7c-7.1,0-13.8,2.7-18.7,7.7l-3,3l-3-3c-5-4.8-11.8-7.6-18.6-7.6c-7.1,0-13.7,2.7-18.7,7.6
+												 C-0.7,25.2-0.7,42,9.7,52.4l15.8,15.8l5.9,5.9l0.2,0.2L50.3,93L69,74.3l16.8-17l4.9-4.9c4.9-4.9,7.7-11.6,7.7-18.7
+												 C98.1,26.5,95.4,19.8,90.4,14.9z M86.5,48.3l-5,5l-16.7,17L50.1,85.1L35.4,70.3l-0.2-0.2l-5.9-5.9L13.6,48.5
+												 c-8.2-8.2-8.2-21.5,0-29.7c3.9-3.9,9.1-6,14.8-6c5.4,0,10.8,2.2,14.8,6l6.9,6.9l6.9-6.9c3.9-3.9,9.2-6.1,14.8-6.1
+												 c5.6,0,10.9,2.2,14.8,6.1c3.9,3.9,6,9.1,6,14.8C92.6,39.2,90.4,44.4,86.5,48.3z"/>
+												</svg>
+											</a>
+										{%- endcapture -%}
+										{%- render 'layouthub_wishlist', wishlist_content:wishlist_content, wishlist_type: 'other',product: i_product -%}
+									</div>
+									<div class="lh-icon hint--left hint-bounce" aria-label="Quickview">
+										{%- capture quickview_content -%}
+											<a href="javascript:void(0)">
+												<svg version="1.1" width="18" height="18" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+													 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+												<g>
+													<path fill="currentColor" d="M93.9,46.6C83.6,35,67.5,28.3,49.8,28.3C32,28.6,16,35.2,5.7,46.7l-2.9,3.4l3,3.3C16.2,65,32.3,71.7,49.9,71.7
+														c17.8,0,33.9-6.7,44.1-18.3l3.2-3.4L93.9,46.6z M49.9,66.2c-16,0-30.4-5.9-39.8-16.2c9.3-10,23.7-15.9,39.7-16.1
+														c16,0,30.5,5.9,39.8,16.2C80.4,60.3,65.9,66.2,49.9,66.2z"/>
+													<circle fill="currentColor" cx="49.8" cy="50" r="7.7"/>
+												</g>
+												</svg>
+											</a>
+										{%- endcapture -%}
+										{%- render 'layouthub_quickview', quickview_content: quickview_content, product: i_product -%}
+									</div>
+									{% if i_product.available %}
+										{% if i_product.variants.size > 1 %}
+										<div class="lh-icon add-to-cart-btn hint--left hint-bounce" aria-label="View more">
+											<a href="{{ i_product.url | within: collection }}"  data-pid="{{i_product.id}}">
+												<svg version="1.1" width="15" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+													 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+												<g>
+													<path fill="currentColor" d="M90.6,2.5h-8c-1.9,0-3.5,1.4-3.7,3.4L77,24.9H11.4c-1.5,0-2.8,0.7-3.8,1.8c-0.9,1.2-1.2,2.7-0.8,4.1l10.7,41.9
+														c0.5,2.1,2.4,3.6,4.6,3.6H73c0.3,0,0.7,0,1-0.1c0.2,0,0.3,0.1,0.5,0.1c0.1,0,0.2,0,0.3,0c1.4,0,2.6-1.1,2.7-2.5l0.2-1.7
+														c0,0,0,0,0,0l4.9-47.1h-0.1L84.2,8h6.4c1.5,0,2.8-1.2,2.8-2.8S92.2,2.5,90.6,2.5z M12.3,30.4h64.1l-4.1,40.4H22.7L12.3,30.4z"/>
+													<circle fill="currentColor" cx="31.2" cy="89.4" r="8"/>
+													<circle fill="currentColor" cx="64.2" cy="89.4" r="8"/>
+												</g>
+												</svg>
+											</a>
+										</div>
+										{% else %}
+										<div class="lh-icon add-to-cart-btn hint--left hint-bounce" aria-label="Add To Cart">
+											<a href="/cart/add/{{i_product.variants.first.id}}"  data-pid="{{i_product.id}}">
+												<svg version="1.1" width="15" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+													 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+												<g>
+													<path fill="currentColor" d="M90.6,2.5h-8c-1.9,0-3.5,1.4-3.7,3.4L77,24.9H11.4c-1.5,0-2.8,0.7-3.8,1.8c-0.9,1.2-1.2,2.7-0.8,4.1l10.7,41.9
+														c0.5,2.1,2.4,3.6,4.6,3.6H73c0.3,0,0.7,0,1-0.1c0.2,0,0.3,0.1,0.5,0.1c0.1,0,0.2,0,0.3,0c1.4,0,2.6-1.1,2.7-2.5l0.2-1.7
+														c0,0,0,0,0,0l4.9-47.1h-0.1L84.2,8h6.4c1.5,0,2.8-1.2,2.8-2.8S92.2,2.5,90.6,2.5z M12.3,30.4h64.1l-4.1,40.4H22.7L12.3,30.4z"/>
+													<circle fill="currentColor" cx="31.2" cy="89.4" r="8"/>
+													<circle fill="currentColor" cx="64.2" cy="89.4" r="8"/>
+												</g>
+											</svg></a></div>
+										{% endif %}
+									{% else %}
+									<div class="lh-icon add-to-cart-btn hint--left hint-bounce" aria-label="Informations">
+										<a href="{{ i_product.url | within: collection }}" data-pid="{{i_product.id}}">
+											<svg version="1.1" width="15" height="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+												 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+											<g>
+												<path fill="currentColor" d="M90.6,2.5h-8c-1.9,0-3.5,1.4-3.7,3.4L77,24.9H11.4c-1.5,0-2.8,0.7-3.8,1.8c-0.9,1.2-1.2,2.7-0.8,4.1l10.7,41.9
+													c0.5,2.1,2.4,3.6,4.6,3.6H73c0.3,0,0.7,0,1-0.1c0.2,0,0.3,0.1,0.5,0.1c0.1,0,0.2,0,0.3,0c1.4,0,2.6-1.1,2.7-2.5l0.2-1.7
+													c0,0,0,0,0,0l4.9-47.1h-0.1L84.2,8h6.4c1.5,0,2.8-1.2,2.8-2.8S92.2,2.5,90.6,2.5z M12.3,30.4h64.1l-4.1,40.4H22.7L12.3,30.4z"/>
+												<circle fill="currentColor" cx="31.2" cy="89.4" r="8"/>
+												<circle fill="currentColor" cx="64.2" cy="89.4" r="8"/>
+											</g>
+										</svg></a></div>
+									{% endif %}
+								</div>
+							<div class="lh-product-badges">
+								{% if first_variant.available == false %}
+								<span class="lh-sold-out"  data-lhi="trans_soldout_text" data-lh-lang>{{'AkZuxEsG4U.lh_rivarn_text' | t }}</span>
+								{% else %}
+									{% if first_variant.price < first_variant.compare_at_price and first_variant.available %}
+										{% assign onehundred = 100 %}
+										<span class="lh-onsale"  data-lhi="trans_sale_text" data-lh-lang>{{'AkZuxEsG4U.lh_k4izmq_text' | t }}</span>
+									{% else %}
+										{%- for tag in i_product.tags -%}
+											{%- if tag == 'new' -%}
+												<span class="lh-hot"  data-lhi="trans_new_text" data-lh-lang>{{'AkZuxEsG4U.lh_rv7qtl_text' | t }}</span>
+												{%- break -%}
+											{%- endif -%}
+										{%- endfor -%}
+									{% endif %}
+								{% endif %}
+							</div>
+						</div>
+						<div class="lh-product-info">
+							 
+							<div class="lh-wrap-product-rating">
+								{% render 'layouthub_review',  review_type: 'single' , product: i_product %}
+							</div>
+							 
+							<h3 class="lh-product-title">
+								<a href="{{i_product.url | within: collection}}">{{i_product.title}}</a>
+							</h3>
+							<div class="">
+								<div class="lh-wrap-price">
+									{% if first_variant.compare_at_price > first_variant.price %}
+									<span class="lh-sale">{{first_variant.compare_at_price | money}}</span>
+									{% endif %}
+									<span class="lh-cost">{{first_variant.price | money}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+			{% endfor %}</div>
+
+	</div>
+</div>
+
+ 
+  </include></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+
+ 
+  </section>
+</div>
+</div>
+ {%schema%} 
+{"locales":{"en":{"3XtP0oA5gW":{"lh_pnhrjt_type":"Product type","lh_pnhrjt_vendor":"Product vendor","lh_up5omg_categories":"CATEGORIES:","lh_up5omg_sku":"SKU:","countdown":"2025-12-08T16:47:00+0000","lh_up5omg_wl":"Add to Wishlist","lh_up5omg_outstock":"Out of stock","lh_up5omg_new":"New","lh_up5omg_sale":"Sale","lh_k4hsr9_out":"Sold out","lh_rv7xkc_order":"PRE-ORDER","lh_k1su5s_cart":"ADD TO CART","lh_up5omg_quantity":"Quantity","lh_unv29k_size":"Size Guide","lh_brmh73_title":"DESCRIPTION","lh_brmh74_title":"REVIEWS","lh_vz1co2_content_html":"<h3 style=\"text-align: center;margin-bottom: 0;\">SIZE GUIDE<\/h3><p style=\"text-align: center;\"> This is an approximate conversion table to help you find your size. <\/p><table class=\"tt-table-modal-info\" style=\"text-align: center;\"><thead><tr><th>VN<\/th><th>JP<\/th><th>UK<\/th><th>US<\/th><th>KOR<\/th><\/tr><\/thead><tbody><tr><td>34<\/td><td>30<\/td><td>28<\/td><td>4<\/td><td>00<\/td><\/tr><tr><td>36<\/td><td>32<\/td><td>30<\/td><td>6<\/td><td>0<\/td><\/tr><tr><td>38<\/td><td>34<\/td><td>32<\/td><td>8<\/td><td>2<\/td><\/tr><tr><td>40<\/td><td>36<\/td><td>34<\/td><td>10<\/td><td>4<\/td><\/tr><tr><td>42<\/td><td>38<\/td><td>36<\/td><td>12<\/td><td>6<\/td><\/tr><tr><td>44<\/td><td>40<\/td><td>38<\/td><td>14<\/td><td>8<\/td><\/tr><tr><td>46<\/td><td>42<\/td><td>40<\/td><td>16<\/td><td>10<\/td><\/tr><tr><td>48<\/td><td>44<\/td><td>42<\/td><td>18<\/td><td>12<\/td><\/tr><tr><td>50<\/td><td>46<\/td><td>44<\/td><td>20<\/td><td>14<\/td><\/tr><tr><td>52<\/td><td>48<\/td><td>46<\/td><td>22<\/td><td>16<\/td><\/tr><\/tbody><\/table><!--lh-live-editor-->"},"AkZuxEsG4U":{"lh_rivarn_text":"SOLD OUT","lh_k4izmq_text":"SALE","lh_rv7qtl_text":"NEW","lh_k191aj_heading":"OTHER PRODUCT","lh_k191aj_des":"Related Product Suggest for You"}}},"name":"product page"}
+ {%endschema%}

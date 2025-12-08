@@ -1,0 +1,24 @@
+<div id='judgeme_all_reviews_page' class="page clearfix jdgm-all-reviews-page">
+  <div class="jdgm-all-reviews-page__wrapper">
+    <h1 class="jdgm-all-reviews-page__title">{{ page.title }}</h1>
+    <div class='jdgm-all-reviews-page__description'>{{ page.content }}</div>
+
+    {% render 'judgeme_all_reviews' %}
+  </div>
+</div>
+<style>
+#judgeme_all_reviews_page{
+padding:50px 3px;
+color:#000;
+}
+#judgeme_all_reviews_page h1{
+padding:10px 0px;
+font-size:xx-large;
+}
+.jdgm-all-reviews-page__description{
+padding-bottom:50px;
+}
+.jdgm-rev__pic-img.jdgm-rev__pic-img{
+max-height:300px !important;
+}
+</style>

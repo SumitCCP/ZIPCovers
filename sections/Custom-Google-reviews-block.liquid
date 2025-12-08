@@ -1,0 +1,76 @@
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .customer-reviews-section {
+    width:100%;
+    text-align: center;
+    padding: 80px 0px;
+    background: #f9f9f9; /* Light background for section */
+  }
+  .customer-reviews-section h2 {
+    font-weight: bold;
+    font-family: Lato-SemiBold;
+    font-size: 32px; /* Larger font size */
+    color: #000; /* Darker text color */
+    letter-spacing: 1px; /* Slight spacing for elegance */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .reputon-google-reviews-widget .jQtXFo {
+    mask-image: none !important;
+}
+  .customer-reviews-section .divider {
+    width: 100px;
+    margin: 15px auto;
+    height: 2px; /* Thicker line */
+    background: linear-gradient(to right, #333, #888, #333); /* Gradient effect */
+    border-radius: 1px; /* Rounded edges */
+    transition: width 0.3s ease; /* Smooth width animation */
+  }
+
+  .reputon-google-reviews-widget {
+    margin-top: 25px;
+  }
+  @media (max-width:767px){
+ .customer-reviews-section .divider {
+    width: 70px;
+    }
+    .customer-reviews-section {
+    padding: 40px 0px;
+    }
+.customer-reviews-section h2 {
+font-size:24px;
+}
+  }
+</style>
+
+<div class="customer-reviews-section">
+  <h2>What Our Customers Are Saying</h2>
+<div class="divider"></div>
+
+<script 
+    type="text/javascript" 
+    src="https://cdn.grw.reputon.com/assets/widget.js?shop=zipcushions.myshopify.com" 
+    defer>
+  </script>
+  <div class="reputon-google-reviews-widget"
+       data-content-index="1"
+       data-theme="light"
+       data-type="dual_row_carousel"
+       data-review-photos-type="small"
+       data-write-review="true"
+       data-has-shadow="true"
+       data-fixed-reviews-height="false">
+  </div>
+</div>

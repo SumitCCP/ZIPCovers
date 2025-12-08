@@ -1,0 +1,21 @@
+<ul class="category-products" id="fabricSwatchList">
+  {% assign sunbrella_collection = collections['sunbrella-fabrics'] %}
+  {% for product in sunbrella_collection.products limit: 200 %}
+    <li>
+      <a href="{{ product.url }}">
+        <img loading="lazy" 
+          src="{{ product.featured_image | image_url: width: 1024 }}"
+          alt="{{ product.title }}"
+        >
+      </a>
+    </li>
+  {% endfor %}
+  <a href="https://zipcushions.com/collections/sunbrella-fabrics" target="_blank" class="Viewall">View All</a>
+</ul>
+<style>
+.Viewall{
+display:flex;
+justify-content:center;
+align-items: center;
+}
+  </style>

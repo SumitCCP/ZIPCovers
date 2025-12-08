@@ -1,0 +1,104 @@
+<div class="insured-product-wrapper">
+  {%assign insured_products = product.metafields.insurance.insured_products.value %}
+   {% if insured_products %}
+    <div class="insured-product-heading"><h3>Insured Your Product with safeware</h3></div>
+     <div class = "insured-product-list">
+       <a href = "{{shop.url | append: "/products/" | append: insured_products.handle }}">
+        <div class = "insured-product">
+         <div class = "insured-product-image">
+           <img src = "{{insured_products.featured_image | img_url: 'medium' }}" />
+          </div>
+          <div class = "insured-product-details">
+         <div class = "insured-product-name">{{insured_products.title}}</div>
+         <div class = "insured-product-price">{{insured_products.price | money}}</div>                 
+         </div></div>
+       </a>
+     </div>
+   {%endif%}
+</div>
+
+<style>
+  // **************************************************** Related products styles start here **************************************************** //
+
+.insured-product-wrapper {
+     width:100%;
+     display: flex;
+      align-items: center;
+      justify-content:center;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    overflow:hidden;
+       }
+
+
+.insured-product-heading{
+ width: 100%;
+        text-align: center;
+        }
+  .insured-product-heading h3{
+        font-weight: bold;
+        }
+.insured-product-list {
+    width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      background: #F1F1F1;
+}
+
+.insured-product {
+   width: 100%;
+        max-height: 100px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+    padding: 10px;
+}
+.insured-product-details{
+   display: flex;
+  flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+}
+.insured-product-image {
+      width: 60%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+}
+
+.insured-product-image img {
+   width: 100%;
+   height: 100%;
+}
+
+.insured-product-price {
+    color: $color-body-text;
+  width: 100%;
+  background:#15DEFF;
+  padding: 10px 0px;
+   border-radius:10px;
+  font-weight:bold;
+  font-size:medium;
+}
+  .insured-product:hover .insured-product-price{
+      background:orangered;
+        transition: 0.3s ease-out;
+
+  }
+  .insured-product-name{
+      font-weight:bold;
+  }
+  
+
+// **************************************************** Related products styles end here **************************************************** //
+
+</style>

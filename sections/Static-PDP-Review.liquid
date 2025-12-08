@@ -1,0 +1,122 @@
+{% schema %}
+{
+  "name": "Static PDP Reviews",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What Our Customers Are Saying" }
+  ],
+  "presets": [
+    { "name": "Default", "category": "Custom" }
+  ]
+}
+{% endschema %}
+{% if product.metafields.custom.static_pdp_reviews != blank %}
+<div id="section-{{ section.id }}" class="reviewContainer">
+  <div class="containerTitle">
+    {% comment %} <h2>{{ section.settings.heading | escape }}</h2>
+  </div> {% endcomment %}
+
+  <div class="reviewCards" role="list" tabindex="0" aria-label="Customer reviews">
+    {% for review in page.metafields.custom.static_pdp_reviews.value %}
+      <div class="reviewCard" role="listitem">
+        <div class="reviewAvatar" aria-hidden="true">
+          {% if review.avatar != blank %}
+            {% assign avatar_url = review.avatar | image_url: width: 120 %}
+            <img src="{{ avatar_url }}" alt="{{ review.name | escape }}" class="reviewAvatar-img" loading="lazy" width="60" height="60">
+          {% else %}
+            {% capture _initial %}
+              {{ review.name | default: 'U' | strip | slice: 0, 1 | upcase }}
+            {% endcapture %}
+            <div class="reviewAvatar-fallback">{{ _initial }}</div>
+          {% endif %}
+        </div>
+
+        {% if review.name != blank %}
+          <h3 class="reviewerName">{{ review.name | escape }}</h3>
+        {% endif %}
+        {% if review.city != blank %}
+          <p class="cityname">{{ review.city | escape }}</p>
+        {% endif %}
+
+        {% if review.review_text != blank %}
+          <div class="reviewBody">
+            <p class="reviewText">{{ review.review_text | escape }}</p>
+          </div>
+        {% endif %}
+
+        {% assign stars_raw = review.rating | default: 5 %}
+        {% assign stars = stars_raw | plus: 0 %}
+        {% if stars < 0 %}{% assign stars = 0 %}{% endif %}
+        {% if stars > 5 %}{% assign stars = 5 %}{% endif %}
+
+        <div class="reviewRating" aria-label="{{ stars }} out of 5 stars">
+          {%- for i in (1..5) -%}{% if i <= stars %}★{% else %}☆{% endif %}{%- endfor -%}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button type="button" class="blog-scroll-btn blog-scroll-btn--prev" aria-label="Scroll left">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+
+  <button type="button" class="blog-scroll-btn blog-scroll-btn--next" aria-label="Scroll right">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+</div>
+{% endif %}
+<style>
+  .reviewContainer { max-width: 1230px; margin: 40px auto 80px; padding: 10px 30px; border-radius: 20px; position: relative; overflow: hidden; }
+  .containerTitle { width: 100%; margin: 30px 5px; text-align: center; color:#000; }
+  .containerTitle h2 { font-size: clamp(22px, 3vw, 32px); }
+  .reviewCards { display: flex; gap: 16px; flex-wrap: nowrap; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; padding: 10px 56px; }
+  .reviewCards::-webkit-scrollbar { display: none; }
+  .reviewCard { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; display: flex; flex-direction: column; gap: 12px; flex: 0 0 auto; width: clamp(260px, 80vw, 320px); padding: 20px; scroll-snap-align: start; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .reviewCard:hover { transform: translateY(-6px); border-color: rgba(37,99,235,.25); box-shadow: 0 22px 45px -20px rgba(37,99,235,.25); }
+  .reviewAvatar { width: 60px; height: 60px; border-radius: 50%; padding: 2px; overflow: hidden; box-shadow: 0 6px 14px -8px rgba(0,0,0,.5); }
+  .reviewAvatar-img { width: 100%; height: 100%; border-radius: 50%; background: #fff; object-fit: cover; }
+  .reviewAvatar-fallback { width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color:#fff; background:#475569; }
+  .reviewerName { font-size: 20px; margin: 0; font-weight: 700; color: #0f172a; }
+  .cityname { font-size: 16px; margin-top: -12px; color:#334155; }
+  .reviewText { color: #475569; font-size: 16px; line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+  .reviewRating { margin-top: 8px; font-size: 16px; letter-spacing: 2px; font-weight: 800; background: orangered; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .blog-scroll-btn { position: absolute; top: 60%; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #e0e0e0; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.08); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, opacity .2s ease; }
+  .blog-scroll-btn[hidden] { display: none !important; }
+  .blog-scroll-btn--next { right: 6px; }
+  .blog-scroll-btn--prev { left: 6px; }
+  @media (max-width: 640px) { .reviewContainer { margin: 20px auto 40px; } .blog-scroll-btn { width: 38px; height: 38px; } }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById("section-{{ section.id }}");
+    if (!root) return;
+    const scroller = root.querySelector(".reviewCards");
+    const btnPrev = root.querySelector(".blog-scroll-btn--prev");
+    const btnNext = root.querySelector(".blog-scroll-btn--next");
+    if (!scroller) return;
+    const getGap = () => parseFloat(getComputedStyle(scroller).gap) || 0;
+    const getStep = () => { const card = scroller.querySelector(".reviewCard"); return card ? card.getBoundingClientRect().width + getGap() : 0; };
+    const scrollByCards = (n = 1) => scroller.scrollBy({ left: getStep() * n, behavior: "smooth" });
+    const atEnd = () => Math.ceil(scroller.scrollLeft + scroller.clientWidth) >= scroller.scrollWidth - 1;
+    const atStart = () => Math.floor(scroller.scrollLeft) <= 0;
+    const updateArrows = () => { const overflow = scroller.scrollWidth > scroller.clientWidth + 2; if (btnPrev) btnPrev.hidden = !overflow || atStart(); if (btnNext) btnNext.hidden = !overflow || atEnd(); };
+    btnPrev && btnPrev.addEventListener("click", () => { scrollByCards(-1); setTimeout(updateArrows, 350); });
+    btnNext && btnNext.addEventListener("click", () => { atEnd() ? scroller.scrollTo({ left: 0, behavior: "smooth" }) : scrollByCards(1); setTimeout(updateArrows, 350); });
+    const INTERVAL = 5000; let timer;
+    const start = () => { stop(); timer = setInterval(() => { atEnd() ? scroller.scrollTo({ left: 0, behavior: "smooth" }) : scrollByCards(1); }, INTERVAL); };
+    const stop = () => { if (timer) clearInterval(timer); };
+    start();
+    scroller.addEventListener("mouseenter", stop);
+    scroller.addEventListener("mouseleave", start);
+    scroller.addEventListener("focusin", stop);
+    scroller.addEventListener("focusout", start);
+    scroller.addEventListener("scroll", () => requestAnimationFrame(updateArrows));
+    window.addEventListener("resize", () => setTimeout(updateArrows, 100));
+    scroller.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") { e.preventDefault(); scrollByCards(1); } if (e.key === "ArrowLeft") { e.preventDefault(); scrollByCards(-1); } });
+    updateArrows();
+  })();
+</script>

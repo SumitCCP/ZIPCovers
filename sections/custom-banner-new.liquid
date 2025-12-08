@@ -1,0 +1,207 @@
+<div class="custom-banner">
+    <div class="custom-banner-inner">
+	    <div class="text-left section">
+		    <p class="caption">{{ section.settings.caption }}</p>
+            <p class="caption-mob">{{ section.settings.caption-mobile }}</p>
+			<h2>{{ section.settings.heading }}</h2>
+			<div class="txt">{{ section.settings.text }}</div>
+			<a href="{{ section.settings.link }}" class="button btn-01">{{ section.settings.label }}</a>
+		</div>
+		<div class="img-right">
+		    {%- if section.settings.img_01 != blank -%}
+                <img src="{{ section.settings.img_01 | img_url: 'master'  }}">
+            {%- endif -%}
+            <span id="brand_logo"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Sunbrella.jpg?v=1726100810" alt="Sunbrella"></span> 
+		</div>
+	</div>
+</div>
+
+<style>
+  #brand_logo {
+  position: absolute;
+  top: 0;
+  left: 0%; /* adjust as needed */
+  width: 200px;
+  height: 150px;
+}
+@media (max-width:760px){
+    #brand_logo {
+  width: 150px;
+  height: 100px;
+}
+}
+#brand_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+.custom-banner{
+   width: 100%;
+}
+.custom-banner-inner{
+   width: 100%;
+   display: flex;
+   align-items: center;
+    max-width: 1500px;
+    justify-content: space-between;
+    margin: auto;
+    padding:50px 10px;
+}
+.text-left{
+   width: 45%;
+}
+.img-right{
+  width: 50%;
+  position: relative;
+}
+.img-right img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+}
+p.caption {
+    font-size: 15px;
+    color: #000000;
+    background: #2F9F961A;
+    width: max-content;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-family: Lato-SemiBold;
+}
+.text-left.section h2 {
+    font-size: 40px;
+    color: #000000;
+    line-height: 46px;
+    margin: 20px  0;
+   font-family: Lato-SemiBold;
+}
+.txt p {
+    font-size: 18px;
+    color: #000000;
+    margin-right: 45px;
+    margin-bottom: 20px;
+}
+a.button.btn-01 {
+    background: #294D4A;
+    color: #fff;
+    font-size: 16px;
+    font-family: Lato-SemiBold;
+    padding: 23px 32px;
+    line-height: 24px;
+    border-radius: 6px;
+}
+.text-left.section h2 strong {
+    font-family: Lato-SemiBold;
+    display: block;
+} 
+.caption-mob{
+  display: none;
+}
+@media only screen and (min-width: 1400px) {
+.text-left{
+   width: 35%;
+}
+}
+@media (max-width: 767px) {
+.custom-banner-inner {
+    flex-direction: column;
+    gap: 30px;
+}
+.text-left.section {
+    text-align: center!important;
+    width: 100%;
+    padding: 40px 20px 10px;
+}
+.text-left.section h2 {
+    font-size: 36px;
+    line-height: 42px;
+}
+.text-left.section h2 strong {
+    font-weight: 600;
+    display: contents;
+}
+.txt p {
+    font-size: 16px;
+    margin-right: 0;
+}
+.img-right {
+    width: 100%;
+}
+.img-right img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+.caption-mob {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    font-size: 15px;
+    color: #000000;
+    font-weight: 600;
+    background: #2F9F961A;
+    width: max-content;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+p.caption-mob img {
+    width: 92px;
+}
+.text-left .caption{
+  display: none;
+}
+}  
+</style>
+
+{% schema %}
+    {
+        "name": "Custom banner New",
+        "settings": [
+          {
+              "type": "image_picker",
+              "id": "img_01",
+              "label": "Image"
+            },
+			{
+              "type": "inline_richtext",
+              "id": "caption",
+              "label": "Caption"
+            },
+           {
+              "type": "inline_richtext",
+              "id": "caption-mobile",
+              "label": "Caption Mobile"
+            },
+            {
+              "type": "inline_richtext",
+              "id": "heading",
+              "label": "Heading"
+            },
+			{
+              "type": "richtext",
+              "id": "text",
+              "label": "Text"
+            },
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Button Label"
+            },
+			{
+              "type": "url",
+              "id": "link",
+              "label": "Button Link"
+            }
+		 
+        ],
+      "presets": [
+        {
+          "name": "Cuatom banner New"
+        }
+      ]
+    }
+{% endschema %}

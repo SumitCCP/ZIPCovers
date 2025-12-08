@@ -1,0 +1,2123 @@
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('button.btn-popular.an-fab-btn').trigger('click');
+        }, 3000);
+        var currentPage = 1; 
+        var totalPages = 1; 
+
+        let wrapBoxes = [];
+        let currentIndex = 0;
+        const itemsPerPage = 24;
+        let filteredItems = [];
+
+
+       /** start new js code */
+      function fetchMostPopularData(page, productId) {
+            $('#loader-overlay').show();
+            let url = window.location.href;
+            if (url.indexOf('products') > -1) {
+                productId = $('#hiddenProductId').val();
+            }
+        
+            $.ajax({
+                url: 'https://app.zipcushions.com/zipcushion-app/getMostPopularFabric',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    'productId': productId
+                },
+                success: function (item) {
+                   console.log(item, "dsfsfsdfsdsd");
+                  
+                    $('#loader-overlay').hide();
+
+                        const fabrics = item.fabrics || [];
+                        const wrapBoxes = [];
+        
+                        fabrics.forEach((fabric, i) => {
+                            const stockCount = parseInt(fabric.today_stock || "0", 10);
+        
+                            if (
+                                stockCount >= 5 &&
+                                fabric.website_fabric_name &&
+                                fabric.website_fabric_name.trim() !== '' 
+                            ) {
+                                const isActiveClass = i === 0 ? 'vn-active-btn' : '';
+                                const box = `
+                                    <div class="wrap-box ${isActiveClass}" 
+                                        data-tag="${fabric.tags_usage || ''}" 
+                                        data-pattern="${fabric.tags_pattern || ''}" 
+                                        data-features="${fabric.tags_features || ''}" 
+                                        data-fabric-type="${fabric.tags_fabric_type || ''}" 
+                                        data-color="${fabric.tags_color || ''}" 
+                                        data-price="${fabric.price || ''}" 
+                                        data-prices="${(fabric.price || '').replace(/[^\d.]/g, '')}"
+                                        data-popular="Yes" 
+                                        data-catalog-name="${fabric.fabric_catalog_name || ''}"
+                                        data-stock="${fabric.today_stock || ''}"
+                                        data-lifestyleImage="${fabric.factory_image_link || ''}"
+                                        data-fabric-name="${fabric.website_fabric_name || ''}"
+                                        style="display:none;">
+        
+                                        <div class="thumb">
+                                            <img
+                                                src="${fabric.fabric_image_link_on_shopify}"
+                                                srcset="
+                                                    ${fabric.fabric_image_link_on_shopify} 1x,
+                                                    ${fabric.fabric_image_link_on_shopify.replace('.jpg', '@2x.jpg')} 2x
+                                                "
+                                                loading="lazy"
+                                                width="60"
+                                                height="60"
+                                                alt="Thumbnail"
+                                                fetchpriority="high"
+                                            >
+                                        </div>
+                                        <div class="hover-icon">
+                                            <img class="hover-img"
+                                                src="${fabric.fabric_image_link_on_shopify}"
+                                                srcset="
+                                                    ${fabric.fabric_image_link_on_shopify} 1x,
+                                                    ${fabric.fabric_image_link_on_shopify.replace('.jpg', '@2x.jpg')} 2x
+                                                "
+                                                loading="lazy"                                     
+                                                alt="Thumbnail"
+                                                fetchpriority="high"
+                                            >
+                                            <p class="hover-i-img-text">${fabric.website_fabric_name}</p>
+                                        </div>
+                                    </div>
+                                `;
+                                wrapBoxes.push(box);
+                            }
+                        });
+        
+                        $('#fab-1').html(wrapBoxes.join(''));
+                        currentIndex = 0;
+                        showNextBoxes();
+                        togglePaginationButtons();
+                    
+        
+                    /** dimension fields */
+                    const dimensionData = {
+                        dimension_1: item.dimension_1,
+                        dimension_2: item.dimension_2,
+                        dimension_3: item.dimension_3,
+                        dimension_4: item.dimension_4,
+                        dimension_5: item.dimension_5,
+                        dimension_6: item.dimension_6
+                    };
+        
+                    const container = document.getElementById('dimension-fields');
+                    const summaryTableBody = document.querySelector('table.summary-table tbody');
+        
+                    const generateOptions = (defaultValue, min = 1, max = 100) => {
+                        let options = '';
+                        for (let i = min; i <= max; i++) {
+                            const selected = i === defaultValue ? 'selected' : '';
+                            options += `<option value="${i}" ${selected}>${i}</option>`;
+                        }
+                        return options;
+                    };
+        
+                    const buildFieldHTML = (label, index, defaultValue = 1, min = 1, max = 100) => {
+                        const nameAttr = `${label.toLowerCase().replace(/\s+/g, '_')}_${index}`;
+                        return `
+                            <div class="cushion-field">
+                                <label>${label}</label>
+                                <div class="wrap-field">
+                                    <select class="${nameAttr}" name="${nameAttr}">
+                                        ${generateOptions(defaultValue, min, max)}
+                                    </select>
+                                    <span>inches</span>
+                                </div>
+                            </div>
+                        `;
+                    };
+        
+                    Object.keys(dimensionData).forEach((key, index) => {
+                        const label = dimensionData[key];
+                        if (label && label.trim()) {
+                            const cleanLabel = label.trim();
+                            const lowerLabel = cleanLabel.toLowerCase();
+        
+                            let defaultValue = 10;
+                            let min = 3;
+                            let max = 130;
+        
+                            if (lowerLabel.includes('thickness')) {
+                                defaultValue = 2;
+                                min = 1;
+                                max = 12;
+                            }
+        
+                            container.insertAdjacentHTML('beforeend', buildFieldHTML(cleanLabel, index + 1, defaultValue, min, max));
+        
+                            if (summaryTableBody) {
+                                summaryTableBody.insertAdjacentHTML('afterbegin', `
+                                    <tr>
+                                        <td>${cleanLabel}:</td>
+                                        <td class="${cleanLabel.replace(/\s+/g, '')}Value">${defaultValue}</td>
+                                    </tr>
+                                `);
+                            }
+                        }
+                    });
+        
+                    /** fiber fill */
+                    const fillOptions = {
+                        fill_option_1: item.fill_option_1,
+                        fill_option_2: item.fill_option_2,
+                        fill_option_3: item.fill_option_3,
+                        fill_option_4: item.fill_option_4,
+                        fill_description_text_1: item.fill_description_text_1,
+                        fill_description_text_2: item.fill_description_text_2,
+                        fill_description_text_3: item.fill_description_text_3,
+                        fill_description_text_4: item.fill_description_text_4,
+                        fill_image_1: item.fill_image_1,
+                        fill_image_2: item.fill_image_2,
+                        fill_image_3: item.fill_image_3,
+                        fill_image_4: item.fill_image_4
+                    };
+        
+                    const optionsContainer = document.querySelector('.fiber-fill .option-row');
+                    optionsContainer.innerHTML = '';
+        
+                    for (let i = 1; i <= 4; i++) {
+                        const image = fillOptions[`fill_image_${i}`];
+                        const label = fillOptions[`fill_option_${i}`]?.trim();
+        
+                        if (image && label && label !== "-") {
+                            const isActive = i === 1 ? 'vn-active-btn' : '';
+                            optionsContainer.insertAdjacentHTML('beforeend', `
+                                <div class="custom-option ${isActive}" data-name="${label}">
+                                    <div class="block-option">
+                                        <img
+                                            src="${image}"
+                                            srcset="
+                                                ${image} 1x,
+                                                ${image.replace('.jpg', '@2x.jpg')} 2x
+                                            "
+                                            loading="lazy"
+                                            width="60"
+                                            height="60"
+                                            alt="${label}"
+                                            fetchpriority="high"
+                                        > 
+                                    </div>
+                                    <div class="block-btnn">
+                                        <button class="custom-btn">${label}</button>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    }
+        
+                    /** zipper option */
+                    const zipperContainer = document.querySelector('.zipper-options .option-row');
+                    zipperContainer.innerHTML = '';
+        
+                    for (let i = 1; i <= 5; i++) {
+                        const image = item[`zipper_image_${i}`];
+                        const label = item[`zipper_website_text_${i}`];
+        
+                        if (image && label && label !== "-") {
+                            const isActive = i === 1 ? 'vn-active-btn' : '';
+                            zipperContainer.insertAdjacentHTML('beforeend', `
+                                <div class="custom-option ${isActive}" data-name="${label}">
+                                    <div class="block-option">
+                                        <img
+                                            src="${image}"
+                                            srcset="
+                                                ${image} 1x,
+                                                ${image.replace('.jpg', '@2x.jpg')} 2x
+                                            "
+                                            loading="lazy"
+                                            width="60"
+                                            height="60"
+                                            alt="${label}"
+                                            fetchpriority="high"
+                                        >  
+                                    </div>
+                                    <div class="block-btnn">
+                                        <button class="custom-btn">${label}</button>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    }
+        
+                    /** piping option */
+                    const pipingContainer = document.querySelector('.piping-options .option-row');
+                    pipingContainer.innerHTML = '';
+        
+                    for (let i = 1; i <= 2; i++) {
+                        const image = item[`piping_image_${i}`];
+                        const label = item[`piping_option_${i}`]?.trim();
+        
+                        if (image && label) {
+                            const isActive = i === 1 ? 'vn-active-btn' : '';
+                            pipingContainer.insertAdjacentHTML('beforeend', `
+                                <div class="custom-option ${isActive}" data-name="${label}">
+                                    <div class="block-option">
+                                        <img
+                                            src="${image}"
+                                            srcset="
+                                                ${image} 1x,
+                                                ${image.replace('.jpg', '@2x.jpg')} 2x
+                                            "
+                                            loading="lazy"
+                                            width="60"
+                                            height="60"
+                                            alt="${label}"
+                                            fetchpriority="high"
+                                        > 
+                                    </div>
+                                    <div class="block-btnn">
+                                        <button class="custom-btn">${label}</button>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    }
+        
+                    /** ties option */
+                    const tieContainer = document.querySelector('.ties-options .option-row');
+                    tieContainer.innerHTML = '';
+        
+                    for (let i = 1; i <= 4; i++) {
+                        const image = item[`tie_image_${i}`];
+                        const label = item[`tie_option_${i}`]?.trim();
+        
+                        if (image && label && label !== "-") {
+                            const isActive = i === 1 ? 'vn-active-btn' : '';
+                            tieContainer.insertAdjacentHTML('beforeend', `
+                                <div class="custom-option ${isActive}" data-name="${label}">
+                                    <div class="block-option">
+                                        <img
+                                            src="${image}"
+                                            srcset="
+                                                ${image} 1x,
+                                                ${image.replace('.jpg', '@2x.jpg')} 2x
+                                            "
+                                            loading="lazy"
+                                            width="60"
+                                            height="60"
+                                            alt="${label}"
+                                            fetchpriority="high"
+                                        > 
+                                    </div>
+                                    <div class="block-btnn">
+                                        <button class="custom-btn">${label}</button>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    }
+        
+                },
+                error: function (xhr, status, error) {
+                    $('#loader-overlay').hide();
+                    console.error('Error fetching fabric data: ', error);
+                }
+            });
+       }
+
+      /** end new js code */
+
+        // Function to fetch data for a specific page
+        function fetchData(page, productId) {
+            $('#loader-overlay').show();
+          var url = window.location.href;
+            if(url.indexOf('products') > -1){
+                  var productId = $('#hiddenProductId').val();
+            } else {
+               productId = productId
+            }
+         
+            $.ajax({
+                url: 'https://app.zipcushions.com/zipcushion-app/getFabric',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    'productId': productId
+
+                },
+                success: function(item) {
+                        $('#loader-overlay').hide();
+                        //totalPages = fabricData.total;
+
+                        // fabricData.forEach(function(item) {
+                        var shape = item.shape_data;
+                        localStorage.setItem("fabricShape", shape);
+ 
+                       // $('#fab-1').empty();
+                  
+                        var serverProductId = item.product_id;
+                        console.log(productId, serverProductId);
+                        if (serverProductId == productId) {
+                            var fabric_image_link_on_shopify = item.fabric_image_link_on_shopify;
+                            var price = item.price;
+                            var tags_color = item.tags_color;
+                            var tags_fabric_type = item.tags_fabric_type;
+                            var tags_features = item.tags_features;
+                            var tags_pattern = item.tags_pattern;
+                            var tags_usage = item.tags_usage;
+                            var website_fabric_name = item.website_fabric_name;
+                            var popular = item.popular;
+                            var fabric_catalog_name = item.fabric_catalog_name;
+                            var factory_image_link = item.factory_image_link;
+                            var featuresArray = tags_features.split(',').map(function(feature) {
+                                return feature.trim(); // Trim spaces
+                            });
+
+                            var today_stock = item.today_stock;
+
+                            console.log(item);
+
+                            createMoreFilterLists('#fabricFeature .sub-filter', tags_features);
+                            createFilterList('#fabricColor .sub-filter', tags_color);
+                            createFilterList('#fabricPattern .sub-filter', tags_pattern);
+                            createMoreFilterList('#fabricType .sub-filter', tags_fabric_type);
+                            createMoreFilterList('#moreChoices .sub-filter', fabric_catalog_name);
+
+
+                            var usageArr = tags_usage.split(',').map(item => item.trim());
+                            var patternArr = tags_pattern.split(',').map(item => item.trim());
+                            var featuresArr = tags_features.split(',').map(item => item.trim());
+                            var fabricTypeArr = tags_fabric_type.split(',').map(item => item.trim());
+                            var colorArr = tags_color.split(',').map(item => item.trim());
+                            var priceArr = price.split(',').map(item => item.trim());
+                            var imgArr = fabric_image_link_on_shopify.split(',').map(item => item.trim());
+                            var nameArr = website_fabric_name.split(',').map(item => item.trim());
+                            var fabricCatalogNameArr = fabric_catalog_name.split(',').map(item => item.trim());
+                            var popularArr = popular.split(',').map(item => item.trim());
+                            var stockArr = today_stock.split(',').map(item => item.trim());
+                            var lifestyleImgArr = factory_image_link.split(',').map(item => item.trim());
+
+                            // 3. Find the maximum length (some arrays may have different lengths)
+                            var maxLength = Math.max(
+                                usageArr.length,
+                                patternArr.length,
+                                featuresArr.length,
+                                fabricTypeArr.length,
+                                colorArr.length,
+                                priceArr.length,
+                                imgArr.length,
+                                nameArr.length,
+                                popularArr.length,
+                                fabricCatalogNameArr.length,
+                                stockArr.length, 
+                                lifestyleImgArr.length,
+                            );
+                          
+                            let wrapBoxess = [];
+                            // 4. Loop and create new wrap-boxes
+                            for (let i = 0; i < maxLength; i++) {
+
+                              // Check stock count at this index
+                              const stockCount = parseInt(stockArr[i] || "0", 10);
+                            
+                              if (stockCount >= 5 && nameArr[i] && nameArr[i].trim() !== '' && imgArr[i] && imgArr[i].trim() !== '') {
+                                const isActiveClass = i === 0 ? 'vn-active-btn' : '';
+                                const box = `
+                                  <div class="wrap-box ${isActiveClass}" 
+                                      data-tag="${usageArr[i] || ''}" 
+                                      data-pattern="${patternArr[i] || ''}" 
+                                      data-features="${featuresArr[i] || ''}" 
+                                      data-fabric-type="${fabricTypeArr[i] || ''}" 
+                                      data-color="${colorArr[i] || ''}" 
+                                      data-price="${priceArr[i] || ''}" 
+                                      data-prices="${(priceArr[i] || '').replace(/[^\d.]/g, '')}"
+                                      data-popular="${popularArr[i] || ''}" 
+                                      data-catalog-name="${fabricCatalogNameArr[i] || ''}"
+                                      data-stock="${stockArr[i] || ''}"
+                                      data-lifestyleImage="${lifestyleImgArr[i] || ''}"
+                                      data-fabric-name="${nameArr[i] || ''}"
+                                      style="display:none;">
+                                      
+                                      <div class="thumb">
+                                          <img
+                                            src="${imgArr[i]}"
+                                            srcset="
+                                              ${imgArr[i]} 1x,
+                                              ${imgArr[i].replace('.jpg', '@2x.jpg')} 2x
+                                            "
+                                            loading="lazy"
+                                            width="60"
+                                            height="60"
+                                            alt="Thumbnail"
+                                          >
+                                      </div>
+                                      <div class="hover-icon">
+                                          <img class="hover-img"
+                                                src="${imgArr[i]}"
+                                                srcset="
+                                                    ${imgArr[i]} 1x,
+                                                    ${imgArr[i].replace('.jpg', '@2x.jpg')} 2x
+                                                "
+                                                loading="lazy"                                     
+                                                alt="Thumbnail"
+                                                fetchpriority="high"
+                                            >
+                                          <p class="hover-i-img-text">${nameArr[i]}</p>
+                                      </div>
+                                  </div>
+                                `;
+                                wrapBoxess.push(box);
+                              }
+                            }
+
+                            currentIndex = 0;
+                            $('#fab-1').html(wrapBoxess.join('')); // Append all at once
+                            
+                            showNextBoxes(); // Show the first 24  
+                            // $('div#fab-1').append('<div class="wrap-box" data-tag="'+tags_usage+'" data-pattern="'+tags_pattern+'" data-features="'+tags_features+'" data-fabric-type="'+tags_fabric_type+'" data-color="'+tags_color+'" data-price="'+price+'"><div class="thumb"> <img src="'+fabric_image_link_on_shopify+'"></div><div class="hover-icon"><img class="hover-img" src="'+fabric_image_link_on_shopify+'"><p class="hover-i-img-text">'+website_fabric_name+'</p></div></div>');
+
+                        }
+
+                        // });
+
+                        // Update next and previous button visibility based on current page
+                       // togglePaginationButtons();
+
+
+                        /** measurement end */
+
+                        const dimensionData = {
+                            dimension_1: item.dimension_1,
+                            dimension_2: item.dimension_2,
+                            dimension_3: item.dimension_3,
+                            dimension_4: item.dimension_4,
+                            dimension_5: item.dimension_5,
+                            dimension_6: item.dimension_6
+                        };
+              
+                        const container = document.getElementById('dimension-fields');
+                        const summaryTableBody = document.querySelector('table.summary-table tbody');
+
+                        //Generate <option> elements with dynamic min/max and default
+                        const generateOptions = (defaultValue, min = 1, max = 100) => {
+                            let options = '';
+                            for (let i = min; i <= max; i++) {
+                                const selected = i === defaultValue ? 'selected' : '';
+                                options += `<option value="${i}" ${selected}>${i}</option>`;
+                            }
+                            return options;
+                        };
+
+                        //  Build field HTML with dynamic min/max
+                        const buildFieldHTML = (label, index, defaultValue = 1, min = 1, max = 100) => {
+                            const nameAttr = `${label.toLowerCase().replace(/\s+/g, '_')}_${index}`;
+                            return `
+                            <div class="cushion-field">
+                                <label>${label}</label>
+                                <div class="wrap-field">
+                                    <select class="${nameAttr}" name="${nameAttr}">
+                                        ${generateOptions(defaultValue, min, max)}
+                                    </select>
+                                    <span>inches</span>
+                                </div>
+                            </div>
+                        `;
+                        };
+                  
+                     // Build fields and summary
+                        Object.keys(dimensionData).forEach((key, index) => {
+                            const label = dimensionData[key];
+                            if (label && label.trim()) {
+                                const cleanLabel = label.trim();
+                                const lowerLabel = cleanLabel.toLowerCase();
+
+                                let defaultValue = 10;
+                                let min = 3;
+                                let max = 130;
+
+                                if (lowerLabel.includes('thickness')) {
+                                    defaultValue = 2;
+                                    min = 1;
+                                    max = 12;
+                                }
+
+                                // Append field
+                                container.insertAdjacentHTML('beforeend', buildFieldHTML(cleanLabel, index + 1, defaultValue, min, max));
+
+                                // Append summary row
+                                if (summaryTableBody) {
+                                    summaryTableBody.insertAdjacentHTML('afterbegin', `
+                                    <tr>
+                                        <td>${cleanLabel}:</td>
+                                        <td class="${cleanLabel.replace(/\s+/g, '')}Value">${defaultValue}</td>
+                                    </tr>
+                                `);
+                                }
+                            }
+                        });
+
+                        /** measurement end */
+
+
+                        /** fiber fill */
+                        const fillOptions = {
+                            fill_option_1: item.fill_option_1,
+                            fill_option_2: item.fill_option_2,
+                            fill_option_3: item.fill_option_3,
+                            fill_option_4: item.fill_option_4,
+                            fill_description_text_1: item.fill_description_text_1,
+                            fill_description_text_2: item.fill_description_text_2,
+                            fill_description_text_3: item.fill_description_text_3,
+                            fill_description_text_4: item.fill_description_text_4,
+                            fill_image_1: item.fill_image_1,
+                            fill_image_2: item.fill_image_2,
+                            fill_image_3: item.fill_image_3,
+                            fill_image_4: item.fill_image_4
+                        };
+
+
+
+                        const optionsContainer = document.querySelector('.fiber-fill .option-row');
+                        optionsContainer.innerHTML = ''; // Clear old content
+
+                        for (let i = 1; i <= 4; i++) {
+                            const image = fillOptions[`fill_image_${i}`];
+                            const label = fillOptions[`fill_option_${i}`]?.trim();
+
+                            if (image && label && label !== "-") {
+                                const isActive = i === 1 ? 'vn-active-btn' : '';
+                                optionsContainer.insertAdjacentHTML('beforeend', `
+                        <div class="custom-option ${isActive}" data-name="${label}">
+                          <div class="block-option">
+                            <img src="${image}" alt="${label}">
+                          </div>
+                          <div class="block-btnn">
+                            <button class="custom-btn">${label}</button>
+                          </div>
+                        </div>
+                      `);
+                            }
+                        }
+
+                        /** fiber fill end */
+
+                        /** zipper option */
+                        const zipperData = {
+                            zipper_image_1: item.zipper_image_1,
+                            zipper_image_2: item.zipper_image_2,
+                            zipper_image_3: item.zipper_image_3,
+                            zipper_image_4: item.zipper_image_4,
+                            zipper_image_5: item.zipper_image_5,
+                            zipper_position_1: item.zipper_position_1,
+                            zipper_position_2: item.zipper_position_2,
+                            zipper_position_3: item.zipper_position_3,
+                            zipper_position_4: item.zipper_position_4,
+                            zipper_position_5: item.zipper_position_5,
+                            zipper_website_text_1: item.zipper_website_text_1,
+                            zipper_website_text_2: item.zipper_website_text_2,
+                            zipper_website_text_3: item.zipper_website_text_3,
+                            zipper_website_text_4: item.zipper_website_text_4,
+                            zipper_website_text_5: item.zipper_website_text_5
+                        };
+
+                        const zipperContainer = document.querySelector('.zipper-options .option-row');
+                        zipperContainer.innerHTML = ''; // Clear previous options
+
+                        for (let i = 1; i <= 5; i++) {
+                            const image = zipperData[`zipper_image_${i}`];
+                            const label = zipperData[`zipper_website_text_${i}`];
+
+                            if (image && label && label !== "-") {
+                                const isActive = i === 1 ? 'vn-active-btn' : '';
+
+                                zipperContainer.insertAdjacentHTML('beforeend', `
+                                <div class="custom-option ${isActive}" data-name="${label}">
+                                    <div class="block-option">
+                                        <img src="${image}" alt="${label}">
+                                    </div>
+                                    <div class="block-btnn">
+                                        <button class="custom-btn">${label}</button>
+                                    </div>
+                                </div>
+                            `);
+                            }
+                        }
+
+
+                        /** zipper option end */
+
+                        /** piping option */
+                        const pipingData = {
+                            piping_image_1: item.piping_image_1,
+                            piping_image_2: item.piping_image_2,
+                            piping_option_1: item.piping_option_1,
+                            piping_option_2: item.piping_option_2,
+                            piping_description_text_1: item.piping_description_text_1,
+                            piping_description_text_2: item.piping_description_text_2
+                        };
+
+                        const pipingContainer = document.querySelector('.piping-options .option-row');
+                        pipingContainer.innerHTML = ''; // Clear previous content
+
+                        for (let i = 1; i <= 2; i++) {
+                            const image = pipingData[`piping_image_${i}`];
+                            const label = pipingData[`piping_option_${i}`]?.trim();
+
+                            if (image && label) {
+                                const isActive = i === 1 ? 'vn-active-btn' : '';
+
+                                pipingContainer.insertAdjacentHTML('beforeend', `
+                        <div class="custom-option ${isActive}" data-name="${label}">
+                          <div class="block-option">
+                            <img src="${image}" alt="${label}">
+                          </div>
+                          <div class="block-btnn">
+                            <button class="custom-btn">${label}</button>
+                          </div>
+                        </div>
+                      `);
+                            }
+                        }
+
+
+                        /** piping option end */
+
+                        /** ties option */
+                        const tieData = {
+                            tie_image_1: item.tie_image_1,
+                            tie_image_2: item.tie_image_2,
+                            tie_image_3: item.tie_image_3,
+                            tie_image_4: item.tie_image_4,
+                            tie_option_1: item.tie_option_1,
+                            tie_option_2: item.tie_option_2,
+                            tie_option_3: item.tie_option_3,
+                            tie_option_4: item.tie_option_4,
+                            tie_description_text_1: item.tie_description_text_1,
+                            tie_description_text_2: item.tie_description_text_2,
+                            tie_description_text_3: item.tie_description_text_3,
+                            tie_description_text_4: item.tie_description_text_4
+                        };
+
+                        const tieContainer = document.querySelector('.ties-options .option-row');
+                        tieContainer.innerHTML = ''; // Clear old content
+
+                        for (let i = 1; i <= 4; i++) {
+                            const image = tieData[`tie_image_${i}`];
+                            const label = tieData[`tie_option_${i}`]?.trim();
+
+                            if (image && label && label !== "-") {
+                                const isActive = i === 1 ? 'vn-active-btn' : '';
+                                tieContainer.insertAdjacentHTML('beforeend', `
+                        <div class="custom-option ${isActive}" data-name="${label}">
+                          <div class="block-option">
+                            <img src="${image}" alt="${label}">
+                          </div>
+                          <div class="block-btnn">
+                            <button class="custom-btn">${label}</button>
+                          </div>
+                        </div>
+                      `);
+                            }
+                        }
+
+                        /** ties option end */
+
+             
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching fabric data: ', error);
+                }
+            });
+        }
+
+
+
+        function showNextBoxes() {
+            const checkedValues = $('#fabricFeature input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+        
+            const checkedChoiceValues = $('#moreChoices input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+        
+            const checkedColorValues = $('#fabricColor input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+        
+            const checkedPatternValues = $('#fabricPattern input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+        
+            const checkedFabricTypeValues = $('#fabricType input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+        
+            const isPopularFilterActive = $('.btn-popular.an-fab-btn.active').data('popular') === 'yes';
+        
+            const allItems = $('.wrap-box');
+        
+            let filteredItems = allItems.filter(function() {
+                const item = $(this);
+                const itemFeatures = (item.data('features') || '').toLowerCase();
+                const itemChoice = (item.data('catalog-name') || '').toLowerCase();
+                const itemColors = (item.data('color') || '').toLowerCase();
+                const itemPatterns = (item.data('pattern') || '').toLowerCase();
+                const itemFabricTypes = (item.data('fabric-type') || '').toLowerCase();
+                const popularValue = (item.data('popular') || '').toLowerCase();
+        
+                const matchesFeatures = checkedValues.length === 0 || checkedValues.some(val => itemFeatures.includes(val));
+                const matchesChoices = checkedChoiceValues.length === 0 || checkedChoiceValues.some(val => itemChoice.includes(val));
+                const matchesColors = checkedColorValues.length === 0 || checkedColorValues.some(val => itemColors.includes(val));
+                const matchesPatterns = checkedPatternValues.length === 0 || checkedPatternValues.some(val => itemPatterns.includes(val));
+                const matchesFabricTypes = checkedFabricTypeValues.length === 0 || checkedFabricTypeValues.some(val => itemFabricTypes.includes(val));
+                const matchesPopular = !isPopularFilterActive || popularValue === 'yes';
+        
+                return matchesFeatures && matchesChoices && matchesColors && matchesPatterns && matchesFabricTypes && matchesPopular;
+            });
+        
+            // ✅ DO NOT increment currentIndex here
+            // ✅ Only use it to slice
+            allItems.hide();
+            filteredItems.slice(currentIndex, currentIndex + itemsPerPage).show();
+        
+            toggleFilteredPaginationButtons(filteredItems);
+        }
+
+
+
+
+
+        function showPreviousBoxes() {
+            const checkedValues = $('#fabricFeature input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const checkedChoiceValues = $('#moreChoices input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const checkedColorValues = $('#fabricColor input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const checkedPatternValues = $('#fabricPattern input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const checkedFabricTypeValues = $('#fabricType input[type="checkbox"]:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const isPopularFilterActive = $('.btn-popular.an-fab-btn.active').data('popular') === 'yes';
+
+            const allItems = $('.wrap-box');
+
+            let filteredItems = allItems.filter(function() {
+                const item = $(this);
+                const itemFeatures = (item.data('features') || '').toLowerCase();
+                const itemChoice = (item.data('catalog-name') || '').toLowerCase();
+                const itemColors = (item.data('color') || '').toLowerCase();
+                const itemPatterns = (item.data('pattern') || '').toLowerCase();
+                const itemFabricTypes = (item.data('fabric-type') || '').toLowerCase();
+                const popularValue = (item.data('popular') || '').toLowerCase();
+
+                const matchesFeatures = checkedValues.length === 0 || checkedValues.some(val => itemFeatures.includes(val));
+                const matchesChoices = checkedChoiceValues.length === 0 || checkedChoiceValues.some(val => itemChoice.includes(val));
+                const matchesColors = checkedColorValues.length === 0 || checkedColorValues.some(val => itemColors.includes(val));
+                const matchesPatterns = checkedPatternValues.length === 0 || checkedPatternValues.some(val => itemPatterns.includes(val));
+                const matchesFabricTypes = checkedFabricTypeValues.length === 0 || checkedFabricTypeValues.some(val => itemFabricTypes.includes(val));
+                const matchesPopular = !isPopularFilterActive || popularValue === 'yes';
+
+                return matchesFeatures && matchesChoices && matchesColors && matchesPatterns && matchesFabricTypes && matchesPopular;
+            });
+
+            // Decrement index BEFORE updating the pagination display
+            currentIndex = Math.max(0, currentIndex - itemsPerPage);
+ 
+            allItems.hide();
+            filteredItems.slice(currentIndex, currentIndex + itemsPerPage).show();
+
+            toggleFilteredPaginationButtons(filteredItems);
+        }
+
+
+
+
+        function toggleFilteredPaginationButtons(filteredBoxes) {
+            if (!filteredBoxes || typeof filteredBoxes.length === 'undefined') {
+                $('.page-num').text(`0 of 0`);
+                $('.prev-page, .next-page').hide();
+                return;
+            }
+
+
+
+            const totalItems = filteredBoxes.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const currentPage = Math.floor(currentIndex / itemsPerPage) + 1;
+            console.log(currentIndex, itemsPerPage, totalPages, "totalItems totalItems");
+
+            $('.page-num').text(`${currentPage} of ${totalPages}`);
+
+            $('.prev-page').toggle(currentPage > 1);
+            $('.next-page').toggle(currentPage < totalPages);
+        }
+
+
+
+
+        // On click, load next 20
+      //  $('body').on('click', '.next-page', showNextBoxes);
+        $('body').on('click', '.next-page', function() {
+            currentIndex += itemsPerPage;
+            showNextBoxes();
+        });
+
+        $('.prev-page').on('click', showPreviousBoxes);
+
+        function createFilterList(selector, values) {
+            if (values) {
+                $(selector).empty(); // Clear previous entries
+
+                const array = values
+                    .split(',')
+                    .flatMap(item => item.trim().split(/\s+/)) // Split multi-word colors into parts
+                    .map(color => color.charAt(0).toUpperCase() + color.slice(1).toLowerCase()); // Normalize casing
+
+                const uniqueArray = [...new Set(array)];
+
+                uniqueArray.forEach(function(item) {
+                    if (item !== '') {
+                        const safeId = item.replace(/\s+/g, '-');
+                        $(selector).append(
+                            '<li value="' + item + '" class="">' +
+                            '<label for="' + safeId + '">' +
+                            '<input id="' + safeId + '" type="checkbox" value="' + item + '">' +
+                            '<span>' + item + '</span>' +
+                            '</label>' +
+                            '</li>'
+                        );
+                    }
+                });
+            }
+        }
+
+function createMoreFilterLists(selector, values) {
+    if (values) {
+        $(selector).empty(); // Clear previous entries
+
+        // Split on comma, dash, or ampersand (&)
+      const array = values
+    .split(/\s*(?:,|&)\s*/) // split on comma or ampersand (&), with optional spaces
+    .map(item => item.trim()) // trim whitespace
+    .map(name => name.charAt(0).toUpperCase() + name.slice(1)); // capitalize
+
+
+        const uniqueArray = [...new Set(array)].filter(item => item !== '');
+
+        uniqueArray.forEach(function(item) {
+            const safeId = item.replace(/\s+/g, '-');
+            $(selector).append(
+                '<li value="' + item + '">' +
+                '<label for="' + safeId + '">' +
+                '<input id="' + safeId + '" type="checkbox" value="' + item + '">' +
+                '<span>' + item + '</span>' +
+                '</label>' +
+                '</li>'
+            );
+        });
+    }
+} 
+    
+        function createMoreFilterList(selector, values) {
+            if (values) {
+                $(selector).empty(); // Clear previous entries
+
+                const array = values
+                    .split(',') // Split only by comma
+                    .map(item => item.trim()) // Trim whitespace
+                    .map(name => name.charAt(0).toUpperCase() + name.slice(1)); // Optional casing
+
+                const uniqueArray = [...new Set(array)];
+
+                uniqueArray.forEach(function(item) {
+                    if (item !== '') {
+                        const safeId = item.replace(/\s+/g, '-');
+                        $(selector).append(
+                            '<li value="' + item + '">' +
+                            '<label for="' + safeId + '">' +
+                            '<input id="' + safeId + '" type="checkbox" value="' + item + '">' +
+                            '<span>' + item + '</span>' +
+                            '</label>' +
+                            '</li>'
+                        );
+                    }
+                });
+            }
+        }
+
+
+
+
+        // Function to toggle the visibility of Next and Previous buttons
+        function togglePaginationButtons() {
+            const totalPages = Math.ceil(wrapBoxes.length / itemsPerPage);
+            const currentPage = Math.min(Math.ceil(currentIndex / itemsPerPage), totalPages) || 1;
+
+            // Update page number display
+            $('.page-num').text(`${currentPage} of ${totalPages}`);
+
+            // Show or hide the previous button based on current page
+            if (currentPage === 1) {
+                $('#prevPageBtn').hide(); // Hide Previous if on the first page
+            } else {
+                $('#prevPageBtn').show();
+            }
+
+            // Show or hide the next button based on current page
+            if (currentPage === totalPages) {
+                $('#nextPageBtn').hide(); // Hide Next if on the last page
+            } else {
+                $('#nextPageBtn').show();
+            }
+        }
+
+       var url = window.location.href;
+        if(url.indexOf('products') > -1){
+          // Initially load the first page of data
+          //fetchData(currentPage);
+          fetchMostPopularData(currentPage);
+        }
+
+        $(document).on('click', function(event) {          
+            if (!$(event.target).closest('#fabricFeature').length) {
+                $('#fabricFeature .vn-tab-name').removeClass('an-active');
+            }
+
+            if (!$(event.target).closest('#moreChoices').length) {
+                $('#moreChoices .vn-tab-names').removeClass('an-active');
+            }
+
+            if (!$(event.target).closest('#fabricColor').length) {
+                $('#fabricColor .vn-tab-name').removeClass('an-active');
+            }
+
+            if (!$(event.target).closest('#fabricPattern').length) {
+                $('#fabricPattern .vn-tab-name').removeClass('an-active');
+            }
+
+            if (!$(event.target).closest('#fabricType').length) {
+                $('#fabricType .vn-tab-name').removeClass('an-active');
+            }
+        });
+
+
+
+        /** filteration */
+        $('body').on('change', 'li#fabricFeature ul.sub-filter input, li#fabricColor ul.sub-filter input, li#fabricPattern ul.sub-filter input, li#fabricType ul.sub-filter input, li#moreChoices ul.sub-filter input', function(e) {
+            e.preventDefault();
+            const selectedFeatures = $('li#fabricFeature ul.sub-filter input:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            if ($(this).closest('li#moreChoices').length && this.checked) {
+                $('li#moreChoices ul.sub-filter input[type="checkbox"]').not(this).prop('checked', false);
+            }
+
+            // Get the selected value (only one will be selected)
+            const selectedChoice = $('li#moreChoices ul.sub-filter input:checked').val()?.toLowerCase() || null;
+
+            const selectedColors = $('li#fabricColor ul.sub-filter input:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const selectedPatterns = $('li#fabricPattern ul.sub-filter input:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const selectedFabricTypes = $('li#fabricType ul.sub-filter input:checked').map(function() {
+                return $(this).val().toLowerCase();
+            }).get();
+
+            const isPopularFilterActive = $('.btn-popular.an-fab-btn.active').data('popular') === 'yes';
+
+             
+            const allBoxes = $('.wrap-box');
+
+            if ($('button.btn-popular.an-fab-btn').hasClass('active')) {
+
+                let filteredBoxes = allBoxes.filter(function() {
+                    const $box = $(this);
+                    const features = ($box.data('features') || '').toLowerCase();
+                    const moreChoice = ($box.data('catalog-name') || '').toLowerCase();
+                    const color = ($box.data('color') || '').toLowerCase();
+                    const pattern = ($box.data('pattern') || '').toLowerCase();
+                    const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                    const popularValue = ($box.data('popular') || '').toLowerCase();
+                
+                    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                    const matchesChoice = !selectedChoice || moreChoice.includes(selectedChoice);
+                    const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                    const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                    const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+                    const matchesPopular = !isPopularFilterActive || popularValue === 'yes'; // Accepts both
+                
+                    return matchesFeatures && matchesChoice && matchesColor && matchesPattern && matchesFabricType && matchesPopular;
+                });
+
+
+                filteredItems = filteredBoxes;
+                currentIndex = 0;
+                toggleFilteredPaginationButtons(filteredItems);
+
+                //showNextBoxes();
+
+
+                // Show first 24 matching results
+                allBoxes.hide();
+                if (filteredBoxes.length > 0) {
+                    filteredBoxes.slice(0, 24).show();
+                } else {
+                    // Optionally show "No matches" message here
+                }
+
+            } else if ($('button.btn-more.an-fab-btn').hasClass('active')) {
+             // alert("fdff");
+                let filteredBoxes = allBoxes.filter(function() {
+                    const $box = $(this);
+                    const features = ($box.data('features') || '').toLowerCase();
+                    const moreChoice = ($box.data('catalog-name') || '').toLowerCase();
+                    const color = ($box.data('color') || '').toLowerCase();
+                    const pattern = ($box.data('pattern') || '').toLowerCase();
+                    const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                    const popularValue = ($box.data('popular') || '').toLowerCase();
+
+
+                    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                    const matchesChoice = !selectedChoice || moreChoice.includes(selectedChoice);
+                    const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                    const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                    const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+                    const matchesPopular = popularValue === 'yes' || popularValue === 'no';
+
+                    return matchesFeatures && matchesChoice && matchesColor && matchesPattern && matchesFabricType && matchesPopular;
+                });
+
+                filteredItems = filteredBoxes;
+                currentIndex = 0;
+                toggleFilteredPaginationButtons(filteredItems);
+
+                //showNextBoxes();
+
+
+                // Show first 24 matching results
+                allBoxes.hide();
+                if (filteredBoxes.length > 0) {
+                    filteredBoxes.slice(0, 24).show();
+                } else {
+                    // Optionally show "No matches" message here
+                }
+
+            }
+
+        });
+
+        $('.fabric-buttons .an-fab-btn').click(function() {
+            var selected = $(this).text();
+            if (selected == "Most Popular") {
+                $('li#moreChoices ul.sub-filter label input').prop('checked', false);
+                //   $('.wrap-box[data-popular="No"]').hide();
+                //   $('.wrap-box[data-popular="Yes"]').show();
+                const selectedFeatures = $('li#fabricFeature ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedChoice = $('li#moreChoices ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedColors = $('li#fabricColor ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedPatterns = $('li#fabricPattern ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedFabricTypes = $('li#fabricType ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+
+                const allBoxes = $('.wrap-box');
+
+                let filteredBoxes = allBoxes.filter(function() {
+                    const $box = $(this);
+                    const features = ($box.data('features') || '').toLowerCase();
+                    const choices = ($box.data('catalog-name') || '').toLowerCase();
+                    const color = ($box.data('color') || '').toLowerCase();
+                    const pattern = ($box.data('pattern') || '').toLowerCase();
+                    const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                    const mostPopular = $box.data('popular') === 'Yes';
+
+                    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                    const matchesChoices = selectedChoice.length === 0 || selectedChoice.some(val => choices.includes(val));
+                    const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                    const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                    const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+
+
+
+                    return matchesFeatures && matchesChoices && matchesColor && matchesPattern && matchesFabricType && mostPopular;
+                });
+
+                filteredItems = filteredBoxes;
+                currentIndex = 0;
+                toggleFilteredPaginationButtons(filteredItems);
+
+               // showNextBoxes();
+
+                // Show first 24 matching results
+                allBoxes.hide();
+                if (filteredBoxes.length > 0) {
+                    filteredBoxes.slice(0, 24).show();
+                } else {
+                    // Optionally show "No matches" message here
+                }
+            } else if (selected == "More Choices") {
+                //$('.wrap-box').show();
+                const selectedFeatures = $('li#fabricFeature ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedChoice = $('li#moreChoices ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedColors = $('li#fabricColor ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedPatterns = $('li#fabricPattern ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedFabricTypes = $('li#fabricType ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+
+                const allBoxes = $('.wrap-box');
+
+                let filteredBoxes = allBoxes.filter(function() {
+                    const $box = $(this);
+                    const features = ($box.data('features') || '').toLowerCase();
+                    const choices = ($box.data('catalog-name') || '').toLowerCase();
+                    const color = ($box.data('color') || '').toLowerCase();
+                    const pattern = ($box.data('pattern') || '').toLowerCase();
+                    const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                    const popularValue = ($box.data('popular') || '').toLowerCase();
+
+                    const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                    const matchesChoices = selectedChoice.length === 0 || selectedChoice.some(val => choices.includes(val));
+                    const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                    const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                    const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+
+                    return matchesFeatures && matchesChoices && matchesColor && matchesPattern && matchesFabricType && popularValue;
+                });
+
+                filteredItems = filteredBoxes;
+                currentIndex = 0;
+                toggleFilteredPaginationButtons(filteredItems);
+
+               // showNextBoxes();
+
+
+                // Show first 24 matching results
+                allBoxes.hide();
+                if (filteredBoxes.length > 0) {
+                    filteredBoxes.slice(0, 24).show();
+                } else {
+                    // Optionally show "No matches" message here
+                }
+            }
+        });
+
+
+        $(".fabric-input").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+
+            if (value == "") {
+                const selectedFeatures = $('li#fabricFeature ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedChoice = $('li#moreChoices ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedColors = $('li#fabricColor ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedPatterns = $('li#fabricPattern ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedFabricTypes = $('li#fabricType ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+
+                //alert(selectedFeatures + selectedChoice + selectedColors + selectedPatterns + selectedFabricTypes);
+
+                const allBoxes = $('.wrap-box');
+
+
+
+                if ($('button.btn-popular.an-fab-btn').hasClass('active')) {
+
+                    let filteredBoxes = allBoxes.filter(function() {
+                        const $box = $(this);
+                        const features = ($box.data('features') || '').toLowerCase();
+                        const choices = ($box.data('catalog-name') || '').toLowerCase();
+                        const color = ($box.data('color') || '').toLowerCase();
+                        const pattern = ($box.data('pattern') || '').toLowerCase();
+                        const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                        const mostPopular = $box.data('popular') === 'Yes';
+
+                        const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                        const matchesChoices = selectedChoice.length === 0 || selectedChoice.some(val => choices.includes(val));
+                        const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                        const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                        const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+
+
+
+                        return matchesFeatures && matchesChoices && matchesColor && matchesPattern && matchesFabricType && mostPopular;
+                    });
+                    currentIndex = 0;
+                    toggleFilteredPaginationButtons(filteredBoxes);
+
+
+                    // Show first 24 matching results
+                    allBoxes.hide();
+                    if (filteredBoxes.length > 0) {
+                        filteredBoxes.slice(0, 24).show();
+                    } else {
+                        // Optionally show "No matches" message here
+                    }
+                } else if ($('.wrap-select.more-choices').hasClass('an-active')) {
+                    let filteredBoxes = allBoxes.filter(function() {
+                        const $box = $(this);
+                        const features = ($box.data('features') || '').toLowerCase();
+                        const choices = ($box.data('catalog-name') || '').toLowerCase();
+                        const color = ($box.data('color') || '').toLowerCase();
+                        const pattern = ($box.data('pattern') || '').toLowerCase();
+                        const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                        const popularValue = ($box.data('popular') || '').toLowerCase();
+                        const isPopularValid = popularValue === 'yes' || popularValue === 'no';
+
+
+                        const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                        const matchesChoices = selectedChoice.length === 0 || selectedChoice.some(val => choices.includes(val));
+                        const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                        const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                        const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+
+
+
+                        return matchesFeatures && matchesChoices && matchesColor && matchesPattern && matchesFabricType && isPopularValid;
+                    });
+
+                    currentIndex = 0;
+                    toggleFilteredPaginationButtons(filteredBoxes);
+
+
+                    // Show first 24 matching results
+                    allBoxes.hide();
+                    if (filteredBoxes.length > 0) {
+                        filteredBoxes.slice(0, 24).show();
+                    } else {
+                        // Optionally show "No matches" message here
+                    }
+                }
+
+
+            } else {
+
+                const selectedFeatures = $('li#fabricFeature ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedChoice = $('li#moreChoices ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedColors = $('li#fabricColor ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedPatterns = $('li#fabricPattern ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const selectedFabricTypes = $('li#fabricType ul.sub-filter input:checked').map(function() {
+                    return $(this).val().toLowerCase();
+                }).get();
+
+                const allBoxes = $("#fab-1 .wrap-box");
+
+                // Filter and toggle visibility based on text match
+                // const filteredBoxes = allBoxes.filter(function() {
+                //     const match = $(this).find('.hover-icon p.hover-i-img-text').text().toLowerCase().indexOf(value) > -1;
+                //     $(this).toggle(match);
+                //     return match;
+                // });
+
+                if ($('button.btn-popular.an-fab-btn').hasClass('active')) {
+                    let filteredBoxes = allBoxes.filter(function() {
+                        const $box = $(this);
+                        const features = ($box.data('features') || '').toLowerCase();
+                        const choices = ($box.data('catalog-name') || '').toLowerCase();
+                        const color = ($box.data('color') || '').toLowerCase();
+                        const pattern = ($box.data('pattern') || '').toLowerCase();
+                        const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                        const mostPopular = $box.data('popular') === 'Yes';
+
+                        const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                        const matchesChoices = selectedChoice.length === 0 || selectedChoice.some(val => choices.includes(val));
+                        const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                        const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                        const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+
+                        const match = $(this).find('.hover-icon p.hover-i-img-text').text().toLowerCase().indexOf(value) > -1;
+                        $(this).toggle(match);
+
+
+                        return match && matchesFeatures && matchesChoices && matchesColor && matchesPattern && matchesFabricType && popularValue;
+                    });
+
+                    filteredItems = filteredBoxes;
+                    currentIndex = 0;
+                    toggleFilteredPaginationButtons(filteredItems);
+
+                    // Hide all, then show first 24 matching
+                    allBoxes.hide();
+                    if (filteredBoxes.length > 0) {
+                        filteredBoxes.slice(0, 24).show();
+                    }
+                } else if ($('.wrap-select.more-choices').hasClass('an-active')) {
+                    let filteredBoxes = allBoxes.filter(function() {
+                        const $box = $(this);
+                        const features = ($box.data('features') || '').toLowerCase();
+                        const choices = ($box.data('catalog-name') || '').toLowerCase();
+                        const color = ($box.data('color') || '').toLowerCase();
+                        const pattern = ($box.data('pattern') || '').toLowerCase();
+                        const fabricType = ($box.data('fabric-type') || '').toLowerCase();
+                        const popularValue = ($box.data('popular') || '').toLowerCase();
+
+                        const matchesFeatures = selectedFeatures.length === 0 || selectedFeatures.some(val => features.includes(val));
+                        const matchesChoices = selectedChoice.length === 0 || selectedChoice.some(val => choices.includes(val));
+                        const matchesColor = selectedColors.length === 0 || selectedColors.some(val => color.includes(val));
+                        const matchesPattern = selectedPatterns.length === 0 || selectedPatterns.some(val => pattern.includes(val));
+                        const matchesFabricType = selectedFabricTypes.length === 0 || selectedFabricTypes.some(val => fabricType.includes(val));
+
+                        const match = $(this).find('.hover-icon p.hover-i-img-text').text().toLowerCase().indexOf(value) > -1;
+                        $(this).toggle(match);
+
+                      
+                        return match && matchesFeatures && matchesChoices && matchesColor && matchesPattern && matchesFabricType && popularValue;
+                    });
+
+                    currentIndex = 0;
+                    toggleFilteredPaginationButtons(filteredBoxes);
+
+                    // Hide all, then show first 24 matching
+                    allBoxes.hide();
+                    if (filteredBoxes.length > 0) {
+                        filteredBoxes.slice(0, 24).show();
+                    }
+                }
+
+
+            }
+        });
+
+
+        $('.add-to-cart-btn').click(function () {
+            const fileInput = $('#customUpload')[0];
+            const file = fileInput.files[0];
+            $('#config-loader').show();
+        
+            var length_1 = $('select.length_1').find(':selected').val();
+            var length_4 = $('select.length_4').find(':selected').val();
+            var width_2 = $('select.width_2').find(':selected').val();
+            var width_5 = $('select.width_5').find(':selected').val();
+            var thickness_3 = $('select.thickness_3').find(':selected').val();
+            var thickness_6 = $('select.thickness_6').find(':selected').val();
+        
+            var selectedFabric = $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text();
+            var fillOption = $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text();
+            var zipperOption = $('.zipper-options .custom-option.vn-active-btn .custom-btn').text();
+            var pipingOption = $('.piping-options .custom-option.vn-active-btn .custom-btn').text();
+            var tiesOption = $('.ties-options .custom-option.vn-active-btn .custom-btn').text();
+            var textareaNote = $('.design-right textarea').val();
+        
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length_1 || length_4,
+                width: width_2 || width_5,
+                height: thickness_3 || thickness_6,
+                fabric_name: selectedFabric.trim(),
+                fill: fillOption.trim(),
+                zipper: zipperOption.trim(),
+                piping: pipingOption.trim(),
+                ties: tiesOption.trim(),
+                quantity: 1,
+                different_piping_fabric: false
+            };
+        
+            var final_price = calculateQuote(data);
+        
+            const formData = new FormData();
+            formData.append('productId', $('#hiddenProductId').val());
+            formData.append('productSku', $('#hiddenProductSku').val());
+            formData.append('totalPrice', final_price);
+        
+            if (file) {
+                formData.append('custom_upload', file);
+            }
+        
+            $.ajax({
+                url: 'https://app.zipcushions.com/zipcushion-app/createVariant',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (item) {
+                    const variantId = item.variantId;
+                    const fileUrl = item.fileUrl;
+                    const productHandle = $('#hiddenProductHandle').val();
+        
+                    // Poll until variant is indexed in Shopify storefront
+                    function pollForVariant() {
+                        $.getJSON(`/products/${productHandle}.js`, function (product) {
+                            const found = product.variants.find(v => v.id == variantId);
+                            if (found) {
+                                // Variant available, add to cart
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/cart/add.js',
+                                    data: {
+                                        quantity: 1,
+                                        id: variantId,
+                                        properties: {
+                                            'Length': length_1,
+                                            'Length 2': length_4,
+                                            'Width': width_2,
+                                            'Width 2': width_5,
+                                            'Thickness': thickness_3,
+                                            'Thickness 2': thickness_6,
+                                            'Fabric': selectedFabric,
+                                            'Fill Option': fillOption,
+                                            'Zipper Option': zipperOption,
+                                            'Piping Option': pipingOption,
+                                            'Ties Option': tiesOption,
+                                            'Instructions': textareaNote,
+                                            'Uploaded Image': fileUrl
+                                        }
+                                    },
+                                    dataType: 'json',
+                                    success: function () {
+                                        window.location.href = "/cart";
+                                    }
+                                });
+                            } else {
+                                // Retry after delay
+                                setTimeout(pollForVariant, 2000);
+                            }
+                        });
+                    }
+        
+                    pollForVariant();
+                }
+            });
+        });
+
+
+
+        setTimeout(function() {
+            let length = null,
+                width = null,
+                height = null;
+            $('.cushion-field').each(function() {
+                const label = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (label.includes('length') && length === null) {
+                    length = value;
+                } else if (label.includes('width') && width === null) {
+                    width = value;
+                } else if ((label.includes('height') || label.includes('thickness')) && height === null) {
+                    height = value;
+                }
+            });
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text().trim(),
+                zipper: $('.zipper-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                piping: $('.piping-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                ties: $('.ties-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                quantity: 1, // Set default or get from user input
+                different_piping_fabric: false // Default, or get from another toggle/input
+            };
+
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+
+            var length_1 = $('select.length_1').find(':selected').val();
+            var length_4 = $('select.length_4').find(':selected').val();
+            var width_2 = $('select.width_2').find(':selected').val();
+            var width_5 = $('select.width_5').find(':selected').val();
+            var thickness_3 = $('select.thickness_3').find(':selected').val();
+            var thickness_6 = $('select.thickness_6').find(':selected').val();
+
+            var selectedFabric = $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text();
+            var selectedCategory = $('.wrap-box.vn-active-btn').data('catalog-name');
+            var fillOption = $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text();
+            var zipperOption = $('.zipper-options .custom-option.vn-active-btn .custom-btn').text();
+            var pipingOption = $('.piping-options .custom-option.vn-active-btn .custom-btn').text();
+            var tiesOption = $('.ties-options .custom-option.vn-active-btn .custom-btn').text();
+
+            $('.fabricValue').text(selectedFabric);
+            $('.pipingOption').text(pipingOption);
+            $('.tieOption').text(tiesOption);
+            $('.fillOption').text(fillOption);
+            $('.zipperOption').text(zipperOption);
+            $('.lenthValue').text(length_1);
+            $('.widthValue').text(width_2);
+            $('.thicknessValue').text(thickness_3);
+            $('.selectedCategory').text(selectedCategory);
+
+        }, 5000);
+
+        $('body').on('click', '.piping-options .option-row .custom-option', function() {
+            var piping = $(this).find('.custom-btn').text();
+            $('.pipingOption').text(piping);
+
+            let length = null,
+                width = null,
+                height = null;
+            $('.cushion-field').each(function() {
+                const label = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (label.includes('length') && length === null) {
+                    length = value;
+                } else if (label.includes('width') && width === null) {
+                    width = value;
+                } else if ((label.includes('height') || label.includes('thickness')) && height === null) {
+                    height = value;
+                }
+            });
+
+
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text().trim(),
+                zipper: $('.zipper-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                piping: piping,
+                ties: $('.ties-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                quantity: 1, // Set default or get from user input
+                different_piping_fabric: false // Default, or get from another toggle/input
+            };
+
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+        });
+
+        $('body').on('click', '.ties-options .option-row .custom-option', function() {
+            var ties = $(this).find('.custom-btn').text();
+            $('.tieOption').text(ties);
+
+            let length = null,
+                width = null,
+                height = null;
+            $('.cushion-field').each(function() {
+                const label = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (label.includes('length') && length === null) {
+                    length = value;
+                } else if (label.includes('width') && width === null) {
+                    width = value;
+                } else if ((label.includes('height') || label.includes('thickness')) && height === null) {
+                    height = value;
+                }
+            });
+
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text().trim(),
+                zipper: $('.zipper-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                piping: $('.piping-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                ties: ties,
+                quantity: 1, // Set default or get from user input
+                different_piping_fabric: false // Default, or get from another toggle/input
+            };
+
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+
+        });
+
+        $('body').on('click', '.fiber-fill .option-row .custom-option', function() {
+            var fill = $(this).find('.custom-btn').text();
+            $('.fillOption').text(fill);
+
+            let length = null,
+                width = null,
+                height = null;
+            $('.cushion-field').each(function() {
+                const label = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (label.includes('length') && length === null) {
+                    length = value;
+                } else if (label.includes('width') && width === null) {
+                    width = value;
+                } else if ((label.includes('height') || label.includes('thickness')) && height === null) {
+                    height = value;
+                }
+            });
+
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: fill,
+                zipper: $('.zipper-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                piping: $('.piping-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                ties: $('.ties-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                quantity: 1, // Set default or get from user input
+                different_piping_fabric: false // Default, or get from another toggle/input
+            };
+
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+        });
+
+        $('body').on('click', '.zipper-options .option-row .custom-option', function() {
+            var zipper = $(this).find('.custom-btn').text();
+            $('.zipperOption').text(zipper);
+
+            let length = null,
+                width = null,
+                height = null;
+            $('.cushion-field').each(function() {
+                const label = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (label.includes('length') && length === null) {
+                    length = value;
+                } else if (label.includes('width') && width === null) {
+                    width = value;
+                } else if ((label.includes('height') || label.includes('thickness')) && height === null) {
+                    height = value;
+                }
+            });
+
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text().trim(),
+                zipper: zipper,
+                piping: $('.piping-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                ties: $('.ties-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                quantity: 1, // Set default or get from user input
+                different_piping_fabric: false // Default, or get from another toggle/input
+            };
+
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+        });
+
+        $('body').on('click', '.wrap-box', function() {
+            $('.wrap-box').removeClass('vn-active-btn'); // Remove from all
+            $(this).addClass('vn-active-btn'); // Add to clicked one
+
+            var lifestyleImage = $(this).data('lifestyleimage');
+            if(lifestyleImage != ''){
+              $('#lifestyleimage').show();
+             $('#lifestyleimage').attr('src', lifestyleImage);
+            } else {
+              $('#lifestyleimage').hide();
+            }
+            var selectedFabric = $(this).find('.hover-icon .hover-i-img-text').text();
+            var selectedCategory = $('.wrap-box.vn-active-btn').data('catalog-name');
+            $('.fabricValue').text(selectedFabric);
+            $('.selectedCategory').text(selectedCategory);
+
+            // Initialize dynamic dimensions
+            let length = null,
+                width = null,
+                height = null;
+
+            // Dynamically find first matching dimensions
+            $('.cushion-field').each(function() {
+                const label = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (label.includes('length') && length === null) {
+                    length = value;
+                } else if (label.includes('width') && width === null) {
+                    width = value;
+                } else if ((label.includes('height') || label.includes('thickness')) && height === null) {
+                    height = value;
+                }
+            });
+
+            var data = {
+                prices: $(this).data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text().trim(),
+                zipper: $('.zipper-options .custom-option.vn-active-btn .custom-btn').text(),
+                piping: $('.piping-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                ties: $('.ties-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                quantity: 1, // Set default or get from user input
+                different_piping_fabric: false // Default, or get from another toggle/input
+            };
+
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+        });
+
+        // $('.fabric-buttons .an-fab-btn').click(function() {
+        //     var selectedBtn = $(this).text();
+        //     if (selectedBtn == "Most Popular") {
+        //         $('.selectedCategory').text(selectedBtn);
+        //     }
+
+        // });
+
+        // $('body').on('change', 'li#moreChoices ul.sub-filter li label', function() {
+        //     var choosedCatalog = $(this).find('input').val();
+
+        //     $('.selectedCategory').text(choosedCatalog);
+        // });
+
+
+        /** calulate price */
+        function calculateQuote(data) {
+            var getShapeDate = localStorage.getItem("fabricShape");
+            const raw_length = parseFloat(data.length);
+            const raw_width = parseFloat(data.width);
+            const raw_height = parseFloat(data.height);
+            const shape = getShapeDate;
+            const fill_type = data.fill.toLowerCase();
+            const piping = data.piping ? data.piping.toLowerCase() : 'no';
+            const different_piping_fabric = data.different_piping_fabric || false;
+            const ties = (data.ties || 'no').toString().toLowerCase();
+            const prices = parseFloat(data.prices);
+            //alert(prices+'price');
+         // alert(ties);
+
+            if (!data.fabric_name) {
+                return {
+                    success: false,
+                    error: 'Missing fabric_name'
+                };
+            }
+
+            /** const match = fabricSheet.find(row => row.Fabric === data.fabric_name);
+             if (!match) {
+                 return { success: false, error: 'Fabric not found' };
+             } */
+
+            const fabric_price = prices;
+            const quantity = parseInt(data.quantity) || 1;
+            const length = Math.ceil(raw_length * 2) / 2;
+            const width = Math.ceil(raw_width * 2) / 2;
+            const height = Math.ceil(raw_height);
+
+            const shape_base_map = {
+                'round': 15,
+                't-shape': 20,
+                'tapered': 20,
+                'l-shape': 15,
+                'triangle': 10,
+                'trapezium': 15,
+                'bolster': 10,
+                'semi-round': 10
+            };
+            const shape_base = shape_base_map[shape] || 0.1;
+
+            const side1 = (2 * height) + Math.max(length, width);
+            const side2 = (2 * height) + Math.min(length, width);
+
+
+            let fabric_inches;
+            if (side1 <= 27) fabric_inches = side2;
+            else if (side1 <= 54) fabric_inches = 2 * side2;
+            else if (side2 > 54) fabric_inches = 6 * side2;
+            else if (side2 <= 27) fabric_inches = side1;
+            else fabric_inches = 2 * side1;
+
+            const yards = fabric_inches * 0.028;
+            const fabric_cost = yards * fabric_price;
+
+            const max_side = Math.max(length, width);
+            let labor = 25;
+            if (max_side <= 24) labor = 8;
+            else if (max_side <= 48) labor = 12;
+            else if (max_side <= 72) labor = 16;
+            else if (max_side <= 96) labor = 20;
+
+            let foam_multiplier = 0.596;
+            if (max_side <= 12) foam_multiplier = 0.063;
+            else if (max_side <= 18) foam_multiplier = 0.095;
+            else if (max_side <= 36) foam_multiplier = 0.179;
+            else if (max_side <= 48) foam_multiplier = 0.264;
+            else if (max_side <= 60) foam_multiplier = 0.322;
+            else if (max_side <= 72) foam_multiplier = 0.390;
+            else if (max_side <= 84) foam_multiplier = 0.459;
+            else if (max_side <= 96) foam_multiplier = 0.528;
+
+            const foam = foam_multiplier * Math.min(length, width) * height;
+
+            let fill_cost;
+            if (fill_type === "dry fast foam") fill_cost = foam * 1.4;
+            else if (fill_type === "fiber fill") fill_cost = 0.004 * length * width * height;
+            else if (fill_type === "covers only") fill_cost = 0;
+            else fill_cost = foam;
+
+            let piping_cost = 0;
+            if (piping === 'piping') {
+                if (max_side <= 24) piping_cost = 12;
+                else if (max_side <= 48) piping_cost = 18;
+                else if (max_side <= 72) piping_cost = 24;
+                else if (max_side <= 96) piping_cost = 30;
+                else piping_cost = 36;
+                if (different_piping_fabric) piping_cost *= 2;
+            }
+
+            const tie_map = {
+                "no ties": 0,
+                "2 sides": 10,
+                "4 sides": 16,
+                "8": 22
+            };
+            const ties_cost = tie_map[ties] !== undefined ? tie_map[ties] : 28;
+
+            let packaging = 8;
+            if (fill_type === "covers") packaging = 4;
+            else if (max_side <= 24) packaging = 3.2;
+            else if (max_side <= 48) packaging = 4;
+            else if (max_side <= 72) packaging = 5.6;
+            else if (max_side <= 96) packaging = 6.4;
+
+            let shipping;
+            if (fill_type === "covers") {
+                const fabric_weight = Math.ceil(226.8 * yards / 1000);
+                shipping = (1200 * fabric_weight / 75) * 1.2;
+            } else {
+                const volume_in = length * width * height;
+                const volume_cm = volume_in * 16.387064;
+                const compressed_volume = volume_cm * 0.2 * 1.2;
+                const volume_weight = compressed_volume / 5000;
+                const base_shipping = volume_weight <= 11 ?
+                    (800 * volume_weight / 75) : (700 * volume_weight / 75);
+                const fabric_weight = Math.ceil(226.8 * yards / 1000);
+                const alt_shipping = (1200 * fabric_weight / 75) * 1.2;
+                shipping = Math.max(base_shipping, alt_shipping);
+                if (length > 45 && width > 45) shipping += 35;
+            }
+
+            const unit_subtotal = shape_base + fabric_cost + labor + fill_cost + piping_cost + ties_cost + packaging + shipping;
+            const subtotal = unit_subtotal * quantity;
+            const unit_final_price = Math.round(unit_subtotal * 2.05 * 100) / 100;
+            const final_price = Math.round(subtotal * 2.05 * 100) / 100;
+
+            return final_price;
+
+        }
+
+
+        /** end calculate price */
+
+
+        $('body').on('change', 'select', function() {
+            // Update summary table cell
+            var label_name = $(this).closest('.cushion-field').find('label').text().replace(/\s+/g, '');
+            var selectedOption = $(this).find(":selected").val();
+            $('td.' + label_name + 'Value').text(selectedOption);
+
+            // Initialize placeholders
+            let length = null,
+                width = null,
+                height = null;
+
+            // Scan each .cushion-field for label match
+            $('.cushion-field').each(function() {
+                const labelText = $(this).find('label').text().trim().toLowerCase();
+                const value = parseInt($(this).find('select option:selected').val()) || 0;
+
+                if (labelText.includes('length') && length === null) {
+                    length = value;
+                } else if (labelText.includes('width') && width === null) {
+                    width = value;
+                } else if (labelText.includes('thickness') && height === null) {
+                    height = value;
+                }
+            });
+
+            // Build final data object
+            var data = {
+                prices: $('.wrap-box.vn-active-btn').data('prices'),
+                length: length || 0,
+                width: width || 0,
+                height: height || 0,
+                fabric_name: $('.wrap-box.vn-active-btn .hover-icon .hover-i-img-text').text().trim(),
+                fill: $('.wrap-block-option.fiber-fill .custom-option.vn-active-btn .custom-btn').text().trim(),
+                zipper: $('.zipper-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                piping: $('.piping-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                ties: $('.ties-options .custom-option.vn-active-btn .custom-btn').text().trim(),
+                quantity: 1,
+                different_piping_fabric: false
+            };
+
+            // Calculate and update price
+            var final_price = calculateQuote(data);
+            $('#total-price').text('$' + final_price);
+            $('.price-btn button, .modal_price.subtitle .price-ui .money').text('$' + final_price + " USD");
+        });
+
+
+
+        /** clear filter */
+        $('.wrap-filter button.clear-btn').on('click', function() {
+            $('li.dop_parent_filter ul.sub-filter li input[type="checkbox"]').each(function() {
+                if ($(this).is(':checked')) {
+                    $(this).prop('checked', false).trigger('change'); // trigger only if checked
+                }
+            });
+        });
+
+
+        $('.wrap-select').on('click', 'li#moreChoices', function(e) {
+           if ($(e.target).closest('ul.sub-filter').length > 0) {
+                return;
+            }
+          
+           fetchData(currentPage);
+
+            $(this).closest('.wrap-select').addClass('an-active');
+
+            const $btn = $('button.btn-more.an-fab-btn');
+            const $span = $(this).find('span.vn-tab-names');
+
+            if (!$btn.hasClass('active')) {
+                $btn.trigger('click');
+            }
+
+            setTimeout(function() {
+                $span.toggleClass('an-active');
+
+            }, 500);
+
+
+
+        });
+
+       $('body').on('click', '.configuratorr-btn', function(e){
+         e.preventDefault();
+         $('#dimension-fields').empty();
+         $('#myModal').addClass('active');
+         var productId = $(this).closest('.cart__card.container').data('productid');
+         var variantId = $(this).closest('.cart__card.container').data('variant-id');
+         var variantsku = $(this).closest('.cart__card.container').data('productsku');
+         var productHandle = $(this).closest('.cart__card.container').data('producthandle');
+         $('#myModal').attr('data-productid', productId);
+         $('#myModal').attr('data-variantid', variantId);
+         $('#myModal').attr('data-variantsku', variantsku);
+         $('#myModal').attr('data-producthandle', productHandle);
+         fetchData(currentPage, productId);
+
+          $.getJSON('/cart.js', function(cart) {
+              cart.items.forEach(function(item) {
+                if (item.variant_id == variantId) {
+                  const props = item.properties;
+            
+                  console.log('--- Matching Variant Found ---');
+                  console.log('Product ID:', item.product_id);
+                  console.log('Variant ID:', item.variant_id);
+                  var length = props['Length'];
+                  var width = props['Width'];
+                  var thickness = props['Thickness'];
+                  var fabric = props['Fabric'];
+                  var fill_option = props['Fill Option'];
+                  var zipper_option = props['Zipper Option'];
+                  var piping_option = props['Piping Option'];
+                  var tie_option = props['Ties Option'];
+                  var length_1 = props['Length 1'];
+                  var width_1 = props['Width 1'];
+                  var thickness_1 = props['Thickness 1'];
+                  var upload_image = props['Uploaded Image'];
+
+                  setTimeout(function(){
+                    $('.btn-popular.an-fab-btn').trigger('click');
+                    $('.wrap-box, .fiber-fill .custom-option, .zipper-options .custom-option, .piping-options .custom-option, .ties-options .custom-option').removeClass('vn-active-btn');
+                    
+                    $('.wrap-box[data-fabric-name="'+fabric+'"]').addClass('vn-active-btn');
+                    $('.fiber-fill .custom-option[data-name="'+fill_option+'"]').addClass('vn-active-btn');
+                    $('.zipper-options .custom-option[data-name="'+zipper_option+'"]').addClass('vn-active-btn');
+                    $('.piping-options .custom-option[data-name="'+piping_option+'"]').addClass('vn-active-btn');
+                    $('.ties-options .custom-option[data-name="'+tie_option+'"]').addClass('vn-active-btn');
+
+                    $('.length_1 option[value="'+length+'"]').prop('selected', true);
+                    $('.width_2 option[value="'+width+'"]').prop('selected', true);
+                    $('.thickness_3 option[value="'+thickness+'"]').prop('selected', true);
+                    $('.wrap-box[data-fabric-name="'+fabric+'"]').trigger('click');
+                    $('.fiber-fill .custom-option[data-name="'+fill_option+'"]').trigger('click');
+                    $('.zipper-options .custom-option[data-name="'+zipper_option+'"]').trigger('click');
+                    $('.piping-options .custom-option[data-name="'+piping_option+'"]').trigger('click');
+                    $('.ties-options .custom-option[data-name="'+tie_option+'"]').trigger('click');
+                  }, 2000);
+                }
+              });
+           });
+
+         
+       });
+    }); 
+</script>

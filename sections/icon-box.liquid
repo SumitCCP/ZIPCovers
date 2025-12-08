@@ -1,0 +1,220 @@
+<div class="icon-box-section {{ section.id }}">
+    <div class="icon-heading"><h2>{{ section.settings.heading }}</h2></div>
+    <div class="icon-box-inner section">
+	    {%- for block in section.blocks -%}
+        <div class="icon-box">
+		    <div class="head-box">
+			    {%- if block.settings.img_01 != blank -%}
+                    <img src="{{ block.settings.img_01 | img_url: 'master'  }}">
+                {%- endif -%}
+				<h3>{{ block.settings.title }}</h3>
+			</div>
+			<div class="text-box">
+			    {{ block.settings.text }}
+			</div>
+		</div>  
+        {% endfor %}		
+    </div>
+  <!------------------mobile-slider----------------------->
+  <div class="icon-box-inner1 section">
+	    {%- for block in section.blocks -%}
+        <div class="icon-box">
+          <div class="icon-inner">
+		    <div class="head-box">
+			    {%- if block.settings.img_01 != blank -%}
+                    <img src="{{ block.settings.img_01 | img_url: 'master'  }}">
+                {%- endif -%}
+				<h3>{{ block.settings.title }}</h3>
+			</div>
+			<div class="text-box">
+			    {{ block.settings.text }}
+			</div>
+          </div>
+		</div>  
+        {% endfor %}		
+    </div>
+  <!---------------slider-ends---------------------------->
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+$(document).ready(function(){
+      $('.icon-box-inner1').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false,
+        speed: 300,
+        infinite: true,
+        autoplaySpeed: 5000,
+        autoplay: true,
+        centerMode: true,
+		centerPadding: '20%',
+      });
+    });
+</script>
+
+<style>
+.icon-box-section.{{ section.id }}{
+   width: 100%;
+   background:{{section.settings.color_accent}};
+   padding-top: {{section.settings.p_t}}px;
+   padding-bottom: {{section.settings.p_b}}px;
+}
+
+.icon-box-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    max-width: 1300px;
+}
+.icon-box {
+    padding: 16px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 3px 3px 15px #00000014;
+}
+.head-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.head-box h3 {
+    font-size: 16px;
+   font-family: Lato-SemiBold;
+}
+.head-box img {
+    width: 30px;
+    height: 29px;
+    object-fit: contain;
+}
+.text-box p {
+    font-size: 14px;
+    color: #00000099;
+    line-height: 20px;
+}
+.icon-box-inner1.section.slick-initialized.slick-slider {
+    display: none;
+}
+.icon-heading h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Lato-SemiBold;
+}
+@media (max-width: 767px) {
+.icon-box-inner1.section.slick-initialized.slick-slider {
+    display: block;
+    margin-bottom: 0;
+}
+.icon-box-inner{
+  display: none;
+}
+.icon-box-inner1 .icon-box {
+    padding: 0 8px 10px;
+    background: transparent;
+    border-radius: 8px;
+    box-shadow: none;
+    height: auto!important;
+}
+.icon-box-inner1 .icon-inner {
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 3px 3px 15px #00000014;
+    min-height: 151px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+.icon-heading h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+.icon-box-section {
+    padding-top: 10px!important;
+    padding-bottom: 26px!important;
+}
+}
+</style>
+
+
+
+{% schema %}
+    {
+        "name": "Icon Box",
+        "settings": [
+		  {
+  		     "type": "color",
+  		     "id": "color_accent",
+  		     "label": "Background color",
+  		     "default": "#fff"
+		  },
+          {
+             "type": "text",
+             "id": "heading",
+             "label": "Heading"
+          },
+		  {
+             "type": "range",
+             "id": "p_t",
+             "default": 50,
+             "label": "Padding Top",
+             "max": 300,
+             "min": 0,
+             "step": 5,
+             "unit": "Px"
+         }, 
+	     {
+             "type": "range",
+             "id": "p_b",
+             "default": 50,
+             "label": "Padding Bottom",
+             "max": 300,
+             "min": 0,
+             "step": 5,
+             "unit": "Px"
+           }
+        ],
+        "blocks": [
+        {
+          "type": "item",
+          "name": "item",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "img_01",
+              "label": "Image"
+            },
+            {
+              "type": "inline_richtext",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "richtext",
+              "id": "text",
+              "label": "Text"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Icon Box",
+          "blocks": [
+            {
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    }
+{% endschema %}

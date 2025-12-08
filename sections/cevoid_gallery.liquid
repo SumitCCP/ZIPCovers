@@ -1,0 +1,29 @@
+<div class="page-width">
+
+  <div style="margin-bottom: {{ section.settings.text_margin }}px; text-align: {{ section.settings.text_alignment }};">
+
+    {%- assign title = section.settings.title -%}
+  {%- assign paragraph = section.settings.paragraph -%}
+
+    {%- assign code = section.settings.div-code -%}
+    <section class="home-section content-area {% if title != blank %}has-heading{% endif %}">
+      {% if title != blank %}
+        <h2 class="section-title">{{ title }}</h2>
+      {% endif %}
+
+       {% if paragraph != blank %}
+        <p class="section-paragraph">{{ paragraph }}</p>
+      {% endif %}
+
+
+      </div>
+
+      <div class="cevoid-wrapper">
+      {{ code }}
+      </div>
+    </section>
+  </div>
+
+    {% schema %}
+    {"name":"Cevoid Gallery","settings":[{"type":"textarea","id":"div-code","label":"Paste Cevoid div code","placeholder":"For example: <div id=\"cevoid-container\" data-type=\"feed\" data-campaign=\"store\" />","info":"Press save to see your changes"},{"type":"text","id":"title","label":"Title","default":"See it styled by our community"},{"type":"text","id":"paragraph","label":"Paragraph","default":"Share your photo here or mention us on Instagram to be featured"},{"type":"select","id":"text_alignment","label":"Text alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"center"},{"type":"range","id":"text_margin","min":0,"max":64,"step":1,"unit":"px","label":"Margin between text and gallery","default":30}],"presets":[{"category":"Cevoid","name":"Cevoid gallery"}]}
+    {% endschema %}

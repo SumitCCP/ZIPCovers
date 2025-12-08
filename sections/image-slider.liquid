@@ -1,0 +1,157 @@
+{% if page.metafields.custom.page_review_image != blank %}
+
+<div class="image-slider" role="region" aria-label="{{ section.settings.heading | escape }}">
+  <div class="containerTitle">
+    <h2>Personalized Comfort For Your {{  page.title }}</h2>
+  </div>
+
+  <div class="image-slider-wrapper">
+    <button type="button"
+            class="blog-scroll-btn blog-scroll-btn--prev"
+            aria-label="Scroll left"
+            aria-controls="slider-{{ section.id }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+  <div id="slider-{{ section.id }}" class="slider-container" aria-live="polite">
+    {% for ref in page.metafields.custom.page_review_image.value %}
+      {% if ref.image %}
+        {{ ref.image
+          | image_url: width: 1600
+          | image_tag:
+            alt: ref.image.alt | default: section.settings.heading,
+            class: 'slider-img',
+            loading: 'lazy'
+        }}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+
+    <button type="button"
+            class="blog-scroll-btn blog-scroll-btn--next"
+            aria-label="Scroll right"
+            aria-controls="slider-{{ section.id }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+{% endif %}
+
+<style>
+.image-slider { max-width: 1300px; margin: 50px auto; padding: 50px 0; text-align: center; }
+.image-slider-wrapper { width: 100%; position: relative; }
+
+/* scroller */
+.slider-container{
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 20px;
+  scrollbar-width: none;
+}
+.slider-container::-webkit-scrollbar{ display: none; }
+
+.slider-container img{
+  inline-size: clamp(220px, 30vw, 360px);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  scroll-snap-align: start;
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* Scroll Buttons */
+.blog-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.blog-scroll-btn--next { right: 6px; }
+.blog-scroll-btn--prev { left: 6px; }
+.blog-scroll-btn[disabled]{ opacity: .4; pointer-events: none; }
+.blog-scroll-btn svg{ width: 20px; height: 20px; }
+.blog-scroll-btn:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+</style>
+
+<script>
+(function(){
+  function init(root){
+    const scroller = root.querySelector('.slider-container');
+    const btnNext  = root.querySelector('.blog-scroll-btn--next');
+    const btnPrev  = root.querySelector('.blog-scroll-btn--prev');
+    if (!scroller) return;
+
+    const STEP = () => Math.max(240, Math.round(scroller.clientWidth * 0.6));
+    const hasItems = scroller.children.length > 0;
+
+    function go(delta){ scroller.scrollBy({ left: delta, behavior: 'smooth' }); }
+    function updateArrows(){
+      if (!hasItems) {
+        if (btnPrev) btnPrev.hidden = true;
+        if (btnNext) btnNext.hidden = true;
+        return;
+      }
+      const max = Math.max(0, scroller.scrollWidth - scroller.clientWidth - 1);
+      if (btnPrev) btnPrev.disabled = scroller.scrollLeft <= 0;
+      if (btnNext) btnNext.disabled = scroller.scrollLeft >= max;
+    }
+
+    btnNext && btnNext.addEventListener('click', e => { e.preventDefault(); go(STEP()); });
+    btnPrev && btnPrev.addEventListener('click', e => { e.preventDefault(); go(-STEP()); });
+
+    scroller.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+
+    scroller.querySelectorAll('img').forEach(img => {
+      if (img.complete) return;
+      img.addEventListener('load', updateArrows, { once: true });
+    });
+
+    updateArrows();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.image-slider').forEach(init);
+  });
+
+  document.addEventListener('shopify:section:load', (e) => {
+    const root = e.target?.querySelector('.image-slider');
+    if (root) init(root);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Image slider",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Personalized Comfort For Your" }
+  ],
+  "presets": [
+    { "name": "Image slider", "category": "Custom" }
+  ]
+}
+{% endschema %}

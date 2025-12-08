@@ -1,0 +1,644 @@
+{% assign collections_to_show = "drapery-curtains,upholstery-fabrics" | split: "," %}
+{% assign product_types = "Chair Cover,Bench Cover,Couch Cover,Ottoman Cover,Chaise Lounge Cover,Adirondack Chair Cover,Daybed Cover" | split: "," %}
+<div class="collection-banner">
+  {% if collection.image %}
+  <img src="{{ collection.image | img_url: '1920x600' }}" alt="{{ collection.title }}">
+  {% endif %}
+</div>
+ <div class="collection-banner-mobile">
+  {% if collection.metafields.custom.collection_banner_image %}
+    {% assign ImageRef = collection.metafields.custom.collection_banner_image.value %}
+<img src="{{ ImageRef | image_url: width: 600 }}" alt="{{ collection.title }}">
+{% endif %}
+</div> 
+
+<div class="cll-bredgrum"><a href="/">Home &nbsp;> &nbsp;</a><a href="/collections">Collections</a><p>&nbsp; > &nbsp; {{ collection.title }}</p></div>
+
+
+{% comment %} <h1>Custom Replacement Cushions for Top Outdoor Furniture Brands</h1> {% endcomment %}
+
+<div class="main-container">
+
+<!-- Filter Options -->
+{% comment %} <div class="filters">
+  <div><label for="collection-filter">Filter by Collection:</label>
+  <select id="collection-filter">
+    <option value="all">Show All</option>
+    {% for collection_handle in collections_to_show %}
+      {% assign current_collection = collections[collection_handle] %}
+      <option value="{{ collection_handle }}">{{ current_collection.title }}</option>
+    {% endfor %}
+  </select>
+</div>
+ <div> <label for="product-filter">Filter by Product Type:</label>
+  <select id="product-filter">
+    <option value="all">Show All</option>
+    {% for type in product_types %}
+      <option value="{{ type }}">{{ type }}</option>
+    {% endfor %}
+  </select>
+ </div>
+</div> {% endcomment %}
+
+<div id="collections-container">
+  {% for collection_handle in collections_to_show %}
+    {% assign current_collection = collections[collection_handle] %}
+    
+    <div class="collection-wrapper" data-collection="{{ collection_handle }}">
+  <div class="collection-title"><h2>{{ current_collection.title }}</h2><a href="{{ collection_handle }}">Explore All</a></div> 
+
+
+      <div class="collection-grid">
+        {% for product in current_collection.products limit: 50 %}
+          <div class="product-item" data-title="{{ product.title }}">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+            </a>
+            <p class="product-title">{{ product.title }}</p>
+            <p class="product-price">{{ product.price | money }}</p>
+            <a href="{{ product.url }}" class="view-product-btn">Order Now</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+   <div class="mobile-explore-btn"><a href="{{ collection_handle }}">Explore All</a></div>
+  {% endfor %}
+</div>
+
+
+<div class="skcontainer">
+  <div class="calltoaction">
+
+ <p>
+  From simple silhouettes to complex designs — any shape, any size, any style, we bring your perfect custom design to life. 
+  And if you’re looking for something truly unique, just give us a call at 
+  <a href="tel:+17206277225" class="phone-link" style="font-weight:bold;">+1 (720) 627-7225</a>. 
+  Our team will be happy to help you create almost any custom shape you can imagine!
+</p>
+
+  </div>
+
+</div>
+</div>
+<!-- Collection Description -->
+{% if collection.description != blank %}
+<div class="collection-description">
+  {{ collection.description }}
+</div>
+{% endif %}
+{% section 'Order-Steps' %}
+{% section 'collection-faq-dynamic' %}
+
+{% style %}
+.cll-bredgrum{
+  width:100%;
+  max-width:1300px;
+  margin:0 auto;
+  padding:0 5px;
+  display:flex;
+  margin-bottom: 50px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cll-bredgrum a{
+  font-size:15px !important;
+}
+.cll-bredgrum p{
+  font-size:15px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+@media (max-width:400px){
+  .cll-bredgrum a{
+  font-size:12px !important;
+}
+.cll-bredgrum p{
+  font-size:12px !important;
+}
+}
+/* Collection Banner */
+.collection-banner {
+width: 100%;
+margin-bottom: 10px;
+position:relative;
+}
+.filters{
+  padding-right:5px;
+}
+.collection-banner img {
+width: 100%;
+height: 500px;
+object-fit: cover;
+}
+.collection-banner-mobile {
+display:none;
+width: 100%;
+margin-bottom: 50px;
+position:relative;
+}
+
+.collection-banner-mobile img {
+width: 100%;
+height: auto;
+object-fit: cover;
+}
+@media (max-width: 600px){
+.collection-banner {
+  display:none;
+}
+.collection-banner-mobile {
+  display:block;
+  width: 100%;
+  margin-bottom: 50px;
+  position:relative;
+}
+
+}
+
+
+  .main-container{
+    width:100%;
+    margin-top:80px
+  }
+  .skcontainer{
+    max-width:1300px;
+    margin:20px auto;
+  }
+  .calltoaction{
+    max-width:1000px;
+    margin:50px auto;
+    background:#F1F1F1;
+    padding:40px 60px;
+    border-radius:10px;
+    text-align:center;
+  }
+  @media only screen and (max-width: 600px){
+  .skcontainer{
+    width:100%;
+    padding:50px 0px;
+  }
+  .calltoaction{
+    max-width:350px;
+    padding:20px 40px;
+    margin:20px auto;
+  }
+    
+  }
+.filters {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin: auto;
+  max-width: 1300px;
+  margin-bottom: -50px;
+}
+
+.filters div {
+  width: auto; /* don’t force 50% width */
+}
+
+.filters select {
+  width:150px;
+ padding: 8px 35px 8px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: #fff url("data:image/svg+xml;utf8,<svg fill='%23000' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+  background-size: 16px;
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+h1{
+  text-align:center;
+  font-weight: bold;
+  max-width:1300px;
+  padding: 100px 50px;
+  font-size: xxx-large;
+  margin:auto;
+}
+  h3{
+    color:black;
+  }
+  .calltoaction p{
+  /* font-weight: bold; */
+  padding-bottom: 20px;
+  font-size: large;
+  color:black;
+  }
+  .mobile-explore-btn{
+    max-width:1300px;
+    display: none;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 30px;
+  }
+   .mobile-explore-btn a{
+     padding:8px 15px;
+    background:#ccc;
+    text-decoration:none;
+    border-radius:8px;
+  }
+  .collection-title{
+    max-width:1300px;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  }
+  .collection-title a{
+     padding:10px 25px;
+    background:#ccc;
+    text-decoration:none;
+    border-radius:10px;
+  }
+ .collection-wrapper h2 {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-explore-btn{
+    display:flex;
+  }
+  .collection-title a{
+display:none;
+  }
+  .collection-wrapper h2 {
+    font-size: x-large;
+      width: 95%;
+      margin:auto;
+      text-align:center
+  }
+  .calltoaction p{
+    font-size: large;
+  }
+h1{
+  text-align:center;
+  font-weight: bold;
+  width:100%;
+  padding: 100px 20px;
+  font-size: xx-large;
+}
+ .filters{
+    width: 100%;
+    padding: 0 12px;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: space-between;   /* center the whole group */
+    align-items: center;
+    gap: 12px;                 /* space between the two boxes */
+    flex-wrap: wrap;           /* allow wrapping if needed */
+    margin-bottom: -60px;
+  }
+  .filters div{
+    width: auto;               /* don’t stretch columns */
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* center label + select */
+  }
+  .filters label{
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .filters select{
+    width: 130px;              /* comfortable tap width */
+    font-size: 14px;
+    padding: 8px 30px 8px 10px;
+    background-position: right 8px center; /* keep arrow tidy */
+  }
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin: auto;
+  max-width:1300px;
+  border-top: 2px #ccc solid;
+  padding-top: 30px;
+}
+/* .collection-wrapper:first-child h2{display:none;} */
+@media (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 95%;
+  }
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  display: flex !important;
+      flex-direction: column;
+      justify-content: space-between;
+}
+
+.product-item:hover {
+  border: 1px solid #2A4D4A;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-title {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #000;
+}
+
+.product-price {
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+}
+
+.view-product-btn {
+  display: inline-block;
+  background: #2A4D4A;
+  border: 2px #2A4D4A solid;
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.view-product-btn:hover {
+  background-color: #fff;
+  color: #2A4D4A;
+}
+  @media only screen and (max-width: 600px){
+    .view-product-btn{
+       padding: 7px 10px;
+      font-size: 12px;
+    }
+    .product-price {
+  font-size: 15px;
+}
+  }
+
+/* Collection Description */
+.collection-description {
+max-width: 1200px;
+margin: 50px auto;
+padding: 20px;
+color: #000;
+}
+.collection-description p{
+  text-align:justify;
+}
+.collection-description h3{
+font-size: large;
+}
+
+[data-layouthub="section"], [data-layouthub="section"] *{
+margin-left:0!important;
+color: #000!important;
+}
+@media (max-width: 600px) {
+.collection-description {
+max-width: 98%;
+font-size: 16px;
+padding: 5px;
+}
+}
+
+
+
+
+
+/* Collection Description */
+.collection-description {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  color: #000;
+}
+ 
+[data-layouthub="section"],
+[data-layouthub="section"] * {
+  margin-left: 0!important;
+  color: #000!important;
+}
+ 
+/* Paragraphs */
+.collection-description p {
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+  font-size: 18px;
+}
+ 
+.collection-description p:last-child {
+  margin-bottom: 0;
+}
+ 
+/* Headings */
+.collection-description h1,
+.collection-description h2,
+.collection-description h3,
+.collection-description h4,
+.collection-description h5,
+.collection-description h6 {
+  margin: 25px 0 15px 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+ 
+.collection-description h1 { font-size: 32px; }
+.collection-description h2 { font-size: 28px; }
+.collection-description h3 { font-size: 24px; }
+.collection-description h4 { font-size: 20px; }
+.collection-description h5 { font-size: 18px; }
+.collection-description h6 { font-size: 16px; }
+ 
+/* Unordered Lists (Bullet Points) */
+.collection-description ul {
+  margin: 15px 0;
+  padding-left: 25px;
+  list-style-type: disc;
+}
+ 
+.collection-description ul li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  padding-left: 5px;
+}
+ 
+/* Nested unordered lists */
+.collection-description ul ul {
+  margin: 8px 0;
+  padding-left: 20px;
+  list-style-type: circle;
+}
+ 
+.collection-description ul ul ul {
+  list-style-type: square;
+}
+ 
+/* Ordered Lists (Numbered) */
+.collection-description ol {
+  margin: 15px 0;
+  padding-left: 25px;
+  list-style-type: decimal;
+}
+ 
+.collection-description ol li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  padding-left: 5px;
+}
+ 
+/* Nested ordered lists */
+.collection-description ol ol {
+  margin: 8px 0;
+  padding-left: 20px;
+  list-style-type: lower-alpha;
+}
+ 
+.collection-description ol ol ol {
+  list-style-type: lower-roman;
+}
+ 
+/* Links */
+.collection-description a {
+  color: #0066cc;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+ 
+.collection-description a:hover {
+  color: #004499;
+}
+ 
+/* Strong/Bold */
+.collection-description strong,
+.collection-description b {
+  font-weight: 700;
+}
+ 
+/* Emphasis/Italic */
+.collection-description em,
+.collection-description i {
+  font-style: italic;
+}
+ 
+/* Blockquotes */
+.collection-description blockquote {
+  margin: 20px 0;
+  padding: 15px 20px;
+  border-left: 4px solid #ddd;
+  background-color: #f9f9f9;
+  font-style: italic;
+}
+ 
+/* Code */
+.collection-description code {
+  background-color: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 14px;
+}
+ 
+.collection-description pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 15px 0;
+}
+ 
+.collection-description pre code {
+  padding: 0;
+  background-color: transparent;
+}
+ 
+/* Horizontal Rule */
+.collection-description hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+ 
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .collection-description {
+    max-width: 98%;
+    padding: 5px;
+  }
+  
+  .collection-description h1 { font-size: 26px; }
+  .collection-description h2 { font-size: 22px; }
+  .collection-description h3 { font-size: 20px; }
+  .collection-description h4 { font-size: 18px; }
+  .collection-description h5 { font-size: 16px; }
+  .collection-description h6 { font-size: 15px; }
+  
+  .collection-description p {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .collection-description ul,
+  .collection-description ol {
+    padding-left: 20px;
+  }
+  
+  .collection-description li {
+    margin-bottom: 6px;
+  }
+}
+{% endstyle %}
+
+<script>
+document.getElementById("collection-filter").addEventListener("change", filterProducts);
+document.getElementById("product-filter").addEventListener("change", filterProducts);
+
+function filterProducts() {
+  var selectedCollection = document.getElementById("collection-filter").value;
+  var selectedType = document.getElementById("product-filter").value.toLowerCase();
+  
+  var collectionWrappers = document.querySelectorAll(".collection-wrapper");
+
+  collectionWrappers.forEach(function(wrapper) {
+    var isCollectionMatch = selectedCollection === "all" || wrapper.getAttribute("data-collection") === selectedCollection;
+    var products = wrapper.querySelectorAll(".product-item");
+
+    var hasVisibleProducts = false;
+    
+    products.forEach(function(product) {
+      var productTitle = product.getAttribute("data-title").toLowerCase();
+      var isTypeMatch = selectedType === "all" || productTitle.includes(selectedType);
+
+      if (isCollectionMatch && isTypeMatch) {
+        product.style.display = "block";
+        hasVisibleProducts = true;
+      } else {
+        product.style.display = "none";
+      }
+    });
+
+    wrapper.style.display = hasVisibleProducts ? "block" : "none";
+  });
+}
+</script>

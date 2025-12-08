@@ -1,0 +1,169 @@
+{% comment %} {% if block.settings.title != blank %}
+  <div data-has-toggle-option>
+    <h3 class="sidebar-block__heading" {% if settings.toggle_sidebar %}data-sidebar-block__toggle="closed" aria-label="toggle"{% endif %}>
+      {{ block.settings.title }}
+      {% if settings.toggle_sidebar %}
+        <button class="sidebar-block__toggle-icon icon-style--{{ settings.toggle_icon_style }}">
+          {% if settings.toggle_icon_style == 'plus_and_minus' %}
+            {%
+              render 'icon',
+              name: 'plus',
+              icon_class: 'icon--active'
+            %}
+            {%
+              render 'icon',
+              name: 'minus'
+            %}
+          {% else %}
+            {%
+              render 'icon',
+              name: 'down-caret',
+              icon_class: 'icon--active'
+            %}
+          {% endif %}
+        </button>
+      {% endif %}
+    </h3>
+  </div>
+{% endif %}
+<div class="sidebar-block__content"  {% if settings.toggle_sidebar %}data-sidebar-block__content--collapsible{% endif %}>
+  {% for article in blogs[blog_handle].articles limit: block.settings.blog_post_count %}
+    <div class="sidebar-block__recent-post">
+      <a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a>
+      <div class="meta">
+        <span class="label">{{ article.published_at | date: format: "month_day_year" }}</span>
+      </div>
+    </div>
+  {% endfor %}
+</div> {% endcomment %}
+
+
+
+
+
+
+
+{% if block.settings.title != blank %}
+  <div data-has-toggle-option>
+    <h3 class="sidebar-block__heading" {% if settings.toggle_sidebar %}data-sidebar-block__toggle="closed" aria-label="toggle"{% endif %}>
+      {{ block.settings.title }}
+      {% if settings.toggle_sidebar %}
+        <button class="sidebar-block__toggle-icon icon-style--{{ settings.toggle_icon_style }}">
+          {% if settings.toggle_icon_style == 'plus_and_minus' %}
+            {% render 'icon', name: 'plus', icon_class: 'icon--active' %}
+            {% render 'icon', name: 'minus' %}
+          {% else %}
+            {% render 'icon', name: 'down-caret', icon_class: 'icon--active' %}
+          {% endif %}
+        </button>
+      {% endif %}
+    </h3>
+  </div>
+{% endif %}
+
+<div class="sidebar-block__content" {% if settings.toggle_sidebar %}data-sidebar-block__content--collapsible{% endif %}>
+  <style>
+    .sidebar-block__heading{
+    font-weight:bold;
+    padding:5px 0px;
+    margin-top:50px;
+    margin-bottom:10px;
+    border-bottom:2px #ccc solid;
+    }
+    .recent-posts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recent-post-card {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:1px #ccc solid;
+  padding:3px 5px;
+  border-radius:10px;
+}
+
+.recent-post-card__image img {
+  width: 100%;
+  max-width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  background-position:center;
+}
+
+.recent-post-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  margin-top: 12px;
+  text-decoration: none;
+  line-height: 1.4;
+  text-align:left;
+}
+
+.recent-post-card__title:hover {
+  text-decoration: underline;
+}
+
+.recent-post-card__date {
+  font-size: 13px;
+  color: #777;
+   text-align:left;
+  margin-top: 4px;
+}
+/* Fix: make images fill the card width on every item */
+.recent-post-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;    /* was center */
+  overflow: hidden;        /* optional: keeps rounded corners clean */
+}
+
+.recent-post-card__image {
+  display: block;          /* was inline */
+  width: 100%;
+}
+
+.recent-post-card__image img {
+  display: block;
+  width: 100%;
+  height: 150px;           /* keep your uniform height */
+  object-fit: cover;
+  border-radius: 0;        /* image edges managed by card radius */
+}
+
+/* optional: ensure text area also takes full width */
+.recent-post-card__info { width: 100%; }
+
+  </style>
+{% assign recent_articles = blogs[block.settings.blog].articles %}
+{% assign count = 0 %}
+<div class="recent-posts-grid">
+  {% for article in recent_articles %}
+    {% unless article.url == request.path %}
+      {% if count < block.settings.blog_post_count %}
+        <div class="recent-post-card">
+          {% if article.image %}
+            <a href="{{ article.url }}" class="recent-post-card__image">
+              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}" loading="lazy">
+            </a>
+          {% endif %}
+
+          <div class="recent-post-card__info">
+            <a class="recent-post-card__title" href="{{ article.url }}">
+              {{ article.title }}
+            </a>
+            <div class="recent-post-card__date">
+              {{ article.published_at | date: "%B %d, %Y" }}
+            </div>
+          </div>
+        </div>
+        {% assign count = count | plus: 1 %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+</div>

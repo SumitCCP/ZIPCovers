@@ -1,0 +1,9 @@
+{% assign metafield_data = product.metafields.Products.bulletpoints.value %}
+{% if metafield_data %}
+  {% assign metafield_data = metafield_data | json_parse %}
+  <ul style="color:#000!important;">
+  {% for item in metafield_data.children[0].children %}
+    <li style="font-size:18px!important;font-weight: 400!important; color: #000!important;">{{ item.children[0].value }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}

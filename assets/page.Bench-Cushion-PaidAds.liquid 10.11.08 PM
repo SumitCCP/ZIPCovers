@@ -1,0 +1,642 @@
+{%- assign collections_to_show = "custom-seat-bench-cushions" | split: "," -%}
+
+<div class="collection-banner">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/custom-bench-cushions.webp?v=1758543423"
+    alt="{{ page.title }}"
+  />
+</div>
+<div class="collection-banner-mobile">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/custom-bench-cushions-mobile.webp?v=1758543420"
+    alt="{{ page.title }}"
+  />
+</div>
+
+<div class="main-container">
+  <div class="short-info">
+    <p>
+      Add a touch of dazzle to your breakfast or window nooks with our custom
+      bench cushions. Make the most of your bench seats indoors and outdoors
+      with tailored comfort crafted just for you. Choose from a myriad of
+      customization options—shape, size, fabrics, materials, inserts, and design
+      elements — get them designed to perfectly complement your space. No more
+      sitting on uncomfortable benches when you can have the freedom of
+      customized comfort.
+    </p>
+    <a class="Customize-Now" href="#collections-container">Customize Now</a>
+  </div>
+
+  <!-- review container  -->
+{% section 'Page-Review' %}
+  <!-- end review container  -->
+  <!-- orders steps section -->
+  <section class="zc-howitworks" aria-label="How to order custom cushions">
+    <div class="containerTitle">
+      <h2>4 Easy Ordering Steps</h2>
+      {% comment %} <p>Follow these steps to</p> {% endcomment %}
+    </div>
+    <div class="zc-hiw-wrap">
+      <ol class="zc-hiw-list">
+        <li class="zc-hiw-card">
+          <figure class="zc-hiw-media">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Select_shape.webp?v=1757408328"
+              alt="Assorted cushion shapes on a sofa"
+              loading="lazy"
+            />
+          </figure>
+          <div class="zc-hiw-badge"><span>STEP- 1</span></div>
+          <h3 class="zc-hiw-title">Choose your Shape</h3>
+        </li>
+
+        <li class="zc-hiw-card">
+          <figure class="zc-hiw-media">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Measure.webp?v=1757408328"
+              alt="Measuring a cushion with a tape"
+              loading="lazy"
+            />
+          </figure>
+          <div class="zc-hiw-badge"><span>STEP- 2</span></div>
+          <h3 class="zc-hiw-title">Measure your Cushions</h3>
+        </li>
+
+        <li class="zc-hiw-card">
+          <figure class="zc-hiw-media">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Fabric-color.webp?v=1757408327"
+              alt="Fabric swatches in multiple colors"
+              loading="lazy"
+            />
+          </figure>
+          <div class="zc-hiw-badge"><span>STEP- 3</span></div>
+          <h3 class="zc-hiw-title">Choose your Fabric and Filling</h3>
+        </li>
+
+        <li class="zc-hiw-card">
+          <figure class="zc-hiw-media">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Order.webp?v=1757408328"
+              alt="Courier delivering a parcel to a customer"
+              loading="lazy"
+            />
+          </figure>
+          <div class="zc-hiw-badge"><span>STEP- 4</span></div>
+          <h3 class="zc-hiw-title">Get your Order in 3–4 Weeks</h3>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <!-- end orders steps section -->
+
+  <div id="collections-container">
+    <div class="containerTitle">
+      <h1 style="max-width: 1300px; margin: 0; text-align: left;">Our Popular Bench Cushion Range</h1>
+      <p></p>
+    </div>
+
+    {% for collection_handle in collections_to_show %} {% assign
+    current_collection = collections[collection_handle] %}
+    <div class="collection-wrapper" data-collection="{{ collection_handle }}">
+      <div class="collection-grid">
+        {% for product in current_collection.products limit: 100 %}
+        <div class="product-item" data-title="{{ product.title }}">
+          <a href="{{ product.url }}">
+            <img
+              src="{{ product.featured_image | img_url: 'medium' }}"
+              alt="{{ product.title }}"
+            />
+          </a>
+          <p class="product-title">{{ product.title }}</p>
+          <p class="product-price">{{ product.price | money }}</p>
+          <a href="{{ product.url }}" class="view-product-btn">Customize Now</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="skcontainer">
+    <div class="calltoaction">
+      <p>Are you not able to find your perfect match?</p>
+      <h3>
+        Call us on <b>720-627-7225</b> or Contact our customer support via chat
+        (blue button on the bottom)
+      </h3>
+    </div>
+  </div>
+
+  <!-- email signup form -->
+  <div class="email-container">
+    <div class="klaviyo-form-SHTtnX"></div>
+  </div>
+  <!-- end email signup form -->
+
+  <!-- value proposition -->
+  <section class="zc-vprops" aria-label="Why choose ZIPCushions">
+    <div class="containerTitle">
+      <h2>Custom Bench Cushions for Any Shape and Style</h2>
+      <p>
+        Enhance the functionality and aesthetics of your bench seats with
+        top-quality customizable bench cushions.
+      </p>
+    </div>
+    <div class="zc-vprops-wrap">
+      <div class="zc-vprops-media"><img src="https://4d6evf5a2w1kye9l-61474537714.shopifypreview.com/cdn/shop/files/Screenshot_2025-09-10_at_5.15.30_PM_600x.png?v=1757504797" alt=""></div>
+      <div class="zc-vprops-list">
+        <div class="zc-vprops-card">
+            <h3 class="zc-vprops-title">Custom Shapes and Sizes</h3>
+            <p class="zc-vprops-copy">
+              Whether your bench has notches, a curved shape, or any unique
+              design, our cushions are custom-made to fit perfectly.
+            </p>
+          </div>
+
+        <div class="zc-vprops-card">
+            <h3 class="zc-vprops-title">
+              High-Quality and Easy-to-Clean Materials
+            </h3>
+            <p class="zc-vprops-copy">
+              We use durable, premium materials that are stain-resistant and
+              simple to clean—so your cushions last.
+            </p>
+          </div>
+
+        <div class="zc-vprops-card">
+      
+            <h3 class="zc-vprops-title">Vast Fabric Variety</h3>
+            <p class="zc-vprops-copy">
+              Choose from 1,000+ premium fabrics for indoor or outdoor
+              cushions—finding the perfect match is easy.
+            </p>
+          </div>
+
+        <div class="zc-vprops-card">
+      
+            <h3 class="zc-vprops-title">Rush Delivery Available</h3>
+            <p class="zc-vprops-copy">
+              Need cushions quickly? Pick our Rush Delivery option for a faster
+              turnaround.
+            </p>
+          </div>
+
+        <div class="zc-vprops-card">
+          <div class="zc-vprops-text">
+            <h3 class="zc-vprops-title">Outstanding Customer Support</h3>
+            <p class="zc-vprops-copy">
+              Receive exceptional service and assistance, ensuring a smooth and
+              satisfying experience.
+            </p>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- /value proposition -->
+  {% section "image-slider" %}
+
+  {% section 'PageFaqs' %}
+</div>
+<!-- /main-container -->
+
+<style>
+  /* ===== Base ===== */
+  * {
+    box-sizing: border-box;
+  }
+  #collections-container{
+  margin:50px 0px !important;
+  }
+  :root {
+    --card: #fff;
+    --ink: #0f172a;
+    --ink-2: #475569;
+    --line: #e5e7eb;
+    --accent: #2563eb;
+    --accent-2: #22c55e;
+    --glow: rgba(37, 99, 235, 0.25);
+    --muted: #475569;
+  }
+  /* ===== Banners ===== */
+  .collection-banner,
+  .collection-banner-mobile {
+    width: 100%;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .collection-banner img,
+  .collection-banner-mobile img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .collection-banner-mobile {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    .collection-banner {
+      display: none;
+    }
+    .collection-banner-mobile {
+      display: block;
+    }
+  }
+
+  /* email box  */
+  .email-container {
+    width: 100%;
+    padding: 80px 10px;
+    margin: 20px 0;
+    background: #f1f1f1;
+  }
+  .klaviyo-form-SHTtnX{
+    max-width: 600px;
+    margin: auto;
+  }
+  /* ===== Containers ===== */
+  .main-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+h1{
+  font-weight: bold;
+  max-width:1300px;
+  padding: 10px 0px;
+  font-size: xx-large;
+  margin:auto !important;
+}
+  h2{
+    font-size: x-large;
+    margin-bottom: 5px;
+    color: #000;
+  }
+  .skcontainer {
+    max-width: 1300px;
+    margin: 20px auto;
+  }
+  .calltoaction {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #f1f1f1;
+    padding: 40px 100px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .calltoaction p {
+    font-weight: 700;
+    padding-bottom: 20px;
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: #000;
+  }
+  @media (max-width: 600px) {
+    .skcontainer {
+      width: 100%;
+      padding: 50px 0;
+    }
+    .calltoaction {
+      max-width: 350px;
+      padding: 20px 40px;
+      margin: 20px auto;
+    }
+    h1{
+  font-size: x-large;
+}
+  }
+
+  /* ===== Short Info ===== */
+  .short-info {
+    max-width: 1300px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .short-info p {
+    max-width: 1300px;
+    margin: 0;
+    color: #000;
+    text-align: center;
+  }
+  .short-info a {
+    margin: 20px auto;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    background: #294d4a;
+    border: 2px #294d4a solid;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    display: inline-block;
+  }
+  .short-info a:hover {
+    background: #fff;
+    color: #294d4a;
+    transition: 0.3s;
+  }
+  @media (max-width: 600px) {
+    .short-info {
+      width: 98%;
+    }
+    .short-info p {
+      font-size: 16px;
+    }
+    .short-info a {
+      font-size: 14px;
+    }
+  }
+
+  /* ===== Collection Grid ===== */
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1300px;
+    border-top: 2px #ccc solid;
+    padding: 10px 0;
+  }
+  @media (max-width: 768px) {
+    .collection-grid {
+      grid-template-columns: repeat(2, 1fr);
+      width: 98%;
+    }
+  }
+  .product-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product-item:hover {
+    border-color: #2a4d4a;
+  }
+  .product-title {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #000;
+  }
+  .product-price {
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+  }
+  .view-product-btn {
+    display: inline-block;
+    background: #2a4d4a;
+    border: 2px #2a4d4a solid;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background 0.3s;
+  }
+  .view-product-btn:hover {
+    background: #fff;
+    color: #2a4d4a;
+  }
+  @media (max-width: 600px) {
+    .view-product-btn {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+    .product-price {
+      font-size: 15px;
+    }
+  }
+  /* ===== Order Steps ===== */
+  .zc-howitworks {
+    background: #f1f1f1;
+    padding: 50px 10px;
+  }
+  .zc-hiw-wrap {
+    max-width: 1300px;
+    margin: auto;
+  }
+  .zc-hiw-list {
+    width: 100%;
+    list-style: none;
+    margin: auto;
+    padding: 0;
+    display: flex;
+   flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .zc-hiw-card {
+    width: 250px;
+    height: 270px;
+    position: relative;
+    box-shadow: 0 14px 40px -22px rgba(2, 6, 23, 0.35);
+    border-radius: 18px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .zc-hiw-list {
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+  }
+  
+  .zc-hiw-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(37, 99, 235, 0.25);
+    box-shadow: 0 22px 45px -20px var(--glow);
+  }
+  .zc-hiw-media {
+    margin: 0 0 14px 0;
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .zc-hiw-media img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+ 
+  .zc-hiw-badge {
+    display: inline-block;
+    background: #0b0b0b;
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+  }
+  .zc-hiw-title {
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+    }
+ @media (max-width: 500px){
+   .zc-hiw-card {
+    width: 200px;
+    height: 240px;
+   }
+    .zc-hiw-media img {
+  width: 200px;
+    height: 240px;
+  }
+  .zc-hiw-title{
+  margin:0px 0px;
+  font-size: 15px;
+  }
+  }
+  /* ===== Value Props ===== */
+  .zc-vprops {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 16px;
+    color: var(--ink);
+  }
+
+  .zc-vprops-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+  .zc-vprops-media {
+    width: 50%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .zc-vprops-media img {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+  .zc-vprops-list {
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ width: 50%;
+  }
+  .zc-vprops-card {
+    max-width: 800px;
+    border-radius: 18px;
+    padding: 30px;
+    border-left: 5px solid #f1f1f1;
+    transition: 0.5s ease;
+    background: #f1f1f1;
+  }
+    .zc-vprops-card:hover{
+    border-left: 5px solid #294D4A;
+    transform: scale(102%);
+    }
+    .zc-vprops-wrap:not(:has(.zc-vprops-card:hover)) .zc-vprops-card:first-child {
+  border-left: 5px solid #294D4A;
+  transform: scale(1.02);
+}
+  .zc-vprops-title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.25;
+    margin: 0 0 8px 0;
+  }
+  .zc-vprops-copy {
+    margin: 0;
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+  .zc-vprops-media {
+    display: none;
+  }
+  .zc-vprops-list {
+ width: 100%;
+  }
+  .zc-vprops-card {
+    width: 100%;
+  }
+  }
+</style>
+
+<script>
+  /* Review strip: arrows + auto-scroll */
+  (function () {
+    const scroller = document.querySelector(".reviewCards");
+    const btnPrev = document.querySelector(".blog-scroll-btn--prev");
+    const btnNext = document.querySelector(".blog-scroll-btn--next");
+    if (!scroller) return;
+
+    const getGap = () => {
+      const s = getComputedStyle(scroller);
+      return parseFloat(s.columnGap || s.gap) || 0;
+    };
+    const getStep = () => {
+      const card = scroller.querySelector(".reviewCard");
+      if (!card) return 0;
+      return card.getBoundingClientRect().width + getGap();
+    };
+
+    const scrollByCards = (n = 1) =>
+      scroller.scrollBy({ left: getStep() * n, behavior: "smooth" });
+
+    const atEnd = () =>
+      Math.ceil(scroller.scrollLeft + scroller.clientWidth) >=
+      scroller.scrollWidth - 1;
+
+    btnPrev && btnPrev.addEventListener("click", () => scrollByCards(-1));
+    btnNext &&
+      btnNext.addEventListener("click", () => {
+        if (atEnd()) scroller.scrollTo({ left: 0, behavior: "smooth" });
+        else scrollByCards(1);
+      });
+
+    const INTERVAL = 5000;
+    let timer;
+    const start = () => {
+      stop();
+      timer = setInterval(() => {
+        atEnd()
+          ? scroller.scrollTo({ left: 0, behavior: "smooth" })
+          : scrollByCards(1);
+      }, INTERVAL);
+    };
+    const stop = () => {
+      if (timer) clearInterval(timer);
+    };
+
+    start();
+    scroller.addEventListener("mouseenter", stop);
+    scroller.addEventListener("mouseleave", start);
+    scroller.addEventListener("focusin", stop);
+    scroller.addEventListener("focusout", start);
+
+    window.addEventListener("resize", () => {
+      setTimeout(
+        () =>
+          scroller.scrollTo({ left: scroller.scrollLeft, behavior: "smooth" }),
+        50
+      );
+    });
+  })();
+</script>

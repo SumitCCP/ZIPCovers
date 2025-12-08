@@ -1,0 +1,112 @@
+<section class="faq-section">
+  <style>
+    .faq-section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 10px;
+      border-radius: 8px;
+      font-family: Lato-SemiBold;
+    }
+    .faq-heading {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+    .faq-item {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .faq-question {
+      background: none;
+      border: none;
+      font-weight: 550;
+      font-size: 18px;
+      width: 100%;
+      text-align: left;
+      padding: 5px 0;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question .arrow {
+      font-size: 24px;
+      padding: 5px;
+      transition: transform 0.6s ease;
+    }
+    .faq-answer {
+      padding: 0 0 15px 0;
+      font-size: 16px;
+      color: #333;
+      display: none;
+    }
+    .faq-answer a{
+    color:orangered !important;
+    }
+     @media only screen and (max-width: 768px) {
+    .faq-heading {
+    font-size: 26px;
+    }
+    }
+  </style>
+
+  {% if collection.metafields.custom.collection_faq != blank %}
+    <h2 class="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {% for faq in collection.metafields.custom.collection_faq.value %}
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            {{ faq.question }}
+            <span class="arrow">+</span>
+          </button>
+          <div class="faq-answer" style="display: none;">
+            {{ faq.answers | metafield_tag }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function (item) {
+      const button = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const arrow = button.querySelector('.arrow');
+
+      button.addEventListener('click', function () {
+        const isOpen = item.classList.contains('active');
+
+        // Close all
+        faqItems.forEach(function (el) {
+          el.classList.remove('active');
+          el.querySelector('.faq-answer').style.display = 'none';
+          el.querySelector('.arrow').textContent = '+';
+        });
+
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('active');
+          answer.style.display = 'block';
+          arrow.textContent = '−';
+        }
+      });
+    });
+  });
+</script>
+
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Collection FAQ Dynamic",
+  "tag": "section",
+  "class": "faq-section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,300 @@
+<div class="headerimage">
+    <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/sunbrella_fabrics.png?v=1741717252">
+</div>
+<div class="main-container">
+<div class="cll-bredgrum"><a href="/">Home &nbsp;> &nbsp;</a><a href="/collections">Collections</a><p>&nbsp; > &nbsp; {{ collection.title }}</p></div>
+
+   <div class="blackfridaysale"><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/collection-black-friday-deal.png?v=1763396656" alt="Black Friday Sale"></div>
+  <style>
+.cll-bredgrum{
+  width:100%;
+  max-width:1300px;
+  margin:0 auto;
+  padding:0 5px;
+  display:flex;
+  margin-bottom: 50px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cll-bredgrum a{
+  font-size:15px !important;
+}
+.cll-bredgrum p{
+  font-size:15px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+@media (max-width:400px){
+  .cll-bredgrum a{
+  font-size:12px !important;
+}
+.cll-bredgrum p{
+  font-size:12px !important;
+}
+}
+
+.blackfridaysale{
+  width:100%;
+  max-width:1300px;
+  margin:auto;
+  border-radius:20px 20px 0 0;
+  margin-bottom:10px;
+  padding:0 5px;
+}
+.blackfridaysale img{
+  border-radius:20px 20px 0 0;
+  width:100%;
+}
+@media (max-width:500px){
+.blackfridaysale{
+  border-radius:5px 5px 0 0;
+}
+.blackfridaysale img{
+  border-radius:5px 5px 0 0;
+}
+}
+    </style>
+{% assign product_types = "Sunbrella,Agora,Blue Sky,Stamskin,Fusion Prints,Bling Foils,Merino,Lush chenille" | split: "," %}
+{% assign colors = "Red,Blue,Green,Yellow,Black,White,Grey,Brown,Beige" | split: "," %}
+
+<div class="subheading">
+    <span><h1>Sunbrella® Fabrics</h1></span>
+    <span><p>Explore a vast selection of premium Sunbrella® fabrics, thoughtfully designed for durability, vibrant color, and effortless maintenance.</p></span>
+</div>
+
+<!-- Search Bar -->
+<div class="search-container">
+    <input type="text" id="search-input" placeholder="Search fabrics...">
+</div>
+
+{% paginate collections['sunbrella-fabrics'].products by 50 %}
+    <div id="collections-container">
+        {% for product in collections['sunbrella-fabrics'].products %}
+            <div class="product-item" 
+                 data-title="{{ product.title | downcase }}" 
+                 data-color="{{ product.metafields.custom.color | downcase }}" 
+                 data-type="{{ product.product_type | downcase }}">
+                <a href="{{ product.url }}">
+                    <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+                </a>
+                <p class="product-title">{{ product.title }}</p>
+                        {% assign yard_variant = product.variants | where: "title", "Yard" | first %}
+
+                <p class="product-price">{{ yard_variant.price | money }} / Yard</p>
+                <a href="{{ product.url }}" class="view-product-btn">View</a>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="pagination">{{ paginate | default_pagination }}</div>
+{% endpaginate %}
+</div>
+<script>
+// Search Functionality
+const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", function() {
+    let query = searchInput.value.toLowerCase();
+    let products = document.querySelectorAll(".product-item");
+    
+    products.forEach(product => {
+        let title = product.getAttribute("data-title");
+        if (title.includes(query)) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+});
+</script>
+
+<style>
+.headerimage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.headerimage img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 500px;
+    display: block;
+}
+.main-container{
+  width:100%;
+  max-width:1600px;
+  margin: auto;
+}
+.subheading {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.subheading span h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+.subheading span p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #000;
+}
+
+.search-container {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#search-input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    outline: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .subheading {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 80px 0px;
+    }
+    .subheading span {
+        flex: 1;
+        max-width: 50%;
+    }
+    .subheading span h1 {
+        font-size: 2.5rem;
+    }
+    .subheading span p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+  #search-input {
+    width: 90%;
+}
+    .subheading {
+        width: 95%;
+        padding: 50px 0px;
+    }
+    .subheading span {
+        width: 100%;
+    }
+    .subheading span h1 {
+        font-size: 1.8rem;
+    }
+    .subheading span p {
+        font-size: 1.2rem;
+    }
+}
+
+#collections-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    border-top: 1px #ccc solid;
+    padding-top: 30px;
+}
+
+@media (max-width: 768px) {
+    #collections-container {
+        grid-template-columns: repeat(2, 1fr);
+        width: 95%;
+    }
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+    display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}
+
+.product-item:hover {
+    border: 1px solid #2A4D4A;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-title {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #000;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #000;
+    font-weight: bold;
+}
+
+.view-product-btn {
+    display: block;
+    background: #2A4D4A;
+    border: 2px #2A4D4A solid;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.view-product-btn:hover {
+    background-color: #fff;
+    color: #2A4D4A;
+}
+
+.pagination {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.pagination a {
+    padding: 10px 15px;
+    margin: 5px;
+    border: 1px solid #2A4D4A;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #2A4D4A;
+    background: white;
+    font-weight: bold;
+}
+
+.pagination a:hover {
+    background: #2A4D4A;
+    color: white;
+}
+</style>

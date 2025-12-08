@@ -1,0 +1,180 @@
+<div class="zc-icons-bar" style="--zc-icon-size: {{ section.settings.icon_size }}px; --zc-gap: {{ section.settings.item_gap }}px; --zc-color: {{ section.settings.text_color }}; --zc-divider: {{ section.settings.divider_color }};">
+  <div class="zc-icons-bar__inner {% if section.settings.max_width != 'full' %}page-width{% endif %}">
+    <ul class="zc-icons-bar__list" role="list">
+        <li class="zc-icons-bar__item">
+          <div class="zc-icons-bar__icon-wrap">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/expert.png?v=1757760754"
+                loading="lazy"
+                class="zc-icons-bar__icon"
+              >
+          </div>
+          <div class="zc-icons-bar__text">Custom Cushion Experts</div>
+        </li>
+                <li class="zc-icons-bar__item"><span class="zc-icons-bar__divider"></span></li>
+
+                <li class="zc-icons-bar__item">
+          <div class="zc-icons-bar__icon-wrap">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/measure.png?v=1757760642"
+                loading="lazy"
+                class="zc-icons-bar__icon"
+              >
+          </div>
+          <div class="zc-icons-bar__text">Any Size</div>
+        </li>
+                <li class="zc-icons-bar__item"><span class="zc-icons-bar__divider"></span></li>
+
+                <li class="zc-icons-bar__item">
+          <div class="zc-icons-bar__icon-wrap">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/color.png?v=1757760706"
+                loading="lazy"
+                class="zc-icons-bar__icon"
+              >
+          </div>
+          <div class="zc-icons-bar__text">Any Color</div>
+        </li>
+                <li class="zc-icons-bar__item"><span class="zc-icons-bar__divider"></span></li>
+
+                <li class="zc-icons-bar__item">
+          <div class="zc-icons-bar__icon-wrap">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/shapes.png?v=1757760728"
+                loading="lazy"
+                class="zc-icons-bar__icon"
+              >
+          </div>
+          <div class="zc-icons-bar__text">Any Shape</div>
+        </li>
+        
+        <li class="zc-icons-bar__item"><span class="zc-icons-bar__divider"></span></li>
+        
+          <li class="zc-icons-bar__item">
+          <div class="zc-icons-bar__icon-wrap">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/customers.png?v=1757760672"
+                loading="lazy"
+                class="zc-icons-bar__icon"
+              >
+          </div>
+          <div class="zc-icons-bar__text">Loved by 50,000+ Homes</div>
+        
+        </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+/* ===== ZIPCushions - Feature Icons Bar ===== */
+.zc-icons-bar {
+  width: 100%;
+  background: #F8F8F8;
+  margin: 0;
+  padding: 0;
+}
+
+.zc-icons-bar__inner {
+  padding: 12px;
+}
+
+.zc-icons-bar__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.zc-icons-bar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: inherit;
+  position: relative;
+}
+
+.zc-icons-bar__icon-wrap {
+  width: var(--zc-icon-size, 36px);
+  height: var(--zc-icon-size, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zc-icons-bar__icon {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  display: block;
+}
+.zc-icons-bar__icon img{
+  width:100%;
+  height:100%;
+}
+
+.zc-icons-bar__text {
+  white-space: nowrap;
+}
+
+/* Divider */
+.zc-icons-bar__divider {
+  display: inline-block;
+  width: 1px;
+  height: 22px;
+  background: #000;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .zc-icons-bar__item {
+  font-size: 15px;
+}
+
+.zc-icons-bar__icon {
+  width: 30px;
+  height: 30px;
+}
+.zc-icons-bar__item:nth-child(3){
+   display:none;
+}
+.zc-icons-bar__item:nth-child(4){
+   display:none;
+}
+.zc-icons-bar__item:nth-child(5){
+   display:none;
+}
+.zc-icons-bar__item:nth-child(6){
+   display:none;
+}
+.zc-icons-bar__item:nth-child(7){
+   display:none;
+}
+.zc-icons-bar__item:nth-child(8){
+   display:none;
+}
+}
+@media (max-width: 450px) {
+  .zc-icons-bar__list {
+  gap: 8px;
+}
+.zc-icons-bar__inner {
+  padding: 10px 5px;
+}
+
+  .zc-icons-bar__item {
+  font-size: 12px;
+    gap: 4px;
+
+}
+
+.zc-icons-bar__icon {
+  width: 20px;
+  height: 20px;
+}
+}
+</style>

@@ -1,0 +1,290 @@
+<!-- ================= ZIPCushions Reviews Carousel ================= -->
+<section class="zc-reviews" id="zc-reviews">
+  <div class="zc-rev-head">
+    <h2>What Customers Say</h2>
+  </div>
+
+  <div class="zc-rev-viewport" aria-roledescription="carousel">
+    <button class="zc-rev-nav prev" aria-label="Previous reviews" type="button">‹</button>
+
+    <div class="zc-rev-track" id="zc-rev-track">
+      <!-- Slides are injected by JS -->
+    </div>
+
+    <button class="zc-rev-nav next" aria-label="Next reviews" type="button">›</button>
+  </div>
+
+  <div class="zc-rev-dots" id="zc-rev-dots" aria-label="carousel pagination"></div>
+</section>
+
+<style>
+  :root { --zc-max: 1200px; --zc-gap: 20px; --zc-card-radius: 16px; }
+  .zc-reviews{ max-width:var(--zc-max); margin:auto; padding:40px 16px; }
+  .zc-rev-head{ text-align:center; margin-bottom:18px; }
+  .zc-rev-head h2{ margin:0; font-size:clamp(22px, 2.6vw, 32px); }
+
+  .zc-rev-viewport{
+    position:relative; overflow:hidden; width:100%;
+    padding: 8px 44px; /* space for arrows */
+  }
+  .zc-rev-track{
+    display:flex; gap:var(--zc-gap);
+    will-change: transform;
+    transition: transform .5s ease;
+    touch-action: pan-y;
+  }
+
+  /* Card */
+  .zc-rev-card{
+    flex: 0 0 calc((100% - (var(--zc-gap))) / 2);  /* default: 2-up */
+    background:#fff; border-radius:var(--zc-card-radius);
+    box-shadow: 0 8px 20px rgba(20,20,43,.08), 0 2px 6px rgba(20,20,43,.06);
+    padding:22px 20px;
+  }
+  @media (min-width: 1024px){
+    .zc-rev-card{ flex-basis: calc((100% - (var(--zc-gap) * 3)) / 4); } /* 4-up */
+  }
+  .zc-rev-card .top{
+    display:flex; align-items:center; gap:12px; margin-bottom:10px;
+  }
+  .zc-avatar{
+    width:52px; height:52px; border-radius:50%;
+    display:grid; place-items:center;
+    background:#e9eef5; color:#1d2939; font-weight:700;
+    overflow:hidden;
+  }
+  .zc-avatar img{ width:100%; height:100%; object-fit:cover; border-radius:50%; display:block; }
+  .zc-name{ font-weight:700; font-size:18px; margin:0; }
+  .zc-text{ color:#111; line-height:1.65; margin: 6px 0 12px; text-align:center; }
+  .zc-stars{ display:flex; gap:4px; justify-content:center; }
+  .zc-stars svg{ width:18px; height:18px; }
+
+  /* Arrows */
+  .zc-rev-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%; border:none; cursor:pointer;
+    background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.12);
+    display:grid; place-items:center; font-size:24px; line-height:1;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .zc-rev-nav:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 6px 16px rgba(0,0,0,.16); }
+  .zc-rev-nav.prev{ left:8px; }
+  .zc-rev-nav.next{ right:8px; }
+
+  /* Dots */
+  .zc-rev-dots{ display:flex; gap:10px; justify-content:center; margin-top:16px; }
+  .zc-rev-dot{
+    width:10px; height:10px; border-radius:50%; background:#c7cdd8; border:none; cursor:pointer;
+  }
+  .zc-rev-dot[aria-current="true"]{ background:#6b7280; }
+</style>
+
+<script>
+(function(){
+  // ----- 1) Data: 10 reviews -----
+  const reviews = [
+    { name:"Kathryn Ross", text:"My bench seat is perfect! The fabric is soft and comfy, the fit is exact, and the creases steamed out easily. I’ll purchase again.", avatar:"" },
+    { name:"Kelli Cooney", text:"We ordered a 138-inch custom bench cushion. Beautiful, exactly what we wanted, and reasonably priced. Support was amazing.", avatar:"" },
+    { name:"Mark Betten", text:"Our custom window bench cushion arrived quickly for a made-to-order item and fits perfectly. Communication was excellent.", avatar:"" },
+    { name:"Amanda Lee", text:"Quality stitching and foam support. The fabric samples made choosing so easy. Highly recommend ZIPCushions!", avatar:"" },
+    { name:"Daniel Price", text:"Rush delivery saved our event. Cushion looks premium and cleaned up great after a busy weekend.", avatar:"" },
+    { name:"Sofia Patel", text:"Loved the Sunbrella options. Color stayed true and the piping detail is super neat.", avatar:"" },
+    { name:"Ethan Moore", text:"Exactly to size for our bay window. Kids jump on it daily—still holds shape and support.", avatar:"" },
+    { name:"Bella Nguyen", text:"Easy ordering, helpful support, and the cushion transformed our breakfast nook.", avatar:"" },
+    { name:"James Carter", text:"Measurements were spot on. Comfortable and durable—worth every penny.", avatar:"" },
+    { name:"Olivia Brown", text:"From samples to delivery, the process was smooth. Gorgeous finish and perfect fit.", avatar:"" },
+  ];
+
+  // ----- 2) Helpers -----
+  const $ = s => document.querySelector(s);
+  const track = $('#zc-rev-track');
+  const dotsWrap = $('#zc-rev-dots');
+  const prevBtn = document.querySelector('.zc-rev-nav.prev');
+  const nextBtn = document.querySelector('.zc-rev-nav.next');
+
+  let slidesToShow = window.matchMedia('(min-width:1024px)').matches ? 4 : 2;
+  let currentPage = 0;
+  let pageCount = Math.ceil(reviews.length / slidesToShow);
+  let slideWidth = 0;
+  let autoTimer = null;
+  let isTransitioning = false;
+
+  // Create one card
+  function cardHTML(r){
+    const initials = r.name.split(' ').map(p=>p[0]).slice(0,2).join('').toUpperCase();
+    return `
+      <article class="zc-rev-card" role="group" aria-roledescription="slide">
+        <div class="top">
+          <div class="zc-avatar">
+            ${r.avatar ? `<img src="${r.avatar}" alt="${r.name}">` : initials}
+          </div>
+          <h3 class="zc-name">${r.name}</h3>
+        </div>
+        <p class="zc-text">${r.text}</p>
+        <div class="zc-stars" aria-label="5 out of 5 stars">
+          ${'<svg viewBox="0 0 20 20" fill="#fbbc04" aria-hidden="true"><path d="M10 1.5l2.59 5.25 5.81.84-4.2 4.09.99 5.77L10 14.98 4.81 17.45l1-5.77L1.6 7.59l5.81-.84L10 1.5z"/></svg>'.repeat(5)}
+        </div>
+      </article>`;
+  }
+
+  // Build slides with head/tail clones for infinite loop by PAGE (group)
+  function rebuild(){
+    // detect 2 or 4-up
+    const mQ = window.matchMedia('(min-width:1024px)').matches;
+    slidesToShow = mQ ? 4 : 2;
+    pageCount = Math.ceil(reviews.length / slidesToShow);
+
+    // base slides
+    track.innerHTML = reviews.map(cardHTML).join('');
+
+    // measure after render
+    requestAnimationFrame(()=>{
+      const first = track.querySelector('.zc-rev-card');
+      if (!first) return;
+      slideWidth = first.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
+
+      // Clone by PAGE
+      const fragHead = document.createDocumentFragment();
+      const fragTail = document.createDocumentFragment();
+
+      const total = reviews.length;
+      const headCount = slidesToShow; // minimal to allow 1 page jump
+      // Tail clones: first 'slidesToShow' items
+      for(let i=0;i<headCount;i++){
+        const node = track.children[i].cloneNode(true);
+        fragTail.appendChild(node);
+      }
+      // Head clones: last 'slidesToShow' items
+      for(let i=total - headCount; i<total; i++){
+        const node = track.children[i].cloneNode(true);
+        fragHead.appendChild(node);
+      }
+      track.insertBefore(fragHead, track.firstChild);
+      track.appendChild(fragTail);
+
+      // Set initial position to page 0 (after head clones)
+      currentPage = 0;
+      setTransform(-((slidesToShow + currentPage * slidesToShow) * slideWidth), false);
+
+      buildDots();
+      restartAuto();
+    });
+  }
+
+  function setTransform(px, animate=true){
+    track.style.transition = animate ? 'transform .5s ease' : 'none';
+    track.style.transform = `translateX(${px*-1 < 0 ? 0 : 0}px)`; // keeps calc readable
+    // We actually want negative translate: set directly:
+    track.style.transform = `translateX(${px}px)`;
+  }
+
+  function goToPage(page){
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentPage = page;
+    const offsetSlides = slidesToShow + currentPage * slidesToShow;
+    setTransform(-(offsetSlides * slideWidth), true);
+
+    // after transition, handle loop jump
+    track.addEventListener('transitionend', onTransitionEnd, { once:true });
+    function onTransitionEnd(){
+      isTransitioning = false;
+      // If moved past last real page
+      if (currentPage >= pageCount){
+        currentPage = 0;
+        const offsetSlides2 = slidesToShow + currentPage * slidesToShow;
+        setTransform(-(offsetSlides2 * slideWidth), false);
+      }
+      // If moved before first page
+      if (currentPage < 0){
+        currentPage = pageCount - 1;
+        const offsetSlides3 = slidesToShow + currentPage * slidesToShow;
+        setTransform(-(offsetSlides3 * slideWidth), false);
+      }
+      updateDots();
+    }
+  }
+
+  function nextPage(){ goToPage(currentPage + 1); }
+  function prevPage(){ goToPage(currentPage - 1); }
+
+  // ----- Dots -----
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    for(let i=0;i<pageCount;i++){
+      const b = document.createElement('button');
+      b.className = 'zc-rev-dot';
+      b.type = 'button';
+      b.setAttribute('aria-label', `Go to page ${i+1}`);
+      b.addEventListener('click', ()=>{ goToPage(i); restartAuto(); });
+      dotsWrap.appendChild(b);
+    }
+    updateDots();
+  }
+  function updateDots(){
+    [...dotsWrap.children].forEach((d, i)=> d.setAttribute('aria-current', i===currentPage ? 'true' : 'false'));
+  }
+
+  // ----- Auto scroll -----
+  function restartAuto(){
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(nextPage, 3500);
+  }
+
+  // Pause on hover/focus for accessibility
+  const viewport = document.querySelector('.zc-rev-viewport');
+  viewport.addEventListener('mouseenter', ()=> clearInterval(autoTimer));
+  viewport.addEventListener('mouseleave', restartAuto);
+  viewport.addEventListener('focusin', ()=> clearInterval(autoTimer));
+  viewport.addEventListener('focusout', restartAuto);
+
+  // Arrows
+  nextBtn.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
+  prevBtn.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
+
+  // Drag / swipe
+  let startX = 0, currX = 0, dragging = false, startTransform = 0;
+  function getTranslateX(){
+    const m = getComputedStyle(track).transform;
+    if (m === 'none') return 0;
+    const v = new DOMMatrix(m).m41; // translateX
+    return v;
+  }
+  function onStart(e){
+    dragging = true;
+    startX = (e.touches ? e.touches[0].clientX : e.clientX);
+    startTransform = getTranslateX();
+    track.style.transition = 'none';
+  }
+  function onMove(e){
+    if (!dragging) return;
+    currX = (e.touches ? e.touches[0].clientX : e.clientX);
+    const delta = currX - startX;
+    setTransform(startTransform + delta, false);
+  }
+  function onEnd(){
+    if (!dragging) return;
+    dragging = false;
+    const delta = (currX || startX) - startX;
+    const threshold = slideWidth * 0.2; // 20% swipe to change page
+    if (delta < -threshold) nextPage();
+    else if (delta > threshold) prevPage();
+    else goToPage(currentPage); // snap back
+    restartAuto();
+  }
+  track.addEventListener('mousedown', onStart);
+  track.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onEnd);
+  track.addEventListener('touchstart', onStart, {passive:true});
+  track.addEventListener('touchmove', onMove, {passive:true});
+  track.addEventListener('touchend', onEnd);
+
+  // Recalculate on resize/orientation
+  window.addEventListener('resize', rebuild);
+
+  // Inject slides once, then build clones
+  track.innerHTML = reviews.map(cardHTML).join('');
+  rebuild();
+})();
+</script>
+<!-- ================= /ZIPCushions Reviews Carousel ================= -->

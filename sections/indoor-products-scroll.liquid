@@ -1,0 +1,300 @@
+<style>
+  .SKCustom_PdsScroll_wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px 10px;
+    
+  }
+
+  .SKCustom_PdsScroll_wrapper h2 {
+    text-align: center;
+    font-family: Lato-SemiBold;
+    /* font-weight: bold; */
+    margin-bottom: 20px;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_Product {
+    flex: 0 0 auto;
+    width: 200px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    position: relative;
+    justify-content: space-between;
+    border: 1px #ccc solid;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_Product:hover {
+    transform: translateY(-5px);
+   border: 1px #000 solid;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_Product-images {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8;
+    border-radius: 12px;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_Product-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_Product-title {
+    padding: 10px 5px 5px;
+    font-size: 14px;
+    {% comment %} font-weight: bold; {% endcomment %}
+    color: #000;
+    background: #fff;
+    min-height: 40px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .SKCustom_PdsScroll_wrapper .SKCustom_Product-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  .SKCustom_PdsScroll_wrapper .view-product-btn {
+    display: inline-block;
+    background: #2A4D4A;
+    color: #fff;
+    border: 2px solid #2A4D4A;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 8px auto 0;
+    transition: all 0.3s;
+    width: 100%;
+    text-align: center;
+  }
+
+  .SKCustom_PdsScroll_wrapper .view-product-btn:hover {
+    background: #fff;
+    color: #2A4D4A;
+  }
+
+  .SKCustom_PdsScroll_wrapper .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .SKCustom_PdsScroll_wrapper .scroll-arrow.left {
+    left: 10px;
+  }
+
+  .SKCustom_PdsScroll_wrapper .scroll-arrow.right {
+    right: 10px;
+  }
+
+  .SKCustom_PdsScroll_wrapper .scroll-arrow.hidden {
+    display: none;
+  }
+
+  .SKCustom_PdsScroll_wrapper .scroll-arrow svg {
+    width: 24px;
+    height: 24px;
+    fill: #333;
+  }
+
+  .SKCustom_PdsScroll_wrapper .scroll-arrow:hover svg {
+    fill: #000;
+  }
+
+  /* Top Selling Badge */
+  .SKCustom_PdsScroll_wrapper .top-selling-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #E63946;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 8px;
+    
+    z-index: 5;
+  }
+
+  @media (min-width: 768px) {
+    .SKCustom_PdsScroll_wrapper .SKCustom_Product {
+      width: 240px;
+    }
+    .SKCustom_PdsScroll_wrapper .SKCustom_Product-images {
+      height: 220px;
+    }
+    .SKCustom_PdsScroll_wrapper h2 {
+      font-size: 32px;
+    }
+    .SKCustom_PdsScroll_wrapper .SKCustom_Product-title {
+      font-size: 16px;
+    }
+    .SKCustom_PdsScroll_wrapper .SKCustom_Product-price {
+      font-size: 16px;
+    }
+  }
+  .Collection_url_scroll{
+  display:flex;
+  align-items:center;
+  }
+  .Collection_url_scroll a{
+  padding:5px 8px;
+  border:1px #ccc solid;
+  border-radius:5px;
+  transition:0.3s;
+  position:relative;
+  background:#294D49;
+ color:#fff;
+  }
+  .Collection_url_scroll a img{
+  height:15px;
+  position:absolute;
+  top:-5;
+  }
+  .Collection_url_scroll a:hover{
+  background:#fff;
+  color:#000;
+  }
+  @media (max-width: 767px) {
+  .SKCustom_PdsScroll_wrapper h2 {
+      font-size: 26px;
+    }
+  }
+
+</style>
+
+<div class="shopify-section">
+  {%- assign coll = collections['indoor-cushions'] -%}
+  {% if coll != blank %}
+    <div class="SKCustom_PdsScroll_wrapper">
+      <h2>Explore {{ coll.title }}</h2>
+
+      <div class="scroll-arrow left" data-direction="left">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path d="M95.04 46 21.68 46 48.18 22.8 42.91 16.78 4.96 50 42.91 83.22 48.18 77.2 21.68 54 95.04 54 95.04 46z"/>
+        </svg>
+      </div>
+
+      <div class="scroll-arrow right" data-direction="right">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path d="M95.04 46 21.68 46 48.18 22.8 42.91 16.78 4.96 50 42.91 83.22 48.18 77.2 21.68 54 95.04 54 95.04 46z" transform="rotate(180) translate(-100, -100)"/>
+        </svg>
+      </div>
+
+      <div class="SKCustom_container">
+        {% for product in coll.products limit: 6 %}
+          <div class="SKCustom_Product">
+
+            <a href="{{ product.url }}">
+              <div class="SKCustom_Product-images">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}">
+                {% else %}
+                  <div style="background:#eee;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;">No Image</div>
+                {% endif %}
+              </div>
+              <div class="SKCustom_Product-title">{{ product.title }}</div>
+              <div class="SKCustom_Product-price">{{ product.price | money }}</div>
+            </a>
+            <a href="{{ product.url }}" class="view-product-btn">Customize Now</a>
+          </div>
+        {% endfor %}
+        <div class="Collection_url_scroll">
+          <a href="{{ coll.url }}">View More</a>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <p style="text-align: center; padding: 40px;">Indoor Cushions collection not found.</p>
+  {% endif %}
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const wrappers = document.querySelectorAll('.SKCustom_PdsScroll_wrapper');
+
+  wrappers.forEach(function(wrapper) {
+    const container = wrapper.querySelector('.SKCustom_container');
+    const leftArrow = wrapper.querySelector('.scroll-arrow.left');
+    const rightArrow = wrapper.querySelector('.scroll-arrow.right');
+
+    function scrollContainer(direction) {
+      const scrollAmount = 600;
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    function updateArrows() {
+      if (container.scrollWidth > container.clientWidth) {
+        leftArrow.classList.toggle('hidden', container.scrollLeft <= 0);
+        rightArrow.classList.toggle('hidden', container.scrollLeft >= container.scrollWidth - container.clientWidth - 5);
+      } else {
+        leftArrow.classList.add('hidden');
+        rightArrow.classList.add('hidden');
+      }
+    }
+
+    leftArrow.addEventListener('click', () => scrollContainer('left'));
+    rightArrow.addEventListener('click', () => scrollContainer('right'));
+    container.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+
+    setTimeout(updateArrows, 300);
+  });
+});
+
+</script>

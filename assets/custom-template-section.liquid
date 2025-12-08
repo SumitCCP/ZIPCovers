@@ -1,0 +1,471 @@
+<div class="vn-container">
+  <input type="hidden" id="hiddenProductId" style="display:none;" value="{{ product.id }}">
+  <input type="hidden" id="hiddenProductSku" style="display:none;" value="{{ product.variants.first.sku }}">
+  <input type="hidden" id="hiddenProductHandle" value="{{ product.handle }}">
+
+  <div class="cushion-block-cust">
+      <div class="container">
+        <div class="cushion-box">
+          <div class="cushion-header">
+            <h2>Step 1 <span>Enter cushion measurements</span></h2>
+          </div>
+    
+          <div class="cushion-body">
+            <div class="wrap-des">
+              <p class="cushion-description">
+                Enter the length, width, and thickness in inches for your custom cushion.
+              </p>
+              <a href="https://example.com/how-to-measure" class="cushion-link" target="_blank">
+                How to Measure <span><img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/open_in_new_5c155c20-bb91-4b37-9b3c-a8b73e30230d.svg?v=1745218334"></span>
+              </a>
+            </div>
+    
+            <div class="cushion-fields" id="dimension-fields">
+
+            </div> <!-- /cushion-fields -->
+          </div> <!-- /cushion-body -->
+        </div>
+      </div>
+    </div>
+  
+  <!-- ------------------------------------ section 2 ----------------------------------- -->
+  <div class="step-box-layout">
+      <div class="container">
+  
+          <div class="step-box">
+              <div class="step-header">
+                  <h2>Step 2 <span>Select Your Fabric</span></h2>
+  
+              </div>
+              <div class="fabric-inner-block">
+                  <div class="fabric-search-header">
+                      <div class="fabric-instructions">
+                          <p>Select a fabric based on your cushion's location and use.</p>
+                      </div>
+                      <div class="fabric-search">
+                          <input type="text" class="fabric-input" placeholder="Search Fabrics by color or pattern" />
+                          <button class="fabric-search-btn">
+                             <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="filter-bar">
+                      <div class="wrap-filter">
+                          <button class="clear-btn">Clear Filters</button>
+                      </div>
+                      <div class="wrap-select">
+
+                          <ul class="vn-dropdown">
+                            <li class="dop_parent_filter" id=fabricFeature>
+                              <span class="vn-tab-name" href="#">Features</span>
+                              <ul class="sub-filter">
+                                 
+                              </ul>
+                          </li>
+                            <li class="dop_parent_filter" id="fabricColor">
+                              <span class="vn-tab-name" href="#">Color</span>
+                              <ul class="sub-filter">
+                                  
+                              </ul>
+                          </li>
+                               <li class="dop_parent_filter" id="fabricPattern">
+                              <span class="vn-tab-name" href="#">Pattern</span>
+                              <ul class="sub-filter">
+                              </ul>
+                          </li>
+                               <li class="dop_parent_filter" id="fabricType">
+                              <span class="vn-tab-name" href="#">Fabric Type</span>
+                              <ul class="sub-filter">
+                                  
+                              </ul>
+                          </li>
+                              
+                
+                        </ul>
+
+                      </div>
+                  </div>
+                  <div class="wrap-fabric-btn">
+                      <div class="fabric-buttons">
+                          <button class="btn-popular an-fab-btn active" data-tab="1" data-popular="yes">Most Popular</button>
+                          <button class="btn-more an-fab-btn" data-tab="2">More Choices</button>
+
+                            <div class="wrap-select more-choices">
+                               <ul class="vn-dropdown">
+                                  <li class="dop_parent_filter" id="moreChoices">
+                                     <span class="vn-tab-names" href="#">More Choices</span> 
+                                     <ul class="sub-filter">
+                                        <li value="Washable" class=""><label for="Washable"><input id="Washable" type="checkbox" value="Washable"><span>Washable</span></label></li>
+                                        <li value="Non-washable" class=""><label for="Non-washable"><input id="Non-washable" type="checkbox" value="Non-washable"><span>Non-washable</span></label></li>
+                                        <li value="Dry-clean" class=""><label for="Dry-clean"><input id="Dry-clean" type="checkbox" value="Dry-clean"><span>Dry-clean</span></label></li>
+                                     </ul>
+                                  </li>
+                               </ul>
+                            </div>
+
+                           <img id="lifestyleimage" src="">
+                      </div>
+                     <div class="fabric-thumbnail-wraper">
+                      <div class="fabric-thumbnails active" id="fab-1">
+                       
+                       
+                     </div>
+                  </div>
+                  
+              </div>
+                <div class="pagination">
+                      <div class="prev-page">
+                        <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Group_44.svg?v=1747995876">
+                      </div>
+                      <span class="page-num">1 of 1</span>
+                    <div class="next-page">
+                      <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/Group_44_1.svg?v=1747995876">
+                    </div>
+                  </div>
+                  <div class="note">
+                      <p>**Colors may differ from their appearance on your screen due to monitor variations, and dye lots
+                          may vary. We recommend ordering fabric samples to compare with your decor. Order fabric samples
+                          <a href="#">here</a>.
+                      </p>
+                  </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  <!-- ---------------------------- section-3 ----------------------------- -->
+ 
+<script>
+  $(document).ready(function () {
+      $('body').on('click', '.options .option', function () {
+          $('.options .option').removeClass('vn-active');
+          $(this).addClass('vn-active');
+      });
+
+   
+  });
+</script>
+
+  
+  <div class="wrap-option-sec">
+      <div class="container">
+          <div class="wrap-block-option fiber-fill">
+              <div class="header step-title">
+                  <h2>Step 3 <span>Choose Foam or Fiberfill</span></h2>
+              </div>
+  
+
+              <div class="custom-section">
+                <p>Note:Fiber filling cushion thickness is measured from the center of the cushion where
+                  it is most fluffy. Sides of the cushion will be little smaller.</p>
+                  <div class="option-row">
+                  </div>
+                
+              </div>
+          </div>
+      </div>
+  </div>
+  
+
+  <script>
+    $(document).ready(function () {
+        $('body').on('click', '.block-btnn, .block-option', function () {
+            $(this).parent().addClass('vn-active-btn').siblings().removeClass('vn-active-btn');
+            // $(this).addClass('vn-active-btn');
+        });
+    });
+  </script>
+  
+  <!-- ------------------- section-4 --------------------- -->
+  <div class="customization-container-section">
+      <div class="container">
+          <div class="wrap-customization customization-container">
+              <div class="customization-header">
+                  <h2>Step 4 <span> More Customizations</span></h2>
+              </div>
+  
+              <!-- Zipper Position -->
+              <div class="custom-section zipper-options">
+                  <h4>Zipper Position</h4>
+                  <p>Choose between long side or short side zippers for easy removal and cleaning.</p>
+                  <div class="option-row">
+                      <div class="custom-option vn-active-btn">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/t/30/assets/dpo_custom_option_88782_5.png?v=1678749590"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">Long Side</button>
+                          </div>
+                      </div>
+                      <div class="custom-option">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/t/30/assets/dpo_custom_option_33644_4.png?v=1678749611"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">Short Side</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- Piping -->
+              <div class="custom-section piping-options">
+                  <h4>Piping</h4>
+                  <p>Select either no piping for a clean edge or add piping for a decorative touch.</p>
+                  <div class="option-row">
+                      <div class="custom-option vn-active-btn">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/dpo_custom_option_12070_untitled-design-1.png?v=1728936644"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">No Piping</button>
+                          </div>
+                      </div>
+                      <div class="custom-option">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/dpo_custom_option_34015_etsy-redesign-piping-ties-1.png?v=1728936674"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">Piping</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- Ties -->
+              <div class="custom-section ties-options">
+                  <h4>Ties</h4>
+                  <p>Decide between no ties for a simpler look, or choose from 2-side, 4-side, or 4-corner ties for secure attachment.</p>
+                  <div class="option-row">
+                      <div class="custom-option vn-active-btn">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/dpo_custom_option_70850_no-ties.png?v=1728936872"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">No Ties</button>
+                          </div>
+                      </div>
+                      <div class="custom-option">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/dpo_custom_option_40335_2-sides.png?v=1728936908"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">2 Side</button>
+                          </div>
+                      </div>
+                      <div class="custom-option">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/dpo_custom_option_14047_4-corners.png?v=1728936924"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">4 Corner</button>
+                          </div>
+                      </div>
+                      <div class="custom-option">
+                          <div class="block-option">
+                              <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/dpo_custom_option_27956_4-sides.png?v=1728936941"
+                                  alt="Long Side">
+                          </div>
+                          <div class="block-btnn">
+                              <button class="custom-btn">4 Side</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  <!-- ------------------- section-5 --------------------- -->
+  <div class="wrapping-steps">
+      <div class="container">
+          <div class="design-step-container">
+              <div class="design-step-header">
+                  <h2>Step 5 <span>Special Design Instructions</span></h2>
+              </div>
+  
+              <div class="design-step-content">
+                  <!-- Left Section -->
+                  <div class="design-left">
+                      <h2>Provide design details or upload image for a Perfect Fit</h2>
+                      <label>
+                          Images (Optional)
+                          <span class="info-icon">i</span>
+                            <div class="vn-hover-popup">Provide specific design requests or upload reference images to guide your customization, ensuring your cushion is tailored to your exact vision.</div>
+                      </label>
+                
+                      <input type="file" name="custom_upload" id="customUpload" accept=".png,.jpg,.jpeg,.gif,.pdf,.doc">
+                      <div class="file-info">
+                          Allowed file extensions: png, jpg, jpeg, gif, pdf, doc
+                      </div>
+                  </div>
+  
+                  <!-- Right Section -->
+                  <div class="design-right">
+                      <label>Comments/Instructions</label>
+                      <textarea placeholder="Let us know if you have any special instructions."></textarea>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  
+  <!-- ------------------- section-6 --------------------- -->
+  <div class="wrap-summary">
+      <div class="container">
+      <div class="summary-container">
+        <div class="summary-header">Your Customization Summary</div>
+        <table class="summary-table">
+         
+          <tr>
+            <td>Category:</td>
+            <td class="selectedCategory">Most Popular</td>
+          </tr>
+          <tr>
+            <td>Fabric:</td>
+            <td class="fabricValue"></td>
+          </tr>
+          <tr>
+            <td>Fill:</td>
+            <td class="fillOption">High Density Foam</td>
+          </tr>
+          <tr>
+            <td>Zipper Position:</td>
+            <td class="zipperOption">Short Side</td>
+          </tr>
+          <tr>
+            <td>Piping:</td>
+            <td class="pipingOption">None</td>
+          </tr>
+          <tr>
+            <td>Ties:</td>
+            <td class="tieOption">None</td>
+          </tr>
+          <tr>
+            <td class="summary-price">Price (with selected options):</td>
+            <td class="summary-price" id="total-price">$20.29</td>
+          </tr>
+        </table>
+      </div>
+      </div>
+        </div>
+  
+  <!-- ------------------- section-7 --------------------- -->
+        <div class="offer-shipping-section">
+          <div class="container-vn container">
+          <div class="info-section">
+            <div class="info-box offers-box">
+              <div class="info-header green-bg">Offers</div>
+              <div class="info-body">
+                <p>10% Off + Free Pair of Pillow Covers<br><strong>FREEGIFT</strong></p>
+                <p>10% off Cushions – <strong>CUSHION10</strong></p>
+                <p>20% off Covers – <strong>COVER20</strong></p>
+              </div>
+            </div>
+          
+            <div class="info-box shipping-box">
+              <div class="info-header blue-bg">Free Shipping</div>
+              <div class="info-body">
+                <p>Free Shipping in 3–4 Weeks.</p>
+                <p>Expedited Shipping in 2–3 Weeks.</p>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+<div class="add-to-cart-btn container"><a href="javascript:void(0)">Add to Cart <div id="config-loader" style="display:none;"></div></a>
+  
+</div>
+
+  <div class="price-btn">
+    <button>$93.81</button></div>
+
+                                  </div>
+  {% render 'fabric-custom-js' %}
+  
+  {% schema %}
+  {
+  "name": "Custom-templete-section",
+  "settings": [],
+  "presets": [
+  {
+  "name": "Custom-templete-section",
+  }
+  ]
+  }
+  {% endschema %}
+
+
+
+<script>
+  window.addEventListener('scroll', function() {
+    const button = document.querySelector('.price-btn');
+    if (window.scrollY >= 500) {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+</script>
+
+
+  
+
+  <script>
+    $(document).ready(
+      $('.dop_parent_filter span.vn-tab-name').click(function() {
+        $(this).toggleClass('an-active');
+      })
+);
+</script>
+
+<script>
+    $( document ).ready(function() {
+  $('.an-fab-btn').click(function() {
+    var tabID = $(this).attr('data-tab');
+    $(this).addClass('active').siblings().removeClass('active');
+    $('#fab-' + tabID).addClass('active').siblings().removeClass('active');
+   
+  });
+  $('button.btn-popular.an-fab-btn').click(function() {
+       $('.more-choices.wrap-select.an-active, li#moreChoices span.vn-tab-names.an-active').removeClass('an-active');
+    
+  });
+  });
+</script>
+<style>
+div#config-loader {
+    height: 20px;
+    width: 20px;
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid #3498db;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+.wrap-box.vn-active-btn .thumb img {
+    border: 3px solid red;
+    padding: 3px;
+}
+.fabric-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.next-page, .prev-page, .option, .custom-option, .wrap-box, .an-fab-btn {
+    cursor: pointer;
+}
+button.btn-more.an-fab-btn {
+    display: none;
+}
+
+</style>

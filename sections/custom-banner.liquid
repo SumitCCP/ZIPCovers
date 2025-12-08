@@ -1,0 +1,21 @@
+<div class="full-banner">
+  {% if page.metafields.custom.all_banner != blank %}
+   <div class="full-banner-img">
+     <img src="{{ page.metafields.custom.all_banner | img_url: '1600x500' }}" />
+   </div>
+ {% endif %}
+  <div class="all-banner-content-row">
+   {% if page.metafields.custom.page_title != blank %} 
+    <h2 class="all-banner-title">
+     {{ page.metafields.custom.page_title }}
+    </h2>
+   {% endif %} 
+   {% if page.metafields.custom.page_description != blank %}  
+    <p> {{ page.metafields.custom.page_description }} </p>
+   {% endif %}
+   {% if page.metafields.custom.page_title_btn != blank %}  
+    <a href="{{ page.metafields.custom.page_title_url }}" target="_blank"> {{ page.metafields.custom.page_title_btn }} </a>
+   {% endif %}  
+  </div>
+      
+</div>

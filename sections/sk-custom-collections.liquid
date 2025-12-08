@@ -1,0 +1,147 @@
+{% schema %}
+{
+  "name": "SK Custom Collections",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "collection_block",
+      "name": "Collection Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Collection Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Collection Title",
+          "default": "Cushion Collection"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Link to Collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "SK Custom Collections",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* .page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+ */
+  #SKCustom_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 20px 5px;
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  @media (min-width: 768px) {
+    #SKCustom_container {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 40px 0px;
+    }
+  }
+
+  .SKCustom_Collections {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    position:relative;
+  }
+
+  .SKCustom_Collections:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .SKCustom_Collections-images {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .SKCustom_Collections-images {
+      height: 220px;
+    }
+  }
+
+  .SKCustom_Collections-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .SKCustom_Collections-title {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    background: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .SKCustom_Collections-title {
+      padding: 20px;
+      font-size: 18px;
+    }
+  }
+  .SKCustom_Collections:last-child::after {
+    content: "New Launch";
+    margin-bottom: 0 !important;
+    background: #E63946;
+    padding: 5px 8px;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index:99;
+    font-weight:bold;
+}
+</style>
+
+<div class="shopify-section">
+  <div id="SKCustom_container">
+  {% for block in section.blocks %}
+<a href="{{ shop.url }}{{ block.settings.collection.url | default: '#' }}" class="SKCustom_Collections">
+    <div class="SKCustom_Collections-images">
+        {% if block.settings.image %}
+          <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}">
+        {% else %}
+          <div style="background: #eee; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 12px;">No Image</div>
+        {% endif %}
+      </div>
+      <div class="SKCustom_Collections-title">
+        {{ block.settings.title }}
+      </div>
+    </a>
+  {% endfor %}
+</div></div>

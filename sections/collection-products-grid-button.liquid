@@ -1,0 +1,208 @@
+{% schema %}
+{
+  "name": "Collection Products Grid",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom Title",
+      "default": "Our Sunbrella® Cushion Range"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Products Grid"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.collection %}
+  {% assign collection = collections[section.settings.collection] %}
+  {% if collection.products_count > 0 %}
+    <div class="collection-title">
+      <h2>{{ section.settings.custom_title }}</h2>
+    </div>
+    {% paginate collection.products by 40 %}
+      <div class="collection-grid">
+        {% for product in collection.products %}
+          <div class="product-item">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+              <p class="product-title">{{ product.title }}</p>
+              <p class="product-price">{{ product.price | money }}</p>
+            </a>
+            <a href="{{ product.url }}" class="view-product-btn">Customize Now</a>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="page-link prev">Previous</a>
+        {% endif %}
+
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a href="{{ part.url }}" class="page-link">{{ part.title }}</a>
+          {% else %}
+            <span class="current-page">{{ part.title }}</span>
+          {% endif %}
+        {% endfor %}
+
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="page-link next">Next</a>
+        {% endif %}
+      </div>
+    {% endpaginate %}
+  {% else %}
+    <p>No products found in this collection.</p>
+  {% endif %}
+{% else %}
+  <p>Please select a collection in the section settings.</p>
+{% endif %}
+
+{% style %}
+  .collection-title{
+    max-width:1200px;
+    margin: auto;
+    
+  }
+.collection-title h2 {
+  text-align: left;
+  font-family: Lato-SemiBold;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #000;
+}
+@media (max-width: 767px){
+  .collection-title h2{
+    width:90%;
+    margin: auto;
+  }
+}
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;  /* Default Shopify width */
+  padding-top: 30px;
+  border-top: 2px #ccc solid;
+}
+
+@media (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 95%;
+  }
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-item:hover {
+  border: 1px solid #2A4D4A;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-title {
+  font-size: 17px;
+  margin-top: 10px;
+  color: #000;
+}
+
+.product-price {
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+}
+
+.view-product-btn {
+  display: inline-block;
+  background: #2A4D4A;
+  border: 2px #2A4D4A solid;
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.view-product-btn:hover {
+  background-color: #fff;
+  color: #2A4D4A;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.page-link, .current-page {
+  padding: 10px 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  border: 2px solid #2A4D4A;
+  border-radius: 5px;
+  color: #2A4D4A;
+  font-weight: bold;
+  background: white;
+  transition: all 0.3s;
+}
+
+.page-link:hover {
+  background: #2A4D4A;
+  color: white;
+}
+
+.current-page {
+  background: #2A4D4A;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .product-title {
+    font-size: 14px;
+  }
+.product-price {
+  font-size: 16px;
+}
+  .view-product-btn {
+    font-size: 12px;
+  }
+
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 95%;
+  }
+}
+{% endstyle %}

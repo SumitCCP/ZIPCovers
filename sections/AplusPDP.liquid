@@ -1,0 +1,93 @@
+{% if product.metafields.custom.a_plus_section %}
+ {% style %}
+   .A1containerMain {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 400vh;
+    }
+    .A1containercards {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .A1containercards img {
+      width: 100%;
+      object-fit: cover;      
+      border-radius: 10px;
+    }
+    .A1containercards video {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    /* Each card gets a different color and z-index */
+    .A1containercards:nth-child(1) {
+      z-index: 1;
+    }
+    .A1containercards:nth-child(2) {
+      z-index: 2;
+    }
+    .A1containercards:nth-child(3) {
+      z-index: 3;
+    }
+    .A1containercards:nth-child(4) {
+      z-index: 4;
+    }
+
+    .A1containercards:nth-child(1) { transform: translateY(0); }
+    .A1containercards:nth-child(2) { transform: translateY(0); }
+    .A1containercards:nth-child(3) { transform: translateY(0); }
+    .A1containercards:nth-child(4) { transform: translateY(0); }
+
+    .A1video{
+      max-width: 1200px;
+      margin:50px auto;
+      padding:5px;
+    }
+    .A1video iframe {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    
+    .Aplusdesktop{
+      display:block;
+    }
+    .Aplusmobile{
+      display:none;
+    }
+    
+    @media (max-width:767px){
+      .Aplusmobile{
+        display:block;
+      }
+      .Aplusdesktop{
+        display:none;
+      }
+      
+      /* Override sticky styles ONLY for mobile container */
+      .Aplusmobile.A1containerMain {
+        height: auto;
+      }
+      .Aplusmobile .A1containercards {
+        position: relative;
+        height: auto;
+        margin-bottom: 5px;
+        padding:5px;
+      }
+    }
+ {% endstyle %}
+
+  <div class="scroll-extra-html">
+    {{ product.metafields.custom.a_plus_section | raw }}
+  </div>
+{% endif %}

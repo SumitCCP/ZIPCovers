@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {
+        "desktop_banner": "shopify://shop_images/chair-cushion-web-21aug-25.png",
+        "mobile_banner": "shopify://shop_images/chair-cushion-app-21aug-25.png"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    },
+    "order_steps_mPMDNa": {
+      "type": "Order-Steps",
+      "name": "Order Steps",
+      "settings": {}
+    },
+    "faq": {
+      "type": "collection-faq-dynamic",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header",
+    "main",
+    "order_steps_mPMDNa",
+    "faq"
+  ]
+}

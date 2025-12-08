@@ -1,0 +1,214 @@
+<section class="zc-slider">
+  <div class="zc-slider__inner">
+    <h2 class="zc-slider__title">
+      {{ section.settings.heading | default: "Grow Your Business with Custom Comfort That Customers Love" }}
+    </h2>
+
+    <div class="zc-slider__trackwrap">
+      <button class="zc-slider__nav zc-slider__nav--prev" type="button" aria-label="Previous">‹</button>
+
+      <div class="zc-slider__track" id="zcSliderTrack-{{ section.id }}">
+        {% for block in section.blocks %}
+          {% assign link = block.settings.link %}
+          <article class="zc-card">
+            {% if link != blank %}
+              <a href="{{ link }}" class="zc-card__link">
+            {% endif %}
+
+            {% if block.settings.image %}
+              <div class="zc-card__media">
+                <img src="{{ block.settings.image | image_url: width: 900 }}" alt="{{ block.settings.title | escape }}">
+              </div>
+            {% endif %}
+            <div class="zc-card__body">
+              <h3 class="zc-card__title">{{ block.settings.title }}</h3>
+              {% if block.settings.text != blank %}
+                <p class="zc-card__text">{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+
+            {% if link != blank %}
+              </a>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+
+      <button class="zc-slider__nav zc-slider__nav--next" type="button" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <style>
+    .zc-slider {
+      padding: 48px 16px 64px;
+      background: #fff;
+    }
+    .zc-slider__inner {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .zc-slider__title {
+      text-align: center;
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+    .zc-slider__trackwrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .zc-slider__track {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 12px 0 12px;
+    }
+    .zc-slider__track::-webkit-scrollbar { height: 0; }
+
+    .zc-card {
+      flex: 0 0 280px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 22px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .zc-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.05);
+    }
+    .zc-card__link {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .zc-card__media {
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .zc-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .zc-card__body {
+      padding: 15px 10px;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+    .zc-card__title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .zc-card__text {
+      font-size: 15px;
+      line-height: 1.4;
+      color: #525252;
+    }
+
+    .zc-slider__nav {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.35);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      cursor: pointer;
+      transition: background .15s ease;
+      flex: 0 0 auto;
+    }
+    .zc-slider__nav:hover {
+      background: #f2f2f2;
+    }
+
+    @media (min-width: 1025px) {
+      .zc-slider__trackwrap { gap: 0; }
+      .zc-slider__track { margin: 0 46px; }
+      .zc-slider__nav--prev {
+        position: absolute;
+        left: 0;
+        z-index: 2;
+      }
+      .zc-slider__nav--next {
+        position: absolute;
+        right: 0;
+        z-index: 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .zc-card { flex: 0 0 78vw; min-height: 340px; }
+      .zc-slider__nav { display: none; }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const track = document.getElementById('zcSliderTrack-{{ section.id }}');
+      if (!track) return;
+      const prev = document.querySelector('#shopify-section-{{ section.id }} .zc-slider__nav--prev');
+      const next = document.querySelector('#shopify-section-{{ section.id }} .zc-slider__nav--next');
+      const scrollAmount = 320;
+      if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+      if (next) next.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Cushion slider (trade)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Grow Your Business with Custom Comfort That Customers Love"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Couch Cushions" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Soft, colorful, & versatile, they enhance sofas, chairs, & beds while creating a cozy, inviting space." },
+        { "type": "url", "id": "link", "label": "Collection link (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cushion slider (trade)",
+      "blocks": [
+        { "type": "card", "settings": { "title": "Couch Cushions" } },
+        { "type": "card", "settings": { "title": "Bench Cushions" } },
+        { "type": "card", "settings": { "title": "Window Cushions" } },
+        { "type": "card", "settings": { "title": "Boat Cushions" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

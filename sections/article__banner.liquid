@@ -1,0 +1,155 @@
+{% comment %}
+** Article banner **
+- Template section
+{% endcomment %}
+
+{% if section.settings.show_banner %}
+
+{% comment %}Assign object as block or section{% endcomment %}
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+
+{% comment %}Layout{% endcomment %}
+{% assign heading_alignment = object.settings.heading_alignment %}
+{% assign vertical_spacing = object.settings.vertical_spacing %}
+{% assign width = object.settings.width %}
+{% assign padding_top = object.settings.padding_top %}
+{% assign padding_bottom = object.settings.padding_bottom %}
+{% assign animation = object.settings.animation | default: 'none' %}
+{% assign banner_height = object.settings.banner_height %}
+{% comment %} Advanced {% endcomment %}
+{% assign css_class = object.settings.css_class %}
+{% assign custom_css = object.settings.custom_css %}
+
+{% style %}
+/* Clamp blog hero height on iOS + kill ratio padding */
+.blog-post-banner .image-element__wrap {
+  /* the theme usually sets inline padding-top to enforce ratio */
+  padding: 0 !important;          /* <-- this is the key */
+  min-height: 0 !important;
+  overflow: hidden;
+}
+
+/* In case inline styles still sneak in */
+.blog-post-banner .image-element__wrap[style*="padding-top"] {
+  padding-top: 0 !important;
+}
+
+.blog-post-banner .image-element__wrap img {
+  display: block;
+  width: 100%;
+  height: auto !important;        /* desktop: keep natural aspect */
+  max-height: 500px;              /* desktop cap */
+  object-fit: cover;
+}
+
+/* Mobile: force a predictable height */
+@media (max-width: 768px) {
+  .blog-post-banner .image-element__wrap {
+    max-height: 300px !important;
+  }
+  .blog-post-banner .image-element__wrap img {
+    height: 100% !important;      /* fill the 300px box */
+    max-height: none !important;
+  }
+}
+
+/* Nuke any 100vh/min-height from parent wrappers */
+.blog-post-banner .banner__image,
+.blog-post-banner .banner__wrapper,
+.blog-post-banner [style*="vh"] {
+  height: auto !important;
+  min-height: 0 !important;
+}
+{% endstyle %}
+
+
+  {% render 'banner',
+          context: 'article',
+          width: width,
+          banner_height: banner_height
+  %}
+
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Blog post banner",
+  "class": "banner blog-post-banner overlaid-header-option",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_banner",
+      "label": "Show banner",
+      "info": "The blog post's featured image will be used",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "image_darken",
+      "label": "Darken image",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wide",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 80,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Advanced",
+      "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ]
+}
+
+{% endschema %}
