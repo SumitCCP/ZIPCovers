@@ -1,0 +1,662 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_banner_new_ECkHXN": {
+      "type": "custom-banner-new",
+      "custom_css": [],
+      "settings": {
+        "img_01": "shopify://shop_images/Sunbrella_page_banner_wologo.jpg",
+        "caption": "Loved by 20,000+ customers",
+        "caption-mobile": "Loved by 20,000+ customers",
+        "heading": "<strong>Sunbrella®- The Gold Standard in Cushion Fabrics</strong>",
+        "text": "<p>ZIPCushions is an Official Sunbrella® Cushion Partner—offering premium cushions crafted with Sunbrella® fabric, blending refined softness, enduring color, and quality texture for elevated living.</p>",
+        "label": "Shop Now",
+        "link": "shopify://collections/outdoor-cushions-with-sunbrella-covers"
+      }
+    },
+    "icon_box_H8xxaJ": {
+      "type": "icon-box",
+      "blocks": {
+        "item_grRtcA": {
+          "type": "item",
+          "settings": {
+            "img_01": "shopify://shop_images/fi_17938466.png",
+            "title": "<strong>24/7 Customer Support</strong>",
+            "text": "<p>Personalized assistance from real people, anytime you need it</p>"
+          }
+        },
+        "item_gWCjFM": {
+          "type": "item",
+          "settings": {
+            "img_01": "shopify://shop_images/fi_7601005.png",
+            "title": "<strong>Satisfaction Guaranteed</strong>",
+            "text": "<p>Enjoy peace of mind with our Perfect-Fit Warranty</p>"
+          }
+        },
+        "item_dbMf94": {
+          "type": "item",
+          "settings": {
+            "img_01": "shopify://shop_images/Group_1.png",
+            "title": "Free Shipping",
+            "text": "<p>Fast, free delivery in just 3 weeks</p>"
+          }
+        },
+        "item_t3DXJG": {
+          "type": "item",
+          "settings": {
+            "img_01": "shopify://shop_images/fi_4504229.png",
+            "title": "<strong>Flexible Payment Options</strong>",
+            "text": "<p>Shop now, pay later with Smart Payment</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_grRtcA",
+        "item_gWCjFM",
+        "item_dbMf94",
+        "item_t3DXJG"
+      ],
+      "settings": {
+        "color_accent": "#f7f8fb",
+        "heading": "",
+        "p_t": 30,
+        "p_b": 50
+      }
+    },
+    "index_faq_XjawyV": {
+      "type": "index__faq",
+      "blocks": {
+        "content_hGRWE7": {
+          "type": "content",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/fi_17472131_1.png",
+            "title": "Soft to the Touch, Made to Last",
+            "answer": "<p>Unlike ordinary outdoor fabrics, Sunbrella® offers a smooth texture with the resilience & durability of true performance textile.<br/></p>"
+          }
+        },
+        "content_KJr3kU": {
+          "type": "content",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/Group_3.png",
+            "title": "Lustrously Dyed, Endlessly Elegant",
+            "answer": "<p>Color is locked into every fiber—ensuring deep, lustrous tones that resist fading, even in sun-drenched or salt-air environments.</p>"
+          }
+        },
+        "content_QEnyq7": {
+          "type": "content",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/Vector_5.png",
+            "title": "Effortless Sophistication",
+            "answer": "<p>Engineered for ease, Sunbrella® maintains its pristine appearance with minimal care—repelling spills, stains, and weather with grace.</p>"
+          }
+        },
+        "content_TJEKcC": {
+          "type": "content",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/Group_4.png",
+            "title": "Extensive Style Selection",
+            "answer": "<p>Choose from a sophisticated palette of patterns, textures, and colors to complement any design vision.</p>"
+          }
+        },
+        "content_dV7eqJ": {
+          "type": "content",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/Vector_6.png",
+            "title": "Made for Marine & Outdoor Mastery",
+            "answer": "<p>Trusted in marine-grade environments—engineered to perform under the harshest conditions.</p>"
+          }
+        },
+        "content_wnkJpX": {
+          "type": "content",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/Group_5.png",
+            "title": "Backed by a 5-Year Warranty",
+            "answer": "<p>Confidence woven in—Sunbrella® guarantees lasting beauty and performance for years.</p>"
+          }
+        },
+        "image_QCpRwT": {
+          "type": "image",
+          "settings": {
+            "img_heading": "<strong>A Material That Speaks the Language of Quality</strong>",
+            "img_text": "Sunbrella® is crafted to meet the demands of sophisticated living. Its richly woven textures, enduring color depth, and soft handfeel elevate any space, indoors or out. Designed to resist fading, staining, and wear, Sunbrella® delivers timeless beauty with effortless care. It’s the preferred choice of designers, architects, and discerning homeowners who value both aesthetic excellence and lasting quality.",
+            "image": "shopify://shop_images/image_102.png"
+          }
+        }
+      },
+      "block_order": [
+        "content_hGRWE7",
+        "content_KJr3kU",
+        "content_QEnyq7",
+        "content_TJEKcC",
+        "content_dV7eqJ",
+        "content_wnkJpX",
+        "image_QCpRwT"
+      ],
+      "settings": {
+        "title": "",
+        "width": "standard",
+        "position": "left",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animation": "none",
+        "css_class": "home-faq",
+        "custom_css": ""
+      }
+    },
+    "index_featured_collection_UnbwFJ": {
+      "type": "index__featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Our Sunbrella® Cushion Range",
+        "collection": "outdoor-cushions-with-sunbrella-covers",
+        "products_per": 5,
+        "mobile_products_per_row": "1",
+        "products_limit": 15,
+        "align_height": true,
+        "collection_height": 200,
+        "collection_style": "slider",
+        "width": "wide",
+        "show_gutter": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "animation": "none",
+        "css_class": "home-collection",
+        "custom_css": ""
+      }
+    },
+    "collection_products_grid_button_m9ywaV": {
+      "type": "collection-products-grid-button",
+      "name": "Collection Products Grid",
+      "settings": {
+        "collection": "outdoor-cushions-with-sunbrella-covers",
+        "custom_title": "Our Sunbrella® Cushion Range"
+      }
+    },
+    "review_slider_ipHk7a": {
+      "type": "review-slider",
+      "blocks": {
+        "item_FjE4Pc": {
+          "type": "item",
+          "settings": {
+            "text": "“Super happy with my purchase. I chose a mudroom cushion for my inside bench area and it fits perfectly! Took less than 3 weeks to receive it after I ordered it. I do recommend ordering fabric swatches to pick the color as the company recommends. I got lucky and the color I chose from the website works well :)”",
+            "user": "Susan Rinehart"
+          }
+        },
+        "item_3T96Fw": {
+          "type": "item",
+          "settings": {
+            "text": "“Great pillows, perfect fit, great customer service.”",
+            "user": "Daniel Sweren-Becker"
+          }
+        },
+        "item_VPWhjN": {
+          "type": "item",
+          "settings": {
+            "text": "“We got off to a rough start with fabric samples being over a month delayed, but once I did decide to go ahead and order from Zip Cushions, wow! The cushions arrived in a week, all the way from India! They are simply beautiful and exactly what I wanted for my dining nook benches.”",
+            "user": "Robbin Marcus"
+          }
+        },
+        "item_NKJKjc": {
+          "type": "item",
+          "settings": {
+            "text": "\"Beyond my expectations. Excellent workmanship, perfect fit, goes with my decor. I’ve recommended your site to many of my friends.\"",
+            "user": "Michael Gerrity"
+          }
+        },
+        "item_iwLUnn": {
+          "type": "item",
+          "settings": {
+            "text": "\"This cushion is exactly what I wanted! So easy to order! I love it!\"",
+            "user": "Bridget Robustelli"
+          }
+        },
+        "item_GeVyCU": {
+          "type": "item",
+          "settings": {
+            "text": "\"Cushions looks awesome! Exactly to specification and delivered on time. Looks like a whole new outdoor set.\"",
+            "user": "Wendy Allen"
+          }
+        }
+      },
+      "block_order": [
+        "item_FjE4Pc",
+        "item_3T96Fw",
+        "item_VPWhjN",
+        "item_NKJKjc",
+        "item_iwLUnn",
+        "item_GeVyCU"
+      ],
+      "settings": {
+        "heading": "Don’t take our word for it",
+        "subheading": "Over 780 reviews",
+        "text_01": "4.9 average on",
+        "p_t": 60,
+        "p_b": 50
+      }
+    },
+    "comparison_table_a6M4Jc": {
+      "type": "comparison-table",
+      "blocks": {
+        "header_dV8HDd": {
+          "type": "header",
+          "settings": {
+            "img_01": "shopify://shop_images/Cushions_Logo_by_Vitor_Hugo_1.png",
+            "cell_1": "#",
+            "cell_2": "Our Product",
+            "cell_3": "Other brand",
+            "cell_4": "",
+            "cell_5": "",
+            "cell_6": "",
+            "cell_7": ""
+          }
+        },
+        "item_HwFDCN": {
+          "type": "item",
+          "settings": {
+            "title": "Master-level craftsmanship & premium materials",
+            "cell_2": true,
+            "cell_3": false,
+            "cell_4": false,
+            "cell_5": false,
+            "cell_6": false,
+            "cell_7": false
+          }
+        },
+        "item_TUGA99": {
+          "type": "item",
+          "settings": {
+            "title": "Built-in mold & mildew resistance",
+            "cell_2": true,
+            "cell_3": false,
+            "cell_4": false,
+            "cell_5": false,
+            "cell_6": false,
+            "cell_7": false
+          }
+        },
+        "item_BEHR9A": {
+          "type": "item",
+          "settings": {
+            "title": "High-resilience foam for enduring comfort",
+            "cell_2": true,
+            "cell_3": false,
+            "cell_4": false,
+            "cell_5": false,
+            "cell_6": false,
+            "cell_7": false
+          }
+        },
+        "item_Hyf8U6": {
+          "type": "item",
+          "settings": {
+            "title": "Priority production & expedited delivery options",
+            "cell_2": true,
+            "cell_3": false,
+            "cell_4": false,
+            "cell_5": false,
+            "cell_6": false,
+            "cell_7": false
+          }
+        },
+        "item_BbBLB4": {
+          "type": "item",
+          "settings": {
+            "title": "Colorfast, fade-resistant performance fabrics",
+            "cell_2": true,
+            "cell_3": false,
+            "cell_4": false,
+            "cell_5": false,
+            "cell_6": false,
+            "cell_7": false
+          }
+        },
+        "item_jBxVJM": {
+          "type": "item",
+          "settings": {
+            "title": "Advanced stain & water repellency",
+            "cell_2": true,
+            "cell_3": false,
+            "cell_4": false,
+            "cell_5": false,
+            "cell_6": false,
+            "cell_7": false
+          }
+        }
+      },
+      "block_order": [
+        "header_dV8HDd",
+        "item_HwFDCN",
+        "item_TUGA99",
+        "item_BEHR9A",
+        "item_Hyf8U6",
+        "item_BbBLB4",
+        "item_jBxVJM"
+      ],
+      "settings": {
+        "bg_color": "",
+        "bg_gradient": false,
+        "container": "container",
+        "text_align": "text-center",
+        "title": "Experience the Distinction",
+        "title_size": "h2",
+        "description": "<p>ZIPCushions redefines custom comfort with elevated craftsmanship, high-grade  materials, and thoughtful design. From artisan-level finishing to long-lasting support and all-weather performance, every detail is tailored to meet the expectations of refined living—setting a new benchmark in bespoke cushions.</p>",
+        "description_size": "fs-6",
+        "label": "Shop Now",
+        "link": "https://zipcushions.com/collections/outdoor-cushions-with-sunbrella-covers",
+        "color_accent": "#ffffff",
+        "p_t": 50,
+        "p_b": 75
+      }
+    },
+    "explore_fabrics_RPcH7M": {
+      "type": "explore-fabrics",
+      "blocks": {
+        "item_hnFE7h": {
+          "type": "item",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/CleanShot_2025-03-14_at_14.52.32_2x_1.png",
+            "title": "The Heritage of Sunbrella®",
+            "answer": "<p>For decades, Sunbrella® has been the trusted fabric of choice. Its heritage speaks to an enduring commitment to quality, innovation, and aesthetic integrity.</p>"
+          }
+        },
+        "item_9DJAmt": {
+          "type": "item",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/CleanShot_2025-03-14_at_14.52.32_2x_2.png",
+            "title": "Endorsed by the Design Community",
+            "answer": "<p>Sunbrella® has become synonymous with reliable beauty—trusted by interior designers and architects across the globe for its aesthetic and longevity.</p>"
+          }
+        },
+        "item_fchFgm": {
+          "type": "item",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/CleanShot_2025-03-14_at_14.52.32_2x_3.png",
+            "title": "Sunbrella® in Iconic Spaces",
+            "answer": "<p>Found in private villas, boutique hotels, and award-winning outdoor installations, Sunbrella® is the fabric behind some of the world’s most iconic spaces.</p>"
+          }
+        },
+        "item_iB3mP9": {
+          "type": "item",
+          "settings": {
+            "icon_img_01": "shopify://shop_images/CleanShot_2025-03-14_at_14.52.32_2x_4.png",
+            "title": "Sustainability With Substance",
+            "answer": "<p>Sunbrella® embraces a future-forward philosophy with fabrics designed to last. Crafted with intention to support a sustainable standard of living.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_hnFE7h",
+        "item_9DJAmt",
+        "item_fchFgm",
+        "item_iB3mP9"
+      ],
+      "custom_css": [
+        ".fabric-left .xo-gallery-search {--focus-color: none !important;}"
+      ],
+      "settings": {
+        "color_accent": "#f7f8fb",
+        "heading_01": "Explore The Sunbrella® Fabrics",
+        "heading_02": "Sunbrella®: A Fabric of Distinction",
+        "p_t": 50,
+        "p_b": 50
+      }
+    },
+    "index_icon_with_text_column_6CkzwW": {
+      "type": "index__icon-with-text-column",
+      "blocks": {
+        "logo_image_J3CeqN": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "",
+            "title": "Routine Maintenance",
+            "text": "<p>Gently brush away dust and debris, then clean using a mild soap and water solution. Rinse thoroughly and allow to air dry—no harsh chemicals needed.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_TVU4qU": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "",
+            "title": "Occasional Deep Cleaning",
+            "text": "<p>For more persistent stains, use a gentle bleach solution with soap and water. Let the mixture sit briefly before scrubbing, rinsing well, and letting cushions air dry fully.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "logo_image_JnPgEJ": {
+          "type": "logo_image",
+          "settings": {
+            "icon_label": "",
+            "title": "Smart Storage",
+            "text": "<p>When not in use, store cushions in a dry, ventilated space. Always ensure they’re completely dry and use protective covers to guard against mold and mildew.</p>",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_image_J3CeqN",
+        "logo_image_TVU4qU",
+        "logo_image_JnPgEJ"
+      ],
+      "settings": {
+        "heading": "Caring for Your Sunbrella® Cushions",
+        "icons_per_row": 3,
+        "icon_size": "medium",
+        "align_text": "center",
+        "button_style": "button--primary",
+        "icon_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "background": "#f7f8fb",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "home-icons",
+        "custom_css": ""
+      }
+    },
+    "icon_box_HmkqxF": {
+      "type": "icon-box",
+      "blocks": {
+        "item_AEGrQ8": {
+          "type": "item",
+          "settings": {
+            "title": "Clean Regularly",
+            "text": "<p>Brush off loose dirt and debris. Clean the fabrics with a solution of mild soap and water, rinse thoroughly and allow to air dry.</p>"
+          }
+        },
+        "item_mKJdwq": {
+          "type": "item",
+          "settings": {
+            "title": "Deep Cleaning",
+            "text": "<p>Mix 1 cup of bleach, 1/4 cup mild soap, and 1 gallon of water. Apply to the fabrics, let soak for 15 minutes, scrub, rinse thoroughly, and air dry.</p>"
+          }
+        },
+        "item_Brmnab": {
+          "type": "item",
+          "settings": {
+            "title": "Storage Tips",
+            "text": "<p>Store cushions in a dry, ventilated area during off-seasons. Use cushion covers and ensure cushions are completely dry before storing to prevent mold and mildew.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_AEGrQ8",
+        "item_mKJdwq",
+        "item_Brmnab"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.icon-box-inner1 .icon-inner {min-height: 215px; }}"
+      ],
+      "settings": {
+        "color_accent": "#f7f8fb",
+        "heading": "How to Keep Your Sunbrella® Cushions Fresh and New",
+        "p_t": 50,
+        "p_b": 50
+      }
+    },
+    "video_slider_GkRYQG": {
+      "type": "video-slider",
+      "blocks": {
+        "item_TePEeG": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/66e98b5acb04437c87afbf57ea6826da.mp4",
+            "bg-image": "shopify://shop_images/4ec64518aeb62d61b286b00cfe8e2edc.png"
+          }
+        },
+        "item_87UhfG": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/f6f1019cf4484d4a929ea2c68b19781b.mp4",
+            "bg-image": "shopify://shop_images/Untitled_design_7_3e18ed0b-401b-47bd-9a14-a8b0d710cae3.png"
+          }
+        },
+        "item_e7qT4p": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/inspirational_interior_design - Basoz K.mp4",
+            "bg-image": "shopify://shop_images/c5221c99f9263cbcb787b2430c6b560d.png"
+          }
+        },
+        "item_iGYqH9": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/0b4f5de0bded4084a8ac3adfff2aec99.mp4",
+            "bg-image": "shopify://shop_images/4ec64518aeb62d61b286b00cfe8e2edc.png"
+          }
+        },
+        "item_Ep8HUR": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/videoplayback.mp4",
+            "bg-image": "shopify://shop_images/short.jpg"
+          }
+        },
+        "item_maYP87": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/videoplayback (1).mp4",
+            "bg-image": "shopify://shop_images/short1.jpg"
+          }
+        },
+        "item_pmzgiK": {
+          "type": "item",
+          "settings": {
+            "video": "shopify://files/videos/videoplayback (2).mp4",
+            "bg-image": "shopify://shop_images/short1_1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "item_TePEeG",
+        "item_87UhfG",
+        "item_e7qT4p",
+        "item_iGYqH9",
+        "item_Ep8HUR",
+        "item_maYP87",
+        "item_pmzgiK"
+      ],
+      "settings": {
+        "heading": "Cushions That Trend"
+      }
+    },
+    "custom_faq_JP7aK9": {
+      "type": "custom-faq",
+      "blocks": {
+        "item_DnXBnW": {
+          "type": "item",
+          "settings": {
+            "title": "Are Sunbrella® cushions weather-resistant?",
+            "answer": "<p>Yes, Sunbrella® cushions are designed to withstand harsh weather conditions, including sun, rain, and humidity. They are resistant to fading, mold, and mildew.</p>"
+          }
+        },
+        "item_zMHTah": {
+          "type": "item",
+          "settings": {
+            "title": "Will Sunbrella® fabrics fade in the sun?",
+            "answer": "<p>Sunbrella® fabrics are specially engineered to resist fading, even with extended exposure to sunlight. Thanks to UV-stabilized pigments that are solution-dyed into the fibers, the colors remain vibrant and long-lasting. For added peace of mind, all Sunbrella fabrics come with a 5-year warranty against fading.</p>"
+          }
+        },
+        "item_BLQQ93": {
+          "type": "item",
+          "settings": {
+            "title": "How do I clean Sunbrella® cushions?",
+            "answer": "<p>Sunbrella cushions are easy to clean. For regular maintenance, brush off dirt and use a mild soap and water solution. For tougher stains, you can use a bleach solution without worrying about damaging the fabric.</p>"
+          }
+        },
+        "item_z487MB": {
+          "type": "item",
+          "settings": {
+            "title": "What is the turnaround time for cushions?",
+            "answer": "<p>Since each order is unique and tailor-made, once we receive your specifications and dimensions, it typically takes up to 4 weeks to get your dream cushions ready and shipped from our facilities. If you need your cushions sooner, we also offer rush turnaround times for an additional charge.</p>"
+          }
+        },
+        "item_KnegbD": {
+          "type": "item",
+          "settings": {
+            "title": "Can Sunbrella® cushions be used indoors?",
+            "answer": "<p>Absolutely! Sunbrella cushions are perfect for both outdoor and indoor use. Their exceptional durability and stain resistance make them a remarkably perfect choice for homes with kids and pets.</p>"
+          }
+        },
+        "item_XDcxxF": {
+          "type": "item",
+          "settings": {
+            "title": "Do you offer any warranties or protection plans for your cushions?",
+            "answer": "<p>Yes, we offer a standard 2-year warranty covering manufacturer defects. For Sunbrella cushions, a 5-year warranty against fading applies. Additionally, you can opt for our 5-Year Protection Plan, which covers accidental damages, for added peace of mind.</p>"
+          }
+        },
+        "item_89dAMX": {
+          "type": "item",
+          "settings": {
+            "title": "What types of custom shapes do you offer for outdoor cushions?",
+            "answer": "<p>We can create cushions in any shape and size as per your furniture specifications and dimensions, including those with notches, curves, and other unique designs. The standard shapes include square, rectangle, triangle, circular, semi-circle, trapezoid, L-shape, T-shape, cylindrical, or any other custom shapes you desire. Simply provide us with your specifications or a drawing template, and we'll craft your cushions to fit perfectly.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_DnXBnW",
+        "item_zMHTah",
+        "item_BLQQ93",
+        "item_z487MB",
+        "item_KnegbD",
+        "item_XDcxxF",
+        "item_89dAMX"
+      ],
+      "settings": {
+        "heading": "Need Help? We've Got Answers!",
+        "p_t": 50,
+        "p_b": 50
+      }
+    }
+  },
+  "order": [
+    "custom_banner_new_ECkHXN",
+    "icon_box_H8xxaJ",
+    "index_faq_XjawyV",
+    "index_featured_collection_UnbwFJ",
+    "collection_products_grid_button_m9ywaV",
+    "review_slider_ipHk7a",
+    "comparison_table_a6M4Jc",
+    "explore_fabrics_RPcH7M",
+    "index_icon_with_text_column_6CkzwW",
+    "icon_box_HmkqxF",
+    "video_slider_GkRYQG",
+    "custom_faq_JP7aK9"
+  ]
+}

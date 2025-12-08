@@ -1,0 +1,219 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "index_slideshow_classic_GikqTN": {
+      "type": "index__slideshow-classic",
+      "blocks": {
+        "image_EimW6M": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify://shop_images/gallery-web-29aug-25_3500x_12aed6b9-2bfc-4fee-8efc-533c8a59e9b6.webp",
+            "mobile_image": "shopify://shop_images/insperation.png",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "pretext_color": "#000000",
+            "heading_color": "#000000",
+            "subheading_color": "#000000",
+            "text_alignment": "center",
+            "text_horizontal_position": "center",
+            "background_color": "#FFFFFF",
+            "background_opacity": 100,
+            "border_color": "#FFFFFF",
+            "border_width": 0,
+            "text_width": 40,
+            "button_1": "",
+            "button_1_link": "",
+            "button_1_style": "button--secondary",
+            "button_2": "",
+            "button_2_link": "",
+            "button_2_style": "button--secondary",
+            "mobile_image_crop": "none",
+            "pretext_color_mobile": "rgba(0,0,0,0)",
+            "heading_color_mobile": "rgba(0,0,0,0)",
+            "subheading_color_mobile": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "image_EimW6M"
+      ],
+      "name": "Slideshow - classic",
+      "settings": {
+        "image_transition": "slide",
+        "image_slideshow_speed": 8,
+        "show_arrows": true,
+        "show_nav_buttons": true,
+        "mobile_text_below_image": true,
+        "width": "wide",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_html_bYkJgt": {
+      "type": "index__html",
+      "settings": {
+        "html_content": "<div class=\"container is-flex is-justify-center\">\n<div style=\"width: 100%; text-align: center; padding: 10px 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\">\n            <h2><b>Your Vision, Your Cushions- Inside and Out</b></h2>\n            <p>Explore the portfolio below and witness how ordinary indoor and outdoor spaces are turned into extraordinary havens.</p>\n            <p>Each cushion is —crafted for comfort and tailored for you.</p>\n            </div>\n</div>",
+        "width": "standard",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "3d1868ec-f1cb-4b2c-b1d6-843c65c8b638": {
+      "type": "index__divider",
+      "settings": {
+        "divider_style": "short",
+        "divider_width": 5,
+        "divider_color": "rgba(0,0,0,0)",
+        "alignment": "center",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_html_eNYT99": {
+      "type": "index__html",
+      "settings": {
+        "html_content": "<style>\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n\n    body {\n      background: #fff;\n    }\n\n    .Gallerycontainer {\n      column-count: 4;\n      column-gap: 0;\n      max-width: 1300px;\n      margin: auto;\n    }\n\n    .Gallerycontainer a {\n      margin: 0;\n      width: 100%;\n      break-inside: avoid;\n    }\n\n    .Gallerycontainer a img {\n      width: 100%;\n      display: block;\n      padding: 5px;\n      border-radius: 6px;\n      background: #fff;\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);\n      transition: transform 0.3s ease, box-shadow 0.3s ease;\n    }\n\n    .Gallerycontainer a img {\n      opacity: 0;\n      animation: fadeIn 0.6s ease forwards;\n    }\n\n    @keyframes fadeIn {\n      to {\n        opacity: 1;\n      }\n    }\n\n\n    .Gallerycontainer a {\n      position: relative;\n      overflow: hidden;\n    }\n\n    .Gallerycontainer a::after {\n      content: \"🔍\";\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%) scale(0);\n      font-size: 2rem;\n      color: rgba(255, 255, 255, 0.9);\n      background: rgba(0, 123, 255, 0.7);\n      padding: 10px;\n      border-radius: 50%;\n      transition: 0.3s;\n      z-index: 1;\n    }\n\n    .Gallerycontainer a:hover::after {\n      transform: translate(-50%, -50%) scale(1);\n    }\n\n\n    @media (max-width: 1200px) {\n      .Gallerycontainer {\n        column-count: 3;\n      }\n    }\n\n    @media (max-width: 768px) {\n      .Gallerycontainer {\n        column-count: 2;\n      }\n    }\n  </style>\n  <div class=\"Gallerycontainer\">\n    <a href=\"https://i.ibb.co/jPGHpNfQ/March-2025-Kandas.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/jPGHpNfQ/March-2025-Kandas.jpg\" alt=\"\" loading=\"lazy\"></a>\n    <a href=\"https://i.ibb.co/1jZYBjt/Pam-Harper-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/1jZYBjt/Pam-Harper-2.jpg\" alt=\"\" loading=\"lazy\"></a>\n    <a href=\"https://i.ibb.co/xq71VB0P/2-png-Valerie.jpg\" data-lightbox=\"gallery\" data-title=\"\">\n      <img src=\"https://i.ibb.co/xq71VB0P/2-png-Valerie.jpg\" alt=\"\" loading=\"lazy\"></a>\n    <a href=\"https://i.ibb.co/pBB2Z3JV/3-png-Valerie.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/pBB2Z3JV/3-png-Valerie.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/LXbZ3zNT/4-png-Elisha-Adams.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/LXbZ3zNT/4-png-Elisha-Adams.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/HTLqJtVf/4-png-Valerie.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/HTLqJtVf/4-png-Valerie.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/NRcXR4k/March-2025-Jennifer.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/NRcXR4k/March-2025-Jennifer.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/fVszg6mB/March-2025-Kandas-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/fVszg6mB/March-2025-Kandas-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/ccRLZBSH/Ashley-Image-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/ccRLZBSH/Ashley-Image-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/dwQ2PpsM/Ashley-Image-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/dwQ2PpsM/Ashley-Image-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/cK2zRsSy/Ashley-Image-3.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/cK2zRsSy/Ashley-Image-3.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/B2xFJpjV/Ashley-Image-4.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/B2xFJpjV/Ashley-Image-4.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/TMPwWSyq/Ashley-Image-5.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/TMPwWSyq/Ashley-Image-5.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/hxzfC8dw/Ashley-Image-6.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/hxzfC8dw/Ashley-Image-6.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/6RNMn1M8/Ashley-Image-7.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/6RNMn1M8/Ashley-Image-7.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/fdn68QDq/Ashley-Image-8.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/fdn68QDq/Ashley-Image-8.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/v4GrPj3H/IMG-6619.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/v4GrPj3H/IMG-6619.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/m5Fx679W/IMG-6620.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/m5Fx679W/IMG-6620.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/mCbGrGt5/IMG-6630.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/mCbGrGt5/IMG-6630.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/pvgJHmjW/IMG-6640.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/pvgJHmjW/IMG-6640.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/nss7qnG6/IMG-6647.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/nss7qnG6/IMG-6647.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/NdXLrkYK/IMG-6653.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/NdXLrkYK/IMG-6653.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/rKS6fb0r/IMG-6656.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/rKS6fb0r/IMG-6656.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/qL63xDkn/March-2025-Kandas-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/qL63xDkn/March-2025-Kandas-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/LjwPhHr/March-2025-Kandas-3.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/LjwPhHr/March-2025-Kandas-3.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/C37pcyVb/October-2024-Lauren-O-connell.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/C37pcyVb/October-2024-Lauren-O-connell.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/wrx679WL/1-png-Becky-George.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/wrx679WL/1-png-Becky-George.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/RpR81ZNy/1-png-Elisha-Adams.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/RpR81ZNy/1-png-Elisha-Adams.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/JjzXPGJY/1-png-Valerie.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/JjzXPGJY/1-png-Valerie.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/tpCwDb3s/2-png-Becky-George.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/tpCwDb3s/2-png-Becky-George.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/1G8YdMmx/2-png-Elisha-Adams.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/1G8YdMmx/2-png-Elisha-Adams.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/G4P8Y00j/3-png-Becky.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/G4P8Y00j/3-png-Becky.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/pT2t280/3-png-Elisha-Adams.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/pT2t280/3-png-Elisha-Adams.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/mVyPT2q5/5-png-Valerie.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/mVyPT2q5/5-png-Valerie.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/0RdCkGtz/2024-10-Tania-Khan.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/0RdCkGtz/2024-10-Tania-Khan.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/N6Dz5H7d/2024-10-Tania-Khan.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/N6Dz5H7d/2024-10-Tania-Khan.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/hFG9hmfx/2025-03-Gina-Image-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/hFG9hmfx/2025-03-Gina-Image-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/4ZQBW5qD/Ann-Image-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/4ZQBW5qD/Ann-Image-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/PGzbpWmb/Ann-Image-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/PGzbpWmb/Ann-Image-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/394jj4sy/Ann-Image-4.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/394jj4sy/Ann-Image-4.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/nM79c0NP/Bailey-Rinn-Image-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/nM79c0NP/Bailey-Rinn-Image-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/sfYYcpQ/Bailey-Rinn-Image-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/sfYYcpQ/Bailey-Rinn-Image-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/C5j8sQPR/Bailey-Rinn-Image-3.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/C5j8sQPR/Bailey-Rinn-Image-3.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/605ZyygR/Bailey-Rinn-Image-4.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/605ZyygR/Bailey-Rinn-Image-4.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/Gvg8946L/Courtney-Image-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/Gvg8946L/Courtney-Image-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/gMxTSRvb/Courtney-Image-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/gMxTSRvb/Courtney-Image-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/wNNPW37j/Courtney-Image-3.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/wNNPW37j/Courtney-Image-3.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/HDWjNkxt/Courtney-Image-4.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/HDWjNkxt/Courtney-Image-4.jpg\" alt=\"\" loading=\"lazy\"></a>\n    <a href=\"https://i.ibb.co/NdHrV5x6/January-2025-Lisa-kaden-5.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/NdHrV5x6/January-2025-Lisa-kaden-5.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/tp82n454/January-2025-Lisa-kaden-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/tp82n454/January-2025-Lisa-kaden-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/JwRX0qjj/January-2025-Lisa-kaden-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/JwRX0qjj/January-2025-Lisa-kaden-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/9mrDRbJR/January-2025-Lisa-kaden-3.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/9mrDRbJR/January-2025-Lisa-kaden-3.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/GQzVyY5S/January-2025-Lisa-kaden-4.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/GQzVyY5S/January-2025-Lisa-kaden-4.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/mVcrndRZ/January-2025-Lisa-kaden-6.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/mVcrndRZ/January-2025-Lisa-kaden-6.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/7xTPMct7/January-2025-Lisa-kaden.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/7xTPMct7/January-2025-Lisa-kaden.jpg\" alt=\"\" loading=\"lazy\"></a>\n    <a href=\"https://i.ibb.co/5hP2QKD7/Valerie-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/5hP2QKD7/Valerie-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/C32h9CKm/Kristyn.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/C32h9CKm/Kristyn.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/99XRQS5J/March-2025-Jennifer.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/99XRQS5J/March-2025-Jennifer.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/nsTBtBh7/March-2025-Elaine.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/nsTBtBh7/March-2025-Elaine.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/ymfNqXJH/March-2025-Jennifer-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/ymfNqXJH/March-2025-Jennifer-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/JwChyvtX/Nichole-Image-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/JwChyvtX/Nichole-Image-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/XZd8FkpT/October-2024-Lauren-O-connell-1.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/XZd8FkpT/October-2024-Lauren-O-connell-1.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/JRWPFxx6/October-2024-Lauren-O-connell-2.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/JRWPFxx6/October-2024-Lauren-O-connell-2.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/8DQLL1DB/October-2024-Tania-khan.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/8DQLL1DB/October-2024-Tania-khan.jpg\" alt=\"\" loading=\"lazy\"></a><a href=\"https://i.ibb.co/dsxGG1VQ/Pam-Harper-3.jpg\" data-lightbox=\"gallery\" data-title=\"\"><img src=\"https://i.ibb.co/dsxGG1VQ/Pam-Harper-3.jpg\" alt=\"\" loading=\"lazy\"></a>\n  </div>",
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_html_NndpF9": {
+      "type": "index__html",
+      "disabled": true,
+      "settings": {
+        "html_content": "<div class=\"container is-flex is-justify-center\" loading=\"lazy\">\n\n<div id=\"evm-lookbook-13114\"></div>\n<script async=\"true\" src=\"https://apps.expertvillagemedia.com/shopify/evm-lookbook/embed.js\" data-shop-id=\"zipcushions.myshopify.com\" data-gallery-id=\"13114\" type=\"text/javascript\"></script>\n</div>",
+        "width": "wide",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_heading_3kjwdb": {
+      "type": "index__heading",
+      "settings": {
+        "preheading": "",
+        "title": "",
+        "subheading": "<h2><strong>Easily Build Your Next Cushion </strong></h2>",
+        "preheading_color": "rgba(0,0,0,0)",
+        "heading_color": "rgba(0,0,0,0)",
+        "subheading_color": "rgba(0,0,0,0)",
+        "background": "rgba(0,0,0,0)",
+        "gradient": "rgba(0,0,0,0)",
+        "gradient_rotation": 0,
+        "heading_alignment": "center",
+        "vertical_spacing": "small",
+        "width": "standard",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "animation": "none",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "index_gallery_QiXHPy": {
+      "type": "index__gallery",
+      "blocks": {
+        "image_qe7KB7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/01.png",
+            "link": ""
+          }
+        },
+        "image_Af37qt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/02.png",
+            "link": ""
+          }
+        },
+        "image_HbAepQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/03.png",
+            "link": ""
+          }
+        },
+        "image_4MNeYw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/04.png",
+            "link": ""
+          }
+        },
+        "image_YNrmig": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/05.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_qe7KB7",
+        "image_Af37qt",
+        "image_HbAepQ",
+        "image_4MNeYw",
+        "image_YNrmig"
+      ],
+      "settings": {
+        "gallery_type": "classic",
+        "crop_images": false,
+        "images_per_row": 5,
+        "enable_lightbox": true,
+        "overlay_color": "#000000",
+        "link_color": "#ffffff",
+        "width": "standard",
+        "show_gutter": true,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "animation": "fadeInLeft",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "index_slideshow_classic_GikqTN",
+    "index_html_bYkJgt",
+    "3d1868ec-f1cb-4b2c-b1d6-843c65c8b638",
+    "index_html_eNYT99",
+    "index_html_NndpF9",
+    "index_heading_3kjwdb",
+    "index_gallery_QiXHPy"
+  ]
+}
