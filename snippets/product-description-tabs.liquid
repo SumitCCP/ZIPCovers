@@ -1,16 +1,10 @@
-{% render "add-new-offer" %}
+
 {% render "pages-bulletpoints" %} 
 
 <div>{{ product.description }}</div>
 
 {% comment %} for insurance product {% endcomment %}
 
-
- {% render "product-insurance" %} 
-
- {% if product.tags contains 'Rain Cover' %}
-  {% render 'FurnitureCoverFeature' %}
-{% endif %}
 
  
 
