@@ -722,4 +722,5 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
 }
 .Description-Content h2{
   visibility:hidden;
+  height:0;
 }
