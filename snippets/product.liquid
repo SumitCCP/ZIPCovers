@@ -211,18 +211,10 @@
 {% endif %}
   {% render 'FurnitureCoverFeature' %}
 
+
+{% comment %} DPO section  {% endcomment %}
 <div id="dpo_placeholder"></div>
 
-
-
-    {% comment %} Description - top
-    {% if product_description_position == "top" %}
-      {% if product.description != blank %}
-        <div class="description content has-padding-top">
-          {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
-        </div>
-      {% endif %}
-    {% endif %} {% endcomment %}
     
     <div style="clear:both;"></div>
 
@@ -255,7 +247,7 @@
       {% endif %}
     {% endif %} {% endcomment %}
     {% comment %} Collections, type, tags {% endcomment %}
-    {% if display_collections or display_tags or display_type %}
+    {% comment %} {% if display_collections or display_tags or display_type %}
       <div class="product__classification-links has-padding-top">
         {% if display_collections %}
           <p class="product__collections-list tags">
@@ -288,7 +280,7 @@
           </p>
         {% endif %}
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
     {% comment %} Social share icons {% endcomment %}
     {% if display_social_buttons %}
