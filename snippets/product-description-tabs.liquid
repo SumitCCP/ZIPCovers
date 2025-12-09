@@ -435,9 +435,10 @@ replace: "<h4></h4>", "" %} {% endif %} {% else %} {% assign easytabs_descriptio
 </script> {% endcomment %}
 
   
-    </div> {% assign description_parts = '' | split: "<h4" %} 
+    {% comment %} </div> {% assign description_parts = '' | split: "<h4" %}  {% endcomment %}
 {% comment %} {% endif %} {% endcomment %}
 
+<div>{{ product.description }}</div>
 
 {% comment %} for insurance product {% endcomment %}
 
