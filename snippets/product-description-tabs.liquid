@@ -1,9 +1,178 @@
 
 {% render "pages-bulletpoints" %} 
 
+ <style>
+    .Description-Content {
+      max-width: 100% !important;
+      margin: 20px auto !important;
+      font-family: Arial, sans-serif !important;
+    }
+
+    .tabs-header {
+      display: flex !important;
+      gap: 0 !important;
+      border-bottom: 2px solid #e0e0e0 !important;
+      margin-bottom: 20px !important;
+      flex-wrap: wrap !important;
+    }
+
+    .tab-button {
+      padding: 15px 30px !important;
+      background: transparent !important;
+      border: none !important;
+      cursor: pointer !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      color: #333 !important;
+      position: relative !important;
+      transition: all 0.3s ease !important;
+      border-bottom: 3px solid transparent !important;
+    }
+
+    .tab-button:hover {
+      color: #2563eb !important;
+    }
+
+    .tab-button.active {
+      color: #2563eb !important;
+      border-bottom: 3px solid #2563eb !important;
+    }
+
+    .tab-button.active::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -2px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 0 !important;
+      height: 0 !important;
+      border-left: 10px solid transparent !important;
+      border-right: 10px solid transparent !important;
+      border-bottom: 10px solid white !important;
+    }
+
+    .tab-content-section {
+      display: none !important;
+      animation: fadeIn 0.3s ease !important;
+    }
+
+    .tab-content-section.active {
+      display: block !important;
+    }
+
+    .tab-content-section h4 {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .tab-button {
+        padding: 12px 20px !important;
+        font-size: 14px !important;
+      }
+    }
+  </style>
+
 <div class="Description-Content">{{ product.description }}</div>
 
 {% comment %} for insurance product {% endcomment %}
+
+
+
+<script>
+(function() {
+  'use strict';
+  
+  function initializeTabs() {
+    const descriptionContent = document.querySelector('.Description-Content');
+    if (!descriptionContent) return;
+
+    // Get all h4 elements
+    const h4Elements = descriptionContent.querySelectorAll('h4');
+    if (h4Elements.length === 0) return;
+
+    // Create tabs header
+    const tabsHeader = document.createElement('div');
+    tabsHeader.className = 'tabs-header';
+
+    // Create wrapper for tab contents
+    const tabsWrapper = document.createElement('div');
+    tabsWrapper.className = 'tabs-content-wrapper';
+
+    // Process each h4 and create tabs
+    h4Elements.forEach((h4, index) => {
+      const tabId = `tab-${index}`;
+      
+      // Create tab button
+      const tabButton = document.createElement('button');
+      tabButton.className = 'tab-button';
+      if (index === 0) tabButton.classList.add('active');
+      tabButton.setAttribute('data-tab', tabId);
+      tabButton.textContent = h4.textContent;
+      tabsHeader.appendChild(tabButton);
+
+      // Create tab content section
+      const tabContentSection = document.createElement('div');
+      tabContentSection.className = 'tab-content-section';
+      tabContentSection.id = tabId;
+      if (index === 0) tabContentSection.classList.add('active');
+
+      // Add the h4 to the section
+      tabContentSection.appendChild(h4.cloneNode(true));
+
+      // Get all content until next h4 or end
+      let currentElement = h4.nextElementSibling;
+      while (currentElement && currentElement.tagName !== 'H4') {
+        tabContentSection.appendChild(currentElement.cloneNode(true));
+        currentElement = currentElement.nextElementSibling;
+      }
+
+      tabsWrapper.appendChild(tabContentSection);
+    });
+
+    // Clear original content and add new structure
+    descriptionContent.innerHTML = '';
+    descriptionContent.appendChild(tabsHeader);
+    descriptionContent.appendChild(tabsWrapper);
+
+    // Add click event listeners
+    const tabButtons = tabsHeader.querySelectorAll('.tab-button');
+    const tabContents = tabsWrapper.querySelectorAll('.tab-content-section');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetTab = this.getAttribute('data-tab');
+
+        // Remove active class from all buttons and contents
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding content
+        this.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+      });
+    });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeTabs);
+  } else {
+    initializeTabs();
+  }
+})();
+</script>
 
 
  
