@@ -100,18 +100,18 @@
             }
 </style>
 
-      {% for tag in product.tags %}
+      {% comment %} {% for tag in product.tags %}
         {% if tag contains 'meta-size-chart-' %}
           {% assign meta-size-chart = true %}
         {% endif %}
-      {% endfor %}
+      {% endfor %} {% endcomment %}
 
 
       {% comment %} Size chart Mobile {% endcomment %}
-      {% if size_chart != blank or meta-size-chart %}
+      {% comment %} {% if size_chart != blank or meta-size-chart %}
         <a href="javascript:;" class="product__size-chart size-chart--medium-down" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% render 'icon', name: 'right-caret' %}</a>
         {% render 'popup-size-chart', product_id: product.id %}
-      {% endif %}
+      {% endif %} {% endcomment %}
 
       {% comment %} Price {% endcomment %}
       <div class="modal_price subtitle">
@@ -197,10 +197,10 @@
 
 
         {% comment %} Size chart {% endcomment %}
-        {% if size_chart != blank or meta-size-chart %}
+        {% comment %} {% if size_chart != blank or meta-size-chart %}
           <a href="javascript:;" class="product__size-chart medium-down--hidden" data-fancybox data-src="#size-chart{{product.id}}" data-type="inline">{{ 'products.product.size_chart' | t }} {% render 'icon', name: 'right-caret' %}</a>
           {% render 'popup-size-chart', product_id: product.id %}
-        {% endif %}
+        {% endif %} {% endcomment %}
       </div>
     </div>
 
@@ -298,7 +298,7 @@
 
 
 
-   {% comment %} Description - bottom {% endcomment %}
+   {% comment %} Description - bottom of main section {% endcomment %}
 {% if product_description_position == "bottom" %}
 <div class="Desc_head"><h2>Description</h2></div>
       {% if product.description != blank %}
@@ -315,21 +315,6 @@
 
  {% form 'product', product %}
     <div style="display: none;" data-shop-pay-installments-template>{{ form | payment_terms }}</div>
-
-    {% comment %}
-      Display variant options for a product
-
-      @param product
-      @param selected_variant
-      @param style
-
-      @param enable_swatches
-      @param swatches_shape
-      @param swatches_option_trigger
-      @param swatches_option_style
-      @param swatches_product_page_size
-      @param swatch_colors
-    {% endcomment %}
     {% assign style = 'select' %}
     {% if settings.product_form_style == 'radio' %}
       {% assign style = 'radio' %}
@@ -340,24 +325,6 @@
     {% assign enable_swatches = settings.enable_swatches %}
     {% assign swatches_shape = settings.swatch_style %}
     {% assign swatches_option_trigger = 'color' %}
-    {% comment %}Inject @pixelunion/shopify-variants-ui/variant-selection begin{% endcomment %}
-    {% comment %}
-      Display variant options for a product
-    
-      @param product
-      @param selected_variant
-      @param variant_selection_id
-      @param sold_out_options
-      @param style
-    
-      @param enable_swatches
-      @param swatches_shape
-      @param swatches_option_trigger
-      @param swatches_option_style
-      @param swatches_product_page_size
-      @param swatch_colors
-    {% endcomment %}
-    
     <variant-selection
       {% if variant_selection_id != blank %}id="{{ variant_selection_id }}"{% endif %}
       class="variant-selection"
@@ -405,24 +372,6 @@
           {% endfor %}
         </select>
     
-        {% comment %}Inject @pixelunion/shopify-variants-ui/options-selection begin{% endcomment %}
-        {% comment %}
-          Display variant options for a product
-        
-          @param product
-          @param selected_variant
-          @param variant_selection_id
-          @param sold_out_options
-          @param style
-        
-          @param enable_swatches
-          @param swatches_shape
-          @param swatches_option_trigger
-          @param swatches_option_style
-          @param swatches_product_page_size
-          @param swatches_custom_colors
-        {% endcomment %}
-        
         <options-selection
           {% if variant_selection_id != blank %}variant-selection="{{ variant_selection_id }}"{% endif %}
           style="display: none;"
@@ -474,12 +423,9 @@
               %}
             {% endif %}
           {% endfor %}
-        </options-selection>
-        {% comment %}Inject @pixelunion/shopify-variants-ui/options-selection end{% endcomment %}
-    
+        </options-selection>    
       {% endif %}
     </variant-selection>
-    {% comment %}Inject @pixelunion/shopify-variants-ui/variant-selection end{% endcomment %}
 
 
     {% if product.available %}
@@ -552,10 +498,10 @@
 
 
 {% comment %} Description - split {% endcomment %}
-{% if product.description contains "<!-- split -->"  %}
+{% comment %} {% if product.description contains "<!-- split -->"  %}
   <div class="product-description-split">
     <div class="description content">
       {% capture desctabs %}{{ product.description | split: '<!-- split -->' | last  }}{% endcapture %}{% render 'product-description-tabs' with desctabs %}
     </div>
   </div>
-{% endif %}
+{% endif %} {% endcomment %}
