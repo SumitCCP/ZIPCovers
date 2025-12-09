@@ -129,7 +129,7 @@
 
       // Get all content until next h2 or end
       let currentElement = h2.nextElementSibling;
-      while (currentElement && currentElement.tagName !== 'H4') {
+      while (currentElement && currentElement.tagName !== 'H2') {
         tabContentSection.appendChild(currentElement.cloneNode(true));
         currentElement = currentElement.nextElementSibling;
       }
