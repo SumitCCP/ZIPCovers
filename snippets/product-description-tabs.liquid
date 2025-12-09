@@ -5,7 +5,6 @@
     .Description-Content {
       max-width: 100% !important;
       margin: 20px auto !important;
-      font-family: Arial, sans-serif !important;
     }
 
     .tabs-header {
@@ -21,7 +20,7 @@
       background: transparent !important;
       border: none !important;
       cursor: pointer !important;
-      font-size: 16px !important;
+      font-size: x-large !important;
       font-weight: 500 !important;
       color: #333 !important;
       position: relative !important;
@@ -96,8 +95,8 @@
     if (!descriptionContent) return;
 
     // Get all h4 elements
-    const h4Elements = descriptionContent.querySelectorAll('h4');
-    if (h4Elements.length === 0) return;
+    const h2Elements = descriptionContent.querySelectorAll('h2');
+    if (h2Elements.length === 0) return;
 
     // Create tabs header
     const tabsHeader = document.createElement('div');
@@ -108,7 +107,7 @@
     tabsWrapper.className = 'tabs-content-wrapper';
 
     // Process each h4 and create tabs
-    h4Elements.forEach((h4, index) => {
+    h2Elements.forEach((h2, index) => {
       const tabId = `tab-${index}`;
       
       // Create tab button
@@ -116,7 +115,7 @@
       tabButton.className = 'tab-button';
       if (index === 0) tabButton.classList.add('active');
       tabButton.setAttribute('data-tab', tabId);
-      tabButton.textContent = h4.textContent;
+      tabButton.textContent = h2.textContent;
       tabsHeader.appendChild(tabButton);
 
       // Create tab content section
@@ -125,11 +124,11 @@
       tabContentSection.id = tabId;
       if (index === 0) tabContentSection.classList.add('active');
 
-      // Add the h4 to the section
-      tabContentSection.appendChild(h4.cloneNode(true));
+      // Add the h2 to the section
+      tabContentSection.appendChild(h2.cloneNode(true));
 
-      // Get all content until next h4 or end
-      let currentElement = h4.nextElementSibling;
+      // Get all content until next h2 or end
+      let currentElement = h2.nextElementSibling;
       while (currentElement && currentElement.tagName !== 'H4') {
         tabContentSection.appendChild(currentElement.cloneNode(true));
         currentElement = currentElement.nextElementSibling;
