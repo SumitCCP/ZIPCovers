@@ -1,6 +1,6 @@
 {% render "add-new-offer" %}
 {% render "pages-bulletpoints" %} 
- 
+{% comment %}  
 {% comment %} DO NOT EDIT THIS SNIPPET - it's generated automatically and may be overwritten at any time {% endcomment %} 
 {% if product-description-tabs %} {% assign easytabs_description = product-description-tabs %}
 {% if easytabs_description contains 'easytabs-container' %} {{ easytabs_description }} {% assign easytabs_description =
@@ -432,10 +432,11 @@ replace: "<h4></h4>", "" %} {% endif %} {% else %} {% assign easytabs_descriptio
 
 <script type="text/javascript">
   if (typeof easytabs == 'object') easytabs.initWidgets(document.querySelectorAll('.tab-widget-{{ tabId }}'));
-</script>
+</script> {% endcomment %}
 
   
-    </div> {% assign description_parts = '' | split: "<h4" %} {% endif %}
+    </div> {% assign description_parts = '' | split: "<h4" %} 
+{% comment %} {% endif %} {% endcomment %}
 
 
 {% comment %} for insurance product {% endcomment %}
