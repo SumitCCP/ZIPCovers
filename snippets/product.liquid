@@ -307,12 +307,13 @@
 
    {% comment %} Description - bottom {% endcomment %}
 {% if product_description_position == "bottom" %}
+<h2 style="Font-weight:bold;">Description</h2>
       {% if product.description != blank %}
         <div class="description content bottom has-padding-top">
           {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
         </div>
       {% endif %}
-    {% endif %} 
+{% endif %} 
 
 
 
