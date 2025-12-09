@@ -214,14 +214,14 @@
 
 
 
-    {% comment %} Description - top {% endcomment %}
+    {% comment %} Description - top
     {% if product_description_position == "top" %}
       {% if product.description != blank %}
         <div class="description content has-padding-top">
           {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
         </div>
       {% endif %}
-    {% endif %}
+    {% endif %} {% endcomment %}
     
     <div style="clear:both;"></div>
 
