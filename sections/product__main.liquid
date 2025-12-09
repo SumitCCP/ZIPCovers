@@ -1,7 +1,7 @@
- {% comment %}
-** Product - main content area **
-- Product template
-{% endcomment %}
+<!-- Dynamic Product Options -->
+<script>jQuery('options-selection:contains("Title")').hide();</script>
+<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcovers.myshopify.com"></script>
+
 
 {% assign id = section.id %}
 {% comment %} Layout {% endcomment %}
@@ -3265,11 +3265,6 @@ overflow:visible;
     // Insert the offer list before the purchase buttons
     jQuery('#product-page-offer-list').insertBefore('.purchase-details__buttons');
   });
-
-
-<!-- Dynamic Product Options -->
-<script>jQuery('options-selection:contains("Title")').hide();</script>
-<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcovers.myshopify.com"></script>
 
 
 {% comment %} summary quantities selector  {% endcomment %}
