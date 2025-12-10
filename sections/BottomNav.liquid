@@ -113,21 +113,6 @@ position:relative;
     });
   }
 
- function pdpmainformbtn() {
-    const pdpmainform = document.querySelector('.pdpmainform');
-    pdpmainform.style.transform = 'translateY(200%)';
-    pdpmainform.style.opacity = '0';
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 100) {
-        pdpmainform.style.transform = 'translateY(0)';
-        pdpmainform.style.opacity = '1';
-      } else {
-        pdpmainform.style.transform = 'translateY(200%)';
-        pdpmainform.style.opacity = '0';
-      }
-    });
-  }
-
   // Menu toggle function
   function MenuToggle() {
     const menuBtn = document.querySelector('.menu-toggle');
@@ -141,8 +126,6 @@ position:relative;
 
   BottomNav();
   MenuToggle();
-  pdpmainformbtn()
-
 
 
 
