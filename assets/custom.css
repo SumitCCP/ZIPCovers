@@ -794,7 +794,6 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
  
 /* dpo sections  */
 .fieldset .form-list tbody tr:has(.Customize) {
-    width:100%;
     padding: 30px 10px !important;
     display: flex !important;
     gap: 20px;
@@ -803,9 +802,6 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
     background: #FBFFF9;
     border: 2px solid #85C31F;
     border-radius: 8px;
-}
-#itoris_dynamicproductoptions tr.fields td, .itoris_slider_group .itoris_dynamicproductoptions tr.fields td{
-  width:100% !important;
 }
 /* for dpo templates images(sumit)  */
   .custom-swatches-img{
