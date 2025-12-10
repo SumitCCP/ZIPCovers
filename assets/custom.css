@@ -792,3 +792,14 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
     font-size: xx-large !important;
 }
  
+/* dpo sections  */
+.fieldset .form-list tbody tr:has(.Customize) {
+    padding: 30px 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap!important;
+    justify-content: space-between;
+    background: #FBFFF9;
+    border: 2px solid #85C31F;
+    border-radius: 8px;
+}
