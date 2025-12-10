@@ -728,17 +728,9 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
 
 
 /* summary quantities selector  */
-         .main-wrapper {
-            width: 100%;
-            display: flex;
-            gap: 10px;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
         .features-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 0;
             flex: 1;
             background: white;
