@@ -736,8 +736,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             background: white;
             border: 1px solid #e0e0e0;
             border-radius: 12px;
-            /*overflow: hidden;*/
-            /*min-width: 0;*/
+          margin-top: 20px;
         }
 
         .feature-item {
