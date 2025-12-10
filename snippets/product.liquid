@@ -263,103 +263,6 @@
 <div id="dpo_placeholder"></div>
 {% comment %} {% render 'FurnitureCoverFeature' %} {% endcomment %}
 
-    
-    <div style="clear:both;"></div>
-
-    {% comment %} Purchase form {% endcomment %}
-    <div class="myproductpagee product-form-container has-padding-top"> 
-
-      {% comment %} Notify form {% endcomment %}
-      {% render 'product__notify-me-form', product: product %}
-
-      {% comment %} Product form {% endcomment %}
-      {% unless collection_handles contains 'coming-soon' %}
-        {%
-          render 'product__form',
-          context: 'product',
-          product: product,
-          sold_out_options: sold_out_options,
-          selected_variant: selected_variant,
-          show_payment_button: show_payment_button,
-          collection_handles: collection_handles
-        %}
-      {% endunless %}
-    </div>
-
-    {% comment %} Description - bottom {% endcomment %}
-    {% comment %} {% if product_description_position == "bottom" %}
-      {% if product.description != blank %}
-        <div class="description content bottom has-padding-top">
-          {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
-        </div>
-      {% endif %}
-    {% endif %} {% endcomment %}
-    {% comment %} Collections, type, tags {% endcomment %}
-    {% comment %} {% if display_collections or display_tags or display_type %}
-      <div class="product__classification-links has-padding-top">
-        {% if display_collections %}
-          <p class="product__collections-list tags">
-            <span class="product__classification-title">{{ 'products.product.collections' | t }}:</span>
-            {% for col in product.collections %}
-              <span class="tag tag--{{ tag_style }}">
-                <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>
-              </span>
-            {% endfor %}
-          </p>
-        {% endif %}
-
-        {% if display_type %}
-          <p class="product__type-list tags">
-            <span class="product__classification-title">{{ 'products.product.product_types' | t }}:</span>
-            <span class="tag tag--{{ tag_style }}">{{ product.type | link_to_type }}</span>
-          </p>
-        {% endif %}
-
-        {% if display_tags and product.tags.size > 0 %}
-          <p class="product__tags-list tags">
-            <span class="product__classification-title">{{ 'products.product.tags' | t }}:</span>
-            {% for tag in product.tags %}
-              {% unless tag contains 'meta-' %}
-                <span class="tag tag--{{ tag_style }}">
-                  <a href="{{ routes.collections_url }}/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>
-                </span>
-              {% endunless %}
-            {% endfor %}
-          </p>
-        {% endif %}
-      </div>
-    {% endif %} {% endcomment %}
-
-    {% comment %} Social share icons {% endcomment %}
-    {% if display_social_buttons %}
-      <div class="product__social-share has-padding-top">
-        {% render 'social-share-buttons' %}
-      </div>
-    {% endif %}
-
-  </div>
-</div>
-
-
-
-
-
-
-
-   {% comment %} Description - bottom of main section {% endcomment %}
-{% if product_description_position == "bottom" %}
-      {% if product.description != blank %}
-        <div class="description content bottom has-padding-top">
-          {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
-        </div>
-      {% endif %}
-{% endif %} 
-
-
-
-
-
-
  {% form 'product', product %}
     <div style="display: none;" data-shop-pay-installments-template>{{ form | payment_terms }}</div>
     {% assign style = 'select' %}
@@ -537,6 +440,98 @@
     {% endif %}
   {% endform %}
 
+
+    
+    <div style="clear:both;"></div>
+
+    {% comment %} Purchase form {% endcomment %}
+    <div class="myproductpagee product-form-container has-padding-top"> 
+
+      {% comment %} Notify form {% endcomment %}
+      {% render 'product__notify-me-form', product: product %}
+
+      {% comment %} Product form {% endcomment %}
+      {% unless collection_handles contains 'coming-soon' %}
+        {%
+          render 'product__form',
+          context: 'product',
+          product: product,
+          sold_out_options: sold_out_options,
+          selected_variant: selected_variant,
+          show_payment_button: show_payment_button,
+          collection_handles: collection_handles
+        %}
+      {% endunless %}
+    </div>
+
+    {% comment %} Description - bottom {% endcomment %}
+    {% comment %} {% if product_description_position == "bottom" %}
+      {% if product.description != blank %}
+        <div class="description content bottom has-padding-top">
+          {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
+        </div>
+      {% endif %}
+    {% endif %} {% endcomment %}
+    {% comment %} Collections, type, tags {% endcomment %}
+    {% comment %} {% if display_collections or display_tags or display_type %}
+      <div class="product__classification-links has-padding-top">
+        {% if display_collections %}
+          <p class="product__collections-list tags">
+            <span class="product__classification-title">{{ 'products.product.collections' | t }}:</span>
+            {% for col in product.collections %}
+              <span class="tag tag--{{ tag_style }}">
+                <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>
+              </span>
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        {% if display_type %}
+          <p class="product__type-list tags">
+            <span class="product__classification-title">{{ 'products.product.product_types' | t }}:</span>
+            <span class="tag tag--{{ tag_style }}">{{ product.type | link_to_type }}</span>
+          </p>
+        {% endif %}
+
+        {% if display_tags and product.tags.size > 0 %}
+          <p class="product__tags-list tags">
+            <span class="product__classification-title">{{ 'products.product.tags' | t }}:</span>
+            {% for tag in product.tags %}
+              {% unless tag contains 'meta-' %}
+                <span class="tag tag--{{ tag_style }}">
+                  <a href="{{ routes.collections_url }}/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>
+                </span>
+              {% endunless %}
+            {% endfor %}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %} {% endcomment %}
+
+    {% comment %} Social share icons {% endcomment %}
+    {% if display_social_buttons %}
+      <div class="product__social-share has-padding-top">
+        {% render 'social-share-buttons' %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+
+
+
+
+
+
+   {% comment %} Description - bottom of main section {% endcomment %}
+{% if product_description_position == "bottom" %}
+      {% if product.description != blank %}
+        <div class="description content bottom has-padding-top">
+          {% if product.description contains '<!-- split -->' %}{{ product.description | split: '<!-- split -->' | first  }}{% else %}{% render 'product-description-tabs', product: product %}{% endif %}
+        </div>
+      {% endif %}
+{% endif %} 
 
 
 
