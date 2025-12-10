@@ -815,24 +815,14 @@ margin-top: 20px !important;
     flex-wrap: wrap!important;
     justify-content: space-between !important;
 }
-.itoris_dynamicproductoptions tr.fields td:has(.raincover_fabric) .field .control div{
-width:100%;
-display:flex;
-flex-wrap:wrap;
-justify-content:left;
-}
+
 .fieldset .form-list tbody tr:has(.raincover_ties) {
     display: flex !important;
     gap: 20px;
     flex-wrap: wrap!important;
     justify-content: space-between !important;
 }
-#itoris_dynamicproductoptions .fieldset:has(.raincover_ties) .field .control div{
-width:100%;
-display:flex;
-flex-wrap:wrap;
-justify-content:left;
-} 
+
 #dpo_summary {
     margin-top: 20px  !important;
 }
