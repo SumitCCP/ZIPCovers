@@ -794,15 +794,18 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
  
 /* dpo sections  */
 .fieldset .form-list tbody tr:has(.Customize) {
-    width:100%;
+    width:100% !important;
     padding: 30px 10px !important;
-    display: flex;
+    display: flex !important;
     gap: 20px;
     flex-wrap: wrap!important;
-    justify-content: space-between;
+    justify-content: space-between !important;
     background: #FBFFF9;
     border: 2px solid #85C31F;
     border-radius: 8px;
+}
+#itoris_dynamicproductoptions tr.fields td, .itoris_slider_group .itoris_dynamicproductoptions tr.fields td{
+  width:100% !important;
 }
 /* for dpo templates images(sumit)  */
   .custom-swatches-img{
