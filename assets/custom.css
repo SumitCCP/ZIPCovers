@@ -863,6 +863,9 @@ margin-top: 20px !important;
   background:#fff;
   bottom:0;
 }
+/* .quantity-wrapper.quantity-style--box {
+    max-width: 150px;
+} */
 .purchase-details.has-quantity-box .purchase-details__spb--false .button--add-to-cart {
     border-radius: 8px;
     font-weight: bold;
