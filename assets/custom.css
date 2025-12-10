@@ -815,7 +815,7 @@ margin-top: 20px !important;
     flex-wrap: wrap!important;
     justify-content: space-between !important;
 }
-#itoris_dynamicproductoptions .fieldset:has(.raincover_fabric) .field .control{
+.itoris_dynamicproductoptions tr.fields td:has(.raincover_fabric){
 width:100%;
 display:flex;
 flex-wrap:wrap;
