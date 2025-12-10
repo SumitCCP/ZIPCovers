@@ -14,6 +14,11 @@
 
 {% comment %} Section specific CSS {% endcomment %}
 {% style %}
+
+.easytabs-header-text{
+font-weight: 500!important;
+font-size: 18px!important;
+}
   .action_button{
     background:#000000!important;
   }
@@ -3114,6 +3119,7 @@ var scrollTop = $(window).scrollTop();
   </script>
 {% endif %}
 
+{% if product.tags contains 'Rain Cover' %}
 <!-- Add this section within the product template (product-template.liquid or product.liquid) -->
 <div id="product-page-offer-list">
    <div class="product-page-offer-list-items">
@@ -3162,7 +3168,33 @@ height:auto;
 overflow:visible;
 }
 </style>
+{% endif %}
 
+
+
+{% unless product.tags contains 'Rain Cover' %}
+<!-- Add this section within the product template (product-template.liquid or product.liquid) -->
+<div id="product-page-offer-list">
+   <div class="product-page-offer-list-items">
+    <!-- <div><p>Shipping Options</p></div>
+    <div>
+      
+        <li>Free Rush Shipping</li>
+        <li>Guaranteed Delivery in 2 Weeks</li>
+      
+    </div>
+  </div> -->
+
+  <div class="product-page-offer-list-items">
+    <div><span class="coupon-ttl">Use Coupon Code</span></div><br>
+    <div>
+        <span class="coupon-dtls"><b>FROSTY15</b> - Get 15% Off Sitewide</span>
+    </div>
+      {% comment %} <p style="background:#FFF3CD; padding:5px; margin-top:20px;"><b>Update<span style="color:red">*</span>:</b> Price Hike from Oct 1 – Shop Till Stock Lasts</p> {% endcomment %}
+
+  </div>
+
+</div> {% endunless %}
 
 <!-- Add the CSS inside <style> tags in the same file -->
 {% style %}
@@ -3265,14 +3297,61 @@ overflow:visible;
     // Insert the offer list before the purchase buttons
     jQuery('#product-page-offer-list').insertBefore('.purchase-details__buttons');
   });
+
+// by sumit
+// Function to replace Maximum number of characters:5 text inside <p> tags
+$(document).ready(function() {
+    // Function to replace text inside <p> tags
+    function replaceTextInPTags(oldText, newText) {
+        // Loop through each <p> tag
+        $("p").each(function() {
+            // Check if the <p> tag contains the exact text
+            if ($(this).text().trim() === oldText) {
+                // Replace the text with the new one
+               $(this).html(newText);            }
+        });
+    }
+
+    // Call the function with your desired text replacement
+    replaceTextInPTags("Maximum number of characters:5", "Measure in inches");
+    replaceTextInPTags("Allowed file extensions: png, jpg, jpeg, gif, pdf, doc", "<br>Allowed file extensions: png, jpg, jpeg, gif, pdf, doc");
+
+
+});
+
+
+// Show alert for Dims >= 50
+jQuery(document).on('change', '#itoris_dynamicproductoptions select', function () {
+  var lengthforus = parseFloat(jQuery('#itoris_dynamicproductoptions .lengthforus select option:selected').text()) || 0;
+  var widthforus  = parseFloat(jQuery('#itoris_dynamicproductoptions .widthforus select option:selected').text()) || 0;
+
+  if (lengthforus >= 50 && widthforus >= 50) {
+ showCustomAlert("Note: Cushions exceeding 50 inches in both length and width require seam or joint.");
+  }
+});
+
+function showCustomAlert(message) {
+  var $alert = jQuery('#custom-alert');
+  jQuery('#alert-message').text(message);
+  $alert.stop(true, true).fadeIn(200);
+}
+// End Show alert for Dims >= 50
+
+  
+// end by sumit
+
 </script>
+
+
+
+
 
 <!-- Dynamic Product Options -->
 <script>jQuery('options-selection:contains("Title")').hide();</script>
-<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcovers.myshopify.com"></script>
+<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcushions.myshopify.com"></script>
 
 
-{% comment %} summary quantities selector {% endcomment %}
+{% comment %} summary quantities selector  {% endcomment %}
  {% style %}
 .purchase-details .purchase-details__spb--false {
 height:auto;
@@ -3404,14 +3483,12 @@ justify-content:space-between;
     bottom: 70;
   }
  } 
-{% endstyle %} 
-
-
+{% endstyle %}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-const target = document.querySelector("purchase-details__buttons purchase-details__spb--false");
+const target = document.querySelector(".purchase-details__buttons.purchase-details__spb--false");
   if (target) {
-    target.insertAdjacentHTML("afterend", `
+    target.insertAdjacentHTML("beforeend", `
       <div class="summaryQuantity">
         <div id="SummarymoneyQ"></div>
         <div class="product-quantity-box js-qty">
@@ -3422,7 +3499,11 @@ const target = document.querySelector("purchase-details__buttons purchase-detail
       </div>
     `);
   }
+
 });
+
+
+
 
   function BottomCartMobile() {
     const BottomCart = document.querySelector('.purchase-details .purchase-details__spb--false');
@@ -3441,7 +3522,7 @@ const target = document.querySelector("purchase-details__buttons purchase-detail
     });
   }
 BottomCartMobile();
-</script> 
+</script>
 
 <script>
   (function() {
