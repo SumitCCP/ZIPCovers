@@ -812,6 +812,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
     background: #FBFFF9;
     border: 2px solid #85C31F;
     border-radius: 8px;
+        margin-top: 20;
 }
 #itoris_dynamicproductoptions .fieldset:has(.raincover_fabric) .field .control{
 width:100%;
@@ -828,12 +829,16 @@ justify-content:left;
     background: #FBFFF9;
     border: 2px solid #85C31F;
     border-radius: 8px;
+        margin-top: 20;
 }
 #itoris_dynamicproductoptions .fieldset:has(.raincover_ties) .field .control{
 width:100%;
 display:flex;
 flex-wrap:wrap;
 justify-content:left;
+}
+#dpo_summary {
+    margin-top: 20px  !important;
 }
 /* for dpo templates images(sumit)  */
   .custom-swatches-img{
