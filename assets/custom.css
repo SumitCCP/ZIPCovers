@@ -789,7 +789,8 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
   font-weight: bold;
 }
 .price .money {
-    font-size: xx-large !important;
+    font-size: x-large !important;
+    font-family: arial black !important;
 }
  
 /* dpo sections  */
