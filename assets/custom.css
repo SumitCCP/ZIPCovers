@@ -745,7 +745,6 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             border: 1px solid #e0e0e0;
             border-radius: 12px;
             /*overflow: hidden;*/
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             /*min-width: 0;*/
         }
 
@@ -809,6 +808,7 @@ border-radius:15px;
   display:flex;
   gap:100px;
   align-items:center;
+  background: #84b931;
   /* position:fixed;
   bottom: 0;
   right: 0; */
@@ -855,7 +855,7 @@ border-radius:15px;
 .qty__btn[data-action="decrease"] { background: var(--qty-minus); color: #000; border-right:1px #000 solid;}
 
 .js-qty__adjust--plus,
-.qty__btn[data-action="increase"] { background: var(--qty-plus); color: #000; border-leftt:1px #000 solid;}
+.qty__btn[data-action="increase"] { background: var(--qty-plus); color: #000; border-left:1px #000 solid;}
 
 /* Input (supports both class sets) */
 .js-qty__num,
