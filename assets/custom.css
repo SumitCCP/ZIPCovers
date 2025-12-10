@@ -794,7 +794,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
  
 /* dpo sections  */
 .fieldset .form-list tbody tr:has(.Customize) {
-    padding: 30px 10px;
+    padding: 30px 10px !important;
     display: flex;
     gap: 20px;
     flex-wrap: wrap!important;
