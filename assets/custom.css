@@ -833,9 +833,6 @@ display:flex;
 flex-wrap:wrap;
 justify-content:left;
 } */
- #itoris_dynamicproductoptions .form-list.option-fields-cols-1 .field, .itoris_dynamicproductoptions .form-list.option-fields-cols-1 .field {
-    width: 100%;
-}
 #dpo_summary {
     margin-top: 20px  !important;
 }
@@ -869,4 +866,7 @@ justify-content:left;
   padding:5px 0px; margin:0;
   font-size:12px;
 }
+}
+ #itoris_dynamicproductoptions .form-list.option-fields-cols-1 .field, .itoris_dynamicproductoptions .form-list.option-fields-cols-1 .field {
+    width: 100% !important;
 }
