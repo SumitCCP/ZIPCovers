@@ -3405,6 +3405,17 @@ justify-content:space-between;
   }
  } 
 {% endstyle %} 
+
+ <div class="summaryQuantity" id="summaryQuantitynoformobile">
+            <div id="SummarymoneyQ">$38.00</div>
+            <div class="product-quantity-box js-qty">
+                <button type="button" class="js-qty__adjust js-qty__adjust--minus" aria-label="Decrease">−</button>
+                <input class="js-qty__num" type="number" name="quantity" min="1" step="1" value="1" aria-label="Quantity">
+                <button type="button" class="js-qty__adjust js-qty__adjust--plus" aria-label="Increase">+</button>
+            </div>
+            <div class="quantity-label">Quantity</div>
+        </div>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 const target = document.querySelector("purchase-details__buttons purchase-details__spb--false");
