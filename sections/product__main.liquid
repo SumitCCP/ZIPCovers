@@ -3405,7 +3405,7 @@ justify-content:space-between;
   }
  } 
 {% endstyle %} 
-<script>
+{% comment %} <script>
 document.addEventListener("DOMContentLoaded", function() {
 const target = document.querySelector(".purchase-details__buttons.purchase-details__spb--false");
   if (target) {
@@ -3422,9 +3422,6 @@ const target = document.querySelector(".purchase-details__buttons.purchase-detai
   }
 
 });
-
-
-
 
   function BottomCartMobile() {
     const BottomCart = document.querySelector('.purchase-details .purchase-details__spb--false');
@@ -3443,7 +3440,7 @@ const target = document.querySelector(".purchase-details__buttons.purchase-detai
     });
   }
 BottomCartMobile();
-</script>
+</script> {% endcomment %}
 
 <script>
   (function() {
