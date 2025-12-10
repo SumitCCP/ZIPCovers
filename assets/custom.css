@@ -773,15 +773,15 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
 .christmas-offer-banner {
   width:100%;
   border: 2px solid #7cb342;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 5px;
+  padding: 15px;
   background-color: #f9fff4;
   text-align: center;
   margin: 20px 0;
 }
 
 .offer-text {
-  font-size: 24px;
+  font-size: medium;
   color: #333;
 }
 
