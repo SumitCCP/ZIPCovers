@@ -3267,10 +3267,6 @@ overflow:visible;
   });
 
 
-<!-- Dynamic Product Options -->
-<script>jQuery('options-selection:contains("Title")').hide();</script>
-<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcovers.myshopify.com"></script>
-
 
 {% comment %} summary quantities selector {% endcomment %}
  {% style %}
@@ -3405,7 +3401,7 @@ justify-content:space-between;
   }
  } 
 {% endstyle %} 
-{% comment %} <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
 const target = document.querySelector(".purchase-details__buttons.purchase-details__spb--false");
   if (target) {
@@ -3420,7 +3416,6 @@ const target = document.querySelector(".purchase-details__buttons.purchase-detai
       </div>
     `);
   }
-
 });
 
   function BottomCartMobile() {
@@ -3440,7 +3435,7 @@ const target = document.querySelector(".purchase-details__buttons.purchase-detai
     });
   }
 BottomCartMobile();
-</script> {% endcomment %}
+</script> 
 
 <script>
   (function() {
@@ -3508,3 +3503,9 @@ BottomCartMobile();
 </script>
 
 {% comment %} summary quantities selector  {% endcomment %}
+
+
+<!-- Dynamic Product Options -->
+<script>jQuery('options-selection:contains("Title")').hide();</script>
+<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcovers.myshopify.com"></script>
+
