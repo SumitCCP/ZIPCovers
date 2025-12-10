@@ -802,17 +802,19 @@ border-radius:15px;
     text-transform: capitalize;
 }
 .summaryQuantity{
-  width:auto;
+  width:100%;
   height:auto;
-  padding: 0px 10PX;
-  display:flex;
-  gap:100px;
-  align-items:center;
-  background: #84b931;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
   /* position:fixed;
   bottom: 0;
   right: 0; */
-  z-index:999999
+  z-index:999999;
+  background: #84b931;
+  border-radius: 12px;
+  padding: 32px;
 }
 .summaryQuantity #SummarymoneyQ{
   font-size:medium;
