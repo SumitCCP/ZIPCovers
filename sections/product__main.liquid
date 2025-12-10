@@ -3486,9 +3486,9 @@ justify-content:space-between;
 {% endstyle %}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const target = document.querySelector("#dpo_summary");
+const target = document.querySelector(".purchase-details__buttons.purchase-details__spb--false");
   if (target) {
-    target.insertAdjacentHTML("afterend", `
+    target.insertAdjacentHTML("beforeend", `
       <div class="summaryQuantity">
         <div id="SummarymoneyQ"></div>
         <div class="product-quantity-box js-qty">
