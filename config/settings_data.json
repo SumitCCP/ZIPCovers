@@ -190,7 +190,7 @@
     "collection_swatches_shape": "square",
     "enable_shopify_review_comments": true,
     "enable_shopify_collection_badges": false,
-    "display_product_quantity": false,
+    "display_product_quantity": true,
     "limit_quantity": false,
     "display_inventory_left": false,
     "inventory_threshold": 10,
@@ -245,7 +245,7 @@
     "dribbble_link": "https://www.quora.com/profile/ZIP-Cushions",
     "behance_link": "",
     "flickr_link": "",
-    "favicon": "shopify://shop_images/favicon.png",
+    "favicon": "shopify://shop_images/zipcushions.png",
     "checkout_header_image": "shopify://shop_images/luxe__page--checkout-banner-01.jpg",
     "checkout_logo_image": "shopify://shop_images/zip_cushions_shadow-02.png",
     "checkout_logo_position": "center",
@@ -5034,6 +5034,10 @@
         "settings": {
           "heading": "Loved By Customers Across The USA"
         }
+      },
+      "furniture-cover-products-scroll": {
+        "type": "furniture-cover-products-scroll",
+        "settings": {}
       }
     },
     "content_for_index": [
@@ -5070,14 +5074,6 @@
         "type": "shopify://apps/parcel-panel/blocks/app.embed/fc785c3f-90e0-4c98-a20c-7cde9ba5e4b5",
         "disabled": false,
         "settings": {}
-      },
-      "15255627403292782234": {
-        "type": "shopify://apps/easy-tabs-product-tabs/blocks/easytabs-embed-product-widget/118e2a90-d31f-4cdf-b5c9-747e2bddd19a",
-        "disabled": true,
-        "settings": {
-          "placement_selector": "",
-          "multiple_widgets": false
-        }
       }
     }
   },
