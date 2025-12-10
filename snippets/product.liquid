@@ -263,7 +263,7 @@
 <div id="dpo_placeholder"></div>
 {% comment %} {% render 'FurnitureCoverFeature' %} {% endcomment %}
 
- {% form 'product', product %}
+ {% form 'product', product , class: 'pdpmainform'%}
     <div style="display: none;" data-shop-pay-installments-template>{{ form | payment_terms }}</div>
     {% assign style = 'select' %}
     {% if settings.product_form_style == 'radio' %}

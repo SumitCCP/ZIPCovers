@@ -858,3 +858,8 @@ margin-top: 20px !important;
   font-size:10px;
 }
 }
+.pdpmainform{
+  position:sticky;
+  background:#fff;
+  bottom:0;
+}
