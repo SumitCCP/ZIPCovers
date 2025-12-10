@@ -913,3 +913,8 @@ justify-content:space-between;
     bottom: 70;
   }
  } 
+ @media (max-width:767px){
+.noformobile{
+  display:none;
+}
+}
