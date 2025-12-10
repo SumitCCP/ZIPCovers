@@ -712,7 +712,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
 }
 .display-arrows--false{
      position: sticky !important;
-    top: 50 !important;
+    top: 100 !important;
 }
 
 
