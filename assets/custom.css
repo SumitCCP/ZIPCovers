@@ -803,3 +803,34 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
     border: 2px solid #85C31F;
     border-radius: 8px;
 }
+/* for dpo templates images(sumit)  */
+  .custom-swatches-img{
+  width:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:5px;
+}
+.custom-swatches-img p{
+  padding-top:10px; margin:0;
+  font-size:16px;
+  color:#000000;
+  text-align:center;
+}
+.custom-swatches-img img{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+@media screen and (max-width:767px){
+  .custom-swatches-img{
+  width:80px;
+}
+.custom-swatches-img img{
+  width: 80px;
+}
+.custom-swatches-img p{
+  padding:5px 0px; margin:0;
+  font-size:12px;
+}
+}
