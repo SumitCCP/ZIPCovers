@@ -817,9 +817,9 @@ border-radius:15px;
   padding: 32px;
 }
 .summaryQuantity #SummarymoneyQ{
-  font-size:medium;
-  font-weight:bold;
-  color:#000 !important;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #fff !important;
 }
 .product-quantity-box,
 .qty--product {
@@ -895,6 +895,9 @@ border-radius:15px;
   justify-content:space-between;
   position:unset;
   gap:10px;
+}
+.quantity-label{
+  color:#fff !important;
 }
 .purchase-details .purchase-details__spb--false {
 padding: 10PX 5px;
