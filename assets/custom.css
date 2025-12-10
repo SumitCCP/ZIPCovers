@@ -744,7 +744,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 12px 20px;
+            padding: 6px 10px;
             border: 1px solid #e0e0e0;
             margin: -1px 0 0 -1px;
             transition: background-color 0.2s ease;
@@ -755,8 +755,8 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
         }
 
         .feature-item .icon {
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             flex-shrink: 0;
         }
        .feature-item .icon img{
@@ -764,7 +764,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
          height: 100%;
        }
         .feature-text {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 500;
             color: #1a1a1a;
         }
