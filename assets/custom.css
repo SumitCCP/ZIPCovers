@@ -803,9 +803,6 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
     border: 2px solid #85C31F;
     border-radius: 8px;
 }
-#itoris_dynamicproductoptions tr.fields td, .itoris_slider_group .itoris_dynamicproductoptions tr.fields td:has(.raincover-fabric){
-width:100%;
-}
 /* for dpo templates images(sumit)  */
   .custom-swatches-img{
   width:120px;
