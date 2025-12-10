@@ -930,9 +930,11 @@ margin-top: 20px !important;
 .pdpmainform {
     position: fixed;
     background: #fff;
-    bottom: 50;
+    bottom: 45;
     width: 100%;
     z-index: 99;
+    transform: translateY(0px); 
+    opacity: 1;
 }
     .product-quantity-box.purchase-details__quantity {
         width: 150px;
