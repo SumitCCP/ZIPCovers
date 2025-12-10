@@ -94,6 +94,25 @@ position:relative;
 
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const pdpmainform = document.querySelector('.pdpmainform');
+  
+  if (!pdpmainform) return;
+  
+  pdpmainform.style.transform = 'translateY(200%)';
+  pdpmainform.style.opacity = '0';
+  pdpmainform.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 100) {
+      pdpmainform.style.transform = 'translateY(0)';
+      pdpmainform.style.opacity = '1';
+    } else {
+      pdpmainform.style.transform = 'translateY(200%)';
+      pdpmainform.style.opacity = '0';
+    }
+  });
+});
   // Bottom nav scroll behavior
   function BottomNav() {
     const nav = document.querySelector('.zc-bottom-nav');
