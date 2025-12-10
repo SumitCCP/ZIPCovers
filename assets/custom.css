@@ -351,7 +351,6 @@ margin-top: 30px;}
     font-style: inherit;
   font-weight: normal;}
 
-.navbreadcrumbs > span:nth-child(3){color: #13deff !important;}
 
  .enap-slider-img img {
    max-height: 100% !important;}
@@ -925,4 +924,23 @@ margin-top: 20px !important;
 .tooltip-container:hover .tooltip-content {
   opacity: 1;
   visibility: visible;
+}
+
+@media(max-width:800px){
+.pdpmainform {
+    position: fixed;
+    background: #fff;
+    bottom: 50;
+    width: 100%;
+    z-index: 99;
+}
+    .product-quantity-box.purchase-details__quantity {
+        width: 150px;
+    }
+  .purchase-details.has-quantity-box .purchase-details__spb--false {
+        max-width: 100%;
+        position: absolute;
+        right: 20;
+        top: 0;
+    }
 }
