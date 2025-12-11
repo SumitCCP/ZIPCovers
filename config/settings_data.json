@@ -1119,7 +1119,7 @@
           "slideshow_speed": 0,
           "slideshow_transition": "slide",
           "thumbnail_position": "bottom-thumbnails",
-          "enable_thumbnail_slider": false,
+          "enable_thumbnail_slider": true,
           "display_vendor": false,
           "display_sku": false,
           "enable_shopify_product_badges": false,
