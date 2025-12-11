@@ -706,7 +706,7 @@ setInterval(runCountdown, 1000);
 
           <div class="cart__cost-summary container is-flex-column">
             <div class="column eight offset-by-eight medium-down--one-whole"><div class="docapp-coupon-input"></div>
-              {%- if cart.cart_level_discount_applications != blank -%}
+              {% comment %} {%- if cart.cart_level_discount_applications != blank -%}
                 <div class="cart__discounts cart__row">
                   {%- for discount_application in cart.cart_level_discount_applications -%}
                     <div class="cart__row-description">
@@ -714,7 +714,7 @@ setInterval(runCountdown, 1000);
                     </div>
 
                     
-                    {% comment %} <p class="cart__discount">
+                    <p class="cart__discount">
                       <span class="money">
                         -
                         {%
@@ -722,10 +722,10 @@ setInterval(runCountdown, 1000);
                           price: discount_application.total_allocated_amount
                         %}
                       </span>
-                    </p> {% endcomment %}
+                    </p>
                   {%- endfor -%}
                 </div>
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
               <div class="cart__subtotal-container cart__row">
                 <div class="cart__row-description">
                   <p class="h3">{{ 'cart.general.subtotal' | t }}:</p>
