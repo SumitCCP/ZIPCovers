@@ -632,7 +632,7 @@ setInterval(runCountdown, 1000);
         <div class="custom-coupon-section">
             <div id="copy-message" style="display: none; color: green; margin-bottom: 10px;"></div>
             <ul>
-                  <li>
+                  {% comment %} <li>
                     <span class="C-offer-text-block" style="width:50%!important">15% Off Sitewide &nbsp;</span>
                     <span class="cupon-code-block">
                         <span class="custom-coupon-code-icon">
@@ -648,7 +648,7 @@ setInterval(runCountdown, 1000);
                         </span>
                         <span class="custom-discount-code-bg coupon-code"
                             data-code="FROSTY15"><strong>FROSTY15</strong></span></span>
-                </li> 
+                </li>  {% endcomment %}
              <li>
                     <span class="C-offer-text-block" style="width:50%!important">20% Off Outdoor Furniture Covers &nbsp; </span>
                     <span class="cupon-code-block">
@@ -726,7 +726,7 @@ setInterval(runCountdown, 1000);
                   {%- endfor -%}
                 </div>
               {%- endif -%} {% endcomment %}
-              <div class="cart__subtotal-container cart__row">
+              {% comment %} <div class="cart__subtotal-container cart__row">
                 <div class="cart__row-description">
                   <p class="h3">{{ 'cart.general.subtotal' | t }}:</p>
                 </div>
@@ -756,7 +756,7 @@ setInterval(runCountdown, 1000);
                 </div>
               {% endif %}
             </div>
-          </div>
+          </div> {% endcomment %}
 
           <div class="container has-no-side-gutter has-padding-top">
             <div class="two-thirds column medium-down--one-whole has-padding-bottom">
