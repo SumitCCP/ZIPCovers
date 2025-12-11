@@ -450,6 +450,92 @@ padding: 5px;
 }
 }
 
+/* ================================
+   TABLE STYLING — COLLECTION DESCRIPTION
+   ================================ */
+
+.collection-description table {
+  display: block; /* ✅ allows overflow to work */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 30px 0;
+  font-size: 16px;
+  color: #000;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  width: 100%;
+  overflow-x: scroll; /* ✅ table scrolls horizontally */
+  -webkit-overflow-scrolling: touch; /* smooth scroll for iOS */
+}
+.collection-description table thead,
+.collection-description table tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.collection-description tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.collection-description thead th {
+  background: #F5FBFA; /* subtle green tint to match brand palette */
+  color: #2A4D4A;
+  text-align: left;
+  font-weight: 700;
+  padding: 14px 16px;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.collection-description tbody td {
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+.collection-description tbody td p {
+  text-align: left;
+}
+
+/* Zebra striping */
+.collection-description tbody tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+/* Rounded top corners */
+.collection-description table th:first-child {
+  border-top-left-radius: 8px;
+}
+.collection-description table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Highlight important cells */
+.collection-description td.is-highlight {
+  background: #fff7ed;
+  border-bottom-color: #fde7d5;
+  font-weight: 600;
+}
+
+/* Align right helper */
+.collection-description th[data-align="right"],
+.collection-description td[data-align="right"] {
+  text-align: right;
+}
+
+/* ✅ Responsive tweaks for mobile */
+@media (max-width: 768px) {
+  .collection-description table {
+    font-size: 14px;
+    overflow-x: scroll;
+  }
+  .collection-description th,
+  .collection-description td {
+    padding: 10px 12px;
+  }
+}
+
 {% endstyle %}
 
 <script>
