@@ -9,7 +9,7 @@
 </div>
 
 <!-- Dynamic Product Options -->
-<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcushions.myshopify.com"></script>
+<script type="text/javascript" src="https://node1.itoris.com/dpo/storefront/include.js?shop=zipcovers.myshopify.com"></script>
 
 <style>.cart__total, .cart__price, .cart__subtotal-container{visibility:visible; color:#000;}
   .cart__total, .cart__price{
@@ -19,23 +19,3 @@
 padding-top:80px;
 }
 </style>
-
-<script>
-// Show alert for Dims >= 50
-jQuery(document).on('change', '#itoris_dynamicproductoptions select', function () {
-  var lengthforus = parseFloat(jQuery('#itoris_dynamicproductoptions .lengthforus select option:selected').text()) || 0;
-  var widthforus  = parseFloat(jQuery('#itoris_dynamicproductoptions .widthforus select option:selected').text()) || 0;
-
-  if (lengthforus >= 50 && widthforus >= 50) {
- showCustomAlert("Note: Cushions exceeding 50 inches in both length and width require seam or joint.");
-  }
-});
-
-function showCustomAlert(message) {
-  var $alert = jQuery('#custom-alert');
-  jQuery('#alert-message').text(message);
-  $alert.stop(true, true).fadeIn(200);
-}
-// End Show alert for Dims >= 50
-
-</script>
