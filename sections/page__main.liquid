@@ -37,7 +37,7 @@
 <main class="mydefaultpage {{ css_class }}
             is-width-{{ width }}
             ">
-  <div class="container page__container">
+  {% comment %} <div class="container page__container">
     {% unless template contains 'page.banner' %}
       {% render 'heading',
               title: page.title,
@@ -46,7 +46,7 @@
               text_alignment: 'center'
       %}
     {% endunless %}
-  </div>
+  </div> {% endcomment %}
   <div class="page__content content container {% if settings.table_styles_enabled %} table is-striped is-bordered {% endif %}">
     {% render 'page-multi-column', content: page.content %}
   </div>
