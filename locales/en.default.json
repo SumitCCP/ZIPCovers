@@ -285,7 +285,7 @@
       "recent_articles": "Recent Articles",
       "categories": "Popular Topics",
       "follow_us": "Follow Us",
-      "follow_shop": "Follow {{ shop_name }} on Twitter"
+      "follow_shop": "Follow {{ shop_name }} on Instagram"
     },
     "article": {
       "read_time": "min read",
