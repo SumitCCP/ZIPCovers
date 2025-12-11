@@ -714,7 +714,7 @@ setInterval(runCountdown, 1000);
                     </div>
 
                     
-                    <p class="cart__discount">
+                    {% comment %} <p class="cart__discount">
                       <span class="money">
                         -
                         {%
@@ -722,7 +722,7 @@ setInterval(runCountdown, 1000);
                           price: discount_application.total_allocated_amount
                         %}
                       </span>
-                    </p>
+                    </p> {% endcomment %}
                   {%- endfor -%}
                 </div>
               {%- endif -%}
