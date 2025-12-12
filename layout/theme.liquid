@@ -11,7 +11,7 @@
 {%- render 'layouthub-header' -%}
 <!-- END LAYOUTHUB-V2-HEADER --> {% endcomment %}
 {{ 'bss-lock-settings.css' | asset_url | stylesheet_tag }}
-<meta name="google-site-verification" content="MfENPj9q3Ket5162vI1UmiHbgqD88Y1PK2JvT0TCU0Q" />
+{% comment %} <meta name="google-site-verification" content="MfENPj9q3Ket5162vI1UmiHbgqD88Y1PK2JvT0TCU0Q" /> {% endcomment %}
   <meta charset="utf-8">
   <meta http-equiv="cleartype" content="on">
   <meta name="robots" content="index,follow">
@@ -59,18 +59,11 @@
   {% endif %}
   
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N4WC2JK');</script>
+
+
 <!-- End Google Tag Manager -->
 
-{% comment %}
-{{ 'custom-template.css' | asset_url | stylesheet_tag }} 
-<link href="{{ 'custom-template.css' | asset_url }}" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="{{ 'custom-template.css' | asset_url }}" rel="stylesheet"></noscript>
-{% endcomment %}
+
   
   <!-- Preconnects -->
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -159,7 +152,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   
   <!-- Bing UET Base Pixel for Page Views and Remarketing -->
-<script>
+{% comment %} <script>
   (function(w,d,t,r,u){
     var f,n,i;
     w[u]=w[u]||[];
@@ -181,7 +174,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     };
     i.parentNode.insertBefore(n,i);
   })(window,document,"script",0,"uetq");
-</script>
+</script> {% endcomment %}
 
 
   {%- if settings.enable_shipping_calculator and template contains "cart" -%}
@@ -234,8 +227,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {% endif %}
 
 
-<!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85-->
-  {% render 'shogun-head' %}
+{% comment %} <!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85-->
+  {% render 'shogun-head' %} {% endcomment %}
 
 {%- capture money_format_output -%}
   {%- if settings.currency_format == 'money_with_currency_format' -%}
