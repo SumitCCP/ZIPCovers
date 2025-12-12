@@ -237,29 +237,6 @@
     {{- shop.money_format | strip_html -}}
   {%- endif -%}
 {%- endcapture -%}
-  <!--padding for reviews-->
-  <style>
-    .reputon-google-reviews-widget{
-  padding: 0px 25px;
-  }
- 
-    </style>
-   <!--End padding for reviews-->
-
-<script defer>
-  (function() {
-    var currentUrl = window.location.href;
-    var subfolders = ['/en-gb/', '/en-au/', '/de-eu/', '/fr-eu/', '/en-ca/', '/en-eu/'];
-    
-    for (var i = 0; i < subfolders.length; i++) {
-      if (currentUrl.indexOf(subfolders[i]) !== -1) {
-        var newUrl = currentUrl.replace(subfolders[i], '/');
-        window.location.replace(newUrl);
-        break;
-      }
-    }
-  })();
-</script>
 
   
   {% comment %} schemas {% endcomment %}
@@ -283,8 +260,8 @@
   data-current-lang="{{ request.locale.iso_code }}"
 >
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4WC2JK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+{% comment %} <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4WC2JK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> {% endcomment %}
 <!-- End Google Tag Manager (noscript) -->
 
  
@@ -339,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {%- endif -%}
 
 
-  <!--LayoutHub-Workspace-Start-->{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}<!--LayoutHub-Workspace-End-->
+  {% comment %} <!--LayoutHub-Workspace-Start-->{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}<!--LayoutHub-Workspace-End--> {% endcomment %}
 
   {% if settings.footer_layout == "centered" %}
     {% section 'footer__icon-bar' %}
