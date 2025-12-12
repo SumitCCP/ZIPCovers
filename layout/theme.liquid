@@ -316,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {%- endif -%}
 
 
-  {% comment %} <!--LayoutHub-Workspace-Start-->{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}<!--LayoutHub-Workspace-End--> {% endcomment %}
+  <!--LayoutHub-Workspace-Start-->{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}<!--LayoutHub-Workspace-End-->
 
   {% if settings.footer_layout == "centered" %}
     {% section 'footer__icon-bar' %}
