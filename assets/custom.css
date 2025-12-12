@@ -952,5 +952,5 @@ shopify-payment-terms{
 #itoris_dynamicproductoptions .fieldset:has(.raincover_ties) .field .control div{
 display:flex;
 flex-wrap:wrap;
-justify-content:center;
+justify-content:start;
 }
