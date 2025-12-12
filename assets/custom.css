@@ -948,7 +948,9 @@ shopify-payment-terms{
         width: 100%!important;
     }
 }
-.fieldset .form-list tbody tr:has(.raincover_ties) {
-  display:flex !important;
-  
+
+#itoris_dynamicproductoptions .fieldset:has(.raincover_ties) .field .control div{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
 }
