@@ -395,7 +395,7 @@ document.addEventListener('tidioChat-ready', onTidioChatApiReady);
 
 
  <!-- klaviyo search tracking -->
-<script defer>
+{% comment %} <script defer>
   document.addEventListener('DOMContentLoaded', function () {
     function setupSearchTracking(containerSelector) {
       const container = document.querySelector(containerSelector);
@@ -455,7 +455,7 @@ document.addEventListener('tidioChat-ready', onTidioChatApiReady);
     setupSearchTracking('.DesktopSearch');
     setupSearchTracking('.PhoneSearch');
   });
-</script>
+</script> {% endcomment %}
 <!-- end klaviyo search tracking --> 
 
 </body>
