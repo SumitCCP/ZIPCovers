@@ -4,12 +4,13 @@
 <!doctype html>
 <html lang="{{ shop.locale }}">
 <head>
-<!-- LAYOUTHUB-HELPER --> 
+{% comment %} <!-- LAYOUTHUB-HELPER --> 
 {%- render 'layouthub-helper' -%}
 <!-- END LAYOUTHUB-HELPER -->
 <!-- LAYOUTHUB-V2-HEADER --> 
 {%- render 'layouthub-header' -%}
-<!-- END LAYOUTHUB-V2-HEADER -->{{ 'bss-lock-settings.css' | asset_url | stylesheet_tag }}
+<!-- END LAYOUTHUB-V2-HEADER --> {% endcomment %}
+{{ 'bss-lock-settings.css' | asset_url | stylesheet_tag }}
 <meta name="google-site-verification" content="MfENPj9q3Ket5162vI1UmiHbgqD88Y1PK2JvT0TCU0Q" />
   <meta charset="utf-8">
   <meta http-equiv="cleartype" content="on">
