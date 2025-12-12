@@ -938,7 +938,6 @@ shopify-payment-terms{
 }
 #itoris_dynamicproductoptions input[type="text"], #itoris_dynamicproductoptions select, #itoris_dynamicproductoptions textarea {
     border: 1px #ccc solid !important;
-    min-width: 200 !important;
 }
 
 .fieldset .form-list tbody tr:has(.msrmt) {
