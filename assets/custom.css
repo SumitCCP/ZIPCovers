@@ -948,3 +948,7 @@ shopify-payment-terms{
         width: 100%!important;
     }
 }
+.fieldset .form-list tbody tr:has(.raincover_ties) {
+  display:flex !important;
+  
+}
