@@ -940,3 +940,12 @@ shopify-payment-terms{
     border: 1px #ccc solid !important;
     min-width: 250 !important;
 }
+
+.fieldset .form-list tbody tr:has(.msrmt) {
+    width: 100%!important;
+}
+@media only screen and (max-width: 500px) {
+    #itoris_dynamicproductoptions tr.fields > td:not(.dpo_dd_list_label):has(.msrmt) {
+        width: 100%!important;
+    }
+}
