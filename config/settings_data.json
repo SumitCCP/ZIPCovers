@@ -2807,11 +2807,6 @@
           "background_color": "#ffffff"
         }
       },
-      "partners_and_certifications_MakLcx": {
-        "type": "Partners-and-Certifications",
-        "name": "Partners & Certifications",
-        "settings": {}
-      },
       "Custom-header": {
         "type": "Custom-header",
         "settings": {
@@ -2903,6 +2898,7 @@
       },
       "index_blog_posts_ycWMpw": {
         "type": "index__blog-posts",
+        "disabled": true,
         "name": "Blog posts",
         "settings": {
           "title": "Recent Blog Posts",
@@ -4895,8 +4891,7 @@
       "sk_contact_form_nACCqy",
       "index_html_NCiHWf",
       "ecd466e0-cd65-4a6d-b7e0-5508050b5441",
-      "index_blog_posts_ycWMpw",
-      "partners_and_certifications_MakLcx"
+      "index_blog_posts_ycWMpw"
     ],
     "blocks": {
       "14060646107696862457": {
