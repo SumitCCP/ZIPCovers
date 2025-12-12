@@ -736,7 +736,11 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             border-radius: 12px;
             margin-top: 20px;
         }
-
+@media(max-width:500px){
+          .features-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+}
         .feature-item {
             display: flex;
             align-items: center;
