@@ -3393,3 +3393,91 @@ BottomCartMobile();
       tooltipContent.classList.toggle("show");
     });
 </script>
+
+
+<script>
+// Auto-populate dimension fields when radio buttons are clicked
+// This script targets elements by their class names
+
+(function() {
+    'use strict';
+    
+    // Get all radio buttons in the DimOptions container
+    const dimOptionsContainer = document.querySelector('.DimOptions');
+    const radioButtons = dimOptionsContainer ? dimOptionsContainer.querySelectorAll('input[type="radio"]') : [];
+    
+    // Get the three input fields by their parent td classes
+    const widthInput = document.querySelector('.Width input[type="text"]');
+    const lengthInput = document.querySelector('.length input[type="text"]');
+    const thicknessInput = document.querySelector('.Thickness input[type="text"]');
+    
+    // Function to parse dimensions from label text
+    function parseDimensions(dimensionString) {
+        // Remove any whitespace
+        dimensionString = dimensionString.trim();
+        
+        // Check if it's custom
+        if (dimensionString.toLowerCase() === 'custom') {
+            return null;
+        }
+        
+        // Extract width (W), depth/length (D), and height/thickness (H)
+        // Pattern: numberW x numberD x numberH
+        const widthMatch = dimensionString.match(/(\d+(?:\.\d+)?)W/i);
+        const depthMatch = dimensionString.match(/(\d+(?:\.\d+)?)D/i);
+        const heightMatch = dimensionString.match(/(\d+(?:\.\d+)?)H/i);
+        
+        return {
+            width: widthMatch ? widthMatch[1] : '',
+            length: depthMatch ? depthMatch[1] : '',
+            thickness: heightMatch ? heightMatch[1] : ''
+        };
+    }
+    
+    // Function to populate input fields
+    function populateInputs(dimensions) {
+        if (dimensions && widthInput && lengthInput && thicknessInput) {
+            widthInput.value = dimensions.width;
+            lengthInput.value = dimensions.length;
+            thicknessInput.value = dimensions.thickness;
+            
+            // Trigger change events to ensure validation runs
+            widthInput.dispatchEvent(new Event('change', { bubbles: true }));
+            lengthInput.dispatchEvent(new Event('change', { bubbles: true }));
+            thicknessInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+    }
+    
+    // Add change event listeners to all radio buttons
+    radioButtons.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                // Get the associated label
+                const label = document.querySelector('label[for="' + this.id + '"]');
+                
+                if (label) {
+                    // Get the text from the span inside the label
+                    const span = label.querySelector('span');
+                    const dimensionString = span ? span.textContent : label.textContent;
+                    
+                    // Parse and populate
+                    const dimensions = parseDimensions(dimensionString);
+                    
+                    if (dimensions) {
+                        populateInputs(dimensions);
+                    } else {
+                        // If custom is selected, keep current values
+                        // Uncomment below to clear fields when "Custom" is selected
+                        // widthInput.value = '';
+                        // lengthInput.value = '';
+                        // thicknessInput.value = '';
+                    }
+                }
+            }
+        });
+    });
+    
+    console.log('Dimension auto-fill script loaded successfully');
+    
+})();
+</script>
