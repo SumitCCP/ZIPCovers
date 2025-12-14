@@ -3404,7 +3404,7 @@ BottomCartMobile();
     
     // Get all radio buttons in the DimOptions container
     const dimOptionsContainer = document.querySelector('.DimOptions');
-    const radioButtons = dimOptionsContainer ? dimOptionsContainer.querySelectorAll('input[type="radio"]') : [];
+    const radioButtons = dimOptionsContainer ? dimOptionsContainer.querySelectorAll('input[type="radio"] label span') : [];
     
     // Get the three input fields by their parent td classes
     const widthInput = document.querySelector('.Width input[type="text"]');
