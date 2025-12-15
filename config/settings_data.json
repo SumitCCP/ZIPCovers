@@ -2781,6 +2781,7 @@
         "name": "Contact Form with Image",
         "settings": {
           "heading": "Have a Question? Let’s Connect",
+          "image": "shopify://shop_images/chair_covers.jpg",
           "background_color": "#ffffff"
         }
       },
