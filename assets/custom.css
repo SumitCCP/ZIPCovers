@@ -812,8 +812,11 @@ margin-top: 20px !important;
     flex-wrap: wrap!important;
     justify-content: space-between !important;
 }
+.fieldset .form-list tbody tr:has(.mstimg) .control{
+  display:flex;
+}
 .fieldset .form-list tbody tr:has(.mstimg) img{
-max-width:400px !important;
+max-width:300px !important;
 }
 
 .fieldset .form-list tbody tr:has(.fabricwarranty) {
