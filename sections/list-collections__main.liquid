@@ -1,9 +1,9 @@
 {% assign collections_to_show = "indoor-cushions,outdoor-cushions,custom-chair-cushions,sofa-and-couch-cushions,custom-seat-bench-cushions,window-cushions,boat-cushions,custom-cushion-covers,custom-outdoor-furniture-covers,ready-to-ship-accent-pillows,owlee-replacement-cushions,brown-jordan-replacement-cushions,north-cape-replacement-cushions" | split: "," %}
 <div class="collection-banner">
-  <img src="https://zipcushions.com/cdn/shop/collections/indoor-Collection_web_Banner_1920x600.webp?v=1758538567" alt="ZIPCushions Collections">
+  <img src="https://zipcushions.com/cdn/shop/collections/indoor-Collection_web_Banner_1920x600.webp?v=1758538567" alt="zipcovers Collections">
 </div>
  <div class="collection-banner-mobile">
-  <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/indoor-Collection_app_Banner.webp?v=1758538558" alt="ZIPCushions Collections">
+  <img src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/indoor-Collection_app_Banner.webp?v=1758538558" alt="zipcovers Collections">
 </div> 
 
 
@@ -15,7 +15,7 @@
   {% for collection_handle in collections_to_show %}
     {% assign current_collection = collections[collection_handle] %}
     
-    <div class="collection-wrapper" data-collection="{{ collection_handle }}">
+    <div class="collection-wrapper" data-collection="zipcovers.com/collections/{{ collection_handle }}">
     <div class="collection-title"><h2>{{ current_collection.title }}</h2><a href="{{ collection_handle }}">Explore All</a></div>
 
 
@@ -32,7 +32,7 @@
         {% endfor %}
       </div>
     </div>
-    <div class="mobile-explore-btn"><a href="{{ collection_handle }}">Explore All</a></div>
+    <div class="mobile-explore-btn"><a href="zipcovers.com/collections/{{ collection_handle }}">Explore All</a></div>
   {% endfor %}
 </div>
 
