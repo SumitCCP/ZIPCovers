@@ -819,7 +819,7 @@ margin-top: 20px !important;
 .fieldset .form-list tbody tr:has(.mstimg) img{
 max-width:400px !important;
 }
-@media(max-width:400px){
+@media(max-width:600px){
 .fieldset .form-list tbody tr:has(.mstimg) img{
 max-width:300px !important;
 }
