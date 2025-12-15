@@ -814,6 +814,7 @@ margin-top: 20px !important;
 }
 .fieldset .form-list tbody tr:has(.mstimg) .control{
   display:flex !important;
+      justify-content: center !important;
 }
 .fieldset .form-list tbody tr:has(.mstimg) img{
 max-width:400px !important;
