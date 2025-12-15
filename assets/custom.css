@@ -798,7 +798,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
 /* dpo sections  */
 #itoris_dynamicproductoptions table {
 padding: 30px 10px !important;
-background: #FBFFF9 !important;
+/* background: #FBFFF9 !important; */
 border: 2px solid #e0e0e0 !important;
 border-radius: 8px !important;
 margin-top: 20px !important;
