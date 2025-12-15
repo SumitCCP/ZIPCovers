@@ -2747,7 +2747,7 @@
         "type": "products-scroll-section",
         "name": "SK Products Scroll",
         "settings": {
-          "collection": "outdoor-cushions"
+          "collection": "custom-covers"
         }
       },
       "Custom-Ribban-SK": {
@@ -2760,7 +2760,7 @@
         "type": "products-scroll-section",
         "name": "SK Products Scroll",
         "settings": {
-          "collection": "indoor-cushions"
+          "collection": "all-products"
         }
       },
       "products_scroll_section_bVXLPR": {
