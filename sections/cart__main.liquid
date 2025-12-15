@@ -179,10 +179,6 @@
 }
   /* Main container styling by sumit*/
 
-
-
-
-  
 {% endstyle %}
 
 <section class="section__wrapper section {{ css_class }}">
@@ -271,16 +267,6 @@
                           <!-- **END** Hextom USB Integration // Cart Include - DO NOT MODIFY -->
                       </a>    
                     </p>
-
-
-
-                    
-                  {% comment %} Amin's code {% endcomment %}
-               {% comment %} {% if item.product.template_suffix == "custom-template" or item.product.template_suffix == "fabric-custom-template" %}
-                      <button class="configuratorr-btn">Configure</button>
-                    {% endif %}{% endcomment %}
-                   {% comment %} end Amin's code {% endcomment %}
-                    
 
                     {% unless item.variant.title contains "Title" %}
                       <p class="item__properties">
@@ -382,7 +368,7 @@
                         variant: item.variant
                       %}
                     </div>
-                    <p class="cart__quantity-warning quantity-warning">
+                    <p class="cart__quantity-warning quantity-warning"></p>
                   </div>
                 {% endif %}
 
@@ -661,7 +647,7 @@ setInterval(runCountdown, 1000);
                         </svg>
                     </span>
                     <span class="custom-discount-code-bg coupon-code"
-                        data-code="FROSTY20"><strong>FROSTY20</strong></span></span>
+                        data-code="WINTER20"><strong>WINTER20</strong></span></span>
                 </li> 
    <li>
                     <!-- <span class="C-offer-text-block" style="width:50%!important">Free Rush Shipping on Orders Over $500 (no code needed) &nbsp; </span> -->
@@ -759,15 +745,7 @@ setInterval(runCountdown, 1000);
           <div class="container has-no-side-gutter has-padding-top">
             <div class="two-thirds column medium-down--one-whole has-padding-bottom">
     
-    
-             
-              {% comment %} Amin's code {% endcomment %}
-             {% comment %}  {% if customer %}
-                <button id="draftOrder">Draft Order</button> 
-              {% endif %}{% endcomment %}
-               {% comment %} end Amin's code {% endcomment %}
-               
-              
+  
               {% if settings.display_special_instructions %}
                 <span class="cart__notes">
                     <div class="field">
@@ -939,62 +917,6 @@ setInterval(runCountdown, 1000);
 
 
   {% render 'configure-popup-cart' %}
-
-{% comment %} Amin's code {% endcomment %}
-
-{% comment %}
-<script>
-$(document).ready(function(){
-    $('body').on('click', '.block-btnn, .block-option', function () {
-        $(this).parent().addClass('vn-active-btn').siblings().removeClass('vn-active-btn');
-        // $(this).addClass('vn-active-btn');
-    });
-  
-    $('#draftOrder').click(function() {
-        $.getJSON('/cart.js', function(cart) {
-            const cartItems = cart.items;
-    
-            // Collect customer data from hidden inputs
-            const customerData = {
-                email: $('#customer-email').val(),
-                name: $('#customer-name').val(),
-                address1: $('#customer-address').val(),
-                city: $('#customer-city').val(),
-                country: $('#customer-country').val(),
-                phone: $('#customer-phone').val(),
-                // Add more fields as needed!
-            };
-    
-            // Send both cart and customer data
-            $.ajax({
-                url: 'https://app.zipcushions.com/zipcushion-app/draftOrder',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    cartItems: JSON.stringify(cartItems),
-                    customerData: JSON.stringify(customerData)
-                },
-                success: function(response) {
-                    const draftOrderName = response.draft_order.draft_order.name;
-                    console.log("Draft order name:", draftOrderName);
-                    $('#draftOrder').after('<div class="success-msgg" style="color:green">'+draftOrderName+' order created successfully.</div>');
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error:", error);
-                    alert("Failed to create draft order.");
-                }
-            });
-        });
-    });
-
-});
-</script>
-{% render 'fabric-custom-js' %}
-{% endcomment %} 
-{% comment %} end Amin's code {% endcomment %}
- 
-
-
 
 
 {% schema %}
