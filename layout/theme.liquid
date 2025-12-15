@@ -371,28 +371,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% include 'bss-product-label-fonts' %}{% endif %}  {{ "//cdn.shopify.com/s/files/1/0633/1672/1913/t/1/assets/splide.min.js" | script_tag}}
 {% if content_for_header contains "dev.giftkart.app" %}{% include "giftkart_script.cart" %}{% endif %}
 
-{% comment %} tidio btn adjust {% endcomment %}
- <script>
-function onTidioChatApiReady() {
-tidioChatApi.adjustStyles('#tidio { bottom: 50px !important; }');
-{% if template contains "product" %}
-tidioChatApi.adjustStyles(
-'@media only screen and (max-width: 980px) { #tidio { bottom: 130px !important;} }',
-);
-{% else %}
-tidioChatApi.adjustStyles(
-'@media only screen and (max-width: 980px) { #tidio { bottom: 60px !important;} }',
-);
-{% endif %}
-}
-if (window.tidioChatApi) {
-window.tidioChatApi.on('ready', onTidioChatApiReady);
-} else {
-document.addEventListener('tidioChat-ready', onTidioChatApiReady);
-}
-</script>
-{% comment %} end tidio btn adjust {% endcomment %}
-
 
  <!-- klaviyo search tracking -->
 {% comment %} <script defer>
