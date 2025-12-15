@@ -996,8 +996,8 @@ justify-content:start;
         }
 
         h1 {
-            font-size: 2.3em;
-            font-weight: 900;
+            font-size: 2em;
+            font-weight: bold;
             color: #294D49;
             line-height: 1.2;
             margin-bottom: 25px;
@@ -1015,8 +1015,8 @@ justify-content:start;
             display: inline-block;
             background: #294D49;
             color: #fff;
-            padding: 20px 50px;
-            font-size: 1.2em;
+            padding: 15px 40px;
+            font-size: 1em;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
@@ -1053,7 +1053,7 @@ justify-content:start;
         }
 
         .Homep_feature-text {
-            font-size: 1.1em;
+            font-size: 1em;
             line-height: 1.8;
             color: #555;
             max-width: 1200px;
@@ -1073,7 +1073,7 @@ justify-content:start;
 
         .Homep_section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2em;
+            font-size: 1.8em;
             color: #294D49;
             margin-bottom: 15px;
             font-weight: 900;
@@ -1150,7 +1150,7 @@ justify-content:start;
 
         .Homep_support-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2em;
+            font-size: 1.8em;
             color: #1a3a36;
             margin-bottom: 20px;
             font-weight: 700;
@@ -1167,7 +1167,7 @@ justify-content:start;
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
 
             .Homep_hero-subtitle {
@@ -1175,11 +1175,11 @@ justify-content:start;
             }
 
             .Homep_section-title {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
 
             .Homep_feature-title {
-                font-size: 1.5em;
+                font-size: 1.3em;
             }
 
             .Homep_hero {
