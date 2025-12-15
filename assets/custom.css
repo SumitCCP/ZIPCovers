@@ -1058,6 +1058,7 @@ justify-content:start;
             color: #555;
             max-width: 1200px;
             margin: 0 auto 20px;
+            text-align:justify;
         }
 
         /* Why Choose Us Section */
@@ -1088,7 +1089,7 @@ justify-content:start;
 
         .Homep_why-card {
             background: #fff;
-            padding: 35px 30px;
+            padding: 20px 30px;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
@@ -1110,6 +1111,7 @@ justify-content:start;
         .Homep_why-card p {
             color: #555;
             line-height: 1.7;
+            text-align:justify;
         }
 
         /* Products Section */
