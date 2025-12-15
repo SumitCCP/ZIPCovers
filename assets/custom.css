@@ -819,7 +819,11 @@ margin-top: 20px !important;
 .fieldset .form-list tbody tr:has(.mstimg) img{
 max-width:400px !important;
 }
-
+@media(max-width:400px){
+.fieldset .form-list tbody tr:has(.mstimg) img{
+max-width:300px !important;
+}
+}
 .fieldset .form-list tbody tr:has(.fabricwarranty) {
     display: flex !important;
     align-items: center !important;
