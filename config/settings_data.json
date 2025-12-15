@@ -518,7 +518,7 @@
             "settings": {
               "size": "small",
               "text": "",
-              "social_icons_footer": true
+              "social_icons_footer": false
             }
           },
           "1562706968599": {
@@ -538,7 +538,7 @@
           "ddc17800-d75b-42c5-83a3-592aa29674f9": {
             "type": "html",
             "settings": {
-              "html_content": "<style>\n.footer__heading{\n    text-align:left !important;\n}\n.address {\n   max-width: 350px;\n   margin: 0;\n   padding: 0;\n}\n.address ul {\n  list-style: none;\n  width: 100%;\n}\n.address ul li {\n   width: 100%;\n   justify-content: start;\n   align-items: center;\n   margin: 0;\n   padding: 5px 0;\n}\n.address ul li .address_details a {\n        color: black;\n        text-decoration: none;\n}\n.address ul li .address_details a:hover{\n        color: #28D5D6;\n        transition: 0.3s;\n}\n\n.address ul li .address_details {\n    width: 90%;\n    margin-left: 10px;\n    text-align: left;\n}\n</style>\n\n<h2 class=\"footer__heading\">Contact Details</h2>\n<div class=\"address\">\n    <ul>\n        <li>\n            <div class=\"address_details\">\n                <b>ZIPCushions Headquarters</b>\n                1499 W 120th Ave Unit #110 Westminster CO 80234<br>\n                (This is not a walk-in store.)<br><br>\n                <b> 6AM to 11PM MST</b>\n            </div>\n        </li>\n        <li>\n            <div class=\"address_details\"><a href=\"tel:+17206277225\"><b>+1 720-627-7225</b></a></div>\n        </li>\n        <li>\n            <div class=\"address_details\"><a href=\"tel:+17206649805\"><b>+1 720 664-9805</b></a></div>\n        </li>\n        <li>\n            <div class=\"address_details\">\n                <b>Sales: </b> <a href=\"mailto:sales@zipcushions.com\">sales@zipcushions.com</a>\n            </div>\n        </li>\n        <li>\n            <div class=\"address_details\">\n                <b>Support: </b>\n                <a href=\"mailto:support@zipcushions.com\">support@zipcushions.com</a>\n            </div>\n        </li>\n        <li>\n            <div class=\"address_details\">\n                <b>General Questions: </b>\n                <a href=\"mailto:info@zipcushions.com\">info@zipcushions.com</a>\n            </div>\n        </li>\n    </ul>\n</div>"
+              "html_content": "<style>\n.footer__heading{\n    text-align:left !important;\n}\n.address {\n   max-width: 350px;\n   margin: 0;\n   padding: 0;\n}\n.address ul {\n  list-style: none;\n  width: 100%;\n}\n.address ul li {\n   width: 100%;\n   justify-content: start;\n   align-items: center;\n   margin: 0;\n   padding: 5px 0;\n}\n.address ul li .address_details a {\n        color: black;\n        text-decoration: none;\n}\n.address ul li .address_details a:hover{\n        color: #28D5D6;\n        transition: 0.3s;\n}\n\n.address ul li .address_details {\n    width: 90%;\n    margin-left: 10px;\n    text-align: left;\n}\n</style>\n\n<h2 class=\"footer__heading\">Contact Details</h2>\n<div class=\"address\">\n    <ul>\n        <li>\n            <div class=\"address_details\">\n                <b>ZIPCushions Headquarters</b>\n                1499 W 120th Ave Unit #110 Westminster CO 80234<br>\n                (This is not a walk-in store.)<br><br>\n                <b> 6AM to 11PM MST</b>\n            </div>\n        </li>\n        <li>\n            <div class=\"address_details\"><a href=\"tel:+17206277225\"><b>+1 720-627-7225</b></a></div>\n        </li>\n        <li>\n            <div class=\"address_details\"><a href=\"tel:+17206649805\"><b>+1 720 664-9805</b></a></div>\n        </li>\n        <li>\n            <div class=\"address_details\">\n                <b>Sales: </b> <a href=\"mailto:sales@zipcovers.com\">sales@zipcovers.com</a>\n            </div>\n        </li>\n        <li>\n            <div class=\"address_details\">\n                <b>Support: </b>\n                <a href=\"mailto:support@zipcovers.com\">support@zipcovers.com</a>\n            </div>\n        </li>\n    </ul>\n</div>"
             }
           },
           "749d1da6-62b7-4507-bba5-db6a95136bd3": {
@@ -2753,7 +2753,7 @@
       "Custom-Ribban-SK": {
         "type": "Custom-Ribban-SK",
         "settings": {
-          "offer_text_mobile": "Use Coupon Code: FROSTY15 & Get  15% Off Sitewide"
+          "offer_text_mobile": "Use Coupon Code: WINTER20 & Get  20% Off Sitewide"
         }
       },
       "products_scroll_section_GREzz4": {
@@ -2772,6 +2772,7 @@
       },
       "custom_google_reviews_block_pWHRMw": {
         "type": "Custom-Google-reviews-block",
+        "disabled": true,
         "name": "Customer Reviews",
         "settings": {}
       },
