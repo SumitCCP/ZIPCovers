@@ -2665,7 +2665,7 @@
           "collection_block_ExzzVV": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/chair_cover.jpg",
+              "image": "shopify://shop_images/chair_cover_7dc04604-e56c-4be5-a13e-a1fc71f40c0c.jpg",
               "title": "Chair Covers",
               "collection": "custom-outdoor-chair-covers"
             }
@@ -2673,7 +2673,7 @@
           "collection_block_AiN7yY": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/couch.jpg",
+              "image": "shopify://shop_images/Couch-cover.jpg",
               "title": "Couch Cover",
               "collection": "custom-couch-covers"
             }
@@ -2681,7 +2681,7 @@
           "collection_block_NXJkqn": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/Firepit_cover.jpg",
+              "image": "shopify://shop_images/Firepit_cover_9e7997a2-94ff-42ce-beb9-fd9c013ca121.jpg",
               "title": "Fire Pit Cover",
               "collection": "fire-pit-covers"
             }
@@ -2689,7 +2689,7 @@
           "collection_block_WXzBVU": {
             "type": "collection_block",
             "settings": {
-              "image": "shopify://shop_images/grill_covers.jpg",
+              "image": "shopify://shop_images/Grill-cover.jpg",
               "title": "Grill Covers",
               "collection": "custom-grill-covers"
             }
