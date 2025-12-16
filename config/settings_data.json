@@ -2708,6 +2708,7 @@
           "item_WtHQpU": {
             "type": "item",
             "settings": {
+              "img_01": "shopify://shop_images/24_7_Customer_Support.png",
               "title": "<strong>24/7 Customer Support</strong>",
               "text": "<p>Personalized assistance from real people, anytime you need it</p>"
             }
@@ -2715,6 +2716,7 @@
           "item_aUymLa": {
             "type": "item",
             "settings": {
+              "img_01": "shopify://shop_images/Satisfaction_Guaranteed.png",
               "title": "<strong>Satisfaction Guaranteed</strong>",
               "text": "<p>Enjoy peace of mind with our Perfect-Fit Warranty</p>"
             }
@@ -2722,6 +2724,7 @@
           "item_9DCF7c": {
             "type": "item",
             "settings": {
+              "img_01": "shopify://shop_images/Free_Shipping.png",
               "title": "Free Shipping",
               "text": "<p>Fast, free delivery in just 3 weeks</p>"
             }
@@ -2729,6 +2732,7 @@
           "item_Gdeztw": {
             "type": "item",
             "settings": {
+              "img_01": "shopify://shop_images/Flexible_Payment_Options.png",
               "title": "<strong>Flexible Payment Options</strong>",
               "text": "<p>Shop now, pay later with Smart Payment</p>"
             }
