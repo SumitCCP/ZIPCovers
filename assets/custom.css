@@ -1093,6 +1093,8 @@ shopify-payment-terms{
 .fieldset .form-list tbody tr:has(.msrmt) .field:not(.dpo_swatch) > label {
     display: inline-block;
     max-width: 200px;
+    font-size: small!important;
+    font-weight: normal!important;
 }
 #itoris_dynamicproductoptions input[type="text"] {
     width: 200px!important;
