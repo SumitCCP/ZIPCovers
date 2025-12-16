@@ -1,0 +1,388 @@
+{% schema %}
+{
+  "name": "Home Content Block",
+  "settings": [],
+   "presets": [
+    {
+      "name": "Home Content Block",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+{% style %}
+  
+/* home page content block  */
+   .Homep_container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .Homep_hero {
+            background: #F7FAF9;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .Homep_hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(41, 77, 73, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .Homep_hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #294D49;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .Homep_hero-subtitle {
+            font-size: 1.5em;
+            color: #3d6b65;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .Homep_cta-button {
+            display: inline-block;
+            background: #294D49;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(41, 77, 73, 0.25);
+        }
+
+        .Homep_cta-button:hover {
+            background: #1a3a36;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(41, 77, 73, 0.35);
+        }
+
+        /* Features Section */
+        .Homep_features {
+            padding: 50px 20px;
+            background: #fff;
+        }
+
+        .Homep_feature-block {
+            margin-bottom: 30px;
+        }
+
+        .Homep_feature-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .Homep_feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #294D49;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .Homep_feature-text {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #555;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            text-align:justify;
+        }
+
+        /* Why Choose Us Section */
+        .Homep_why-section {
+            padding: 50px 20px;
+            border-radius: 30px;
+        }
+
+        .Homep_section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .Homep_section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #294D49;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .Homep_why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .Homep_why-card {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border-left: 4px solid #294D49;
+        }
+
+        .Homep_why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .Homep_why-card h3 {
+            font-size: 1.1em;
+            color: #294D49;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .Homep_why-card p {
+            color: #555;
+            line-height: 1.7;
+            text-align:justify;
+        }
+
+        /* Products Section */
+        .Homep_products-section {
+            padding: 50px 20px;
+            background: #fff;
+        }
+
+        .Homep_products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .Homep_product-item {
+            background: #f8faf9;
+            padding: 25px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            color: #294D49;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .Homep_product-item:hover {
+            background: #294D49;
+            color: #fff;
+            border-color: #294D49;
+            transform: scale(1.05);
+        }
+        /* Support Section */
+        .Homep_support-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .Homep_support-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #1a3a36;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .Homep_support-section p {
+            font-size: 1.2em;
+            color: #1a1a1a;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .Homep_hero-subtitle {
+                font-size: 1em;
+            }
+
+            .Homep_section-title {
+                font-size: 1.6em;
+            }
+
+            .Homep_feature-title {
+                font-size: 1.3em;
+            }
+
+            .Homep_hero {
+                padding: 40px 5px;
+            }
+
+            .Homep_features,
+            .Homep_why-section,
+            .Homep_products-section{
+                padding: 40px 5px;
+            }
+
+            .Homep_why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .Homep_products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+        }
+{% endstyle %}
+<!-- Hero Section -->
+    <div class="Homep_hero">
+        <div class="Homep_hero-content">
+            <h1>Custom Patio Covers: For The Shapes You Can't Define & Sizes You Can't Find</h1>
+            <p class="Homep_hero-subtitle">Your Furniture Isn't Standard. Your Cover Shouldn't Be Either</p>
+            <a href="/collections/all-products" class="Homep_cta-button">Get Your Custom Cover</a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="Homep_features">
+        <div class="Homep_container">
+            <div class="Homep_feature-block">
+                <h2 class="Homep_feature-title">Snug & Secure Fit, No Guesswork</h2>
+                <p class="Homep_feature-text">
+                    At ZIPCovers, we don't just say that our covers will fit perfectly; the quality speaks for itself. Since there is no guesswork, only end-to-end measurements given by the user themselves, there is no scope for ill-fitting. We create each cover to your specifications, ensuring complete protection without leaving gaps, bunching, or sagging. We don't provide baggy covers; we only provide true-to-fit covers.
+                </p>
+            </div>
+
+            <div class="Homep_feature-block">
+                <h2 class="Homep_feature-title">No Need to Chase Your Covers Anymore</h2>
+                <p class="Homep_feature-text">
+                    We know that you don't like to chase your covers in heavy, windy conditions, and you want them to stay put. We hear you, we design stormproof covers that stay put in gusty winds while stopping the need to chase the cover in your yard.
+                </p>
+            </div>
+
+            <div class="Homep_feature-block">
+                <h2 class="Homep_feature-title">Premium Reliable Material with Guaranteed Performance</h2>
+                <p class="Homep_feature-text">
+                    Leaving your outdoor furniture/assets unattended or covered with generic, low-quality covers will lead to deterioration. These types of covers usually leave gaps and are ill-fitted, and may not come with waterproofing. Relying on these types of covers creates more damage than protection.
+                </p>
+                <p class="Homep_feature-text">
+                    Put your hands on custom patio furniture covers, made with premium quality heavy-duty 18-ounce PVC-coated 1000 Denier Polyester. These waterproof custom patio covers provide unmatched protection against water, harmful UV rays, everyday wear and tear, spills, stains, mold, mildew, pollen, debris, and other outdoor elements. The designs are breathable, ventilated, easy to use, and functional, designed for everyday life.
+                </p>
+            </div>
+
+            <div class="Homep_feature-block">
+                <h2 class="Homep_feature-title">A 10-Year Warranty & Free Shipping</h2>
+                <p class="Homep_feature-text">
+                    We stand by the quality of our covers by offering a 10-year warranty with our outdoor furniture covers. We want you to stop the cycle of buying non-performing covers every year. Upgrade yourself with the protection that is made to last.
+                </p>
+                <p class="Homep_feature-text">
+                    We provide Free Shipping worldwide with every custom order.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="Homep_why-section">
+        <div class="Homep_container">
+            <div class="Homep_section-header">
+                <h2 class="Homep_section-title">The WHY Factor: Why Choose Us for Your Patio Protection?</h2>
+            </div>
+
+            <div class="Homep_why-grid">
+                <div class="Homep_why-card">
+                    <h3>Any Design, Any Type, Any Size Customized</h3>
+                    <p>Made-to-order custom covers, based on your given dimensions.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>Sturdy Waterproof Material</h3>
+                    <p>Coated with Polyvinyl Chloride to prevent water from entering the cover.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>Excel in All Weather Conditions</h3>
+                    <p>No matter what Mother Nature throws your way, your cover takes it all.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>Breathable, Ventilation Design</h3>
+                    <p>Air Vents to promote airflow and prevent condensation.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>Double-Side Handles for Easy Installation</h3>
+                    <p>Putting on and pulling off your cover has never been easier. Use the dual side handles to skirt your cover.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>Snug & Secure Fit with Sturdy Tie-downs</h3>
+                    <p>Heavy winds or storms can't blow off your cover; it stays in place irrespective of the weather changes.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>Designed for Longevity</h3>
+                    <p>The material strength, UV and water protection, and anti-fading, spill and stain-resistant, mold and mildew resistant, and tearproofing, all these design features enhance the lifespan of covers.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>All Outdoor Needs Covered</h3>
+                    <p>Whatever you put outside, we provide a cover for that, including your sectionals, picnic benches, air conditioners, fire pits, bird baths, porch swings, you just name it, and we will design a cover for it.</p>
+                </div>
+
+                <div class="Homep_why-card">
+                    <h3>10-Year Warranty Assurance</h3>
+                    <p>These custom covers are backed up by a 10-year manufacturer's warranty for added peace of mind for you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="Homep_products-section">
+        <div class="Homep_container">
+            <div class="Homep_section-header">
+                <h2 class="Homep_section-title">What to Explore at ZIPCovers: What Covers Do We Offer?</h2>
+                <p class="Homep_feature-text">Whatever you put outside, we provide you with a long-lasting protective cover for that, including all types of outdoor needs such as:</p>
+            </div>
+
+            <div class="Homep_products-grid">
+                <div class="Homep_product-item">Patio Furniture Covers</div>
+                <div class="Homep_product-item">Patio Dining Covers</div>
+                <div class="Homep_product-item">Couch/Sofa Covers</div>
+                <div class="Homep_product-item">Fire pit Covers</div>
+                <div class="Homep_product-item">Chair Covers</div>
+                <div class="Homep_product-item">Grill Covers</div>
+                <div class="Homep_product-item">Recliner Covers</div>
+                <div class="Homep_product-item">Sectional Covers for U & L-shaped Sofas</div>
+                <div class="Homep_product-item">Loveseat Covers</div>
+                <div class="Homep_product-item">Chaise Lounge Covers</div>
+                <div class="Homep_product-item">Industrial Equipment Covers</div>
+                <div class="Homep_product-item">Ottoman Covers</div>
+                <div class="Homep_product-item">Patio Table Covers</div>
+                <div class="Homep_product-item">Chiminea Covers</div>
+                <div class="Homep_product-item">Any Custom Shape & Size</div>
+            </div>
+        </div>
+    </div>
