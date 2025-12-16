@@ -871,11 +871,11 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             }
 
             .offer-highlight {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .offer-code {
-                font-size: 20px;
+                font-size: 16px;
             }
 
             .offer-block {
@@ -899,13 +899,13 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             }
 
             .offer-highlight {
-                font-size: 16px;
+                font-size: 14px;
                 display: block;
                 margin-top: 4px;
             }
 
             .offer-code {
-                font-size: 18px;
+                font-size: 14px;
                 display: block;
                 margin-top: 4px;
             }
