@@ -2664,29 +2664,33 @@
           "collection_block_ExzzVV": {
             "type": "collection_block",
             "settings": {
-              "title": "Cushion Covers",
-              "collection": "custom-cushion-covers"
+              "image": "shopify://shop_images/chair_cover.jpg",
+              "title": "Chair Covers",
+              "collection": "custom-outdoor-chair-covers"
             }
           },
           "collection_block_AiN7yY": {
             "type": "collection_block",
             "settings": {
-              "title": "Outdoor Cushions",
-              "collection": "outdoor-cushions"
+              "image": "shopify://shop_images/couch.jpg",
+              "title": "Couch Cover",
+              "collection": "custom-couch-covers"
             }
           },
           "collection_block_NXJkqn": {
             "type": "collection_block",
             "settings": {
-              "title": "Indoor Cushions",
-              "collection": "indoor-cushions"
+              "image": "shopify://shop_images/Firepit_cover.jpg",
+              "title": "Fire Pit Cover",
+              "collection": "fire-pit-covers"
             }
           },
           "collection_block_WXzBVU": {
             "type": "collection_block",
             "settings": {
-              "title": "Outdoor Covers",
-              "collection": "custom-outdoor-furniture-covers"
+              "image": "shopify://shop_images/grill_covers.jpg",
+              "title": "Grill Covers",
+              "collection": "custom-grill-covers"
             }
           }
         },
