@@ -45,7 +45,9 @@
 
 }
  
-  /* for dpo templates images(sumit)  */  
+  /* for dpo templates images(sumit)  */
+
+  
     .checkout{
     background:#000000!important;min-height: 55px!important; border-radius:5px!important;
   }
@@ -179,6 +181,10 @@
 }
   /* Main container styling by sumit*/
 
+
+
+
+  
 {% endstyle %}
 
 <section class="section__wrapper section {{ css_class }}">
@@ -267,6 +273,7 @@
                           <!-- **END** Hextom USB Integration // Cart Include - DO NOT MODIFY -->
                       </a>    
                     </p>
+                    
 
                     {% unless item.variant.title contains "Title" %}
                       <p class="item__properties">
@@ -402,212 +409,6 @@
 
 
 
-{% comment %}
-{% comment %} Free gift section {% endcomment %}
- <style>
-.free-gift-box {
-  background: #f4f9ff;
-  border: 1px solid #d7e4ff;
-  border-radius: 12px;
-  padding: 16px;
-  margin: 20px 0;
-  position: relative;
-  overflow: hidden;
-  transition: all .3s ease;
-}
-@media (max-width:800px){
-.free-gift-box {
-padding: 40px 10px;
-}
-}
-.gift-fade {
-  opacity: 0;
-  animation: fadeIn .6s forwards;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(5px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* Updated for gift GIF */
-.gift-pillow-img {
-  width: 55px;
-  height: auto;
-  border-radius: 6px;
-}
-
-.gift-inner {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Progress Bar */
-.gift-progressbar {
-  width: 100%;
-  height: 8px;
-  background: #dfe8ff;
-  border-radius: 5px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.gift-progressbar-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #4e7bff, #84a6ff);
-  transition: width .4s ease;
-}
-
-/* Timer */
-.gift-timer {
-  text-align: center;
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ff3b3b;
-}
-
-/* Ribbon */
-.gift-ribbon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #0aa03e;
-  color: white;
-  padding: 4px 40px;
-  {% comment %} transform: rotate(45deg); {% endcomment %}
-  font-size: 12px;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity .4s ease;
-  border-radius:5px;
-}
-
-  </style>
-
-<div id="free-gift-offer" class="free-gift-box">
-  <div class="gift-inner">
-    <img 
-      src="https://cdn.shopify.com/s/files/1/0614/7453/7714/files/wrapped-gift_1f381.gif?v=1764579161"
-      alt="Free Designer Pillow Gift"
-      class="gift-pillow-img"
-    />
-
-    <div class="gift-text"></div>
-  </div>
-
-  <div class="gift-progressbar">
-    <div class="gift-progressbar-fill"></div>
-  </div>
-
-  <div id="gift-timer" class="gift-timer"></div>
-
-  <div class="gift-ribbon" id="gift-ribbon">UNLOCKED</div>
-</div>
-
-
-
-<script>
-function runCountdown() {
-  const timerBox = document.getElementById("gift-timer");
-  if (!timerBox) return;
-
-  let endTime = localStorage.getItem("giftCountdownEnd");
-
-  // If no end time exists OR time is already passed → set for tomorrow 11:59 AM
-  if (!endTime || Date.now() > endTime) {
-    const now = new Date();
-    const tomorrow = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate() + 1, // tomorrow
-      11, 59, 0, 0       // 11:59 AM
-    );
-    endTime = tomorrow.getTime();
-    localStorage.setItem("giftCountdownEnd", endTime);
-  }
-
-  const distance = endTime - Date.now();
-
-  if (distance <= 0) {
-    timerBox.innerHTML = "Offer ends soon!";
-    return;
-  }
-
-  const hours = Math.floor(distance / (1000 * 60 * 60));
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  timerBox.innerHTML = `⏳ <b>${hours}h ${minutes}m ${seconds}s</b> left to claim your FREE Designer Pillow Cover`;
-}
-
-/* --------------------------
-   UPDATE GIFT MESSAGE 
-   — WITHOUT BLINKING
---------------------------- */
-let lastGiftMessage = "";  // 🟢 this prevents blinking
-
-function updateGiftMessage(cart) {
-  const threshold = 500;
-
-  let cartTotal = (cart.total_price && cart.total_price > 0)
-      ? cart.total_price / 100
-      : cart.items_subtotal_price / 100;
-
-  const box = document.getElementById("free-gift-offer");
-  if (!box) return;
-
-  const textBox = box.querySelector(".gift-text");
-  const ribbon = box.querySelector("#gift-ribbon");
-  const progressFill = box.querySelector(".gift-progressbar-fill");
-
-  const percentage = Math.min((cartTotal / threshold) * 100, 100);
-  progressFill.style.width = percentage + "%";
-
-  let newMessage = "";
-
-  if (cartTotal >= threshold) {
-    newMessage = `
-      <p class="gift-unlocked">
-        🎉 You’ve unlocked your Free Pair Of Designer Throw Pillow Cover!
-      </p>
-    `;
-    ribbon.style.opacity = "1";
-  } else {
-    const remaining = Math.max(threshold - cartTotal, 0).toFixed(2);
-    newMessage = `
-      <p class="gift-progress">
-        Add <strong>$${remaining}</strong> more to get Free Pair Of Designer Throw Pillow Cover!
-      </p>
-    `;
-    ribbon.style.opacity = "0";
-  }
-
-  // ⭐ Update only when message changes (fixes blinking)
-  if (newMessage !== lastGiftMessage) {
-    textBox.innerHTML = newMessage;
-
-    // Add fade animation ONLY when changed
-    textBox.classList.remove("gift-fade");
-    void textBox.offsetWidth; // force reflow (restart animation)
-    textBox.classList.add("gift-fade");
-
-    lastGiftMessage = newMessage;
-  }
-}
-
-function refreshGiftFromCart() {
-  fetch('/cart.js')
-    .then(res => res.json())
-    .then(cart => updateGiftMessage(cart));
-}
-
-setInterval(refreshGiftFromCart, 100);
-setInterval(runCountdown, 1000);
-</script>
-{% endcomment %}
 
 <!-- Discount Codes Section sumit -->
 
@@ -631,10 +432,10 @@ setInterval(runCountdown, 1000);
                             </svg>
                         </span>
                         <span class="custom-discount-code-bg coupon-code"
-                            data-code="FROSTY15"><strong>FROSTY15</strong></span></span>
+                            data-code="WINTER15"><strong>WINTER15</strong></span></span>
                 </li>  {% endcomment %}
              <li>
-                    <span class="C-offer-text-block" style="width:50%!important">20% Off Outdoor Furniture Covers &nbsp; </span>
+                    <span class="C-offer-text-block" style="width:50%!important">20% Off Sitewide &nbsp; </span>
                     <span class="cupon-code-block">
                     <span class="custom-coupon-code-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="20" height="20" fill="#333">
@@ -688,9 +489,10 @@ setInterval(runCountdown, 1000);
 
 
 
+          
           <div class="cart__cost-summary container is-flex-column">
             <div class="column eight offset-by-eight medium-down--one-whole">
-              {% comment %} {%- if cart.cart_level_discount_applications != blank -%}
+              {%- if cart.cart_level_discount_applications != blank -%}
                 <div class="cart__discounts cart__row">
                   {%- for discount_application in cart.cart_level_discount_applications -%}
                     <div class="cart__row-description">
@@ -709,7 +511,7 @@ setInterval(runCountdown, 1000);
                     </p>
                   {%- endfor -%}
                 </div>
-              {%- endif -%} {% endcomment %}
+              {%- endif -%}
               <div class="cart__subtotal-container cart__row">
                 <div class="cart__row-description">
                   <p class="h3">{{ 'cart.general.subtotal' | t }}:</p>
@@ -744,8 +546,8 @@ setInterval(runCountdown, 1000);
 
           <div class="container has-no-side-gutter has-padding-top">
             <div class="two-thirds column medium-down--one-whole has-padding-bottom">
-    
-  
+               
+              
               {% if settings.display_special_instructions %}
                 <span class="cart__notes">
                     <div class="field">
@@ -819,7 +621,7 @@ setInterval(runCountdown, 1000);
                     <div class="is-flex is-align-center is-justify-end">
                       {% if cart.item_count > 0 %}
                         <div class="cart__featured-links">
-                          <a href="https://zipcushions.myshopify.com/pages/customize">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+                          <a href="https://zipcovers.myshopify.com/pages/customize">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
                         </div>
                       {% endif %}
                     </div>
@@ -917,6 +719,9 @@ setInterval(runCountdown, 1000);
 
 
   {% render 'configure-popup-cart' %}
+
+
+
 
 
 {% schema %}
