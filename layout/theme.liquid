@@ -57,16 +57,6 @@
   {% if settings.enable_shopify_review_comments %}
     <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
   {% endif %}
-  
-  {% comment %} merchant center  {% endcomment %}
-  <meta name="google-site-verification" content="F_46b2y_A1CgWgbz5aEbqpbbUSvWfmlRzD32jMX684I" />
-   {% comment %} end merchant center  {% endcomment %}
-
-<!-- Google Tag Manager -->
-
-
-<!-- End Google Tag Manager -->
-
 
   
   <!-- Preconnects -->
@@ -155,30 +145,6 @@
   </script>
 
   
-  <!-- Bing UET Base Pixel for Page Views and Remarketing -->
-{% comment %} <script>
-  (function(w,d,t,r,u){
-    var f,n,i;
-    w[u]=w[u]||[];
-    f=function(){
-      var o={ti:"97134327"}; // Replace with your UET Tag ID if needed
-      o.q=w[u];
-      w[u]=new UET(o);
-      w[u].push("pageLoad");
-    };
-    n=d.createElement(t),i=d.getElementsByTagName(t)[0];
-    n.src="https://bat.bing.com/bat.js";
-    n.async=1;
-    n.onload=n.onreadystatechange=function(){
-      var s=this.readyState;
-      if(!s||s==="loaded"||s==="complete"){
-        f();
-        n.onload=n.onreadystatechange=null;
-      }
-    };
-    i.parentNode.insertBefore(n,i);
-  })(window,document,"script",0,"uetq");
-</script> {% endcomment %}
 
 
   {%- if settings.enable_shipping_calculator and template contains "cart" -%}
@@ -231,9 +197,6 @@
   {% endif %}
 
 
-{% comment %} <!--AZEXO_Header_Scripts--> {% include 'azexo-header-scripts' %} <!--End_AZEXO_Header_Scripts--><!--AZEXO_Version_85-->
-  {% render 'shogun-head' %} {% endcomment %}
-
 {%- capture money_format_output -%}
   {%- if settings.currency_format == 'money_with_currency_format' -%}
     {{- shop.money_with_currency_format | strip_html -}}
@@ -242,7 +205,11 @@
   {%- endif -%}
 {%- endcapture -%}
 
-  
+    
+  {% comment %} merchant center  {% endcomment %}
+  <meta name="google-site-verification" content="F_46b2y_A1CgWgbz5aEbqpbbUSvWfmlRzD32jMX684I" />
+   {% comment %} end merchant center  {% endcomment %}
+
   {% comment %} schemas {% endcomment %}
   {% render 'structured-data' %}
 
@@ -263,14 +230,7 @@
   data-shop-url="{{ shop.url }}"
   data-current-lang="{{ request.locale.iso_code }}"
 >
-<!-- Google Tag Manager (noscript) -->
-{% comment %} <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4WC2JK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> {% endcomment %}
-<!-- End Google Tag Manager (noscript) -->
 
- 
-  {% comment %}{% render 'loader' %} {% endcomment %}
- 
 
 {% section 'Custom-Ribban-SK' %}
 
@@ -352,26 +312,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   {% if settings.show_popup %}
     {% section 'popup' %}
-  {% endif %}
-{% comment %}
-  {% render 'mobile-search' %}
-  {% endcomment %}
-
- 
+  {% endif %} 
+  
 <!-- <script data-src="//code.tidio.co/5clt5ohazm2zurckdbn8rgct0nf0eeap.js" async></script> -->
- {% comment %}
-   {{ "custom.js" | asset_url | script_tag }}
- {% endcomment %}     
- {% comment %}
-{% if template= 'product' %}
-  <!--AZEXO_Footer_Scripts--> 
- {% comment %} {% include 'azexo-footer-scripts' %} {% endcomment %} 
-  <!--End_AZEXO_Footer_Scripts-->
+ 
 <!-- <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WuBRgx" defer></script>  -->
-{% comment %} {%- render 'layouthub_footer' -%}  {% endcomment %}  
 
-{% endif %} 
- {% endcomment %} 
+
+ {% comment %} tidio btn adjust {% endcomment %}
+ <script>
+function onTidioChatApiReady() {
+tidioChatApi.adjustStyles('#tidio { bottom: 50px !important; }');
+{% if template contains "product" %}
+tidioChatApi.adjustStyles(
+'@media only screen and (max-width: 980px) { #tidio { bottom: 130px !important;} }',
+);
+{% else %}
+tidioChatApi.adjustStyles(
+'@media only screen and (max-width: 980px) { #tidio { bottom: 60px !important;} }',
+);
+{% endif %}
+}
+if (window.tidioChatApi) {
+window.tidioChatApi.on('ready', onTidioChatApiReady);
+} else {
+document.addEventListener('tidioChat-ready', onTidioChatApiReady);
+}
+</script>
+{% comment %} end tidio btn adjust {% endcomment %}
+
 {% if content_for_header contains 'product_label' %}{% include 'bss-product-label-js' %}{% include 'bss-label-style-css' %}{% include 'bss-product-label-fonts' %}{% endif %}  {{ "//cdn.shopify.com/s/files/1/0633/1672/1913/t/1/assets/splide.min.js" | script_tag}}
 {% if content_for_header contains "dev.giftkart.app" %}{% include "giftkart_script.cart" %}{% endif %}
 
