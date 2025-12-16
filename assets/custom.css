@@ -776,9 +776,9 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
             border: 2px solid #7cb342;
             border-radius: 12px;
-            padding: 20px 30px;
+            padding: 10px;
             text-align: center;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             max-width: 900px;
         }
 
@@ -806,14 +806,14 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
             border: 2px solid #f39c12;
             border-radius: 12px;
-            padding: 32px 40px;
+            padding: 15px;
             max-width: 900px;
             margin: 0 auto;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .offer-title {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
             color: #2c3e50;
             margin-bottom: 24px;
