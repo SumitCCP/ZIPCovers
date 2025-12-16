@@ -1094,6 +1094,9 @@ shopify-payment-terms{
     display: inline-block;
     max-width: 200px;
 }
+#itoris_dynamicproductoptions input[type="text"] {
+    width: 200px;
+}
 @media (max-width: 600px) {
     #itoris_dynamicproductoptions tr.fields:has(.msrmt) td{
         width: 100%!important;
