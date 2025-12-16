@@ -2717,7 +2717,7 @@
             "type": "item",
             "settings": {
               "img_01": "shopify://shop_images/Satisfaction_Guaranteed.png",
-              "title": "<strong>Satisfaction Guaranteed</strong>",
+              "title": "Human-Verified Precision",
               "text": "<p>Enjoy peace of mind with our Perfect-Fit Warranty</p>"
             }
           },
