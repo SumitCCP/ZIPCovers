@@ -792,6 +792,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             color: #d32f2f;
             font-weight: 700;
             font-size: 16px;
+            display:inline;
         }
 
         .offer-code {
@@ -799,6 +800,7 @@ body .mobile-layout--left.mobile-logo__position--left .mobile-dropdown {
             font-weight: 700;
             font-size: 16px;
             letter-spacing: 1px;
+            display:inline;
         }
 
         /* Main Offer Block */
