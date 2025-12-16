@@ -1099,6 +1099,14 @@ shopify-payment-terms{
 #itoris_dynamicproductoptions input[type="text"] {
     width: 200px!important;
 }
+@media (max-width: 970px){
+.fieldset .form-list tbody tr:has(.msrmt) .field:not(.dpo_swatch) > label {
+    max-width: 150px;
+}
+#itoris_dynamicproductoptions input[type="text"] {
+    width: 150px!important;
+}
+}
 @media (max-width: 600px) {
     #itoris_dynamicproductoptions tr.fields:has(.msrmt) td{
         width: 100%!important;
